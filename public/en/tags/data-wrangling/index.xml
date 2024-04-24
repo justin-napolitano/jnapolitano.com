@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data-Wrangling on cobra.blog</title>
-    <link>jnapolitano.com/en/tags/data-wrangling/</link>
+    <link>//localhost:1313/en/tags/data-wrangling/</link>
     <description>Recent content in Data-Wrangling on cobra.blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Wed, 24 Apr 2024 16:53:08 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/data-wrangling/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/en/tags/data-wrangling/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configuring Rocky Linux 8 for Quantitative Analysis in Julia</title>
-      <link>jnapolitano.com/en/test/rocky-linux-8-julia/</link>
+      <link>//localhost:1313/en/posts/rocky-linux-8-julia/</link>
       <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/test/rocky-linux-8-julia/</guid>
+      <guid>//localhost:1313/en/posts/rocky-linux-8-julia/</guid>
       <description>Install Jupyter Start with installing jupyter. It will serve as our server for development.&#xA;Install Dependencies sudo dnf install gcc python3-devel kernel-headers-$(uname -r) Install Jupyter Via Pip pip3 install --user jupyter Install Julia We will be installing from the official binaries.&#xA;Make a directory in user profile. i simply ran mkdir julia in the home folder. The cd to julia.&#xA;When in the folder run&#xA;Wget wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.2-linux-x86_64.tar.gz Unpack Then unpack</description>
     </item>
     <item>
       <title>Legal Research with AI Part 7: Wrangling Data with Julia</title>
-      <link>jnapolitano.com/en/test/legal-research-part-7/</link>
+      <link>//localhost:1313/en/posts/legal-research-part-7/</link>
       <pubDate>Sun, 22 May 2022 16:30:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/test/legal-research-part-7/</guid>
+      <guid>//localhost:1313/en/posts/legal-research-part-7/</guid>
       <description>Intro In a previous post, I seperated all of the results returned from the Library of Congress API into individual JSON documents to be imported as nodes into a neo4j graph.&#xA;In this post, I filter the LOC data against another data set from Oyez that will be integrated in the next post.&#xA;Filtering Data Both data sets have been seperated into individual case nodes stored in the json format as a file with the format : .</description>
     </item>
   </channel>

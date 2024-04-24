@@ -55,7 +55,7 @@ expiryDate = ["expiryDate"]
 
 [params.author]
   name = "Cobra"
-  about = "being him"
+  #about = "being him"
 
 [blackfriday]
   # hrefTargetBlank = true

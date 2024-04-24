@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data on cobra.blog</title>
-    <link>jnapolitano.com/en/tags/data/</link>
+    <link>//localhost:1313/en/tags/data/</link>
     <description>Recent content in Data on cobra.blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Wed, 24 Apr 2024 16:53:08 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/data/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/en/tags/data/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rice Paddy Methane Emissions Estimation: Part 2</title>
-      <link>jnapolitano.com/en/test/rice-paddy-emissions-2/</link>
+      <link>//localhost:1313/en/posts/rice-paddy-emissions-2/</link>
       <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/test/rice-paddy-emissions-2/</guid>
+      <guid>//localhost:1313/en/posts/rice-paddy-emissions-2/</guid>
       <description>Methane Emissions Estimation Data Part 2: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.&#xA;It is fairly code python and pandas heavy.&#xA;The code and data exploration follows the summary below.&#xA;Hypothesis Testing the University of Malaysia Paper Claims That the distributions do not differ between 2020 and 2019 That the means do no differ between 2020 and 2019 What will be Tested.</description>
     </item>
     <item>
       <title>Rice Paddy Methane Emissions Estimation: Part 1</title>
-      <link>jnapolitano.com/en/test/rice-paddy-emissions-1/</link>
+      <link>//localhost:1313/en/posts/rice-paddy-emissions-1/</link>
       <pubDate>Sat, 21 May 2022 08:30:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/test/rice-paddy-emissions-1/</guid>
+      <guid>//localhost:1313/en/posts/rice-paddy-emissions-1/</guid>
       <description>Methane Emissions Estimation Data Part 1: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.&#xA;It is fairly code python and pandas heavy.&#xA;The code and data exploration follows the summary below.&#xA;Inspiration for this work The University of Malaysia in partnership with Climate TRACE release a paper stating that the UN undercounts rice paddy methane emissions by about 16%.</description>
     </item>
   </channel>
