@@ -1,0 +1,11 @@
+Justice,issue area of case (coarse),Mean,N,Std. Deviation,Variance
+AMKennedy,First Amendment,1.47,167,0.5,0.25
+CThomas,First Amendment,1.33,127,0.472,0.223
+RBGinsburg,First Amendment,1.68,112,0.469,0.22
+SGBreyer,First Amendment,1.55,108,0.5,0.25
+JGRoberts,First Amendment,1.51,47,0.505,0.255
+SAAlito,First Amendment,1.42,43,0.499,0.249
+SSotomayor,First Amendment,1.67,33,0.479,0.229
+EKagan,First Amendment,1.67,27,0.48,0.231
+NMGorsuch,First Amendment,2,1,.,.
+Total,First Amendment,1.51,665,0.5,0.25

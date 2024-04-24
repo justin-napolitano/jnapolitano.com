@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on cobra.blog</title>
+    <link>jnapolitano.com/en/tags/</link>
+    <description>Recent content in Tags on cobra.blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Fri, 17 Jun 2022 13:20:32 +0000</lastBuildDate>
+    <atom:link href="jnapolitano.com/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Index</title>
+      <link>jnapolitano.com/en/tags/index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>jnapolitano.com/en/tags/index/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Julia</title>
+      <link>jnapolitano.com/en/tags/julia/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>jnapolitano.com/en/tags/julia/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Logistic Regression</title>
+      <link>jnapolitano.com/en/tags/logistic-regression/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>jnapolitano.com/en/tags/logistic-regression/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Numerical-Computing</title>
+      <link>jnapolitano.com/en/tags/numerical-computing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>jnapolitano.com/en/tags/numerical-computing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Statistics</title>
+      <link>jnapolitano.com/en/tags/statistics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>jnapolitano.com/en/tags/statistics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Monte-Carlo</title>
+      <link>jnapolitano.com/en/tags/monte-carlo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>jnapolitano.com/en/tags/monte-carlo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>jnapolitano.com/en/tags/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>jnapolitano.com/en/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spearman-Rank-Correlation</title>
+      <link>jnapolitano.com/en/tags/spearman-rank-correlation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>jnapolitano.com/en/tags/spearman-rank-correlation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Logisitic-Regression</title>
+      <link>jnapolitano.com/en/tags/logisitic-regression/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>jnapolitano.com/en/tags/logisitic-regression/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Marketing-Analsyis</title>
+      <link>jnapolitano.com/en/tags/marketing-analsyis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>jnapolitano.com/en/tags/marketing-analsyis/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

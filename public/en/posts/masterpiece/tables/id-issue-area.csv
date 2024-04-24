@@ -1,0 +1,56 @@
+Justice,issue area of case (coarse),Issue Area Of Case (Fine),Mean,N,Std. Deviation,Variance
+AMKennedy,First Amendment,Free Exercise Of Religion,1.71,14,0.469,0.22
+,,Establishment Of Religion,1.23,13,0.439,0.192
+,,Total,1.48,27,0.509,0.259
+,Total,Free Exercise Of Religion,1.71,14,0.469,0.22
+,,Establishment Of Religion,1.23,13,0.439,0.192
+,,Total,1.48,27,0.509,0.259
+CThomas,First Amendment,Free Exercise Of Religion,1.91,11,0.302,0.091
+,,Establishment Of Religion,1.1,10,0.316,0.1
+,,Total,1.52,21,0.512,0.262
+,Total,Free Exercise Of Religion,1.91,11,0.302,0.091
+,,Establishment Of Religion,1.1,10,0.316,0.1
+,,Total,1.52,21,0.512,0.262
+RBGinsburg,First Amendment,Free Exercise Of Religion,1.56,9,0.527,0.278
+,,Establishment Of Religion,2,9,0,0
+,,Total,1.78,18,0.428,0.183
+,Total,Free Exercise Of Religion,1.56,9,0.527,0.278
+,,Establishment Of Religion,2,9,0,0
+,,Total,1.78,18,0.428,0.183
+SGBreyer,First Amendment,Free Exercise Of Religion,1.78,9,0.441,0.194
+,,Establishment Of Religion,1.67,9,0.5,0.25
+,,Total,1.72,18,0.461,0.212
+,Total,Free Exercise Of Religion,1.78,9,0.441,0.194
+,,Establishment Of Religion,1.67,9,0.5,0.25
+,,Total,1.72,18,0.461,0.212
+JGRoberts,First Amendment,Free Exercise Of Religion,2,7,0,0
+,,Establishment Of Religion,1,2,0,0
+,,Total,1.78,9,0.441,0.194
+,Total,Free Exercise Of Religion,2,7,0,0
+,,Establishment Of Religion,1,2,0,0
+,,Total,1.78,9,0.441,0.194
+SAAlito,First Amendment,Free Exercise Of Religion,2,6,0,0
+,,Establishment Of Religion,1,2,0,0
+,,Total,1.75,8,0.463,0.214
+,Total,Free Exercise Of Religion,2,6,0,0
+,,Establishment Of Religion,1,2,0,0
+,,Total,1.75,8,0.463,0.214
+SSotomayor,First Amendment,Free Exercise Of Religion,1.5,6,0.548,0.3
+,,Establishment Of Religion,2,2,0,0
+,,Total,1.63,8,0.518,0.268
+,Total,Free Exercise Of Religion,1.5,6,0.548,0.3
+,,Establishment Of Religion,2,2,0,0
+,,Total,1.63,8,0.518,0.268
+EKagan,First Amendment,Free Exercise Of Religion,1.8,5,0.447,0.2
+,,Establishment Of Religion,2,1,.,.
+,,Total,1.83,6,0.408,0.167
+NMGorsuch,First Amendment,Free Exercise Of Religion,2,1,.,.
+,,Total,2,1,.,.
+,Total,Free Exercise Of Religion,2,1,.,.
+,,Total,2,1,.,.
+Total,First Amendment,Free Exercise Of Religion,1.78,68,0.418,0.174
+,,Establishment Of Religion,1.46,48,0.504,0.254
+,,Total,1.65,116,0.48,0.231
+,Total,Free Exercise Of Religion,1.78,68,0.418,0.174
+,,Establishment Of Religion,1.46,48,0.504,0.254
+,,Total,1.65,116,0.48,0.231

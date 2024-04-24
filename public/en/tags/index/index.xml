@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Index on cobra.blog</title>
+    <link>jnapolitano.com/en/tags/index/</link>
+    <description>Recent content in Index on cobra.blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Fri, 17 Jun 2022 13:20:32 +0000</lastBuildDate>
+    <atom:link href="jnapolitano.com/en/tags/index/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Posts</title>
+      <link>jnapolitano.com/en/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>jnapolitano.com/en/test/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

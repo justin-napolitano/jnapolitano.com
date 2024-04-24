@@ -1,0 +1,1388 @@
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days"><link rel="author" href="/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Justin Napolitano"><meta name="description" content="Control Model: A traditional statistical analysis of voting behavior in SPSS.">
+
+  <meta itemprop="name" content="Legal Research with AI: Part 6">
+  <meta itemprop="description" content="Control Model: A traditional statistical analysis of voting behavior in SPSS.">
+  <meta itemprop="datePublished" content="2022-05-21T19:40:32+00:00">
+  <meta itemprop="dateModified" content="2022-05-21T19:40:32+00:00">
+  <meta itemprop="wordCount" content="7777">
+  <meta itemprop="keywords" content="Python,Legal,Spss,SCOTUS,Statistics"><meta property="og:url" content="//localhost:1313/en/posts/masterpiece/">
+  <meta property="og:site_name" content="Cobra">
+  <meta property="og:title" content="Legal Research with AI: Part 6">
+  <meta property="og:description" content="Control Model: A traditional statistical analysis of voting behavior in SPSS.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-05-21T19:40:32+00:00">
+    <meta property="article:modified_time" content="2022-05-21T19:40:32+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Legal">
+    <meta property="article:tag" content="Spss">
+    <meta property="article:tag" content="SCOTUS">
+    <meta property="article:tag" content="Statistics">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Legal Research with AI: Part 6">
+<meta name="twitter:description" content="Control Model: A traditional statistical analysis of voting behavior in SPSS.">
+<title>Legal Research with AI: Part 6</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="//localhost:1313/css/style.min.d10196daf6acb41e52d78a3b23fe166e535ee713f99895475a402ec3c1827fbb.css" integrity="sha256-0QGW2vastB5S14o7I/4WblNe5xP5mJVHWkAuw8GCf7s=" crossorigin="anonymous">
+	</head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="//localhost:1313/">Cobra</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="//localhost:1313/en/posts/">Posts</a><a href="//localhost:1313/en/about/">About</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://mastodon.social/@cobra_burd" target="_blank" rel="noopener me" title="Mastodon"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m 21.474,13.998 c -0.296,1.526 -2.655,3.194 -5.365,3.519 -1.413,0.168 -2.804,0.323 -4.287,0.255 -2.426,-0.111 -4.34,-0.579 -4.34,-0.579 0,0.236 0.015,0.461 0.044,0.672 0.316,2.394 2.373,2.537 4.323,2.604 1.968,0.067 3.721,-0.486 3.721,-0.486 l 0.081,1.779 c 0,0 -1.377,0.739 -3.829,0.875 -1.352,0.075 -3.031,-0.034 -4.987,-0.551 C 2.594,20.963 1.865,16.442 1.752,11.855 1.719,10.493 1.741,9.209 1.741,8.134 1.741,3.443 4.814,2.069 4.814,2.069 6.363,1.356 9.022,1.056 11.787,1.035 h 0.067 c 2.764,0.022 5.426,0.322 6.975,1.033 0,0 3.073,1.375 3.073,6.066 0,0 0.039,3.461 -0.428,5.864"/><path d="M 6.464,13.231 V 7.973 c 0,-1.002 0.549,-2.613 2.613,-2.613 2.064,0 2.741,1.793 2.741,3.484 0,1.692 0,2.23 0,2.23"/><path d="M 17.173,13.231 V 7.973 c 0,-1.002 -0.549,-2.613 -2.613,-2.613 -2.064,0 -2.741,1.793 -2.741,3.484 0,1.692 -0,2.23 -0,2.23"/></svg></a><a href="https://github.com/justin-napolitano" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://www.linkedin.com/in/justin-napolitano/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="personal.jnapolitano@gmail.com" target="_blank" rel="noopener me" title="Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a></span><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=%2f%2flocalhost%3a1313%2fen%2fposts%2fmasterpiece%2f&amp;text=Legal%20Research%20with%20AI%3a%20Part%206" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=%2f%2flocalhost%3a1313%2fen%2fposts%2fmasterpiece%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Legal%20Research%20with%20AI%3a%20Part%206&amp;body=%2f%2flocalhost%3a1313%2fen%2fposts%2fmasterpiece%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f%2flocalhost%3a1313%2fen%2fposts%2fmasterpiece%2f&amp;source=%2f%2flocalhost%3a1313%2f&amp;title=Legal%20Research%20with%20AI%3a%20Part%206&amp;summary=Legal%20Research%20with%20AI%3a%20Part%206%2c%20by%20Justin%20Napolitano%0a%0aControl%20Model%3a%20A%20traditional%20statistical%20analysis%20of%20voting%20behavior%20in%20SPSS.%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Legal Research with AI: Part 6&#34;,&#34;//localhost:1313/en/posts/masterpiece/&#34;,&#34;Legal Research with AI: Part 6, by Justin Napolitano\n\nControl Model: A traditional statistical analysis of voting behavior in SPSS.\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="//localhost:1313/en/posts/">Posts</a></li>
+			<li><a href="//localhost:1313/en/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>May 21, 2022</span></div>
+				<h1>Legal Research with AI: Part 6</h1>
+			</header>
+			<div class="post-info"><p>Control Model: A traditional statistical analysis of voting behavior in SPSS.</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg><a href="" target="_blank">Justin Napolitano</a></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="//localhost:1313/en/tags/python">python</a></span><span class="tag"><a href="//localhost:1313/en/tags/legal">legal</a></span><span class="tag"><a href="//localhost:1313/en/tags/spss">spss</a></span><span class="tag"><a href="//localhost:1313/en/tags/scotus">scotus</a></span><span class="tag"><a href="//localhost:1313/en/tags/statistics">statistics</a></span></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg><span class="category"><a href="//localhost:1313/en/categories/legal-research">Legal Research</a></span><span class="category"><a href="//localhost:1313/en/categories/research">Research</a></span><span class="category"><a href="//localhost:1313/en/categories/scotus">SCOTUS</a></span><span class="category"><a href="//localhost:1313/en/categories/spss">SPSS</a></span><span class="category"><a href="//localhost:1313/en/categories/behavioral-modeling">Behavioral Modeling</a></span><span class="category"><a href="//localhost:1313/en/categories/naive-bayesian">Naive Bayesian</a></span><span class="category"><a href="//localhost:1313/en/categories/statistical-analysis">Statistical Analysis</a></span></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    CHANGE ME READ TIME
+    
+    
+    
+    35 Minutes, 21 Seconds</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2022-05-21 14:40 -0500</p></div>
+			<hr class="post-end">
+			<div class="content">
+				<h2 id="introduction">Introduction<a href="#introduction" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Currently, my server is mining data from the neo4j graph database.</p>
+<p>This post contains a control model completed in SPSS that will serve as the base line for comparison to Ml models.  It includes a short literature review of the theoritical foundation of the Attitudinal Model of Judicial Behavior.</p>
+<h2 id="hypothesis">Hypothesis<a href="#hypothesis" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>When considering the individual Supreme Court Justices, their voting behavior may be best described by the interaction between their ideological precepts and the facts of the case.  Their vote will not be dictated entirely by the constraint of precedent.</p>
+<h2 id="experimental-design">Experimental Design<a href="#experimental-design" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>In this paper, the legal model is tested against the attitudinal model.   The intent is to best describe the process of Supreme Court decision making in relationship to Masterpiece Cakeshop, Ltd. v. Colorado Civil Rights Commission {cite}<code>masterpiececake</code>.</p>
+<h3 id="the-legal-model">The Legal Model<a href="#the-legal-model" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The Legal Model consists of three major components:</p>
+<ol>
+<li>precedent <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+<li>text (constitutional and statutory provisions) <sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+<li>legislative intent. <sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+</ol>
+<p>The initial analysis of Masterpiece Cakeshop Ltd. v. Colorado Civil Rights Commission {cite}<code>masterpiececake</code> will consist of an argument dependent on all three.</p>
+<h3 id="the-attitudinal-model">The Attitudinal Model<a href="#the-attitudinal-model" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The proposed attitudinal model will derive ideological values for the individual justices according to subject area <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.  This is accomplished by cross-referencing the current Supreme Court justices’ votes on the merits across time <sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.  The first set of scores describe general voting behavior.  The next by first amendment cases.  Finally, by first amendment cases controlling for establishment <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> and free exercise <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> clause. and external situations <sup id="fnref2:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.  When applying these to the facts of the case in Masterpiece Cakeshop Ltd. vs. Colorado Civil Rights Board (2018) it is expected that ideological scores will predict the outcome.</p>
+<h2 id="legal-model-case-study">Legal Model Case Study<a href="#legal-model-case-study" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Write an intro.  Facts, text,</p>
+<h3 id="the-facts-of-the-case">The Facts of the Case<a href="#the-facts-of-the-case" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The facts of the case in this instance are pulled directly from the syllabus of the Supreme Court Opinion {cite}<code>masterpiececake</code>:</p>
+<blockquote>
+<p>Masterpiece Cakeshop, Ltd., is a Colorado bakery owned and operated by Jack Phillips, an expert baker and devout Christian. In 2012, he told a same-sex couple that he would not create a cake for their wedding celebration because of his religious opposition to same-sex marriages—marriages that Colorado did not then recognize—but that he would sell them other baked goods, e.g., birthday cakes. The couple filed a charge with the Colorado Civil Rights Commission (Commission) pursuant to the Colorado Anti-Discrimination Act (CADA), which prohibits, as relevant here, discrimination based on sexual orientation in a “place of business engaged in any sales to the public and any place offering services . . . to the public.&quot; Under CADA’s administrative review system, the Colorado Civil Rights Division first found probable cause for a violation and referred the case to the Commission. The Commission then referred the case for a formal hearing before a state Administrative Law Judge (ALJ), who ruled in the couple’s favor. In so doing, the ALJ rejected Phillips’ First Amendment claims: that requiring him to create a cake for a same-sex wedding would violate his right to free speech by compelling him to exercise his artistic talents to express a message with which he disagreed and would violate his right to the free exercise of religion.</p>
+</blockquote>
+<h3 id="the-pertinent-text">The Pertinent Text<a href="#the-pertinent-text" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The first step of the test is to test Mr. Phillips claims against pertinent text of the controlling statutory and constitutional provisions.  Therefore, the relevant texts relating to the free speech claims are:</p>
+<ol>
+<li>The First Amendment of the Constitution <sup id="fnref2:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></li>
+<li>The Colorado Public Accommodation law {cite}:<code>crs-title24-art-34-part-6-section 601-604-2016</code>.</li>
+</ol>
+<p>These will be tested against the claim that the Colorado Law unduly burdens Mr. Phillips by abridging his free exercise of religion, as well as his freedom of speech.  <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<h4 id="the-first-ammendment-text">The First Ammendment Text<a href="#the-first-ammendment-text" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>I begin with the First Amendment <sup id="fnref3:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.  Due to its brevity, I include the entire text:</p>
+<blockquote>
+<p>Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof; or abridging the freedom of speech, or of the press; or the right of the people peaceably to assemble, and to petition the Government for a redress of grievances. (U.S. Const. amend I)</p>
+</blockquote>
+<h4 id="colorado-state-law-title-24-article-34-part-6-section-601-604-2016">Colorado State Law Title 24, Article 34, Part 6, Section 601-604 2016<a href="#colorado-state-law-title-24-article-34-part-6-section-601-604-2016" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>The pertinent clause of the Colorado State Law in question reads:</p>
+<blockquote>
+<p>It is a discriminatory practice and unlawful for a person, directly or indirectly, to refuse, withhold from, or deny to an individual or a group, because of disability, race, creed, color, sex, sexual orientation, marital status, national origin, or ancestry, the full and equal enjoyment of the goods, services, facilities, privileges, advantages, or accommodations of a place of public accommodation (Colorado Revised Statute, Title 24, Article 34, Part 6, Section 601-604 2016).</p>
+</blockquote>
+<h3 id="standing">Standing<a href="#standing" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Based simply on textual grounds, Mr. Phillips’ free exercise, and freedom of speech claims are completely unfounded.  The first amendment as written does not protect the individual resident of an individual state from undue abridgements of personal religious and speech freedoms.  If we adopt the standard of incorporation as written into the precedent the first amendment still does not seem to support the claims.1  Speech, if understood according to Webster, is “communication or expression of thoughts in spoken words (Webster&rsquo;s New World 2016).” The action of making a cake, cannot be in any way considered speech by this definition. speech.  Symbolic speech, whatever that means, is not written into the Constitution.</p>
+<h4 id="the-first-ammendment-standing">The First Ammendment Standing<a href="#the-first-ammendment-standing" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>At first reading, Mr. Phillips claim <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> does not seem to be legitimate.  If in fact the Colorado Law abridges religious freedoms, or individual speech in any way the amendment reads that “Congress shall make no law”.  At least when reading the text of the First Amendment as plainly as possible it does not apply directly to the case at hand. As a matter of fact, it does not apply to state in any capacity. The difficulty however, is that the Court has incorporated into the common law this amendment.  Therefore, it considered applicable to the states, and thus operable upon the residents of the individual states.  Forgoing this truth, we also run into a few textual problems.  For instance, how is it that speech is defined? Or exactly what constitutes a prohibition of the free exercise of religion?  These questions may only be answer by consulting precedent.</p>
+<h4 id="colorado-state-law-standing">Colorado State Law Standing<a href="#colorado-state-law-standing" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Contrary to Mr. Phillips’ claim the law does not seem to unduly burden any religious freedoms, nor speech in general.  Rather, it is a generally applicable law, that extends protections in places of public accommodation to people according to sexual-orientation.  Reading this in contrast to the First Amendment, there are no direct violations.</p>
+<h3 id="legislative-intent">Legislative Intent<a href="#legislative-intent" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>If the Court relied entirely on the textual evidence to judge, it is apparent that the case would not have been heard by the bench. However, this is obviously not the case.  As such, Legislative Intent must also be considered in this analysis.  This section will attempt to discover the intent behind the First Amendment in order to judge Mr. Philips’ claims against original intent.</p>
+<h4 id="the-first-ammendment-intent">The First Ammendment Intent<a href="#the-first-ammendment-intent" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>The First Amendment along with the remaining nine were first introduced to the floor of Congress in 1789 to address the concern that specific individual liberties could be eroded by the powers of the national congress. According to James Madison, in order to limit the power of the legislature.  The case being that it is the most powerful branch, and therefore most likely to be abused (Lloyd 1789).  At the behest of the representatives of the individual states, as well as their ratification committees, the National Congress in order to ratify the Constitution agreed to ratify a Bill of Rights.</p>
+<p>Each individual clause of the amendment is important to the discussion.  For the purpose of this paper, I will discuss the legislative history of the Establishment and Free Exercise Clauses, as well as the Freedom of Speech Clauses.  Then a short discussion on the drafting process of the entire amendment will be had.</p>
+<h4 id="freedom-of-speech">Freedom of Speech<a href="#freedom-of-speech" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>The ideological and textual foundations for the free speech clauses come from English heritage.  For instance, the English Bill of Rights, drafted in 1689, states “that the freedome of speech and debates or proceedings in Parlyament ought not to be impeached or questioned in any court or place out of Parlyament (1 Will. And Mar. Sess. 2, c. 2.)”</p>
+<p>The individual states in their constitutions drafted protection for at least the “freedom of the press.” <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>  The state of Pennsylvania in their 1790 Constitution states that:</p>
+<blockquote>
+<p>The printing presses shall be free to every person who undertakes to examine the proceedings of the legislature, or any branch of government: And no law shall ever be made to restrain the right thereof.  The Free communication of the thoughts and opinions is one of the invaluable rights of man; and every citizen may freely speak, write and print on any subject, being responsible for the abuse of that liberty.  (Dallas 1791, xxxiv)</p>
+</blockquote>
+<p>Evident here is the strong common law and statutory practice of protection of the rights of the individual to publish material no matter the content, however, there does not seem to be a protection for symbolic expressions of speech such as the production of a cake.</p>
+<p>The state ratification committees offer the best insight into the matter of free speech, as it meant to those most concerned with protecting that right.  The Honorable James Lincoln, of South Carolina puts the point most succinctly:</p>
+<blockquote>
+<p>Why in this Constitution, is a total silence with regard to the liberty of the press?  Was it forgotten? Impossible!  Then it must have been purposely omitted…. The Liberty of the press was the tyrants scourge — it was the true friend and firmest supporter of civil liberty; therefore, why pass it by in silence?&hellip; Pray, sir, what security have we for a republican form of government, when it depends on the mere will and pleasure of a few men, who, with an army, navy, and rich treasury at their back, may change and alter it as they please?  It may be said they will be sworn.  Sir, the king of Great Britain, at his coronation, swore to govern his subjects with justice and mercy.  We were then his subjects, and continued so for a long time after.  He would be glad to know how he observed his oath.  If, then, the king of Great Britain forswore himself, what security have we that a future President and four or five senators — like himself — will think more solemnly of so sacred an obligation than he did?   (Elliot 1888, 314-316)</p>
+</blockquote>
+<p>The most obvious concern is the failure of the Constitution to draft specific protections to secure the individual states from the type of tyranny experienced under the English Crown.  So too is a bit of realism present.  How is it that men, men of high rank, can be expected to uphold their oaths to govern with regard to the people?  When it is likely that men that acquire power will in many cases do the utmost to retain that power.  It is difficult to make the argument that these men had much of a consideration for individual speech, or any form of symbolic speech <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></p>
+<p>The Congressional accounts support the same basic idea.  James Madison proposed to the House, that the “people shall not be deprived or abridged of their right to speak, to write, or to publish their sentiments; and the freedom of the press, as one of the great bulwarks of liberty, shall be inviolable (Lloyd 1789).  Roger Sherman, also put to the floor, that “people have certain natural rights which are retained by them when they enter into society. Such are the rights… of Speaking, writing and publishing their Sentiments with decency and freedom (Lloyd 1789).”   There is no apparent concern for symbolic forms of speech.  Rather, the idea is that someone may privately write and say what he so wishes, and publish that material if one so chooses.</p>
+<p>The overarching intent of the Free Speech clause, appears to be an intent to forbid the federal government from restricting access to free presses.  The concern is almost exclusively focused on published material, and the fact that a free press enables the people of a nation to challenge the acts of government.  To restrict this right, in the eyes of some members of the congress, and the state ratification committees, was to in effect establish a tyrannical government.  The English Bill of Rights, State Constitutions, and the accounts of the State Ratification Committees all support this.</p>
+<p>The conditional clauses within the state constitutions also point to the fact, that speech was not to be construed to enable a person to act in a way that is harmful to the public welfare.  State laws passed in order to improve the well being of the general public could not be abrogated by individuals claiming a free speech exemption.  In reference to Mr. Phillips’ claims an original intent lens, at best guess <sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, would not support an individual protection from state public accommodation laws on free speech grounds.</p>
+<h4 id="establishment-and-free-exercise-clauses">Establishment and Free Exercise Clauses<a href="#establishment-and-free-exercise-clauses" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Again, the English heritage of founders of the United States is relevant to the discussion.  The English Bill of Rights reads, “that the commission for erecting the late courts of commissioners of ecclesiastical causes and all other commissions and courts of like nature are illegal and pernicious (1 Will. and Mary. Sess. 2, c. 2).” <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></p>
+<p>Also, certain State constitutions prohibit religious tests necessary to hold office, as well as the imposition of any religious belief upon inhabitants.  Georgia’s in particular, “All persons whatever shall have the free exercise of their religion; provided it be not repugnant to the peace and safety of the State; and shall not, unless by consent, support any teacher, or teachers, except those of their own profession…. No clergyman, of any denomination, shall be allowed a seat in the legislature (Watkins and Watkins 1800, 15-16).” Also, important is the state of New York’s 1777 constitution which states, “that the free Exercise and Enjoyment of religious Profession and Worship, without Discrimination or Preference, shall forever hereafter be allowed within this state to all Mankind.” Noticeable is the conditional clause, citing: Provided, that the Liberty and Conscience hereby granted, shall not be so construed, as to excuse Acts of Licentiousness, or justify Practices inconsistent with the Peace or Safety of this State (The State of New York 1789, 13).” A number of other states follow in like fashion. <sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></p>
+<p>An intent to separate civil and political life is also apparent at the first congress.  For instance, at first drafting what became the establishment clause read, “The civil rights of none shall be abridged on account of religious belief or worship, nor shall any national religion be established, nor shall the full and equal rights of conscience be in any manner, or any pretext infringed (Lloyd 1789).”  A later draft also read, “Congress shall make no law establishing articles of faith or a mode of worship, or prohibiting the free exercise of religion, or abridging the freedom of speech, or the press, or the right of the people peaceable to assemble, and petition to the Government for the redress of grievances (Lloyd 1789).”</p>
+<p>Together, these provide little evidence into the intention of the legislators present at the first congress.  The first draft, quite different from the final, implies a respect for both the free exercise of religion, and for free exercise of action according to the dictate of conscience.  As a summary of Mr. Samuel Huntington’s concern reads, “he hoped therefore the amendment would be made in such a way as to secure the rights of conscience, and a free exercise of the rights of religion, but not to patronize those who profess no religion at all (Lloyd 1789).” Thus, concern for both religious exercise, as well as non-religious seems to be equally supported by at least Mr. Huntington.  Governor Randolph of Virginia puts this same convention more forwardly in stating that, “a mutual toleration, and a persuasion that no man has the right to impose his opinion on other” is his intent behind the ratification of what became the first amendment (Elliot 1888).</p>
+<p>However, the next draft removes this consideration, and limits the wording to include only protections for the free-exercise of religion.  Freedom of consciousness, whatever that they may mean is dropped.  A series of other drafts may be considered, as may conflicting pamphlets but the pressing reality is that the members of the first congress, as well as the state ratification committees, and the general public at large, all had different concerns.  Who is considered to be authoritative on this matter is dependent upon the values of the individual reader.  Therefore, there cannot be one legislative intent, but instead a diversity of intents that converged about a single piece of legislation.</p>
+<p>If one were to guess, which is the best that can be done on the matter, the intent behind the establishment clause was to protect the individual states from usurpation of powers by the federal government of powers historically held by the states.  The protections for religion, speech, assembly, and redress, grant to the states special protections in order to further weaken the federal government.  There is not a unanimous application of these rights to all individual inhabitants within the United States.    No, instead, a blanket restriction was imposed upon the federal government, in order to allow the states to manage these affairs as they saw fit.  If a justice were to consult this original intention, Mr. Philips’ claims would be superfluous, as the amendment would not be binding on the state of Colorado.</p>
+<h3 id="precedent">Precedent<a href="#precedent" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h4 id="analysis-of-case-law">Analysis of Case Law<a href="#analysis-of-case-law" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>To test Mr. Phillips’ claim to a freedom of speech, and a free exercise exemption, this section of the paper will analyze the doctrines created by the Supreme Court in regard to Privacy, Establishment, Free Exercise, and the Freedom of Contract.</p>
+<h4 id="establishment-of-clause">Establishment of Clause<a href="#establishment-of-clause" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Lemon v. Kurtzman is the authority which the court recognizes as the standard by which to test laws for Establishment Clause violations.  The “Lemon Test” states three rules.  “First, the statute must have a secular legislative purpose; second, its principal or primary effect must be one that neither advances nor inhibits religion; Finally, the statute must not foster an excessive government entanglement with religion (Lemon v. Kurtzman, 1971) “In order to determine whether the government entanglement with religious is excessive, we must examine the character and purpose of the institutions that benefitted, the nature of the aid the state provides, and the resulting relationship between the government and the religious authority (Lemon v. Kurtzman, 1971).”  The Colorado state law in question, does not in any way violate these provisions.</p>
+<p>For example, it may not be construed to have any other purpose than a secular one.  Secondly, the primary effect does not inhibit nor advance religion.  The primary purpose only protects individuals from discrimination in place of public accommodation.  Third, the law does not entangle the government, federal or state, with religion.  In effect, the government, no matter the degree of separation, is not entangled with any church, mosque, or any other form of religion.</p>
+<h4 id="free-exercise">Free Exercise<a href="#free-exercise" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>The Free Exercise claim is not as easily defeated.  A number of cases must be reviewed in order to conclude whether the Colorado law is in violation of this clause (U.S. Const. amend. I cl.1)</p>
+<h5 id="reynolds-v-united-states-1879">Reynolds v. United States 1879<a href="#reynolds-v-united-states-1879" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>The first case under consideration is Reynolds v. United States (1879), in which laws prohibiting bigamy were brought under scrutiny when challenged by members of the Church of Latter Day Saints.  To challenge the conviction, which was considered, as it is at present antithetical to publically accepted morality the Court argued that “laws are made for the government of actions, and while they cannot interfere with mere religious belief and opinions, they may with practices (Reynolds v. United States, 1879)” in order to promote the general welfare of the people.  To permit otherwise “would be to make the professed doctrines of religious belief superior to the law of the land, and in effect to permit every citizen to become a law unto himself (Reynolds v. United States, 1879).”</p>
+<h5 id="employment-division-v-smith-1990">Employment Division v. Smith 1990<a href="#employment-division-v-smith-1990" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>This position is reiterated in Employment Div. v. Smith (1990) in which the court deliberated on the validity of a Seattle State law’s prohibition on providing unemployment benefits to individuals found to have used schedule I substance despite a claim to a religious exemption.  The appellant sought to reverse the verdict of Reynolds.  The Court did not budge.  To force the state to violate its own laws at the behest of an individual claiming religious exemptions for specific practices in effect does put the government behind the promotion of the claimant’s religious beliefs.  In fact, “it is a permissible reading of U.S Const. Amend. I to say that if prohibiting the exercise or religion is not the object of a law, but merely the incidental effect of a generally applicable and otherwise valid provision, the First Amendment has not been offended (Employment Div. v. Smith, 1990).”</p>
+<h5 id="hobby-lobby-inc-v-burwell-2014">Hobby Lobby, Inc v. Burwell 2014<a href="#hobby-lobby-inc-v-burwell-2014" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>The court shifted however in Hobby Lobby, Inc v. Burwell which the Supreme Court violated the spirit of previous decisions in response to Congress’ passage of the Religious Land Use and Institutionalized Persons Act, the RLUIPA. Which is “in an obvious effort to effect a complete separation from First Amendment case law (Hobby Lobby, Inc v. Burwell, 2014).” The Court did not strike the law as they had done City of Boerne v. Flores (1997).  Instead they validated it despite the fact “the powers of the legislature are defined and limited; and that those limits may not be mistaken (City of Boerne v. Flores, 1997).”  Unlike the consensus in Employment Div. v. Smith (1990), that a rule of general applicability may supersede one’s free exercise rights, the court found in favor of the corporate entity Hobby Lobby’s stance that the imposition of fines as punishment for not providing contraceptive coverage to female employees is not the “least restrictive means of furthering” a government interest.</p>
+<h5 id="free-exercise-mr-so-and-sos-claim">Free Exercise Mr. So and So&rsquo;s Claim<a href="#free-exercise-mr-so-and-sos-claim" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>Considering the current claim, is it that the Colorado Law unduly inhibits the free exercise of religious belief?  No, it does not in any way.  By way of Lemon v. Kurtzman (1971), Reynolds v. United States (1879), and Employment Div. v. Smith (1990), the Colorado Public Accommodation law passes the test of general applicability.  However, the only precedent which may challenge its constitutionality is Hobby Lobby, Inc v. Burwell (2014).  Nonetheless, the Colorado Law may be considered the least restrictive means to further the public accommodation protections according to sexual-orientation.  To accomplish the same ends in any way less restrictive would require the law to be struck from the books.</p>
+<h4 id="privacy">Privacy<a href="#privacy" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>The right to marriage, well the right for same-sex couples to marry is a right founded in the doctrine of privacy and supported by the Fourteenth Amendment.  Obergefell v. Hodges (2015) the ruling which enabled same-sex couples to marry is the culmination of a development of a doctrine which proposes that institutions understood to be fundamental to ordered liberty ought not to be excessively regulated by the Congress (Palko v. Connecticut, 1937).   A string of cases in which the Court came to adopt the position that consenting adults of nontraditional relationships ought to receive the same protections under the law as those of traditional relationships rationalize the ruling. <sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></p>
+<h5 id="griswold-v-connecticut-1965">Griswold v. Connecticut 1965<a href="#griswold-v-connecticut-1965" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>In Griswold v. Connecticut (1965) it was found that a consenting couple may receive counseling from a planned parenthood representative with regard to birth control.  The right of that couple to act according to their discretion is fundamental to the institution of marriage.  The court could not find a rational government interest to infringe upon that sacred barrier.</p>
+<h5 id="loving-v-virginia-1967">Loving v. Virginia 1967<a href="#loving-v-virginia-1967" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>Accordingly, the Court ruled in Loving v. Virginia (1967) that the rights afforded to white couples and black couples, could not be excluded from couples of mixed races.  Marriage is a fundamental right.  Therefore, it cannot be awarded only to select classes. Rather it is a right afforded to each individual of the United States.  The Fourteenth Amendment ensures that all people are afforded equal protection under the law.  To violate this principle is to violate the constitution.</p>
+<h5 id="lawrence-v-texas-2003">Lawrence v. Texas 2003<a href="#lawrence-v-texas-2003" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>Lawrence v. Texas (2003) applied this principle to same sex couples.  It was found that sodomy laws in general restrict the ability for male same-sex couples to fully realize intimacy.  The laws unduly affected a single class of individuals without reason except to eliminate a socially unaccepted behavior from the private lives of two consenting adults.  The court could find no basis for the ban apart from undue bias directed at same-sex couples.</p>
+<h5 id="obergefell-v-hodges-2015">Obergefell v. Hodges 2015<a href="#obergefell-v-hodges-2015" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>The ultimate realization of the privacy protections and Fourteenth Amendment jurisprudence is found in Obergefell v. Hodges (2015) The court here found that “the right to marry is a fundamental right inherent in the liberty of the person (Obergefell v. Hodges, 2015).”  To disallow a same sex couples the right to marriage “denies individual dignity and autonomy (Obergefell v. Hodges, 2015).” to a subclass of citizens without rational basis.  In Obergefell v. Hodges (2015) “under the Due Process and Equal Protections Clauses of the Fourteenth Amendment couples of the same-sex may not be deprived” of their right to marry and to share the same privileges of same-sex couples.</p>
+<h5 id="privacy-and-mr-so-and-sos-claim">Privacy and Mr. So and So&rsquo;s Claim<a href="#privacy-and-mr-so-and-sos-claim" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>According then to the Privacy doctrine, and namely Obergefell v. Hodges the right for gay couples to marry is fundamental.  They must then receive the same privileges and protections of all other married couples.  Without even the Colorado Law in place, I would argue that the Privacy Doctrine in of itself protects gay couples from the type of discrimination experienced by Mr. Charlie Craig and Mr. Dave Mullins.  The sanctity of the institution of marriage no matter those whom enter into it is fundamental to the idea of liberty in this country. To violate that sanctity when two gay men marry is to violate the holding of Obergefell and more heinously the dignity of two individuals.</p>
+<h4 id="freedom-to-contract">Freedom to Contract<a href="#freedom-to-contract" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>There may be a case for the individual right to bargain for the terms of one’s contracts free from the regulation of the government, but the court has already spoken on this matter.  “The power… to restrict freedom of contract may be exercised in the public interest (West Coast Hotel Co. v. Parrish, 1937) Also, the authority of the government to regulate products that affect interstate commerce has been affirmed in United States v. Darby (1941). The real question here is whether a state government may regulate services in places of public accommodation?</p>
+<p>The answer is a resounding yes. The Federal government for instance may do so when commerce is affected.  The two most important cases for the purpose of this paper are Katzenbach v. McClung (1964) and Heart of Atlanta Motel, Inc. v. United States (379 U.S. 241, 1964). These cases both rest on the validity of Title II of the Civil Rights Act of 1964 which states “all Persons shall be entitled to the full and equal enjoyment of the goods, services, facilities, privileges, advantages, and accommodations of any place of public accommodation.”  Public accommodation is defined as “any inn, hotel, motel, or other establishment which provides lodging to transient guests.  Any Restaurant, cafeteria, lunchroom, lunch counter, soda fountain, or other facility principally engaged in selling food for consumption on the premises. (42 U.S.C. S 2000a(a), 42 U.S.C. S 2000a(b)).</p>
+<h5 id="katzenbach-v-mcclung-1964">Katzenbach v. McClung 1964<a href="#katzenbach-v-mcclung-1964" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>In Katzenbach v. McClung (1964) the Court recognized “that discrimination in restaurants has a direct and highly restrictive effect upon interstate travel… This results because discriminatory practices prevent Negroes from buying prepared food… except in isolated and unkempt restaurants and under unsatisfactory and often unpleasant conditions (Katzenbach v. McClung, 1964).”  The outcome of which is the treatment of Blacks as second-class citizens not deserving the standards of decency enjoyed by their White peers. As the Congress enjoys “the power to make all laws which shall be necessary and proper for carrying into execution” it’s Commercial and Spending powers, Congress may regulate “those activities intrastate which so affect interstate commerce… to the attainment of a legitimate end (Katzenbach v. McClung, 1964).”</p>
+<h5 id="heart-of-atlanta-motel-inc-v-united-states-1964">Heart of Atlanta Motel, Inc, v. United States 1964<a href="#heart-of-atlanta-motel-inc-v-united-states-1964" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>Heart of Atlanta Motel, Inc. v. United States (1964) reiterates the opinion of Katzenbach v. McClung (1964), but further specifies when the Congress may in fact regulate commercial services.  “The only questions are (1) whether Congress had a rational basis for finding that racial discrimination&hellip; affected commerce, and (2) if it had such a basis, whether the means it selected to eliminate that evil reasonable and appropriate (Heart of Atlanta Motel, Inc. v. United States, 1964).”  In the case of the segregation of hotels the Congress is well within its bounds to manage the way in which proprietors treat their customers, in order to avoid the evil of segregation.  It is not a stretch to apply the same principles to support the right of a state’s legislature to ensure that no discrimination occurs on the basis of sexual-orientation.</p>
+<h5 id="freedom-to-contract-and-mr-so-and-sos-claim">Freedom to Contract and Mr. So and So&rsquo;s claim<a href="#freedom-to-contract-and-mr-so-and-sos-claim" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>In the case of the individual states, their police powers alone allow them to enforce public accommodation laws by way of the 10th amendment.  The barometer in the case of Masterpiece Cake (2018)  is whether the Colorado law protects the welfare, safety, and health of the public at large.  Obviously, a state law which purports to protect the general welfare, and safety of all people can be said to meet this standard.</p>
+<p>(attitudinal-case-study)=</p>
+<h2 id="attitudinal-model-case-study">Attitudinal Model Case Study<a href="#attitudinal-model-case-study" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Write an intro.  Facts, text,</p>
+<h3 id="methodology">Methodology<a href="#methodology" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>To build a model that takes into account the subjective attitudes of the Supreme Court Justices. I use the Washington University Law Database (Spaeth, Epstein, et al. 2017) that takes into account the individual decisions of each justice in order to determine their ideological value across time.   I then test these values against the facts, including attitudinal objects, and attitudinal situations, of Masterpiece Cake LTD. v. Colorado Civil Rights Commission (2018)</p>
+<h4 id="ideological-score-by-justice">Ideological Score by Justice<a href="#ideological-score-by-justice" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>To determine a justice’s ideological score I test their votes across time to determine whether they vote conservatively or liberally.  A simple mean value between one and two is then generated.  The closer to one a justice votes the more conservative.  Alternatively, the closer to two the value, the more liberal.  The results for the individual justices are included in
+the chart below.</p>
+<h6 id="table">Table<a href="#table" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h6>
+<table>
+<thead>
+<tr>
+<th>Justice</th>
+<th>Mean</th>
+<th>N</th>
+<th>Std. Deviation</th>
+<th>Variance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMKennedy</td>
+<td>1.42</td>
+<td>2668</td>
+<td>0.493</td>
+<td>0.243</td>
+</tr>
+<tr>
+<td>CThomas</td>
+<td>1.32</td>
+<td>2179</td>
+<td>0.468</td>
+<td>0.219</td>
+</tr>
+<tr>
+<td>RBGinsburg</td>
+<td>1.6</td>
+<td>1964</td>
+<td>0.491</td>
+<td>0.241</td>
+</tr>
+<tr>
+<td>SGBreyer</td>
+<td>1.56</td>
+<td>1848</td>
+<td>0.496</td>
+<td>0.246</td>
+</tr>
+<tr>
+<td>JGRoberts</td>
+<td>1.42</td>
+<td>913</td>
+<td>0.493</td>
+<td>0.243</td>
+</tr>
+<tr>
+<td>SAAlito</td>
+<td>1.36</td>
+<td>874</td>
+<td>0.481</td>
+<td>0.232</td>
+</tr>
+<tr>
+<td>SSotomayor</td>
+<td>1.62</td>
+<td>600</td>
+<td>0.487</td>
+<td>0.237</td>
+</tr>
+<tr>
+<td>EKagan</td>
+<td>1.59</td>
+<td>486</td>
+<td>0.492</td>
+<td>0.242</td>
+</tr>
+<tr>
+<td>NMGorsuch</td>
+<td>1.18</td>
+<td>17</td>
+<td>0.393</td>
+<td>0.154</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>1.47</td>
+<td>11549</td>
+<td>0.499</td>
+<td>0.249</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ideological-score-by-justice-first-ammendment">Ideological Score by Justice First Ammendment<a href="#ideological-score-by-justice-first-ammendment" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Similarly, I derive ideological values according to voting patterns relating to first amendment cases.  The results are printed in the following chart.</p>
+<h5 id="table-1">Table<a href="#table-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<table>
+<thead>
+<tr>
+<th>Justice</th>
+<th>issue area of case (coarse)</th>
+<th>Mean</th>
+<th>N</th>
+<th>Std. Deviation</th>
+<th>Variance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMKennedy</td>
+<td>First Amendment</td>
+<td>1.47</td>
+<td>167</td>
+<td>0.5</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>CThomas</td>
+<td>First Amendment</td>
+<td>1.33</td>
+<td>127</td>
+<td>0.472</td>
+<td>0.223</td>
+</tr>
+<tr>
+<td>RBGinsburg</td>
+<td>First Amendment</td>
+<td>1.68</td>
+<td>112</td>
+<td>0.469</td>
+<td>0.22</td>
+</tr>
+<tr>
+<td>SGBreyer</td>
+<td>First Amendment</td>
+<td>1.55</td>
+<td>108</td>
+<td>0.5</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>JGRoberts</td>
+<td>First Amendment</td>
+<td>1.51</td>
+<td>47</td>
+<td>0.505</td>
+<td>0.255</td>
+</tr>
+<tr>
+<td>SAAlito</td>
+<td>First Amendment</td>
+<td>1.42</td>
+<td>43</td>
+<td>0.499</td>
+<td>0.249</td>
+</tr>
+<tr>
+<td>SSotomayor</td>
+<td>First Amendment</td>
+<td>1.67</td>
+<td>33</td>
+<td>0.479</td>
+<td>0.229</td>
+</tr>
+<tr>
+<td>EKagan</td>
+<td>First Amendment</td>
+<td>1.67</td>
+<td>27</td>
+<td>0.48</td>
+<td>0.231</td>
+</tr>
+<tr>
+<td>NMGorsuch</td>
+<td>First Amendment</td>
+<td>2</td>
+<td>1</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>First Amendment</td>
+<td>1.51</td>
+<td>665</td>
+<td>0.5</td>
+<td>0.25</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ideological-score-by-justice-by-individual-issue-area">Ideological Score by Justice by Individual Issue Area<a href="#ideological-score-by-justice-by-individual-issue-area" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Finally, ideological scores are derived by issue area.  For the purpose of this discussion this is equivalent to an evaluation of the individual attitude-situations as they relate to the facts of the case.  The results are below:</p>
+<h5 id="table-2">Table<a href="#table-2" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<table>
+<thead>
+<tr>
+<th>Justice</th>
+<th>issue area of case (coarse)</th>
+<th>Issue Area Of Case (Fine)</th>
+<th>Mean</th>
+<th>N</th>
+<th>Std. Deviation</th>
+<th>Variance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMKennedy</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.71</td>
+<td>14</td>
+<td>0.469</td>
+<td>0.22</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.23</td>
+<td>13</td>
+<td>0.439</td>
+<td>0.192</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.48</td>
+<td>27</td>
+<td>0.509</td>
+<td>0.259</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Free Exercise Of Religion</td>
+<td>1.71</td>
+<td>14</td>
+<td>0.469</td>
+<td>0.22</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.23</td>
+<td>13</td>
+<td>0.439</td>
+<td>0.192</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.48</td>
+<td>27</td>
+<td>0.509</td>
+<td>0.259</td>
+<td></td>
+</tr>
+<tr>
+<td>CThomas</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.91</td>
+<td>11</td>
+<td>0.302</td>
+<td>0.091</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.1</td>
+<td>10</td>
+<td>0.316</td>
+<td>0.1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.52</td>
+<td>21</td>
+<td>0.512</td>
+<td>0.262</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Free Exercise Of Religion</td>
+<td>1.91</td>
+<td>11</td>
+<td>0.302</td>
+<td>0.091</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.1</td>
+<td>10</td>
+<td>0.316</td>
+<td>0.1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.52</td>
+<td>21</td>
+<td>0.512</td>
+<td>0.262</td>
+<td></td>
+</tr>
+<tr>
+<td>RBGinsburg</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.56</td>
+<td>9</td>
+<td>0.527</td>
+<td>0.278</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>2</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.78</td>
+<td>18</td>
+<td>0.428</td>
+<td>0.183</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Free Exercise Of Religion</td>
+<td>1.56</td>
+<td>9</td>
+<td>0.527</td>
+<td>0.278</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>2</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.78</td>
+<td>18</td>
+<td>0.428</td>
+<td>0.183</td>
+<td></td>
+</tr>
+<tr>
+<td>SGBreyer</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.78</td>
+<td>9</td>
+<td>0.441</td>
+<td>0.194</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.67</td>
+<td>9</td>
+<td>0.5</td>
+<td>0.25</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.72</td>
+<td>18</td>
+<td>0.461</td>
+<td>0.212</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Free Exercise Of Religion</td>
+<td>1.78</td>
+<td>9</td>
+<td>0.441</td>
+<td>0.194</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.67</td>
+<td>9</td>
+<td>0.5</td>
+<td>0.25</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.72</td>
+<td>18</td>
+<td>0.461</td>
+<td>0.212</td>
+<td></td>
+</tr>
+<tr>
+<td>JGRoberts</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>2</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.78</td>
+<td>9</td>
+<td>0.441</td>
+<td>0.194</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Free Exercise Of Religion</td>
+<td>2</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.78</td>
+<td>9</td>
+<td>0.441</td>
+<td>0.194</td>
+<td></td>
+</tr>
+<tr>
+<td>SAAlito</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>2</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.75</td>
+<td>8</td>
+<td>0.463</td>
+<td>0.214</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Free Exercise Of Religion</td>
+<td>2</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.75</td>
+<td>8</td>
+<td>0.463</td>
+<td>0.214</td>
+<td></td>
+</tr>
+<tr>
+<td>SSotomayor</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.5</td>
+<td>6</td>
+<td>0.548</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.63</td>
+<td>8</td>
+<td>0.518</td>
+<td>0.268</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Free Exercise Of Religion</td>
+<td>1.5</td>
+<td>6</td>
+<td>0.548</td>
+<td>0.3</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.63</td>
+<td>8</td>
+<td>0.518</td>
+<td>0.268</td>
+<td></td>
+</tr>
+<tr>
+<td>EKagan</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.8</td>
+<td>5</td>
+<td>0.447</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>2</td>
+<td>1</td>
+<td>.</td>
+<td>.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.83</td>
+<td>6</td>
+<td>0.408</td>
+<td>0.167</td>
+<td></td>
+</tr>
+<tr>
+<td>NMGorsuch</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>2</td>
+<td>1</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>2</td>
+<td>1</td>
+<td>.</td>
+<td>.</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Free Exercise Of Religion</td>
+<td>2</td>
+<td>1</td>
+<td>.</td>
+<td>.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>2</td>
+<td>1</td>
+<td>.</td>
+<td>.</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.78</td>
+<td>68</td>
+<td>0.418</td>
+<td>0.174</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.46</td>
+<td>48</td>
+<td>0.504</td>
+<td>0.254</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.65</td>
+<td>116</td>
+<td>0.48</td>
+<td>0.231</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Free Exercise Of Religion</td>
+<td>1.78</td>
+<td>68</td>
+<td>0.418</td>
+<td>0.174</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.46</td>
+<td>48</td>
+<td>0.504</td>
+<td>0.254</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.65</td>
+<td>116</td>
+<td>0.48</td>
+<td>0.231</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="expected-results">Expected Results<a href="#expected-results" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>In an attempt to replicate the results of Masterpiece Cakeshop Ltd. v. Chicago Civil Rights Commission (2018) I will simply consult the three ideological values above.  If a justice scores below a 1.5 in any area, then they will be expected to vote conservatively.  Conversely if a score above 1.5 is observed the justice is expected to vote liberally.</p>
+<p>In context, A liberal vote will found in favor of the Mr. Charlie Craig and his partner, Mr. Dave Mullins.  The following variables describe liberal voting preferences as they relate to the case.  Pro-civil liberties or civil rights, pro-neutrality in establishment clause cases, pro-underdog, anti-owner, anti-business, pro-government, pro-exercise of judicial action, and pro-judicial activism. A conservative vote is in favor of Mr. Philips, the Colorado baker. Conservatism in context is described as opposite the above liberal values.</p>
+<h4 id="justice-vote-according-to-general-ideological-score">Justice Vote According to General Ideological Score<a href="#justice-vote-according-to-general-ideological-score" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h5 id="table-3">Table<a href="#table-3" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<table>
+<thead>
+<tr>
+<th>Justice</th>
+<th>Score</th>
+<th>Vote</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMKennedy</td>
+<td>1.42</td>
+<td>Cons.</td>
+</tr>
+<tr>
+<td>CThomas</td>
+<td>1.32</td>
+<td>Cons.</td>
+</tr>
+<tr>
+<td>RBGinsburg</td>
+<td>1.6</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td>SGBreyer</td>
+<td>1.56</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td>JGRoberts</td>
+<td>1.42</td>
+<td>Cons.</td>
+</tr>
+<tr>
+<td>SAAlito</td>
+<td>1.36</td>
+<td>Cons.</td>
+</tr>
+<tr>
+<td>SSotomayor</td>
+<td>1.62</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td>EKagan</td>
+<td>1.59</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td>NMGorsuch</td>
+<td>1.18</td>
+<td>Cons.</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>1.47</td>
+<td>Cons.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="justice-votes-by-first-amendment">Justice Votes by First Amendment<a href="#justice-votes-by-first-amendment" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h5 id="table-4">Table<a href="#table-4" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<table>
+<thead>
+<tr>
+<th>Justice</th>
+<th>issue area of case (coarse)</th>
+<th>Score</th>
+<th>Vote</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMKennedy</td>
+<td>First Amendment</td>
+<td>1.47</td>
+<td>Cons.</td>
+</tr>
+<tr>
+<td>CThomas</td>
+<td>First Amendment</td>
+<td>1.33</td>
+<td>Cons.</td>
+</tr>
+<tr>
+<td>RBGinsburg</td>
+<td>First Amendment</td>
+<td>1.68</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td>SGBreyer</td>
+<td>First Amendment</td>
+<td>1.55</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td>JGRoberts</td>
+<td>First Amendment</td>
+<td>1.51</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td>SAAlito</td>
+<td>First Amendment</td>
+<td>1.42</td>
+<td>Cons.</td>
+</tr>
+<tr>
+<td>SSotomayor</td>
+<td>First Amendment</td>
+<td>1.67</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td>EKagan</td>
+<td>First Amendment</td>
+<td>1.67</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td>NMGorsuch</td>
+<td>First Amendment</td>
+<td>2</td>
+<td>Cons.</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>First Amendment</td>
+<td>1.51</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>1.51</td>
+<td>Lib.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="justice-votes-by-issue-area">Justice Votes by Issue Area<a href="#justice-votes-by-issue-area" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h5 id="table-5">Table<a href="#table-5" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<table>
+<thead>
+<tr>
+<th>Justice Identification Number</th>
+<th>Issue Area Of Case (Coarse)</th>
+<th>Issue Area Of Case (Fine)</th>
+<th>Score</th>
+<th>Vote</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amkennedy</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.71</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.23</td>
+<td>Cons.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.48</td>
+<td>Cons.</td>
+<td></td>
+</tr>
+<tr>
+<td>Cthomas</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.91</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.1</td>
+<td>Cons.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.52</td>
+<td>Lib</td>
+<td></td>
+</tr>
+<tr>
+<td>Rbginsburg</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.56</td>
+<td>Lib</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>2</td>
+<td>Lib</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.78</td>
+<td>Lib</td>
+<td></td>
+</tr>
+<tr>
+<td>Sgbreyer</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.78</td>
+<td>Lib</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.67</td>
+<td>Lib</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.72</td>
+<td>Lib</td>
+<td></td>
+</tr>
+<tr>
+<td>Jgroberts</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>2</td>
+<td>Lib</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1</td>
+<td>Cons.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.78</td>
+<td>Lib.</td>
+<td></td>
+</tr>
+<tr>
+<td>Saalito</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>2</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1</td>
+<td>Cons.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.75</td>
+<td>Lib.</td>
+<td></td>
+</tr>
+<tr>
+<td>Ssotomayor</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.5</td>
+<td>Lib/Con</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>2</td>
+<td>Lib.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.63</td>
+<td>Lib.</td>
+<td></td>
+</tr>
+<tr>
+<td>Ekagan</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.8</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>2</td>
+<td>Lib.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.83</td>
+<td>Lib.</td>
+<td></td>
+</tr>
+<tr>
+<td>Nmgorsuch</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>2</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>2</td>
+<td>Lib.</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>First Amendment</td>
+<td>Free Exercise Of Religion</td>
+<td>1.78</td>
+<td>Lib.</td>
+</tr>
+<tr>
+<td></td>
+<td>Establishment Of Religion</td>
+<td>1.46</td>
+<td>Cons.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Total</td>
+<td>1.65</td>
+<td>Lib.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="prediction-summary">Prediction Summary<a href="#prediction-summary" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The general ideological value scores predict a 5-4 split along the usual lines (figure 5 include a ref).  The conservative majority coalition consists of Justices, Kennedy, Thomas, Roberts, Alito, and Gorsuch.  The liberal minority is of Justices Ginsberg, Breyer, Sotomayor, and Kagan.</p>
+<p>The ideological scores by the first amendment issue area, predicts a very different outcome.  For instance, a 7-2 liberal majority is expected.  Kennedy, is expected to vote with the conservative coalition, along with Gorsuch.  The Liberal majority consists of, Thomas, Ginsberg, Breyer, Roberts, Alito, Sotomayor, and Kagan.</p>
+<p>Testing again for individual issue areas, the results seem spurious.  When controlling for just the establishment clause, there is a 5-4 majority conservative coalition comprised of Justices Kennedy, Thomas, Roberts, Alito and Gorsuch.  The minority coalition consists of Justices, Ginsberg, Breyer, Sotomayor, Kagan.  However, when controlling for Free Exercise, a 9-0 liberal majority is the expected outcome.</p>
+<h2 id="findings">Findings<a href="#findings" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="actual-results">Actual Results<a href="#actual-results" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The actual results of Masterpiece Cakeshop, Ltd, v. Chicago Civil Rights Commission (2018) yield a 7-2 conservative majority in favor of Mr. Phillips consisting of Justice Roberts, Justice Kennedy, Justice Thomas, Justice Breyer, Justice Alito, Justice Kagan, and Justice Gorsuch.  The liberal minority consist of Justice Ginsberg and Justice Sotomayor.  Justice Kennedy delivered the opinion of the Court.</p>
+<p>The set of ideological values that best predict the actual outcome of the case is the general ideological score.  A 5-4 conservative majority in this case was expected with Justices Kennedy, Thomas, Roberts, Alito, and Gorsuch in the majority.  Justices Ginsberg, Breyer, Sotomayor, and Kagan were in the expected minority.</p>
+<h3 id="attitudinal-model-evaluation">Attitudinal Model Evaluation<a href="#attitudinal-model-evaluation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The discrepancy between the expected results and the actual results is difficult to explain.  Restricting the analysis at this point to only the attitudinal model the explanation must be that the ideologies of the justices acted upon the facts of the case, the situations in an unexpected way.  This could be caused by two factors. The first being that the variables defining conservatism and liberalism are inaccurate.  The other being that Justices, primarily the liberals which voted conservatively voted against the dictate of their ideological preferences.</p>
+<p>As stated above the attributes defining liberalism are pro-civil liberties or civil rights, pro-underdog, anti-owner, anti-business, pro-government, pro-exercise of judicial action, and pro-judicial activism.  Justice Breyer and Justice Kagan both tend to vote towards this direction.  In Masterpiece Cakeshop Ltd, v. Colorado Civil Rights Commission (2018)  however, they did not.  To run through the facts of the case quickly, Mr. Phillips is the proprietor of a small business that discriminates against a quasi-suspect class of citizens (non-heterosexual couples) in violation of Colorado state civil rights law.  When brought to suit, a civil rights administration of the state of Colorado, which is de-facto a quasi-judicial bureaucracy, oversaw the case and declared Mr. Phillip in violation of generally applicable and religiously neutral Colorado public accommodation laws.  Or in other words, every factor leading to a liberal vote is apparent in this case.  So then, Justices’ Breyer and Kagan moving in the conservative direction is remarkable.</p>
+<p>Or is it?   While reading through the Court’s opinion, the Court does not greatly address Mr. Phillips’ claim.  In fact, Justice Kennedy completely side steps the freedom of speech and religious freedom haymaker.  Rather, the object of consideration turns from Mr. Phillip’s to the actions of the state’s Civil Rights Commission.  “When the Colorado Civil Rights Commission considered this case, it did not do so with the religious neutrality that the Constitution requires.” (Masterpiece Cakeshop Ltd. v. Colorado Civil Rights Commission 2018) Considering this change in object, is it that the pertinent facts of the case change as well?</p>
+<p>Pro-civil liberties or civil rights, pro-underdog, anti-owner, anti-business, pro-government, pro-exercise of judicial action, and pro-judicial activism all still apply.  With the additional imposition by the Commission of “comprehensive staff training” and “quarterly compliance reports” it could also be argued that the pro-affirmative action factor may be active in this case. However, the startling material fact that distinguishes this case is the abject hostility the Civil Rights Commission demonstrated towards Mr. Philips’ “sincerely held religious beliefs (Masterpiece Cakeshop Ltd. v. Colorado Civil Rights Commission 2018).”  Therefore, the pro-neutrality of the establishment clause is grossly violated.  To such a degree that the “clear and impermissible hostility towards [the] sincere religious beliefs (Masterpiece Cakeshop Ltd. v. Colorado Civil Rights Commission 2018)” forced two liberal Justices to join the conservative coalition.</p>
+<p>In Justice Kagan’s own words,</p>
+<blockquote>
+<p>“[I]t is a general rule that [religious and philosophical] objections do not allow business owners and other actors in the economy and in society to deny protected persons equal access to goods and services under a neutral and generally applicable public accommodations law.” Ante, at 9. But in upholding that principle, state actors cannot show hostility to religious views; rather, they must give those views “neutral and respectful consideration.” Ante, at 12. I join the Court’s opinion in full because I believe the Colorado Civil Rights Commission did not satisfy that obligation. (Masterpiece Cakeshop Ltd. v. Colorado Civil Rights Commission 2018)</p>
+</blockquote>
+<p>What is apparent then is that Justice Kagan recognizes that in order to apply the establishment clause neutrally the federal and state governments must not act with hostility towards individuals with sincerely held religious beliefs.  Laws of general applicability in order to be constitutional must not unduly harm religious individuals.  Thus, Justice Breyer, and Justice Kagan both agree in full with the opinion of the Court.</p>
+<h3 id="legal-model-evalution">Legal Model Evalution<a href="#legal-model-evalution" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>More startling then the actual outcome of the case is the fact that the Justices largely adhered to precedent, or at least to the judicially created rule that valid law applied neutrally in respect to the establishment clause may be considered good law.  When considering the facts of the case to previous first amendment questions the results in light of the Civil Rights Commission’s hostility towards Mr. Phillips are not in any way remarkable.</p>
+<p>The three-pronged Lemon v. Kurtzman (1971) test exclusively could yield the same results.  First the Colorado law does have a secular purpose.  On the other hand, due to the way in which the Civil Rights Commission applied the law, its effect “inhibits religion”.  Because of that inhibition, the Colorado state government does become unnecessarily entangled in religion.  Passing through the matrix, the actions of the state are obviously unconstitutional.</p>
+<p>Consulting also Employment Div. v. Smith (1990) the court in Masterpiece Cakeshop Ltd, v. Colorado Civil Rights Commission (2018) stuck to their statement that “it is a permissible reading of U.S Const. Amend. I to say that if prohibiting the exercise or religion is not the object of a law, but merely the incidental effect of a generally applicable and otherwise valid provision, the First Amendment has not been offended (Employment Div. v. Smith, 1990).”  Therefore, a law of general applicability, applied neutrally does not warrant individual exemptions.  A point driven home by Justice Kennedy in the majority opinion, and also by Justice Kagan in her concurrence.</p>
+<p>Also echoed is the basic reasoning of Obergefell v. Hodges (2015) that “under the Due Process and Equal Protections Clauses of the Fourteenth Amendment couples of the same-sex may not be deprived” of their right to marry and to share the same privileges of same-sex couples.</p>
+<p>The cynical critique, however of the Court’s adherence to precedent is the fact that to a large degree precedent does not conflict with the ideological preferences of the members of the Court.   Many of the cases cited by Justice Kennedy he either authored or was member to the majority.  To those that he was not, the opinions may be linked to ideological predecessors.</p>
+<p>Justice Kagan and Justice Breyer most likely voted “conservatively” due to the fact that the outcome of the case supports well established liberal precedent.  Namely in support of the neutrality of the establishment clause.  The opinion may have also persuaded their vote.  In it Justice Kennedy supports the validity of public accommodation laws protecting the civil rights of same-sex couples and people of other sexual orientations.   In the words of the Court, “It is unexceptional that Colorado law can protect gay persons, just as it can protect other classes of individuals, in acquiring whatever products and services they choose on the same terms and conditions as are offered to other members of the public (Masterpiece Cakeshop v. Colorado Civil Rights Commission, 2018)”.  It is my hypothesis that due the fact that this provision, which supports the basis of the Colorado Public Accommodation law, and the opinion in general supports a neutral application of the Establishment Clause, two liberal Justices voted in the conservative majority.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Include a reference!&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Include a reference to the definition.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Include reference to constitutional ammendment and clause&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>This sentence doesn&rsquo;t really mean anything.  Expand upon it.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>reference his claim&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Georgia Laws, p 16; Massachusetts Perpetual laws, p. 7; New Hampshire Laws, pp. 26, 27; North Carolina Laws, p. 275.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>An argument could be made that language is inherently symbolic speech, but references to contemporary works must be support the argument.   The intent behind the amendment does not seem to apply to the public exhibition of painting and sculpture.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>Again, it is impossible to actually determine original intent.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>This clause importantly was written in response to the Catholic persecution of English Protestants under the reign of King James.  Under William and Mary, following the Glorious Revolution, the English Bill of Rights limited the discretion of the monarch, and secured the prevalence of the Parliament.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>North Carolina Laws, p. 280; Massachusetts Perpetual Laws, pp. 5-6, New Hampshire Laws, p. 23;  South Carolina Laws, App., p. 41; Virginia Religious Freedom Act, pp. 7.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>Traditional is to be understood as a heterosexual relationship of members of the same race.  Nontraditional is to be anything that differs from that idea.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+			</div>
+
+<div class="related-posts thin">
+	<h2></h2>
+	<ul>
+	
+	<li><a href="/en/posts/legal-research-part-5/">Conduct Legal Research with AI: Part 5</a></li>
+	
+	<li><a href="/en/posts/legal-research-part-4/">Conduct Legal Research with AI: Part 4</a></li>
+	
+	<li><a href="/en/posts/legal-research-part-3/">Conduct Legal Research with AI: Part 3</a></li>
+	
+	<li><a href="/en/posts/legal-reserch-part-2/">Conduct Legal Research with AI: Part 2</a></li>
+	
+	<li><a href="/en/posts/legal-research-part-1/">Conduct Legal Research with AI: Part 1</a></li>
+	
+	</ul>
+</div>
+
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="//localhost:1313/en/posts/legal-research-part-7/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;</span><br><span>Legal Research with AI Part 7: Wrangling Data with Julia</span>
+			</a>
+			<a class="prev-post" href="//localhost:1313/en/posts/legal-research-part-5/">
+				<span class="post-nav-label">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Conduct Legal Research with AI: Part 5</span>
+			</a>
+		</div>
+		<div id="comments" class="thin"></div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+	<p>
+		&copy; 2024 <a href="//localhost:1313/">Cobra</a>
+		&#183; JAYBURDINDUSTRIES
+		&#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+		&#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a></p>
+
+</footer>
+<script async src="//localhost:1313/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="//localhost:1313/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
+</body>
+
+</html>

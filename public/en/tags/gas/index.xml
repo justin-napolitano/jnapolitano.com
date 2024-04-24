@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gas on Cobra</title>
+    <link>//localhost:1313/en/tags/gas/</link>
+    <description>Recent content in Gas on Cobra</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Thu, 05 May 2022 18:40:32 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/en/tags/gas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reviewing North American Gas and Oil Field Distribution</title>
+      <link>//localhost:1313/en/test/gas-fields/</link>
+      <pubDate>Thu, 05 May 2022 18:40:32 +0000</pubDate>
+      <guid>//localhost:1313/en/test/gas-fields/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

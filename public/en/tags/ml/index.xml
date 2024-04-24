@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ml on cobra.blog</title>
+    <link>jnapolitano.com/en/tags/ml/</link>
+    <description>Recent content in Ml on cobra.blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Wed, 18 May 2022 14:40:32 +0000</lastBuildDate>
+    <atom:link href="jnapolitano.com/en/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Conduct Legal Research with AI: Part 3</title>
+      <link>jnapolitano.com/en/test/legal-research-part-3/</link>
+      <pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate>
+      <guid>jnapolitano.com/en/test/legal-research-part-3/</guid>
+      <description>Conduct Legal Research with AI: Part 3 This is the third post in a series documenting the process of building an ml pipeline that will be used to train models to predict the outcomes of Supreme Court Cases.&#xA;You can find the others at:&#xA;blog.jnapolitano.io/neo4j_integration/ blog.jnapolitano.io/constitution_to_neo/ Introduction In this post, I will be testing a sample TensorFlow pipeline against the Supreme Court Database maintained by the Washington University Law School in order to build a proof of concept model for a Supreme Court Graph Analysis project.</description>
+    </item>
+    <item>
+      <title>Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to the United States</title>
+      <link>jnapolitano.com/en/test/carbon-shipping-projections/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      <guid>jnapolitano.com/en/test/carbon-shipping-projections/</guid>
+      <description>A Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to US Ports Revision An earlier version of this report had reported values that were erroneously elevated by a decimal error in the meters to km conversion of distances between ports. I apologize for unintentionally publishing misleading information.&#xA;Situations like this one, are why I always publish with code. Transparency is the key to rigor.&#xA;Introduction I produced an earlier report that identified potential ports that may be suitable terminals for carbon imports into the United States for storage or industrial applications.</description>
+    </item>
+  </channel>
+</rss>

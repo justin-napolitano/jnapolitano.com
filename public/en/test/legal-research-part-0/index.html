@@ -1,0 +1,923 @@
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days"><link rel="author" href="/jnapolitano.com/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/jnapolitano.com/apple-touch-icon.png"><link rel="icon" href="/jnapolitano.com/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" sizes="32x32" href="/jnapolitano.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/jnapolitano.com/favicon-16x16.png">
+<link rel="manifest" href="/jnapolitano.com/site.webmanifest">
+<meta name="msapplication-TileImage" content="/jnapolitano.com/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/jnapolitano.com/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Justin Napolitano"><meta name="description" content="Crawl the Library of Congress API to automate your next research project.">
+
+  <meta itemprop="name" content="Conduct Legal Research with AI: Part 0">
+  <meta itemprop="description" content="Crawl the Library of Congress API to automate your next research project.">
+  <meta itemprop="datePublished" content="2022-05-16T13:40:32+00:00">
+  <meta itemprop="dateModified" content="2022-05-16T13:40:32+00:00">
+  <meta itemprop="wordCount" content="2466">
+  <meta itemprop="image" content="jnapolitano.com/featured-justices.jpeg">
+  <meta itemprop="keywords" content="Python,Legal,Json,SCOTUS,Automation"><meta property="og:url" content="jnapolitano.com/en/test/legal-research-part-0/">
+  <meta property="og:site_name" content="cobra.blog">
+  <meta property="og:title" content="Conduct Legal Research with AI: Part 0">
+  <meta property="og:description" content="Crawl the Library of Congress API to automate your next research project.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="test">
+    <meta property="article:published_time" content="2022-05-16T13:40:32+00:00">
+    <meta property="article:modified_time" content="2022-05-16T13:40:32+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Legal">
+    <meta property="article:tag" content="Json">
+    <meta property="article:tag" content="SCOTUS">
+    <meta property="article:tag" content="Automation">
+    <meta property="og:image" content="jnapolitano.com/featured-justices.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="jnapolitano.com/featured-justices.jpeg"><meta name="twitter:title" content="Conduct Legal Research with AI: Part 0">
+<meta name="twitter:description" content="Crawl the Library of Congress API to automate your next research project.">
+<title>Conduct Legal Research with AI: Part 0</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="jnapolitano.com/css/style.min.274d226631bffb525ccd5adf2f48d599037ecb46121471a190938d2648d22353.css" integrity="sha256-J00iZjG/+1JczVrfL0jVmQN+y0YSFHGhkJONJkjSI1M=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('jnapolitano.com/featured-justices.jpeg');}</style></head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="jnapolitano.com/">cobra.blog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="jnapolitano.com/en/posts/">POSTS</a><a href="https://cobra.jnapolitano.com/@justin">LINKS</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=jnapolitano.com%2fen%2ftest%2flegal-research-part-0%2f&amp;text=Conduct%20Legal%20Research%20with%20AI%3a%20Part%200" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=jnapolitano.com%2fen%2ftest%2flegal-research-part-0%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Conduct%20Legal%20Research%20with%20AI%3a%20Part%200&amp;body=jnapolitano.com%2fen%2ftest%2flegal-research-part-0%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=jnapolitano.com%2fen%2ftest%2flegal-research-part-0%2f&amp;source=jnapolitano.com%2f&amp;title=Conduct%20Legal%20Research%20with%20AI%3a%20Part%200&amp;summary=Conduct%20Legal%20Research%20with%20AI%3a%20Part%200%2c%20by%20Justin%20Napolitano%0a%0aCrawl%20the%20Library%20of%20Congress%20API%20to%20automate%20your%20next%20research%20project.%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Conduct Legal Research with AI: Part 0&#34;,&#34;jnapolitano.com/en/test/legal-research-part-0/&#34;,&#34;Conduct Legal Research with AI: Part 0, by Justin Napolitano\n\nCrawl the Library of Congress API to automate your next research project.\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="jnapolitano.com/en/posts/">POSTS</a></li>
+			<li><a href="https://cobra.jnapolitano.com/@justin">LINKS</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Conduct Legal Research with AI: Part 0</h1>
+		<div class="content">
+			<h1 id="crawling-the-library-of-congress-api">Crawling the Library of Congress API<a href="#crawling-the-library-of-congress-api" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<h2 id="introduction">Introduction<a href="#introduction" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The United States Library of Congress maintains a rest api for developers to crawl their collections.  It is an open source tool that anyone can access in order to conduct research. Check out the documenation at <a href="https://libraryofcongress.github.io/data-exploration/">https://libraryofcongress.github.io/data-exploration/</a>.</p>
+<h2 id="creating-a-crawler">Creating a crawler<a href="#creating-a-crawler" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>I took the approach of writing a generator that produces a search result page object that can be operated upon with each iteration.</p>
+<p>The first step is to create a search result page object.</p>
+<p>The code below documents the search_result page.  It contains a number of helper functions to convert the nodes within the result to json or graphml.  The code can also be used to generate a networkx in memory graph.</p>
+<h3 id="the-search-result-object">The Search Result Object<a href="#the-search-result-object" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">search_results_page</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&#34;https://www.loc.gov/collections&#34;</span><span class="p">,</span><span class="n">collection</span> <span class="o">=</span> <span class="s2">&#34;united-states-reports&#34;</span><span class="p">,</span><span class="n">json_parameter</span> <span class="o">=</span> <span class="s2">&#34;fo=json&#34;</span><span class="p">,</span><span class="n">results_per_page</span> <span class="o">=</span> <span class="s2">&#34;c=79&#34;</span><span class="p">,</span><span class="n">query_param</span> <span class="o">=</span> <span class="s2">&#34;?&#34;</span><span class="p">,</span><span class="n">page_param</span> <span class="o">=</span><span class="s2">&#34;sp=&#34;</span><span class="p">,</span><span class="n">page_num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(num_columns)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">search_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_search_url</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span><span class="n">collection</span><span class="p">,</span><span class="n">json_parameter</span><span class="p">,</span><span class="n">results_per_page</span><span class="p">,</span><span class="n">query_param</span><span class="p">,</span><span class="n">page_param</span><span class="p">,</span><span class="n">page_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_data</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">response_json</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_to_json</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#self.soup_html = self.html_parse()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">next_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_next_url</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">page_num</span> <span class="o">=</span> <span class="n">page_num</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;result_&#39;</span><span class="p">,</span><span class="n">file_num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span><span class="s2">&#34;.json&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">file_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span> <span class="o">+</span> <span class="n">extension</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_json</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">to_pandas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">df</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_pandas_edgelist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;result_&#39;</span><span class="p">,</span><span class="n">file_num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span><span class="s2">&#34;.csv&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">file_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span> <span class="o">+</span> <span class="n">extension</span>
+</span></span><span class="line"><span class="cl">        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">write_graphml</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;result_&#39;</span><span class="p">,</span> <span class="n">file_num</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span> <span class="s2">&#34;.graphml&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">file_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span> <span class="o">+</span> <span class="n">extension</span>
+</span></span><span class="line"><span class="cl">        <span class="n">nx</span><span class="o">.</span><span class="n">write_graphml</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="n">output_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">write_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;result_&#39;</span><span class="p">,</span><span class="n">file_num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span> <span class="s2">&#34;.json&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">file_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span> <span class="o">+</span> <span class="n">extension</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">node_gen_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span><span class="s1">&#39;result&#39;</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">edge_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">previous_k</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">previous_edge</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">graph</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#root = root </span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#node_list.append((k, {&#39;type&#39; : k}))</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#(1, 2, color=&#39;red&#39;, weight=0.84, size=300)\</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">k</span><span class="p">,</span> <span class="n">relationship</span> <span class="o">=</span> <span class="s2">&#34;of&#34;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="s2">&#34;root&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#edge_list.append((root , k, {&#34;relationship&#34; : &#34;of&#34;}, {&#34;type&#34; : &#39;root&#39;}))</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#pprint(&#39;passing_value&#39;)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#save k</span>
+</span></span><span class="line"><span class="cl">                <span class="n">previous_k</span> <span class="o">=</span> <span class="n">k</span>
+</span></span><span class="line"><span class="cl">                <span class="n">previous_edge</span> <span class="o">=</span> <span class="p">(</span><span class="n">root</span> <span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">node_gen_2</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">,</span><span class="n">edge_list</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">,</span> <span class="n">previous_k</span> <span class="o">=</span> <span class="n">k</span><span class="p">,</span> <span class="n">previous_edge</span> <span class="o">=</span> <span class="n">previous_edge</span><span class="p">,</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#pprint(&#39;passing_data&#39;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">node_gen_2</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">,</span><span class="n">edge_list</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">,</span><span class="n">previous_k</span> <span class="o">=</span> <span class="n">previous_k</span><span class="p">,</span> <span class="n">previous_edge</span><span class="o">=</span> <span class="n">previous_edge</span><span class="p">,</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#create_edge to k</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#this item is no longer a dictionary or list</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pprint</span><span class="p">(</span><span class="s1">&#39;appending_data&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#create edge to k</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="nb">type</span> <span class="o">=</span> <span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#node_list.append((data, {&#34;type&#34; : data}))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">previous_k</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">relationship</span> <span class="o">=</span> <span class="s2">&#34;is&#34;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">previous_k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#edge_list.append((previous_k ,data,{&#39;relationship&#39;: &#34;is&#34;}, {&#39;type&#39; : data}))</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#edge_list.append((root,data))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">#flatten(hierarchak)_dict)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">graph</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">node_runner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">graph</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">node_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">edge_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#root = item[&#39;title&#39;]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_gen_2</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">item</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">,</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(edge_list)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">graph</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">node_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span><span class="s1">&#39;title_testing&#39;</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">edge_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">previous_k</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">previous_edge</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(data)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">edge_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">root</span> <span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#pprint(&#39;passing_value&#39;)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#save k</span>
+</span></span><span class="line"><span class="cl">                <span class="n">previous_k</span> <span class="o">=</span> <span class="n">k</span>
+</span></span><span class="line"><span class="cl">                <span class="n">previous_edge</span> <span class="o">=</span> <span class="p">(</span><span class="n">root</span> <span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">node_generator</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">,</span><span class="n">edge_list</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">,</span> <span class="n">previous_k</span> <span class="o">=</span> <span class="n">k</span><span class="p">,</span> <span class="n">previous_edge</span> <span class="o">=</span> <span class="n">previous_edge</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#pprint(&#39;passing_data&#39;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">node_generator</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">,</span><span class="n">edge_list</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">,</span><span class="n">previous_k</span> <span class="o">=</span> <span class="n">previous_k</span><span class="p">,</span> <span class="n">previous_edge</span><span class="o">=</span> <span class="n">previous_edge</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#create_edge to k</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#this item is no longer a dictionary or list</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pprint</span><span class="p">(</span><span class="s1">&#39;appending_data&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#create edge to k</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">edge_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">previous_k</span> <span class="p">,</span><span class="n">data</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">edge_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">root</span><span class="p">,</span><span class="n">data</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">#flatten(hierarchak)_dict)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">node_list</span><span class="p">,</span> <span class="n">edge_list</span> 
+</span></span><span class="line"><span class="cl">        <span class="c1">#self.json_graph = self.create_json_graph()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">create_json_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#graph = nx.Graph(self.response_json)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_dict_of_dicts</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_json</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#graph = json_graph.node_link_graph(self.response_json)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">graph</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">#self.node_list = self.node_generator`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">create_search_result_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">     
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_json_flat</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_lookup_table</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">column_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colnum_string</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="bp">self</span><span class="o">.</span><span class="n">column_lookup_table</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colnum_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_columns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="bp">self</span><span class="o">.</span><span class="n">num_columns</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">append_to_data_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rnge</span><span class="p">,</span><span class="n">d</span><span class="p">):</span><span class="c1">#rename to _data_list</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request_body</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;range&#39;</span><span class="p">:</span> <span class="n">rnge</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;majorDimension&#34;</span><span class="p">:</span> <span class="s2">&#34;COLUMNS&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;values&#34;</span><span class="p">:</span> <span class="p">[</span><span class="n">d</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">request_body</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#data_list.append(request_body_tmp)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">map_column_to_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">column_key</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">rnge</span> <span class="o">=</span> <span class="s2">&#34;&#39;Sheet1&#39;&#34;</span> <span class="o">+</span> <span class="s2">&#34;!&#34;</span> <span class="o">+</span> <span class="n">column_key</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">rnge</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">colnum_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">num_columns</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">string</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(&#34;conlum_string&#34;)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(num_columns)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="n">num_columns</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">num_columns</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">num_columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">string</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">65</span> <span class="o">+</span> <span class="n">remainder</span><span class="p">)</span> <span class="o">+</span> <span class="n">string</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#pprint(string)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">map_columns_to_lookup_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">#print(&#39;first_map_columns_print&#39;)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#num_columns_tmp = self.num_columns</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(num_columns_tmp)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_json_flat</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">                <span class="n">num_columns_tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_columns</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_lookup_table</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#print(&#39;second_map_Columns_print&#39;)</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#pprint(num_columns_tmp)</span>
+</span></span><span class="line"><span class="cl">                    <span class="bp">self</span><span class="o">.</span><span class="n">column_lookup_table</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colnum_string</span><span class="p">(</span><span class="n">num_columns</span> <span class="o">=</span> <span class="n">num_columns_tmp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="bp">self</span><span class="o">.</span><span class="n">num_columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_columns</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl">                    <span class="c1">#append range to request... </span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#append collumn to batch lookup</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">column_request_list_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_lookup_table</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">            <span class="n">rnge</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map_column_to_range</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">request_body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">append_to_data_list</span><span class="p">(</span><span class="n">rnge</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#pprint(request_body)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">request_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">request_body</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">request_list</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">#return column_lookup_table</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get_next_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_json</span><span class="p">[</span><span class="s1">&#39;pagination&#39;</span><span class="p">][</span><span class="s1">&#39;next&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">create_search_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">base_url</span><span class="p">,</span><span class="n">collection</span><span class="p">,</span><span class="n">json_parameter</span><span class="p">,</span><span class="n">results_per_page</span><span class="p">,</span><span class="n">query_param</span><span class="p">,</span><span class="n">page_param</span><span class="p">,</span><span class="n">page_num</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">url_sep</span> <span class="o">=</span><span class="s2">&#34;/&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">page_param</span> <span class="o">=</span> <span class="n">page_param</span> <span class="o">+</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">page_num</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">query</span> <span class="o">=</span> <span class="s2">&#34;&amp;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">json_parameter</span><span class="p">,</span><span class="n">results_per_page</span><span class="p">,</span><span class="n">page_param</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">query</span> <span class="o">=</span> <span class="n">query_param</span> <span class="o">+</span> <span class="n">query</span>
+</span></span><span class="line"><span class="cl">        <span class="n">search_url</span> <span class="o">=</span> <span class="n">url_sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">base_url</span><span class="p">,</span><span class="n">collection</span><span class="p">,</span><span class="n">query</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(search_url)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">search_url</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pprint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">request_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span><span class="s1">&#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.11 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;Accept-Encoding&#39;</span><span class="p">:</span> <span class="s1">&#39;identity&#39;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">search_url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">response_to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">html_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">soup</span><span class="o">=</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span><span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(soup)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">soup</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">flatten_result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flat_result_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_json</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">flat_json</span> <span class="o">=</span> <span class="n">flatten</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">flat_result_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">flat_json</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">flat_result_list</span>
+</span></span></code></pre></div><h2 id="the-generator">The Generator<a href="#the-generator" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The generator yields a search result page if the pagination link included in the response is valid.</p>
+<p>Depending on your use case you could pass the page_num and collection you would like to crawl.</p>
+<p>The api is limited to 80 results per minute.  The sleep function limits calls to the desired rate.  The amount of results returned can be passed to the search result page_object.  Review the code above to see which values can be passed.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">search_result_generator</span><span class="p">(</span><span class="n">condition</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#column_lookup_table = {}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#pprint(num_columns)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">page_num</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">column_lookup_table</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="n">condition</span> <span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(num_columns)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">61</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">search_results_page_object</span> <span class="o">=</span> <span class="n">create_search_results_page_object</span><span class="p">(</span><span class="n">page_num</span> <span class="o">=</span> <span class="n">page_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">search_results_page_object</span><span class="o">.</span><span class="n">next_url</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">condition</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">            <span class="n">page_num</span> <span class="o">=</span> <span class="n">page_num</span> <span class="o">+</span> <span class="mi">1</span>            
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="p">(</span><span class="n">search_results_page_object</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">condition</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="p">(</span><span class="n">search_results_page_object</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="the-runner-function">The Runner Function<a href="#the-runner-function" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>To initiate the crawl simply run the algorithm below.  It writes each result page to json.</p>
+<p>As a follow up project, I will post how to integrate the data returned into a neo4j database.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">search_result_generator</span><span class="p">():</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">page_num</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">page_num</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s2">&#34;output_2&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#print(&#39;hahaha&#39;)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">obj</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">file_num</span> <span class="o">=</span> <span class="n">page_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#obj.write_graphml(file_num= page_num)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#obj.to_pandas()</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#obj.write_to_file(data = obj.dict_of_dicts, file_num = page_num)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#obj.to_csv()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">write_last_page_num</span><span class="p">(</span><span class="n">page_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">{}</span><span class="s2"> Search Results Crawled&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">page_num</span><span class="p">))</span>
+</span></span></code></pre></div><h2 id="putting-everything-together">Putting Everything Together<a href="#putting-everything-together" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The code below is the entire program as it stands.  There is built in functionality to upload the results to a google sheet if that is what you desire using an extension of the google api.   That code can be found at <a href="https://github.com/justin-napolitano/GoogleAPI">https://github.com/justin-napolitano/GoogleAPI</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#library_of_congress_scraper.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">lxml.etree</span> <span class="k">as</span> <span class="nn">etree</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="k">as</span> <span class="nn">ET</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">math</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#import load_vars as lv</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">html</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">yaml</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">yaml</span> <span class="kn">import</span> <span class="n">Loader</span><span class="p">,</span> <span class="n">Dumper</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">glob</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">datetime</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os.path</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">googleapiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">google_auth_oauthlib.flow</span> <span class="kn">import</span> <span class="n">InstalledAppFlow</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">google.auth.transport.requests</span> <span class="kn">import</span> <span class="n">Request</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">google.oauth2.credentials</span> <span class="kn">import</span> <span class="n">Credentials</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">google.oauth2</span> <span class="kn">import</span> <span class="n">service_account</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">googleapiclient.http</span> <span class="kn">import</span> <span class="n">MediaIoBaseDownload</span><span class="p">,</span> <span class="n">MediaFileUpload</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flatten_json</span> <span class="kn">import</span> <span class="n">flatten</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">networkx.readwrite</span> <span class="kn">import</span> <span class="n">json_graph</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">tracemalloc</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#from ratelimiter import RateLimiter</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">cd</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Context manager for changing the current working directory&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newPath</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">newPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">newPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">savedPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">newPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">etype</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">savedPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">search_results_page</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&#34;https://www.loc.gov/collections&#34;</span><span class="p">,</span><span class="n">collection</span> <span class="o">=</span> <span class="s2">&#34;united-states-reports&#34;</span><span class="p">,</span><span class="n">json_parameter</span> <span class="o">=</span> <span class="s2">&#34;fo=json&#34;</span><span class="p">,</span><span class="n">results_per_page</span> <span class="o">=</span> <span class="s2">&#34;c=79&#34;</span><span class="p">,</span><span class="n">query_param</span> <span class="o">=</span> <span class="s2">&#34;?&#34;</span><span class="p">,</span><span class="n">page_param</span> <span class="o">=</span><span class="s2">&#34;sp=&#34;</span><span class="p">,</span><span class="n">page_num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(num_columns)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">search_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_search_url</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span><span class="n">collection</span><span class="p">,</span><span class="n">json_parameter</span><span class="p">,</span><span class="n">results_per_page</span><span class="p">,</span><span class="n">query_param</span><span class="p">,</span><span class="n">page_param</span><span class="p">,</span><span class="n">page_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_data</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">response_json</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_to_json</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#self.soup_html = self.html_parse()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">next_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_next_url</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">page_num</span> <span class="o">=</span> <span class="n">page_num</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;result_&#39;</span><span class="p">,</span><span class="n">file_num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span><span class="s2">&#34;.json&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">file_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span> <span class="o">+</span> <span class="n">extension</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_json</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">to_pandas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">df</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_pandas_edgelist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;result_&#39;</span><span class="p">,</span><span class="n">file_num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span><span class="s2">&#34;.csv&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">file_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span> <span class="o">+</span> <span class="n">extension</span>
+</span></span><span class="line"><span class="cl">        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">write_graphml</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;result_&#39;</span><span class="p">,</span> <span class="n">file_num</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span> <span class="s2">&#34;.graphml&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">file_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span> <span class="o">+</span> <span class="n">extension</span>
+</span></span><span class="line"><span class="cl">        <span class="n">nx</span><span class="o">.</span><span class="n">write_graphml</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="n">output_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">write_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;result_&#39;</span><span class="p">,</span><span class="n">file_num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span> <span class="s2">&#34;.json&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">file_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span> <span class="o">+</span> <span class="n">extension</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">node_gen_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span><span class="s1">&#39;result&#39;</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">edge_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">previous_k</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">previous_edge</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">graph</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#root = root </span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#node_list.append((k, {&#39;type&#39; : k}))</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#(1, 2, color=&#39;red&#39;, weight=0.84, size=300)\</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">k</span><span class="p">,</span> <span class="n">relationship</span> <span class="o">=</span> <span class="s2">&#34;of&#34;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="s2">&#34;root&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#edge_list.append((root , k, {&#34;relationship&#34; : &#34;of&#34;}, {&#34;type&#34; : &#39;root&#39;}))</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#pprint(&#39;passing_value&#39;)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#save k</span>
+</span></span><span class="line"><span class="cl">                <span class="n">previous_k</span> <span class="o">=</span> <span class="n">k</span>
+</span></span><span class="line"><span class="cl">                <span class="n">previous_edge</span> <span class="o">=</span> <span class="p">(</span><span class="n">root</span> <span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">node_gen_2</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">,</span><span class="n">edge_list</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">,</span> <span class="n">previous_k</span> <span class="o">=</span> <span class="n">k</span><span class="p">,</span> <span class="n">previous_edge</span> <span class="o">=</span> <span class="n">previous_edge</span><span class="p">,</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#pprint(&#39;passing_data&#39;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">node_gen_2</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">,</span><span class="n">edge_list</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">,</span><span class="n">previous_k</span> <span class="o">=</span> <span class="n">previous_k</span><span class="p">,</span> <span class="n">previous_edge</span><span class="o">=</span> <span class="n">previous_edge</span><span class="p">,</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#create_edge to k</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#this item is no longer a dictionary or list</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pprint</span><span class="p">(</span><span class="s1">&#39;appending_data&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#create edge to k</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="nb">type</span> <span class="o">=</span> <span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#node_list.append((data, {&#34;type&#34; : data}))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">previous_k</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">relationship</span> <span class="o">=</span> <span class="s2">&#34;is&#34;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">previous_k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#edge_list.append((previous_k ,data,{&#39;relationship&#39;: &#34;is&#34;}, {&#39;type&#39; : data}))</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#edge_list.append((root,data))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">#flatten(hierarchak)_dict)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">graph</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">node_runner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">graph</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">node_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">edge_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#root = item[&#39;title&#39;]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_gen_2</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">item</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">,</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(edge_list)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">graph</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">node_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span><span class="s1">&#39;title_testing&#39;</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">edge_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">previous_k</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">previous_edge</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(data)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">edge_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">root</span> <span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#pprint(&#39;passing_value&#39;)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#save k</span>
+</span></span><span class="line"><span class="cl">                <span class="n">previous_k</span> <span class="o">=</span> <span class="n">k</span>
+</span></span><span class="line"><span class="cl">                <span class="n">previous_edge</span> <span class="o">=</span> <span class="p">(</span><span class="n">root</span> <span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">node_generator</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">,</span><span class="n">edge_list</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">,</span> <span class="n">previous_k</span> <span class="o">=</span> <span class="n">k</span><span class="p">,</span> <span class="n">previous_edge</span> <span class="o">=</span> <span class="n">previous_edge</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#pprint(&#39;passing_data&#39;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">node_generator</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">node_list</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">,</span><span class="n">edge_list</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">,</span><span class="n">previous_k</span> <span class="o">=</span> <span class="n">previous_k</span><span class="p">,</span> <span class="n">previous_edge</span><span class="o">=</span> <span class="n">previous_edge</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#create_edge to k</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#this item is no longer a dictionary or list</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pprint</span><span class="p">(</span><span class="s1">&#39;appending_data&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#create edge to k</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">edge_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">previous_k</span> <span class="p">,</span><span class="n">data</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">edge_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">root</span><span class="p">,</span><span class="n">data</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">#flatten(hierarchak)_dict)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">node_list</span><span class="p">,</span> <span class="n">edge_list</span> 
+</span></span><span class="line"><span class="cl">        <span class="c1">#self.json_graph = self.create_json_graph()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">create_json_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#graph = nx.Graph(self.response_json)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_dict_of_dicts</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_json</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#graph = json_graph.node_link_graph(self.response_json)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">graph</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">#self.node_list = self.node_generator`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">create_search_result_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">     
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_json_flat</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_lookup_table</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">column_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colnum_string</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="bp">self</span><span class="o">.</span><span class="n">column_lookup_table</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colnum_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_columns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="bp">self</span><span class="o">.</span><span class="n">num_columns</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">append_to_data_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rnge</span><span class="p">,</span><span class="n">d</span><span class="p">):</span><span class="c1">#rename to _data_list</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request_body</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;range&#39;</span><span class="p">:</span> <span class="n">rnge</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;majorDimension&#34;</span><span class="p">:</span> <span class="s2">&#34;COLUMNS&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;values&#34;</span><span class="p">:</span> <span class="p">[</span><span class="n">d</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">request_body</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#data_list.append(request_body_tmp)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">map_column_to_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">column_key</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">rnge</span> <span class="o">=</span> <span class="s2">&#34;&#39;Sheet1&#39;&#34;</span> <span class="o">+</span> <span class="s2">&#34;!&#34;</span> <span class="o">+</span> <span class="n">column_key</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">rnge</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">colnum_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">num_columns</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">string</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(&#34;conlum_string&#34;)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(num_columns)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="n">num_columns</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">num_columns</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">num_columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">string</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">65</span> <span class="o">+</span> <span class="n">remainder</span><span class="p">)</span> <span class="o">+</span> <span class="n">string</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#pprint(string)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">map_columns_to_lookup_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">#print(&#39;first_map_columns_print&#39;)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#num_columns_tmp = self.num_columns</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(num_columns_tmp)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_json_flat</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">                <span class="n">num_columns_tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_columns</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_lookup_table</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#print(&#39;second_map_Columns_print&#39;)</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#pprint(num_columns_tmp)</span>
+</span></span><span class="line"><span class="cl">                    <span class="bp">self</span><span class="o">.</span><span class="n">column_lookup_table</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colnum_string</span><span class="p">(</span><span class="n">num_columns</span> <span class="o">=</span> <span class="n">num_columns_tmp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="bp">self</span><span class="o">.</span><span class="n">num_columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_columns</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl">                    <span class="c1">#append range to request... </span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">#append collumn to batch lookup</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">column_request_list_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_lookup_table</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">            <span class="n">rnge</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map_column_to_range</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">request_body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">append_to_data_list</span><span class="p">(</span><span class="n">rnge</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#pprint(request_body)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">request_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">request_body</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">request_list</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">#return column_lookup_table</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get_next_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_json</span><span class="p">[</span><span class="s1">&#39;pagination&#39;</span><span class="p">][</span><span class="s1">&#39;next&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">create_search_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">base_url</span><span class="p">,</span><span class="n">collection</span><span class="p">,</span><span class="n">json_parameter</span><span class="p">,</span><span class="n">results_per_page</span><span class="p">,</span><span class="n">query_param</span><span class="p">,</span><span class="n">page_param</span><span class="p">,</span><span class="n">page_num</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">url_sep</span> <span class="o">=</span><span class="s2">&#34;/&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">page_param</span> <span class="o">=</span> <span class="n">page_param</span> <span class="o">+</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">page_num</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">query</span> <span class="o">=</span> <span class="s2">&#34;&amp;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">json_parameter</span><span class="p">,</span><span class="n">results_per_page</span><span class="p">,</span><span class="n">page_param</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">query</span> <span class="o">=</span> <span class="n">query_param</span> <span class="o">+</span> <span class="n">query</span>
+</span></span><span class="line"><span class="cl">        <span class="n">search_url</span> <span class="o">=</span> <span class="n">url_sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">base_url</span><span class="p">,</span><span class="n">collection</span><span class="p">,</span><span class="n">query</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(search_url)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">search_url</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pprint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">request_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span><span class="s1">&#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.11 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;Accept-Encoding&#39;</span><span class="p">:</span> <span class="s1">&#39;identity&#39;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">search_url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">response_to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">html_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">soup</span><span class="o">=</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span><span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(soup)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">soup</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">flatten_result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flat_result_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_json</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">flat_json</span> <span class="o">=</span> <span class="n">flatten</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">flat_result_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">flat_json</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">flat_result_list</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">search_result</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dict_item</span><span class="p">,</span><span class="n">num_columns</span><span class="p">,</span><span class="n">colnum_string</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">dict_item</span><span class="o">.</span><span class="n">key</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">dict_item</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">column_string</span> <span class="o">=</span> <span class="n">colnum_string</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">num_columns</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_column_range_string</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">request_body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_column_request</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">create_column_request</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request_body</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;range&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;majorDimension&#34;</span><span class="p">:</span> <span class="s2">&#34;COLUMNS&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;values&#34;</span><span class="p">:</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">request_body</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">create_column_range_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">rnge</span> <span class="o">=</span> <span class="s2">&#34;&#39;Sheet1&#39;&#34;</span> <span class="o">+</span> <span class="s2">&#34;!&#34;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_string</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">rnge</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">colnum_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_columns</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">string</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="n">num_columns</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">num_columns</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">num_columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">string</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">65</span> <span class="o">+</span> <span class="n">remainder</span><span class="p">)</span> <span class="o">+</span> <span class="n">string</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">google_drive</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">creds</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">service</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_drive_service</span><span class="p">(</span><span class="n">creds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pprint</span><span class="p">(</span><span class="s2">&#34;hello I exist&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get_drive_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">creds</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;Shows basic usage of the Drive v3 API.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Prints the names and ids of the first 10 files the user has access to.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#creds = None</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># The file token.json stores the user&#39;s access and refresh tokens, and is</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># created automatically when the authorization flow completes for the first</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># time.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">service</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="s1">&#39;drive&#39;</span><span class="p">,</span> <span class="s1">&#39;v3&#39;</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">creds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Call the Drive v3 API</span>
+</span></span><span class="line"><span class="cl">        <span class="n">results</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">files</span><span class="p">()</span><span class="o">.</span><span class="n">list</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pageSize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s2">&#34;nextPageToken, files(id, name)&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">items</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;files&#39;</span><span class="p">,</span> <span class="p">[])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">items</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No files found.&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Files:&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">service</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">create_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">title</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">drive_service</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">service</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file_metadata</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;mimeType&#39;</span><span class="p">:</span> <span class="s1">&#39;application/vnd.google-apps.folder&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file</span> <span class="o">=</span> <span class="n">drive_service</span><span class="o">.</span><span class="n">files</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">file_metadata</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                            <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Folder ID: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">file</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">add_spreadsheet_to_folder</span><span class="p">(</span><span class="bp">self</span> <span class="p">,</span><span class="n">folder_id</span><span class="p">,</span><span class="n">title</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">drive_service</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">service</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">        <span class="n">file_metadata</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;parents&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">folder_id</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;mimeType&#39;</span><span class="p">:</span> <span class="s1">&#39;application/vnd.google-apps.spreadsheet&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">res</span> <span class="o">=</span> <span class="n">drive_service</span><span class="o">.</span><span class="n">files</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">file_metadata</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#print(res)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">google_sheet</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">creds</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">service</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_sheet_service</span><span class="p">(</span><span class="n">creds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get_sheet_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">creds</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">service</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="s1">&#39;sheets&#39;</span><span class="p">,</span> <span class="s1">&#39;v4&#39;</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">creds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">service</span><span class="o">.</span><span class="n">spreadsheets</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">google_creds</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">creds_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">creds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_creds</span><span class="p">(</span><span class="n">creds_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get_creds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">creds_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">creds</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># The file token.json stores the user&#39;s access and refresh tokens, and is</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># created automatically when the authorization flow completes for the first</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># time.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;token.json&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">creds</span> <span class="o">=</span> <span class="n">Credentials</span><span class="o">.</span><span class="n">from_authorized_user_file</span><span class="p">(</span><span class="s1">&#39;token.json&#39;</span><span class="p">,</span> <span class="n">SCOPES</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># If there are no (valid) credentials available, let the user log in.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">creds</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">creds</span><span class="o">.</span><span class="n">valid</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">creds</span> <span class="ow">and</span> <span class="n">creds</span><span class="o">.</span><span class="n">expired</span> <span class="ow">and</span> <span class="n">creds</span><span class="o">.</span><span class="n">refresh_token</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">creds</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">Request</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;no creds&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">creds</span> <span class="o">=</span> <span class="n">service_account</span><span class="o">.</span><span class="n">Credentials</span><span class="o">.</span><span class="n">from_service_account_file</span><span class="p">(</span><span class="n">creds_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#creds = ServiceAccountCredentials.from_json_keyfile_name(&#39;add_json_file_here.json&#39;, SCOPES)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#flow = InstalledAppFlow.from_client_secrets_file(</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#    &#39;credentials.json&#39;, SCOPES)</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#creds = flow.run_local_server(port=0)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># Save the credentials for the next run</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#with open(&#39;token.json&#39;, &#39;w&#39;) as token:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#    token.write(creds.to_json())</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">creds</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">config</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#self.yaml_stream = file(&#34;config.yaml&#34;, &#39;r&#39;)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">load_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#print(&#34;test&#34;)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">stream</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="n">Loader</span> <span class="o">=</span> <span class="n">Loader</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(data)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_google_credentials_object</span><span class="p">(</span><span class="n">creds_path</span> <span class="o">=</span> <span class="s1">&#39;credentials.json&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">google_credentials_object</span> <span class="o">=</span> <span class="n">google_creds</span><span class="p">(</span><span class="n">creds_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">google_credentials_object</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_config_object</span><span class="p">(</span><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;config.yaml&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config_object</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">config_object</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">search_result_generator</span><span class="p">(</span><span class="n">condition</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#column_lookup_table = {}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#pprint(num_columns)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">page_num</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">column_lookup_table</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="n">condition</span> <span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pprint(num_columns)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">61</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">search_results_page_object</span> <span class="o">=</span> <span class="n">create_search_results_page_object</span><span class="p">(</span><span class="n">page_num</span> <span class="o">=</span> <span class="n">page_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">search_results_page_object</span><span class="o">.</span><span class="n">next_url</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">condition</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">            <span class="n">page_num</span> <span class="o">=</span> <span class="n">page_num</span> <span class="o">+</span> <span class="mi">1</span>            
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="p">(</span><span class="n">search_results_page_object</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">condition</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="p">(</span><span class="n">search_results_page_object</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_search_results_page_object</span><span class="p">(</span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&#34;https://www.loc.gov/collections&#34;</span><span class="p">,</span><span class="n">collection</span> <span class="o">=</span> <span class="s2">&#34;united-states-reports&#34;</span><span class="p">,</span><span class="n">json_parameter</span> <span class="o">=</span> <span class="s2">&#34;fo=json&#34;</span><span class="p">,</span><span class="n">results_per_page</span> <span class="o">=</span> <span class="s2">&#34;c=70&#34;</span><span class="p">,</span><span class="n">query_param</span> <span class="o">=</span> <span class="s2">&#34;?&#34;</span><span class="p">,</span><span class="n">page_param</span> <span class="o">=</span><span class="s2">&#34;sp=&#34;</span><span class="p">,</span><span class="n">page_num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#search = search_results(base_url,collection,json_parameter,results_per_page,query_param,page_param,page_num)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#pprint(search.search_url)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#pprint(num_columns)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">search_results_page</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span><span class="n">collection</span><span class="p">,</span><span class="n">json_parameter</span><span class="p">,</span><span class="n">results_per_page</span><span class="p">,</span><span class="n">query_param</span><span class="p">,</span><span class="n">page_param</span><span class="p">,</span><span class="n">page_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_google_drive_object</span><span class="p">(</span><span class="n">google_creds</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">drive_service_object</span> <span class="o">=</span> <span class="n">google_drive</span><span class="p">(</span><span class="n">google_creds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">drive_service_object</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_google_sheet_object</span><span class="p">(</span><span class="n">google_creds</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sheet_service_object</span> <span class="o">=</span> <span class="n">google_sheet</span><span class="p">(</span><span class="n">google_creds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">sheet_service_object</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_new_google_sheet</span><span class="p">(</span><span class="n">google_drive_object</span><span class="p">,</span><span class="n">folder_id</span><span class="p">,</span><span class="n">title</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sheet_meta_data</span> <span class="o">=</span> <span class="n">google_drive_object</span><span class="o">.</span><span class="n">add_spreadsheet_to_folder</span><span class="p">(</span><span class="n">folder_id</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">sheet_meta_data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">flatten_result</span><span class="p">(</span><span class="n">result_json</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">flat_json</span> <span class="o">=</span> <span class="n">flatten</span><span class="p">(</span><span class="n">result_json</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">flat_json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">write_last_page_num</span><span class="p">(</span><span class="n">page_num</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;last_page_num.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">page_num</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tracemalloc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#rate_limiter = RateLimiter(max_calls=1, period=60)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#cd to output</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#result = create_search_results_page_object()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#with cd(&#34;output&#34;):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#    result.write_to_file(data = result.dict_of_dicts, file_num = 1)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">search_result_generator</span><span class="p">():</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">page_num</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">page_num</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s2">&#34;output_2&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#print(&#39;hahaha&#39;)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">obj</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">file_num</span> <span class="o">=</span> <span class="n">page_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#obj.write_graphml(file_num= page_num)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#obj.to_pandas()</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#obj.write_to_file(data = obj.dict_of_dicts, file_num = page_num)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">#obj.to_csv()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">write_last_page_num</span><span class="p">(</span><span class="n">page_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">{}</span><span class="s2"> Search Results Crawled&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">page_num</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">snapshot</span> <span class="o">=</span> <span class="n">tracemalloc</span><span class="o">.</span><span class="n">take_snapshot</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">top_stats</span> <span class="o">=</span> <span class="n">snapshot</span><span class="o">.</span><span class="n">statistics</span><span class="p">(</span><span class="s1">&#39;lineno&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[ Top 10 ]&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">top_stats</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">stat</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span></code></pre></div>
+		</div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+	<p>
+		&copy; 2024 <a href="jnapolitano.com/">Cobra</a>
+		&#183; JAYBURDINDUSTRIES
+		&#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+		&#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a>
+		&#183; <a href="jnapolitano.com/en/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></p>
+
+</footer>
+<script async src="jnapolitano.com/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="jnapolitano.com/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
+</body>
+
+</html>

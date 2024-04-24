@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days"><link rel="author" href="/jnapolitano.com/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/jnapolitano.com/apple-touch-icon.png"><link rel="icon" href="/jnapolitano.com/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" sizes="32x32" href="/jnapolitano.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/jnapolitano.com/favicon-16x16.png">
+<link rel="manifest" href="/jnapolitano.com/site.webmanifest">
+<meta name="msapplication-TileImage" content="/jnapolitano.com/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/jnapolitano.com/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Justin Napolitano"><meta name="description" content="Monte Carlo Model to determine the cost of living in your city.">
+
+  <meta itemprop="name" content="Annual Cost of Living Monte Carlo Models">
+  <meta itemprop="description" content="Monte Carlo Model to determine the cost of living in your city.">
+  <meta itemprop="datePublished" content="2022-06-01T15:24:32+00:00">
+  <meta itemprop="dateModified" content="2022-06-01T15:24:32+00:00">
+  <meta itemprop="wordCount" content="1593">
+  <meta itemprop="image" content="jnapolitano.com/featured-ny.jpeg">
+  <meta itemprop="keywords" content="Python,Numerical-Computing,Monte-Carlo,Statistics"><meta property="og:url" content="jnapolitano.com/en/test/cost-of-living-projections/">
+  <meta property="og:site_name" content="cobra.blog">
+  <meta property="og:title" content="Annual Cost of Living Monte Carlo Models">
+  <meta property="og:description" content="Monte Carlo Model to determine the cost of living in your city.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="test">
+    <meta property="article:published_time" content="2022-06-01T15:24:32+00:00">
+    <meta property="article:modified_time" content="2022-06-01T15:24:32+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Numerical-Computing">
+    <meta property="article:tag" content="Monte-Carlo">
+    <meta property="article:tag" content="Statistics">
+    <meta property="og:image" content="jnapolitano.com/featured-ny.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="jnapolitano.com/featured-ny.jpeg"><meta name="twitter:title" content="Annual Cost of Living Monte Carlo Models">
+<meta name="twitter:description" content="Monte Carlo Model to determine the cost of living in your city.">
+<title>Annual Cost of Living Monte Carlo Models</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="jnapolitano.com/css/style.min.274d226631bffb525ccd5adf2f48d599037ecb46121471a190938d2648d22353.css" integrity="sha256-J00iZjG/+1JczVrfL0jVmQN+y0YSFHGhkJONJkjSI1M=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('jnapolitano.com/featured-ny.jpeg');}</style></head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="jnapolitano.com/">cobra.blog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="jnapolitano.com/en/posts/">POSTS</a><a href="https://cobra.jnapolitano.com/@justin">LINKS</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=jnapolitano.com%2fen%2ftest%2fcost-of-living-projections%2f&amp;text=Annual%20Cost%20of%20Living%20Monte%20Carlo%20Models" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=jnapolitano.com%2fen%2ftest%2fcost-of-living-projections%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Annual%20Cost%20of%20Living%20Monte%20Carlo%20Models&amp;body=jnapolitano.com%2fen%2ftest%2fcost-of-living-projections%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=jnapolitano.com%2fen%2ftest%2fcost-of-living-projections%2f&amp;source=jnapolitano.com%2f&amp;title=Annual%20Cost%20of%20Living%20Monte%20Carlo%20Models&amp;summary=Annual%20Cost%20of%20Living%20Monte%20Carlo%20Models%2c%20by%20Justin%20Napolitano%0a%0aMonte%20Carlo%20Model%20to%20determine%20the%20cost%20of%20living%20in%20your%20city.%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Annual Cost of Living Monte Carlo Models&#34;,&#34;jnapolitano.com/en/test/cost-of-living-projections/&#34;,&#34;Annual Cost of Living Monte Carlo Models, by Justin Napolitano\n\nMonte Carlo Model to determine the cost of living in your city.\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="jnapolitano.com/en/posts/">POSTS</a></li>
+			<li><a href="https://cobra.jnapolitano.com/@justin">LINKS</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Annual Cost of Living Monte Carlo Models</h1>
+		<div class="content">
+			<h1 id="cost-of-living-projections">Cost of Living Projections<a href="#cost-of-living-projections" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<h2 id="introduction">Introduction<a href="#introduction" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>I do not like negotiating for salary. Especially, without valid projections to determine a range.</p>
+<p>I prepared this report to estimate a salary expectation that will maintain my current standard of living.</p>
+<p>I present two Monte Carlo models of Houston and NYC annual living costs.  The data is somewhat dated and &ndash;particularly in the case of houston&ndash; are high level estimates.</p>
+<p>In order to produce a better report, I am currently scraping data from the internet for more accurate sample distributions.  I will be able to present that soon.</p>
+<p>With that said, the model should not deviate by more than about 5-10 percent from what is presented in below.</p>
+<h2 id="findings">Findings<a href="#findings" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>An annual salary of $90,000 would be sufficient to qualify for rent in Houston and most likely the median level income neighbors of NYC.</p>
+<p>I came about this number by quantifying a confidence inverval of annual rent costs in boths cities across a normal distribution.  I then simply multiplied that number by 3 in order to meet the lease qualifications of most landlords.</p>
+<h2 id="limitations-of-the-model">Limitations of the Model<a href="#limitations-of-the-model" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="old-nyc-data">Old Nyc Data<a href="#old-nyc-data" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The data I am using was sourced from 2018.   I will be updating it soon.</p>
+<h3 id="houston-data">Houston Data<a href="#houston-data" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The houston estimate is based an estimate to stay in the property I am currently staying in.  The rent is 2400 a month.  I estimated that it could raise at maximum to about 2600 in the next year.  If I were to move similiar housing goes for around 2200 to about 2600 a month. I used these as the bounds of my estimates</p>
+<h2 id="houston-cost-of-living-expenses">Houston Cost of Living Expenses<a href="#houston-cost-of-living-expenses" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>I intend to stay in Houston for the next year.  I would like to move to NY eventually to be nearer to a central office, but not in the near future.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2400</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">upper_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2600</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">median</span> <span class="o">=</span> <span class="mi">2500</span>
+</span></span><span class="line"><span class="cl"><span class="n">standard_dev</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1">#file:///Users/jnapolitano/Downloads/LNG_Shipping_a_Descriptive_Analysis.pdf</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cap_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">rent_distribution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">median</span> <span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">standard_dev</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">rent_sample</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">rent_distribution</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="houston-monthly-food-costs">Houston Monthly food costs<a href="#houston-monthly-food-costs" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">upper_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">median</span> <span class="o">=</span> <span class="mi">400</span>
+</span></span><span class="line"><span class="cl"><span class="n">standard_dev</span> <span class="o">=</span> <span class="mi">50</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">food_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">food_distribution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">median</span> <span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">standard_dev</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">food_sample</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">food_distribution</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="houston-insurance-costs">Houston Insurance Costs<a href="#houston-insurance-costs" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">upper_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">median</span> <span class="o">=</span> <span class="mi">250</span>
+</span></span><span class="line"><span class="cl"><span class="n">standard_dev</span> <span class="o">=</span> <span class="mi">25</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">insurance_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">insurance_distribution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">median</span> <span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">standard_dev</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</span></span></code></pre></div><h4 id="the-houston-cost-of-living-df">The Houston Cost of Living DF<a href="#the-houston-cost-of-living-df" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cost_of_living_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;rent&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">rent_distribution</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;food&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">food_distribution</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;insurance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">insurance_distribution</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;monthly_cost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">rent</span> <span class="o">+</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">food</span> <span class="o">+</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">insurance</span>
+</span></span><span class="line"><span class="cl"><span class="n">cost_of_living_df</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<h2 id="houston-costs-per-annum-algorithm">Houston Costs Per Annum Algorithm<a href="#houston-costs-per-annum-algorithm" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The algorithm below calculates the annual cost of rent, food, and insurance to determine total cost per year.  Rent, food, and insurance are set by random choice based on the distributions defined in the functions above.</p>
+<p>I run the simulation 10,000 times which in theory corresponds to 10,000 random samples of annual costs.  The point in doing this is to create a random normal distribution to define convidence intervals of my total annual costs.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">years</span> <span class="o">=</span> <span class="mi">10000</span>
+</span></span><span class="line"><span class="cl"><span class="n">year_counter</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#carbon_total_millions_metric_tons = 300000000</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#total_tons_shipped = 0</span>
+</span></span><span class="line"><span class="cl"><span class="n">total_price</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">cycle_price_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cycle_rent_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cycle_food_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cycle_insurance_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">annual_cost</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">years</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Define a New DataFrame. It should fall out of scope with each iteration </span>
+</span></span><span class="line"><span class="cl">    <span class="n">cost_of_living_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#random choice of rent </span>
+</span></span><span class="line"><span class="cl">    <span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;rent&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">rent_distribution</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#random choice of food</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;food&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">food_distribution</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#random Choice of Insurance</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;insurance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">insurance_distribution</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#Random Choice of total annual cost</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;monthly_cost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">rent</span> <span class="o">+</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">food</span> <span class="o">+</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">insurance</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># must use apply to account for multiple 0 conditions.  If i simply vectorized the function across the dataframe in a single call i would assign the the same values each day </span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#calculate cost per day for fun...</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># query all that are = o.  Summate the capacities deduct the total </span>
+</span></span><span class="line"><span class="cl">    <span class="n">annual_cost</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;monthly_cost&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">annual_rent</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">rent</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">annual_food</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">food</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">annual_insurance</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">insurance</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cycle_price_samples</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">annual_cost</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cycle_food_samples</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">annual_food</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cycle_insurance_samples</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">annual_insurance</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cycle_rent_samples</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">annual_rent</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#print(carbon_total_millions_metric_tons)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">year_counter</span> <span class="o">=</span> <span class="n">year_counter</span><span class="o">+</span><span class="mi">1</span>
+</span></span></code></pre></div><h3 id="houston-prediction-df">Houston Prediction Df<a href="#houston-prediction-df" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">prediction_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="p">[</span><span class="s1">&#39;rent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_rent_samples</span>
+</span></span><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="p">[</span><span class="s1">&#39;food&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_food_samples</span>
+</span></span><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="p">[</span><span class="s1">&#39;insurance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_insurance_samples</span>
+</span></span><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_price_samples</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<h3 id="houston-annual-cost-histogram">Houston Annual Cost Histogram<a href="#houston-annual-cost-histogram" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="o">.</span><span class="n">total</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#607c8e&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Annual Total Costs Price USD&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="cost_of_living_monte_carlo_files/cost_of_living_monte_carlo_17_0.png" alt="png"></p>
+<h3 id="houston-calculating-the-confidence-interval-for-total-costs">Houston: Calculating the Confidence Interval For Total Costs<a href="#houston-calculating-the-confidence-interval-for-total-costs" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The data is nearly normal. Greater samples sizes would produce a graph of nearly perfect normality</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">total</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">sem</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">total</span><span class="p">))</span>
+</span></span></code></pre></div><pre><code>(37795.2942543157, 37808.287836034055)
+</code></pre>
+<h3 id="houston-annual-rent-histogram">Houston Annual Rent Histogram<a href="#houston-annual-rent-histogram" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">### Annual Cost Histogram Histogram</span>
+</span></span><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="o">.</span><span class="n">rent</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#607c8e&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Annual Rent Cost Distribution &#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Annual Rent Costs Price USD&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="cost_of_living_monte_carlo_files/cost_of_living_monte_carlo_21_0.png" alt="png"></p>
+<h3 id="houston-calculating-the-confidence-interval-for-annual-rent">Houston: Calculating the Confidence Interval For Annual Rent<a href="#houston-calculating-the-confidence-interval-for-annual-rent" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The data is nearly normal. Greater samples sizes would produce a graph of nearly perfect normality</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">rent</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">sem</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">rent</span><span class="p">))</span>
+</span></span></code></pre></div><pre><code>(29996.264715447538, 30009.767827637417)
+</code></pre>
+<h2 id="new-york-cost-of-living-expenses">New York Cost of Living Expenses<a href="#new-york-cost-of-living-expenses" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>For the sake of comparison, the New York Expense distributions are calculated below.  I assume that everything but rent will be equivalent to Houston.  A more accurate model would account for insurance, food, and incidental differences.</p>
+<p>I am assuming the rent of a two bedroom apartment.</p>
+<p>The data i am using was scraped from craigslist in 2018.  I will redo it later for 2022 data to get a better model.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">nyc_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;/Users/jnapolitano/Projects/cost-of-living-projections/nyc-housing.csv&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;unicode-escape&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#assuiming a two bedroom</span>
+</span></span><span class="line"><span class="cl"><span class="n">nyc_df</span> <span class="o">=</span> <span class="n">nyc_df</span><span class="p">[</span><span class="n">nyc_df</span><span class="p">[</span><span class="s1">&#39;Bedrooms&#39;</span><span class="p">]</span><span class="o">==</span> <span class="s1">&#39;2br&#39;</span><span class="p">]</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">nyc_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p>The price is about 2800 with a std of 7,465.  Which is absurd.  To do a better analysis, I need to clean the data.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">nyc_df</span><span class="o">.</span><span class="n">Price</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nyc_df</span><span class="o">.</span><span class="n">Price</span> <span class="o">&lt;</span> <span class="mi">4500</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">nyc_df</span> <span class="o">=</span> <span class="n">nyc_df</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">nyc_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p>When accounting for outliers the data is far more managable.  I&rsquo;m surprised by the mean price.  Again this data is old, but it is also does not accout for neighborhoods.  I will redo the analysis at a later data filtered by neighborhoods.</p>
+<h3 id="creating-the-nyc-distributions">Creating the NYC Distributions<a href="#creating-the-nyc-distributions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">upper_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">4500</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">median</span> <span class="o">=</span> <span class="mi">2435</span>
+</span></span><span class="line"><span class="cl"><span class="n">standard_dev</span> <span class="o">=</span> <span class="mi">729</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cap_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">rent_distribution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">median</span> <span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">standard_dev</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">rent_sample</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">rent_distribution</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="nyc-monthly-food-costs">NYC Monthly food costs<a href="#nyc-monthly-food-costs" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">upper_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">median</span> <span class="o">=</span> <span class="mi">400</span>
+</span></span><span class="line"><span class="cl"><span class="n">standard_dev</span> <span class="o">=</span> <span class="mi">50</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">food_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">food_distribution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">median</span> <span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">standard_dev</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">food_sample</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">food_distribution</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="nyc-insurance-costs">NYC Insurance Costs<a href="#nyc-insurance-costs" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">upper_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">median</span> <span class="o">=</span> <span class="mi">250</span>
+</span></span><span class="line"><span class="cl"><span class="n">standard_dev</span> <span class="o">=</span> <span class="mi">25</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">insurance_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">insurance_distribution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">median</span> <span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">standard_dev</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</span></span></code></pre></div><h4 id="nyc-cost-of-living-distribution">NYC Cost of Living Distribution<a href="#nyc-cost-of-living-distribution" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cost_of_living_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;rent&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">rent_distribution</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;food&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">food_distribution</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;insurance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">insurance_distribution</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;monthly_cost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">rent</span> <span class="o">+</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">food</span> <span class="o">+</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">insurance</span>
+</span></span><span class="line"><span class="cl"><span class="n">cost_of_living_df</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<h2 id="nyc-costs-per-annum-algorithm">NYC Costs Per Annum Algorithm<a href="#nyc-costs-per-annum-algorithm" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The algorithm below calculates the annual cost of rent, food, and insurance to determine total cost per year.  Rent, food, and insurance are set by random choice based on the distributions defined in the functions above.</p>
+<p>I run the simulation 10,000 times which in theory corresponds to 10,000 random samples of annual costs.  The point in doing this is to create a random normal distribution to define convidence intervals of my total annual costs.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">years</span> <span class="o">=</span> <span class="mi">10000</span>
+</span></span><span class="line"><span class="cl"><span class="n">year_counter</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#carbon_total_millions_metric_tons = 300000000</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#total_tons_shipped = 0</span>
+</span></span><span class="line"><span class="cl"><span class="n">total_price</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">cycle_price_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cycle_rent_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cycle_food_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cycle_insurance_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">annual_cost</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">years</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Define a New DataFrame. It should fall out of scope with each iteration </span>
+</span></span><span class="line"><span class="cl">    <span class="n">cost_of_living_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#random choice of rent </span>
+</span></span><span class="line"><span class="cl">    <span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;rent&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">rent_distribution</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#random choice of food</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;food&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">food_distribution</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#random Choice of Insurance</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;insurance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">insurance_distribution</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#Random Choice of total annual cost</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;monthly_cost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">rent</span> <span class="o">+</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">food</span> <span class="o">+</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">insurance</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># must use apply to account for multiple 0 conditions.  If i simply vectorized the function across the dataframe in a single call i would assign the the same values each day </span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#calculate cost per day for fun...</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># query all that are = o.  Summate the capacities deduct the total </span>
+</span></span><span class="line"><span class="cl">    <span class="n">annual_cost</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="p">[</span><span class="s1">&#39;monthly_cost&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">annual_rent</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">rent</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">annual_food</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">food</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">annual_insurance</span> <span class="o">=</span> <span class="n">cost_of_living_df</span><span class="o">.</span><span class="n">insurance</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cycle_price_samples</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">annual_cost</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cycle_food_samples</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">annual_food</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cycle_insurance_samples</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">annual_insurance</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cycle_rent_samples</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">annual_rent</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#print(carbon_total_millions_metric_tons)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">year_counter</span> <span class="o">=</span> <span class="n">year_counter</span><span class="o">+</span><span class="mi">1</span>
+</span></span></code></pre></div><h3 id="nyc-prediction-df">NYC Prediction Df<a href="#nyc-prediction-df" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">prediction_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="p">[</span><span class="s1">&#39;rent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_rent_samples</span>
+</span></span><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="p">[</span><span class="s1">&#39;food&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_food_samples</span>
+</span></span><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="p">[</span><span class="s1">&#39;insurance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_insurance_samples</span>
+</span></span><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_price_samples</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<h3 id="nyc-annual-cost-histogram">NYC Annual Cost Histogram<a href="#nyc-annual-cost-histogram" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="o">.</span><span class="n">total</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#607c8e&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Annual Total Costs Price USD&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="cost_of_living_monte_carlo_files/cost_of_living_monte_carlo_47_0.png" alt="png"></p>
+<h3 id="nyc-calculating-the-confidence-interval-for-total-costs">NYC: Calculating the Confidence Interval For Total Costs<a href="#nyc-calculating-the-confidence-interval-for-total-costs" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The data is nearly normal. Greater samples sizes would produce a graph of nearly perfect normality</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">total</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">sem</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">total</span><span class="p">))</span>
+</span></span></code></pre></div><pre><code>(36979.727235126586, 37063.36039733022)
+</code></pre>
+<h3 id="nyc-annual-rent-histogram">NYC Annual Rent Histogram<a href="#nyc-annual-rent-histogram" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">### Annual Cost Histogram Histogram</span>
+</span></span><span class="line"><span class="cl"><span class="n">prediction_df</span><span class="o">.</span><span class="n">rent</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#607c8e&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Annual Rent Cost Distribution &#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Annual Rent Costs Price USD&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="cost_of_living_monte_carlo_files/cost_of_living_monte_carlo_51_0.png" alt="png"></p>
+<h3 id="calculating-the-confidence-interval-for-annual-rent">Calculating the Confidence Interval For Annual Rent<a href="#calculating-the-confidence-interval-for-annual-rent" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The data is nearly normal. Greater samples sizes would produce a graph of nearly perfect normality</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">rent</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">sem</span><span class="p">(</span><span class="n">prediction_df</span><span class="o">.</span><span class="n">rent</span><span class="p">))</span>
+</span></span></code></pre></div><pre><code>(29169.877514702926, 29269.14186706609)
+</code></pre>
+<h2 id="nyc-closing-remarks">NYC Closing Remarks<a href="#nyc-closing-remarks" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The rent distribution in NYC with 2018 data is actually nearly comparible to my houston estimate.  An annual salary of 90,000 would permit me to live at about the median level in the city.  I will be redoing this report soon as the data is old.  I am currently scraping data in houston and nyc to produce a better analysis.</p>
+<h2 id="imports">Imports<a href="#imports" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">choice</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">warnings</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</span></span></code></pre></div>
+		</div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+	<p>
+		&copy; 2024 <a href="jnapolitano.com/">Cobra</a>
+		&#183; JAYBURDINDUSTRIES
+		&#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+		&#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a>
+		&#183; <a href="jnapolitano.com/en/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></p>
+
+</footer>
+<script async src="jnapolitano.com/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="jnapolitano.com/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markov on cobra.blog</title>
+    <link>jnapolitano.com/en/tags/markov/</link>
+    <description>Recent content in Markov on cobra.blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Thu, 26 May 2022 01:30:32 +0000</lastBuildDate>
+    <atom:link href="jnapolitano.com/en/tags/markov/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markov Chains in Julia</title>
+      <link>jnapolitano.com/en/test/markov-models-julia/</link>
+      <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate>
+      <guid>jnapolitano.com/en/test/markov-models-julia/</guid>
+      <description>Introduction I am currently working on a legal research series where I perform statistical analysis and ml models to legal datasets. My intention is to model the behavior of courts, determine the outcome of cases, and build a pipeline capable of identifying relevant case law by issue area.&#xA;That data set is nearly complete, but I have not decided which models to apply to it. This is where Julia comes into play.</description>
+    </item>
+  </channel>
+</rss>
