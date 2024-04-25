@@ -28,7 +28,7 @@ theme = "hermit-v2"
  
 languageCode = "en-us"
 
-title = "cobra.blog"
+title = "justin.napolitano"
 enableGitInfo = true
 
 pygmentsCodefences  = true
@@ -89,7 +89,7 @@ expiryDate = ["expiryDate"]
   themeColor = "#494f5c"
   #themeColor = "#FFCCCC"
 
-  homeSubtitle = "tssssss"
+  #homeSubtitle = "Justin"
   footerCopyright = "JAYBURDINDUSTRIES"
   # bgImg = ""
   # gitUrl = "https://github.com/1bl4z3r/hermit-V2/tree/staging"
@@ -144,6 +144,11 @@ expiryDate = ["expiryDate"]
     weight = 10
 
   [[menu.main]]
-    name = "LINKS"
-    url = "https://cobra.jnapolitano.com/@justin"
+    name = "CONTACT"
+    url = "https://links.jnapolitano.com/@justin"
     weight = 20
+    
+  [[menu.main]]
+    name = "RESUME"
+    url = "https://analyst.jnapolitano.com/resume.pdf"
+    weight = 30
