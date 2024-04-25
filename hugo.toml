@@ -84,7 +84,7 @@ expiryDate = ["expiryDate"]
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04 -0700"
 
-  # description = "CHANGE ME SITE DESCRIPTION"
+  description = "Jay's personal site"
   # images = [""]
   themeColor = "#494f5c"
   #themeColor = "#FFCCCC"
@@ -92,7 +92,7 @@ expiryDate = ["expiryDate"]
   #homeSubtitle = "Justin"
   footerCopyright = "JAYBURDINDUSTRIES"
   # bgImg = ""
-  # gitUrl = "https://github.com/1bl4z3r/hermit-V2/tree/staging"
+  gitUrl = "https://github.com/justin-napolitano"
 
   justifyContent = false
 
@@ -103,7 +103,7 @@ expiryDate = ["expiryDate"]
   scrollToTop = true 
   global_mathjax = false
   readTime = true
-  readTimeSeparator = "CHANGE ME READ TIME"
+  #readTimeSeparator = "|"
   # legacyLayout = false
   shareSocial = true
   # googleTagManager = "GTM-XXXXXXXX"
