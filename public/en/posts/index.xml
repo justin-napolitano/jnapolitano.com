@@ -9,6 +9,42 @@
 		<atom:link href="//localhost:1313/en/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
+			<title>Networks</title>
+			<link>//localhost:1313/en/posts/networks/</link>
+			<pubDate>Thu, 25 Apr 2024 18:40:32 +0000</pubDate>
+			
+			<guid>//localhost:1313/en/posts/networks/</guid>
+			<description><![CDATA[%!s(<nil>)]]></description>
+			<content type="html"><![CDATA[<h1 id="networks">Networks</h1>
+<p>This post is a work in progress. I am thinking through nodes within a network. I will update this as time permits.</p>
+<h2 id="intuition">Intuition</h2>
+<ol>
+<li>Every bit is important</li>
+<li>A node cannot isolate from a system</li>
+<li>A node must balance to the connections in their connective pool.</li>
+</ol>
+<h2 id="every-bit-is-important">Every bit is important</h2>
+<p>Every signal is important physical information.  The signals relayed amongst the collection of individuals within a system reveals the state of the system at any given point in time.</p>
+<h2 id="adapt-the-environment">Adapt the environment</h2>
+<p>An individual must adapt to the signals to others within a system in order to effectively communicate.</p>
+<h2 id="bandwidth">Bandwidth</h2>
+<p>The bandwidth of any node within a system is limited to their capacity. Structures of nodes exist to permit the flow of information through the system.</p>
+<h2 id="networks-permit-communication">Networks permit communication</h2>
+<p>The structures or networks that exist within a system permit communication between nodes.</p>
+<h2 id="networks-require-energy-to-come-into-being">Networks require energy to come into being</h2>
+<p>Communicaion networks are maintained by consumption of energy.</p>
+<h2 id="networks-compete-with-other-networks-for-energy">Networks compete with other networks for energy</h2>
+<p>Information is a constrained resource. Networks compete with one another in order to acquire energy</p>
+<h2 id="networks-cannot-remain-isolated">Networks cannot remain isolated</h2>
+<p>Networks in competition cannot isolate from one another if they share energy resources</p>
+<h2 id="networks-inevitably-exchange-information">Networks inevitably exchange information</h2>
+<p>Nodes within networks will interact with one another</p>
+<h2 id="sub-networks-can-exist-within-superstructures">Sub-networks can exist within superstructures</h2>
+<p>Sub-networks with great connectivity will exist within a system</p>
+]]></content>
+		</item>
+		
+		<item>
 			<title>Model Design and Logistic Regression in Python</title>
 			<link>//localhost:1313/en/posts/logistic_regression_mockup/</link>
 			<pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>

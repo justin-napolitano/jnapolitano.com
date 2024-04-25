@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Networks on justin.napolitano</title>
+    <link>//localhost:1313/en/tags/networks/</link>
+    <description>Recent content in Networks on justin.napolitano</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Thu, 25 Apr 2024 13:59:02 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/en/tags/networks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>networks</title>
+      <link>//localhost:1313/en/posts/networks/</link>
+      <pubDate>Thu, 25 Apr 2024 18:40:32 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/networks/</guid>
+      <description>Networks This post is a work in progress. I am thinking through nodes within a network. I will update this as time permits.&#xA;Intuition Every bit is important A node cannot isolate from a system A node must balance to the connections in their connective pool. Every bit is important Every signal is important physical information. The signals relayed amongst the collection of individuals within a system reveals the state of the system at any given point in time.</description>
+    </item>
+  </channel>
+</rss>

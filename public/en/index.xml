@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 25 Apr 2024 13:59:02 -0500</lastBuildDate>
     <atom:link href="//localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Networks</title>
+      <link>//localhost:1313/en/posts/networks/</link>
+      <pubDate>Thu, 25 Apr 2024 18:40:32 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/networks/</guid>
+      <description>Networks This post is a work in progress. I am thinking through nodes within a network. I will update this as time permits.&#xA;Intuition Every bit is important A node cannot isolate from a system A node must balance to the connections in their connective pool. Every bit is important Every signal is important physical information. The signals relayed amongst the collection of individuals within a system reveals the state of the system at any given point in time.</description>
+    </item>
     <item>
       <title>Model Design and Logistic Regression in Python</title>
       <link>//localhost:1313/en/posts/logistic_regression_mockup/</link>
@@ -71,13 +78,6 @@
       <pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate>
       <guid>//localhost:1313/en/posts/legal-research-part-8/</guid>
       <description>Introduction The legal Research with AI Series is expanding quickly. This is the 9th post related to it in someway. Building this pipeline and integrating multiple datasets into nodes is proving to be verbose.&#xA;This post documents merging Oyez and Library of Congress of data structured json files that represent nodes and hierarchal relationships.&#xA;Main Function The plan for this program is to:&#xA;Read the prepared dataframe created in the legal research part 7 post for each row of the df load a dictionary from the the libary of congress path and the oyez path Set keys on the Oyez dataset Write the updated Oyez dataset to file Review the work below:</description>
-    </item>
-    <item>
-      <title>Legal Research with AI Part 7: Wrangling Data with Julia</title>
-      <link>//localhost:1313/en/posts/legal-research-part-7/</link>
-      <pubDate>Sun, 22 May 2022 16:30:32 +0000</pubDate>
-      <guid>//localhost:1313/en/posts/legal-research-part-7/</guid>
-      <description>Intro In a previous post, I seperated all of the results returned from the Library of Congress API into individual JSON documents to be imported as nodes into a neo4j graph.&#xA;In this post, I filter the LOC data against another data set from Oyez that will be integrated in the next post.&#xA;Filtering Data Both data sets have been seperated into individual case nodes stored in the json format as a file with the format : .</description>
     </item>
   </channel>
 </rss>

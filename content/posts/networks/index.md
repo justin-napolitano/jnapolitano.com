@@ -1,3 +1,11 @@
++++
+title =  "Networks"
+date = "2024-04-25T18:40:32.169Z"
+author = "Cobra"
+categories = ['networks']
+tags = ['networks','nodes']
++++
+
 # Networks
 
 This post is a work in progress. I am thinking through nodes within a network. I will update this as time permits. 

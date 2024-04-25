@@ -2,10 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/en/tags/julia/</loc>
-    <lastmod>2024-04-24T17:23:50-05:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/en/</loc>
+    <lastmod>2024-04-25T13:59:02-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/posts/networks/</loc>
+    <lastmod>2024-04-25T13:59:02-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/tags/networks/</loc>
+    <lastmod>2024-04-25T13:59:02-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/tags/nodes/</loc>
+    <lastmod>2024-04-25T13:59:02-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/tags/</loc>
+    <lastmod>2024-04-25T13:59:02-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/tags/julia/</loc>
     <lastmod>2024-04-24T17:23:50-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/tags/logistic-regression/</loc>
@@ -18,9 +30,6 @@
     <lastmod>2024-04-24T17:23:50-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/tags/statistics/</loc>
-    <lastmod>2024-04-24T17:23:50-05:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/en/tags/</loc>
     <lastmod>2024-04-24T17:23:50-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/posts/cost-of-living-projections/</loc>
