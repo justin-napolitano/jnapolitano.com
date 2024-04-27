@@ -2,3 +2,6 @@
 	path = themes/hermit-v2
 	url = https://github.com/1bl4z3r/hermit-V2
 	branch = main
+[submodule "content/posts/gcp-utilities"]
+	path = content/posts/gcp-utilities
+	url = https://github.com/justin-napolitano/gcputils.git
