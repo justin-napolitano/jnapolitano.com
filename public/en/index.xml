@@ -7,14 +7,21 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 25 Apr 2024 13:59:02 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Networks</title>
-      <link>//localhost:1313/en/posts/networks/</link>
-      <pubDate>Thu, 25 Apr 2024 18:40:32 +0000</pubDate>
-      <guid>//localhost:1313/en/posts/networks/</guid>
-      <description>Networks This post is a work in progress. I am thinking through nodes within a network. I will update this as time permits.&#xA;Intuition Every bit is important A node cannot isolate from a system A node must balance to the connections in their connective pool. Every bit is important Every signal is important physical information. The signals relayed amongst the collection of individuals within a system reveals the state of the system at any given point in time.</description>
+      <title>GCP Cloud Run Job Scraper</title>
+      <link>//localhost:1313/en/posts/loc-scraper-gcp/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/loc-scraper-gcp/</guid>
+      <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.&#xA;Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
+    </item>
+    <item>
+      <title>Creating a GCP Client Tool</title>
+      <link>//localhost:1313/en/posts/gcp-utilities/</link>
+      <pubDate>Sat, 27 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/gcp-utilities/</guid>
+      <description>Creating a GCP Client Tool in Python Why I often find myself reuuing the same bits of code when working with GCP. It is very important to avoid creating multiple development trees of the same classes. I have done this before for large projects. It will lead to a very difficult to maintain stack of tools that will spaghettify over time.&#xA;Creating the submodule Create an empty directory mkdir gcpuptils Add the following code to a gcpclient.</description>
     </item>
     <item>
       <title>Model Design and Logistic Regression in Python</title>
@@ -71,13 +78,6 @@
       <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
       <guid>//localhost:1313/en/posts/rice-paddy-emissions-2/</guid>
       <description>Methane Emissions Estimation Data Part 2: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.&#xA;It is fairly code python and pandas heavy.&#xA;The code and data exploration follows the summary below.&#xA;Hypothesis Testing the University of Malaysia Paper Claims That the distributions do not differ between 2020 and 2019 That the means do no differ between 2020 and 2019 What will be Tested.</description>
-    </item>
-    <item>
-      <title>Conduct Legal Research with AI Part 8: Case Nodes Sample Data</title>
-      <link>//localhost:1313/en/posts/legal-research-part-8/</link>
-      <pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate>
-      <guid>//localhost:1313/en/posts/legal-research-part-8/</guid>
-      <description>Introduction The legal Research with AI Series is expanding quickly. This is the 9th post related to it in someway. Building this pipeline and integrating multiple datasets into nodes is proving to be verbose.&#xA;This post documents merging Oyez and Library of Congress of data structured json files that represent nodes and hierarchal relationships.&#xA;Main Function The plan for this program is to:&#xA;Read the prepared dataframe created in the legal research part 7 post for each row of the df load a dictionary from the the libary of congress path and the oyez path Set keys on the Oyez dataset Write the updated Oyez dataset to file Review the work below:</description>
     </item>
   </channel>
 </rss>

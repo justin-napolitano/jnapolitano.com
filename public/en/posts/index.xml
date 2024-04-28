@@ -9,39 +9,107 @@
 		<atom:link href="//localhost:1313/en/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
-			<title>Networks</title>
-			<link>//localhost:1313/en/posts/networks/</link>
-			<pubDate>Thu, 25 Apr 2024 18:40:32 +0000</pubDate>
+			<title>GCP Cloud Run Job Scraper</title>
+			<link>//localhost:1313/en/posts/loc-scraper-gcp/</link>
+			<pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
 			
-			<guid>//localhost:1313/en/posts/networks/</guid>
-			<description><![CDATA[%!s(<nil>)]]></description>
-			<content type="html"><![CDATA[<h1 id="networks">Networks</h1>
-<p>This post is a work in progress. I am thinking through nodes within a network. I will update this as time permits.</p>
-<h2 id="intuition">Intuition</h2>
-<ol>
-<li>Every bit is important</li>
-<li>A node cannot isolate from a system</li>
-<li>A node must balance to the connections in their connective pool.</li>
-</ol>
-<h2 id="every-bit-is-important">Every bit is important</h2>
-<p>Every signal is important physical information.  The signals relayed amongst the collection of individuals within a system reveals the state of the system at any given point in time.</p>
-<h2 id="adapt-the-environment">Adapt the environment</h2>
-<p>An individual must adapt to the signals to others within a system in order to effectively communicate.</p>
-<h2 id="bandwidth">Bandwidth</h2>
-<p>The bandwidth of any node within a system is limited to their capacity. Structures of nodes exist to permit the flow of information through the system.</p>
-<h2 id="networks-permit-communication">Networks permit communication</h2>
-<p>The structures or networks that exist within a system permit communication between nodes.</p>
-<h2 id="networks-require-energy-to-come-into-being">Networks require energy to come into being</h2>
-<p>Communicaion networks are maintained by consumption of energy.</p>
-<h2 id="networks-compete-with-other-networks-for-energy">Networks compete with other networks for energy</h2>
-<p>Information is a constrained resource. Networks compete with one another in order to acquire energy</p>
-<h2 id="networks-cannot-remain-isolated">Networks cannot remain isolated</h2>
-<p>Networks in competition cannot isolate from one another if they share energy resources</p>
-<h2 id="networks-inevitably-exchange-information">Networks inevitably exchange information</h2>
-<p>Nodes within networks will interact with one another</p>
-<h2 id="sub-networks-can-exist-within-superstructures">Sub-networks can exist within superstructures</h2>
-<p>Sub-networks with great connectivity will exist within a system</p>
+			<guid>//localhost:1313/en/posts/loc-scraper-gcp/</guid>
+			<description><![CDATA[Running a scraper as a gcp cloud run job]]></description>
+			<content type="html"><![CDATA[<h1 id="library-of-congress-scraper-job">Library of Congress Scraper Job</h1>
+<p>This <a href="https://github.com/justin-napolitano/loc_scraper">repo</a> scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.</p>
+<h2 id="quick-history-of-this-project">Quick History of this project</h2>
+<p>I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive. I think with current tech I will be able to complete this project in about a week or two.</p>
+<h3 id="what-this-script-does">What this script does</h3>
+<p>This script simply calls the library of congress&rsquo;s public api with a search query and iterates through the search results.</p>
+<p>Each result is transformed to a json string and then dropped into a gcp bucket that can be accessed by other tasks to be built into this workflow.</p>
+<h2 id="the-gcp-omponent">The GCP omponent</h2>
+<p>This workflow could be built for my local infrastructure or for a vm somewhere in the cloud&hellip; but I&rsquo;ve chosen to design each task as a gcp job that will permit an enterprise scale workflow to run.
+c</p>
+<h3 id="why">Why</h3>
+<p>Because I want to push myself a bit&hellip; but this also could be used as proof of concept tool that can easily be adapted to the needs of enterprise clients or research institutions.</p>
+<h2 id="quickstart">Quickstart</h2>
+<h3 id="download-the-repo">Download the repo</h3>
+<p>Copy the repo at <a href="https://github.com/justin-napolitano/loc_scraper">github.com/justin-napolitano/loc_scraper</a> to get started</p>
+<h3 id="gcloud-cli">Gcloud cli</h3>
+<p>After this you will have to install gcloud cli and configure you&rsquo;re local environment. I will write up some scripts in a subsequent post to automate this process&hellip; but for the time being check out this <a href="https://cloud.google.com/sdk/docs/install">&ldquo;link&rdquo;</a></p>
+<h3 id="create-the-image">Create the image</h3>
+<p>In the repo there is a a bash script called <code>build.sh</code> that will need to be updated to according to your gcp project.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcloud builds submit --region<span class="o">=</span>us-west2 --config cloudbuild.yaml
+</span></span></code></pre></div><p>It calls <code>cloudbuild.yaml</code> which might need to be updated for you, but the following the should work.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;gcr.io/cloud-builders/docker&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">    docker build -t us-west2-docker.pkg.dev/$PROJECT_ID/supreme-court-scraper/supreme-court-scraper-image:dev .</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">automapSubstitutions</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">images</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="s1">&#39;us-west2-docker.pkg.dev/$PROJECT_ID/supreme-court-scraper/supreme-court-scraper-image:dev&#39;</span><span class="w">
+</span></span></span></code></pre></div><h3 id="following-creation-of-the-imge">Following creation of the imge</h3>
+<p>Next you can create a job on gcp by runnning the <code>job_create.sh</code> script&hellip; or by copying the code below and chaging yourproject to the correct project-name</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcloud run <span class="nb">jobs</span> create supreme-court-scraper --image us-west2-docker.pkg.dev/yourproject/supreme-court-scraper/supreme-court-scraper-image:dev <span class="se">\
+</span></span></span></code></pre></div><h3 id="executing-the-job">Executing the job</h3>
+<p>Once complete you can execute the job by running the <code>execute_job.sh</code> script or by running</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcloud run <span class="nb">jobs</span> execute supreme-court-scraper
+</span></span></code></pre></div><h3 id="putting-it-all-together">Putting it all together</h3>
+<p>In a perfect world the following should work. Note that src/.env should be set with your environmental variables such as <code>$GCPPROJECTID</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> src/.env <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="o">&amp;&amp;</span> ./build.sh <span class="se">\ </span>
+</span></span><span class="line"><span class="cl"><span class="o">&amp;&amp;</span> ./job_create.sh <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="o">&amp;&amp;</span> ./execute_job.sh
+</span></span></code></pre></div><h2 id="running-locally">Running locally</h2>
+<p>The python script in the <code>/src</code> can be run locally, however it should be modified if you choose not to use gcp.  There are a number of functions within that can easily be modified to permit writing to the local directory.</p>
 ]]></content>
+		</item>
+		
+		<item>
+			<title>Creating a GCP Client Tool</title>
+			<link>//localhost:1313/en/posts/gcp-utilities/</link>
+			<pubDate>Sat, 27 Apr 2024 00:00:00 +0000</pubDate>
+			
+			<guid>//localhost:1313/en/posts/gcp-utilities/</guid>
+			<description><![CDATA[GCP Submodules for repetitive tasks]]></description>
+			<content type="html"><![CDATA[<h1 id="creating-a-gcp-client-tool-in-python">Creating a GCP Client Tool in Python</h1>
+<h2 id="why">Why</h2>
+<p>I often find myself reuuing the same bits of code when working with GCP. It is very important to avoid creating multiple development trees of the same classes. I have done this before for large projects. It will lead to a very difficult to maintain stack of tools that will spaghettify over time.</p>
+<h2 id="creating-the-submodule">Creating the submodule</h2>
+<h3 id="create-an-empty-directory">Create an empty directory</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir gcpuptils
+</span></span></code></pre></div><h3 id="add-the-following-code-to-a-gcpclientpy-file">Add the following code to a gcpclient.py file</h3>
+<p><a href="https://github.com/justin-napolitano/gcputils/blob/main/gcpclient.py">github link to latest file</a> is the link to the <code>gcpclient.py</code> file on GitHub.</p>
+<h3 id="initialize-like-usual">Initialize like usual</h3>
+<ol>
+<li>Run <code>git init &amp;&amp; git add . &amp;&amp; git commit -m 'init'</code></li>
+<li>run <code>gh repo create</code> and follow the prompts</li>
+<li>run <code> git push</code> and follow the prompts</li>
+</ol>
+<h2 id="importing-into-your-project">Importing into your project</h2>
+<p>In my example i created a repo at <code>https://github.com/justin-napolitano/gcputils.git</code></p>
+<p>Run the following to import the latest repo into your current project.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git submodule add -b pit https://github.com/justin-napolitano/gcputils.git
+</span></span></code></pre></div><p>The benefit of doing this is that the code can be reused across every project without having to worry about broken development tress.</p>
+<h2 id="using-google-cloud-storage-for-python">Using Google Cloud Storage for Python</h2>
+<p>Documentation Source: <code>https://cloud.google.com/python/docs/reference/storage/latest</code></p>
+<h3 id="install-google-cloud-storage-for-python">Install Google Cloud Storage for Python</h3>
+<p>Run the following</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install google-cloud-storage
+</span></span></code></pre></div><h3 id="create-the-credentials-file-for-the-application">Create the Credentials File for the Application</h3>
+<p>src = <code>https://cloud.google.com/storage/docs/reference/libraries#client-libraries-install-python</code></p>
+<p>Run the following and follow the prompts</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcloud auth application-default login
+</span></span></code></pre></div><h2 id="initializing-a-client-and-creating-a-bucket-to-test">Initializing a client and creating a bucket to test</h2>
+<p>Source : <code>https://cloud.google.com/python/docs/reference/storage/latest/google.cloud.storage.client.Client</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">project_id</span> <span class="o">=</span> <span class="s1">&#39;{YOUR PROJECT}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">gcs</span> <span class="o">=</span> <span class="n">GCSClient</span><span class="p">(</span><span class="n">project_id</span><span class="p">,</span> <span class="n">credentials_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># List buckets to test client authorization</span>
+</span></span><span class="line"><span class="cl"><span class="n">buckets</span> <span class="o">=</span> <span class="n">gcs</span><span class="o">.</span><span class="n">list_buckets</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Buckets:&#34;</span><span class="p">,</span> <span class="n">buckets</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># creating a new bucket if it doesn&#39;t exist</span>
+</span></span><span class="line"><span class="cl"><span class="n">bucket_name</span> <span class="o">=</span> <span class="s2">&#34;loc-scraper&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">bucket</span> <span class="o">=</span> <span class="n">gcs</span><span class="o">.</span><span class="n">create_bucket</span><span class="p">(</span><span class="n">bucket_name</span><span class="o">=</span><span class="n">bucket_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">bucket</span><span class="p">)</span>
+</span></span></code></pre></div>]]></content>
 		</item>
 		
 		<item>

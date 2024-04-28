@@ -7,20 +7,62 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 25 Apr 2024 13:59:02 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Networks</title>
-      <link>//localhost:1313/en/tags/networks/</link>
+      <title>Bash</title>
+      <link>//localhost:1313/en/tags/bash/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/networks/</guid>
+      <guid>//localhost:1313/en/tags/bash/</guid>
       <description></description>
     </item>
     <item>
-      <title>Nodes</title>
-      <link>//localhost:1313/en/tags/nodes/</link>
+      <title>Gcp</title>
+      <link>//localhost:1313/en/tags/gcp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/nodes/</guid>
+      <guid>//localhost:1313/en/tags/gcp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Git</title>
+      <link>//localhost:1313/en/tags/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/tags/git/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>//localhost:1313/en/tags/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Workflow Automation</title>
+      <link>//localhost:1313/en/tags/workflow-automation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/tags/workflow-automation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Automation</title>
+      <link>//localhost:1313/en/tags/automation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/tags/automation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Submodules</title>
+      <link>//localhost:1313/en/tags/submodules/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/tags/submodules/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Workflow</title>
+      <link>//localhost:1313/en/tags/workflow/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/tags/workflow/</guid>
       <description></description>
     </item>
     <item>
@@ -35,48 +77,6 @@
       <link>//localhost:1313/en/tags/logistic-regression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/en/tags/logistic-regression/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Numerical-Computing</title>
-      <link>//localhost:1313/en/tags/numerical-computing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/numerical-computing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Statistics</title>
-      <link>//localhost:1313/en/tags/statistics/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/statistics/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Monte-Carlo</title>
-      <link>//localhost:1313/en/tags/monte-carlo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/monte-carlo/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>//localhost:1313/en/tags/python/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Spearman-Rank-Correlation</title>
-      <link>//localhost:1313/en/tags/spearman-rank-correlation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/spearman-rank-correlation/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Logisitic-Regression</title>
-      <link>//localhost:1313/en/tags/logisitic-regression/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/logisitic-regression/</guid>
       <description></description>
     </item>
   </channel>
