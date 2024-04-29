@@ -2,18 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gcp on justin.napolitano</title>
-    <link>jnapolitano.com/en/tags/gcp/</link>
+    <link>//localhost:1313/en/tags/gcp/</link>
     <description>Recent content in Gcp on justin.napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Mon, 29 Apr 2024 00:25:52 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/gcp/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/gcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GCP Cloud Run Job Scraper</title>
-      <link>jnapolitano.com/en/posts/loc-scraper-gcp/</link>
+      <link>//localhost:1313/en/posts/loc-scraper-gcp/</link>
       <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>jnapolitano.com/en/posts/loc-scraper-gcp/</guid>
+      <guid>//localhost:1313/en/posts/loc-scraper-gcp/</guid>
+      <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.&#xA;Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
+    </item>
+    <item>
+      <title>GCP Cloud Run Job Scraper</title>
+      <link>//localhost:1313/en/posts/loc_scraper/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/loc_scraper/</guid>
       <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.&#xA;Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
     </item>
   </channel>

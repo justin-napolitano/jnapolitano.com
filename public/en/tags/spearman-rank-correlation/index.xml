@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spearman-Rank-Correlation on justin.napolitano</title>
-    <link>jnapolitano.com/en/tags/spearman-rank-correlation/</link>
+    <link>//localhost:1313/en/tags/spearman-rank-correlation/</link>
     <description>Recent content in Spearman-Rank-Correlation on justin.napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/spearman-rank-correlation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/spearman-rank-correlation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spearman Rank in Standard Julia</title>
-      <link>jnapolitano.com/en/posts/spearman_rank_julia/</link>
+      <link>//localhost:1313/en/posts/spearman_rank_julia/</link>
       <pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/posts/spearman_rank_julia/</guid>
+      <guid>//localhost:1313/en/posts/spearman_rank_julia/</guid>
       <description>Spearman Rank in Standard Julia Well nearly, I did import the erfc function from the SpecialFunctions package. I don&amp;rsquo;t like it either. I&amp;rsquo;ll write my own soon to make up for it.&#xA;Special Thanks I came across the text Numerical Recipes in C. It was first published in 1988, by the Cambridge University Press. The authors are William H. Press, Brian P. Flannery, Saul. A. Teukolsky, and William T. Veterling.</description>
     </item>
   </channel>

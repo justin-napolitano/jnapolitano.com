@@ -1,19 +1,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Posts on justin.napolitano</title>
-		<link>jnapolitano.com/en/posts/</link>
+		<link>//localhost:1313/en/posts/</link>
 		<description>Recent content in Posts on justin.napolitano</description>
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>jayburdindustries</copyright>
-		<atom:link href="jnapolitano.com/en/posts/index.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="//localhost:1313/en/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
 			<title>GCP Cloud Run Job Scraper</title>
-			<link>jnapolitano.com/en/posts/loc-scraper-gcp/</link>
+			<link>//localhost:1313/en/posts/loc-scraper-gcp/</link>
 			<pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/loc-scraper-gcp/</guid>
+			<guid>//localhost:1313/en/posts/loc-scraper-gcp/</guid>
+			<description><![CDATA[Running a scraper as a gcp cloud run job]]></description>
+			<content type="html"><![CDATA[<h1 id="library-of-congress-scraper-job">Library of Congress Scraper Job</h1>
+<p>This <a href="https://github.com/justin-napolitano/loc_scraper">repo</a> scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.</p>
+<h2 id="quick-history-of-this-project">Quick History of this project</h2>
+<p>I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive. I think with current tech I will be able to complete this project in about a week or two.</p>
+<h3 id="what-this-script-does">What this script does</h3>
+<p>This script simply calls the library of congress&rsquo;s public api with a search query and iterates through the search results.</p>
+<p>Each result is transformed to a json string and then dropped into a gcp bucket that can be accessed by other tasks to be built into this workflow.</p>
+<h2 id="the-gcp-component">The GCP Component</h2>
+<p>This workflow could be built for my local infrastructure or for a vm somewhere in the cloud&hellip; but I&rsquo;ve chosen to design each task as a gcp job that will permit an enterprise scale workflow to run.</p>
+<p>The reason for doing this is really just to understand how these jobs work. I will write a subsequent post detailing how this job really works.</p>
+<h3 id="why">Why</h3>
+<p>Because I want to push myself a bit&hellip; but this also could be used as proof of concept tool that can easily be adapted to the needs of enterprise clients or research institutions.</p>
+<h2 id="quickstart">Quickstart</h2>
+<h3 id="download-the-repo">Download the repo</h3>
+<p>Copy the repo at <a href="https://github.com/justin-napolitano/loc_scraper">github.com/justin-napolitano/loc_scraper</a> to get started</p>
+<h3 id="gcloud-cli">Gcloud cli</h3>
+<p>After this you will have to install gcloud cli and configure you&rsquo;re local environment. I will write up some scripts in a subsequent post to automate this process&hellip; but for the time being check out this <a href="https://cloud.google.com/sdk/docs/install">&ldquo;link&rdquo;</a></p>
+<h3 id="create-the-image">Create the image</h3>
+<p>In the repo there is a a bash script called <code>build.sh</code> that will need to be updated to according to your gcp project.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcloud builds submit --region<span class="o">=</span>us-west2 --config cloudbuild.yaml
+</span></span></code></pre></div><p>It calls <code>cloudbuild.yaml</code> which might need to be updated for you, but the following the should work.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;gcr.io/cloud-builders/docker&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">    docker build -t us-west2-docker.pkg.dev/$PROJECT_ID/supreme-court-scraper/supreme-court-scraper-image:dev .</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">automapSubstitutions</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">images</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="s1">&#39;us-west2-docker.pkg.dev/$PROJECT_ID/supreme-court-scraper/supreme-court-scraper-image:dev&#39;</span><span class="w">
+</span></span></span></code></pre></div><h3 id="following-creation-of-the-imge">Following creation of the imge</h3>
+<p>Next you can create a job on gcp by runnning the <code>job_create.sh</code> script&hellip; or by copying the code below and chaging yourproject to the correct project-name</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcloud run <span class="nb">jobs</span> create supreme-court-scraper --image us-west2-docker.pkg.dev/yourproject/supreme-court-scraper/supreme-court-scraper-image:dev <span class="se">\
+</span></span></span></code></pre></div><h3 id="executing-the-job">Executing the job</h3>
+<p>Once complete you can execute the job by running the <code>execute_job.sh</code> script or by running</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcloud run <span class="nb">jobs</span> execute supreme-court-scraper
+</span></span></code></pre></div><h3 id="putting-it-all-together">Putting it all together</h3>
+<p>In a perfect world the following should work. Note that src/.env should be set with your environmental variables such as <code>$GCPPROJECTID</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> src/.env <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="o">&amp;&amp;</span> ./build.sh <span class="se">\ </span>
+</span></span><span class="line"><span class="cl"><span class="o">&amp;&amp;</span> ./job_create.sh <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="o">&amp;&amp;</span> ./execute_job.sh
+</span></span></code></pre></div><h2 id="running-locally">Running locally</h2>
+<p>The python script in the <code>/src</code> can be run locally, however it should be modified if you choose not to use gcp.  There are a number of functions within that can easily be modified to permit writing to the local directory.</p>
+<h2 id="documentation-sources">Documentation Sources</h2>
+<ol>
+<li><a href="https://cloud.google.com/run/docs/create-jobs">&ldquo;Google Cloud Run Jobs Automation&rdquo;</a></li>
+</ol>
+]]></content>
+		</item>
+		
+		<item>
+			<title>GCP Cloud Run Job Scraper</title>
+			<link>//localhost:1313/en/posts/loc_scraper/</link>
+			<pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+			
+			<guid>//localhost:1313/en/posts/loc_scraper/</guid>
 			<description><![CDATA[Running a scraper as a gcp cloud run job]]></description>
 			<content type="html"><![CDATA[<h1 id="library-of-congress-scraper-job">Library of Congress Scraper Job</h1>
 <p>This <a href="https://github.com/justin-napolitano/loc_scraper">repo</a> scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.</p>
@@ -66,10 +122,10 @@
 		
 		<item>
 			<title>Creating a GCP Client Tool</title>
-			<link>jnapolitano.com/en/posts/gcp-utilities/</link>
+			<link>//localhost:1313/en/posts/gcp-utilities/</link>
 			<pubDate>Sat, 27 Apr 2024 00:00:00 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/gcp-utilities/</guid>
+			<guid>//localhost:1313/en/posts/gcp-utilities/</guid>
 			<description><![CDATA[GCP Submodules for repetitive tasks]]></description>
 			<content type="html"><![CDATA[<h1 id="creating-a-gcp-client-tool-in-python">Creating a GCP Client Tool in Python</h1>
 <h2 id="why">Why</h2>
@@ -118,10 +174,10 @@
 		
 		<item>
 			<title>Model Design and Logistic Regression in Python</title>
-			<link>jnapolitano.com/en/posts/logistic_regression_mockup/</link>
+			<link>//localhost:1313/en/posts/logistic_regression_mockup/</link>
 			<pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/logistic_regression_mockup/</guid>
+			<guid>//localhost:1313/en/posts/logistic_regression_mockup/</guid>
 			<description><![CDATA[Designing a logistic regression model from randomized bioinformatics data.]]></description>
 			<content type="html"><![CDATA[<h1 id="model-design-and-logistic-regression-in-python">Model Design and Logistic Regression in Python</h1>
 <p>I recently modeled customer churn in Julia with logistic regression model.  It was interesting to be sure, but I want to extend my analysis skillset by modeling biostatistics data.  In this post, I design a logistic regression model of health predictors.</p>
@@ -511,10 +567,10 @@ weighted avg       0.56      0.56      0.55      4000
 		
 		<item>
 			<title>Annual Cost of Living Monte Carlo Models</title>
-			<link>jnapolitano.com/en/posts/cost-of-living-projections/</link>
+			<link>//localhost:1313/en/posts/cost-of-living-projections/</link>
 			<pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/cost-of-living-projections/</guid>
+			<guid>//localhost:1313/en/posts/cost-of-living-projections/</guid>
 			<description><![CDATA[Monte Carlo Model to determine the cost of living in your city.]]></description>
 			<content type="html"><![CDATA[<h1 id="cost-of-living-projections">Cost of Living Projections</h1>
 <h2 id="introduction">Introduction</h2>
@@ -861,10 +917,10 @@ weighted avg       0.56      0.56      0.55      4000
 		
 		<item>
 			<title>Spearman Rank in Standard Julia</title>
-			<link>jnapolitano.com/en/posts/spearman_rank_julia/</link>
+			<link>//localhost:1313/en/posts/spearman_rank_julia/</link>
 			<pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/spearman_rank_julia/</guid>
+			<guid>//localhost:1313/en/posts/spearman_rank_julia/</guid>
 			<description><![CDATA[Numerical Recipes in Julia.  Spearman Rank Correlation adapted to nearly standard Julia.]]></description>
 			<content type="html"><![CDATA[<h2 id="spearman-rank-in-standard-julia">Spearman Rank in Standard Julia</h2>
 <p>Well nearly, I did import the erfc function from the SpecialFunctions package.  I don&rsquo;t like it either.  I&rsquo;ll write my own soon to make up for it.</p>
@@ -981,10 +1037,10 @@ weighted avg       0.56      0.56      0.55      4000
 		
 		<item>
 			<title>Churn Modelling Marketing Data with Julia</title>
-			<link>jnapolitano.com/en/posts/propensity_scoring/</link>
+			<link>//localhost:1313/en/posts/propensity_scoring/</link>
 			<pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/propensity_scoring/</guid>
+			<guid>//localhost:1313/en/posts/propensity_scoring/</guid>
 			<description><![CDATA[Logistic Regression Propensity Models of Marketing Data with Julia.]]></description>
 			<content type="html"><![CDATA[<h1 id="churn-modelling-marketing-data-with-julia">Churn Modelling Marketing Data with Julia</h1>
 <h2 id="introduction">Introduction</h2>
@@ -1245,10 +1301,10 @@ ROCNums{Int64}
 		
 		<item>
 			<title>Markov Chains in Julia</title>
-			<link>jnapolitano.com/en/posts/markov-models-julia/</link>
+			<link>//localhost:1313/en/posts/markov-models-julia/</link>
 			<pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/markov-models-julia/</guid>
+			<guid>//localhost:1313/en/posts/markov-models-julia/</guid>
 			<description><![CDATA[Writing a Markov Simulation Problem the hard way.]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>I am currently working on a <a href="https://blog.jnapolitano.io/series/legal-research-with-ai/">legal research series</a> where I perform statistical analysis and ml models to legal datasets.  My intention is to model the behavior of courts, determine the outcome of cases, and build a pipeline capable of identifying relevant case law by issue area.</p>
@@ -1317,10 +1373,10 @@ ROCNums{Int64}
 		
 		<item>
 			<title>Quantitative Julia Problems</title>
-			<link>jnapolitano.com/en/posts/pi-with-julia/</link>
+			<link>//localhost:1313/en/posts/pi-with-julia/</link>
 			<pubDate>Tue, 24 May 2022 01:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/pi-with-julia/</guid>
+			<guid>//localhost:1313/en/posts/pi-with-julia/</guid>
 			<description><![CDATA[Testing your Julia Configuration with some numerical computing.]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>In my <a href="https://blog.jnapolitano.io/posts/rocky-linux-8-julia/">previous post</a>, I demonstrated how to configure Rocky Linux and RHEL distributions for quantitative analysis.</p>
@@ -1374,10 +1430,10 @@ ROCNums{Int64}
 		
 		<item>
 			<title>Configuring Rocky Linux 8 for Quantitative Analysis in Julia</title>
-			<link>jnapolitano.com/en/posts/rocky-linux-8-julia/</link>
+			<link>//localhost:1313/en/posts/rocky-linux-8-julia/</link>
 			<pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/rocky-linux-8-julia/</guid>
+			<guid>//localhost:1313/en/posts/rocky-linux-8-julia/</guid>
 			<description><![CDATA[Configure Rocky Linux 8 for Julia development and quantitative analysis.]]></description>
 			<content type="html"><![CDATA[<h2 id="install-jupyter">Install Jupyter</h2>
 <p>Start with installing jupyter.  It will serve as our server for development.</p>
@@ -1422,10 +1478,10 @@ ROCNums{Int64}
 		
 		<item>
 			<title>Rice Paddy Methane Emissions Estimation: Part 2</title>
-			<link>jnapolitano.com/en/posts/rice-paddy-emissions-2/</link>
+			<link>//localhost:1313/en/posts/rice-paddy-emissions-2/</link>
 			<pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/rice-paddy-emissions-2/</guid>
+			<guid>//localhost:1313/en/posts/rice-paddy-emissions-2/</guid>
 			<description><![CDATA[Comparing 5 years of methane emissions to determine if Climate Trace forecasts greater emissions than UN FAOSTAT.]]></description>
 			<content type="html"><![CDATA[<h1 id="methane-emissions-estimation-data-part-2-a-comparison-between-faostat-and-university-of-malaysia-estimates">Methane Emissions Estimation Data Part 2: A Comparison between FAOSTAT and University of Malaysia Estimates</h1>
 <p>This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.</p>
@@ -1574,10 +1630,10 @@ Probably different distributions
 		
 		<item>
 			<title>Conduct Legal Research with AI Part 8: Case Nodes Sample Data</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-8/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-8/</link>
 			<pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/legal-research-part-8/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-8/</guid>
 			<description><![CDATA[Merging Oyez and Library of Congress Data into a Comprehensive Data Set]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>The legal Research with AI Series is expanding quickly. This is the 9th post related to it in someway.  Building this pipeline and integrating multiple datasets into nodes is proving to be verbose.</p>
@@ -2650,10 +2706,10 @@ Probably different distributions
 		
 		<item>
 			<title>Legal Research with AI Part 7: Wrangling Data with Julia</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-7/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-7/</link>
 			<pubDate>Sun, 22 May 2022 16:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/legal-research-part-7/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-7/</guid>
 			<description><![CDATA[File management with Julia in preperation for data merge.]]></description>
 			<content type="html"><![CDATA[<h2 id="intro">Intro</h2>
 <p>In a <a href="https://blog.jnapolitano.io/posts/legal-research-part-5/">previous post</a>, I seperated all of the results returned from the Library of Congress API into individual JSON documents to be imported as nodes into a neo4j graph.</p>
@@ -2847,10 +2903,10 @@ Probably different distributions
 		
 		<item>
 			<title>Legal Research with AI: Part 6</title>
-			<link>jnapolitano.com/en/posts/masterpiece/</link>
+			<link>//localhost:1313/en/posts/masterpiece/</link>
 			<pubDate>Sat, 21 May 2022 19:40:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/masterpiece/</guid>
+			<guid>//localhost:1313/en/posts/masterpiece/</guid>
 			<description><![CDATA[Control Model: A traditional statistical analysis of voting behavior in SPSS.]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>Currently, my server is mining data from the neo4j graph database.</p>
@@ -4097,10 +4153,10 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 5</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-5/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-5/</link>
 			<pubDate>Sat, 21 May 2022 14:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/legal-research-part-5/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-5/</guid>
 			<description><![CDATA[Transforming the Library of Congress results into individual json documents contaning case information.]]></description>
 			<content type="html"><![CDATA[<h1 id="legal-research-with-ai-part-5">Legal Research with AI: Part 5&quot;</h1>
 <p>In the previous posts in this series, I have downloaded the data required to build the neo4j graph.  In this post, I will arrange the data into a data structure that will permit me to easily create graph nodes and most importantly relationships.</p>
@@ -4178,10 +4234,10 @@ the chart below.</p>
 		
 		<item>
 			<title>Rice Paddy Methane Emissions Estimation: Part 1</title>
-			<link>jnapolitano.com/en/posts/rice-paddy-emissions-1/</link>
+			<link>//localhost:1313/en/posts/rice-paddy-emissions-1/</link>
 			<pubDate>Sat, 21 May 2022 08:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/rice-paddy-emissions-1/</guid>
+			<guid>//localhost:1313/en/posts/rice-paddy-emissions-1/</guid>
 			<description><![CDATA[Fact checking reported methane emissions proposed by the UN and Climate TRACE]]></description>
 			<content type="html"><![CDATA[<h1 id="methane-emissions-estimation-data-part-1-a-comparison-between-faostat-and-university-of-malaysia-estimates">Methane Emissions Estimation Data Part 1: A Comparison between FAOSTAT and University of Malaysia Estimates</h1>
 <p>This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.</p>
@@ -4605,10 +4661,10 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 4</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-4/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-4/</link>
 			<pubDate>Thu, 19 May 2022 22:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/legal-research-part-4/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-4/</guid>
 			<description><![CDATA[Importing case variables and established relationships to the graph.]]></description>
 			<content type="html"><![CDATA[<h1 id="conduct-legal-research-with-ai-part-4">Conduct Legal Research with AI Part 4</h1>
 <p>This is the fourth post in a series documenting the process of building an ml pipeline used to train models to predict the outcomes of Supreme Court cases.</p>
@@ -4789,10 +4845,10 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 3</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-3/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-3/</link>
 			<pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/legal-research-part-3/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-3/</guid>
 			<description><![CDATA[Testing TensorFlow models against the SCDB data set.]]></description>
 			<content type="html"><![CDATA[<h1 id="conduct-legal-research-with-ai-part-3">Conduct Legal Research with AI: Part 3</h1>
 <p>This is the third post in a series documenting the process of building an ml pipeline that will be used to train models to predict the outcomes of Supreme Court Cases.</p>
@@ -5360,10 +5416,10 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 2</title>
-			<link>jnapolitano.com/en/posts/legal-reserch-part-2/</link>
+			<link>//localhost:1313/en/posts/legal-reserch-part-2/</link>
 			<pubDate>Tue, 17 May 2022 18:40:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/legal-reserch-part-2/</guid>
+			<guid>//localhost:1313/en/posts/legal-reserch-part-2/</guid>
 			<description><![CDATA[Documenting classes and an application to integrate the US Constitution into my Neo4j DB]]></description>
 			<content type="html"><![CDATA[<h1 id="integrating-the-constitution-to-neo4j">Integrating the Constitution to Neo4j</h1>
 <p>I am currenlty building a graph database of Supreme Court cases in neo4j to model the behavior and decison making of the court.</p>
@@ -5526,10 +5582,10 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 1</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-1/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-1/</link>
 			<pubDate>Mon, 16 May 2022 14:40:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/legal-research-part-1/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-1/</guid>
 			<description><![CDATA[Integrate JSON data from a rest API into your Neo4j Stack]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>In a previous <a href="https://blog.jnapolitano.io/loc_crawler/">post</a>, I detailed the process of crawling the Library of Congress API to generate json files that could be intergrated into you DB of choice.</p>
@@ -6588,10 +6644,10 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 0</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-0/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-0/</link>
 			<pubDate>Mon, 16 May 2022 13:40:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/legal-research-part-0/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-0/</guid>
 			<description><![CDATA[Crawl the Library of Congress API to automate your next research project.]]></description>
 			<content type="html"><![CDATA[<h1 id="crawling-the-library-of-congress-api">Crawling the Library of Congress API</h1>
 <h2 id="introduction">Introduction</h2>
@@ -7410,10 +7466,10 @@ the chart below.</p>
 		
 		<item>
 			<title>Feasibility of Transatlantic Carbon Shipping</title>
-			<link>jnapolitano.com/en/posts/feasibility_study_shipping_carbon/</link>
+			<link>//localhost:1313/en/posts/feasibility_study_shipping_carbon/</link>
 			<pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/feasibility_study_shipping_carbon/</guid>
+			<guid>//localhost:1313/en/posts/feasibility_study_shipping_carbon/</guid>
 			<description><![CDATA[A feasibility study of shipping carbon from Europe to the United States]]></description>
 			<content type="html"><![CDATA[<h1 id="feasibility-of-shipping-carbon-across-the-atlantic">Feasibility of Shipping Carbon Across the Atlantic</h1>
 <h2 id="methodology">Methodology</h2>
@@ -7792,10 +7848,10 @@ the chart below.</p>
 		
 		<item>
 			<title>Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to the United States</title>
-			<link>jnapolitano.com/en/posts/carbon-shipping-projections/</link>
+			<link>//localhost:1313/en/posts/carbon-shipping-projections/</link>
 			<pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/carbon-shipping-projections/</guid>
+			<guid>//localhost:1313/en/posts/carbon-shipping-projections/</guid>
 			<description><![CDATA[Monte Carlo Carbon Shipping Projections]]></description>
 			<content type="html"><![CDATA[<h1 id="a-monte-carlo-projection-of-the-annual-cost-of-shipping-carbon-from-europe-to-us-ports">A Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to US Ports</h1>
 <h2 id="revision">Revision</h2>
@@ -8165,10 +8221,10 @@ Università Bocconi, Milan, Italy</p>
 		
 		<item>
 			<title>Potential Carbon and Hydrogen Storage Facilities Near Import/Export Ports</title>
-			<link>jnapolitano.com/en/posts/wells-near-ports/</link>
+			<link>//localhost:1313/en/posts/wells-near-ports/</link>
 			<pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/wells-near-ports/</guid>
+			<guid>//localhost:1313/en/posts/wells-near-ports/</guid>
 			<description><![CDATA[Identifying potential carbon and hydrogen storage facilities near lng ports.]]></description>
 			<content type="html"><![CDATA[<h1 id="potential-carbon-storage-facilities-near-importexport-ports">Potential Carbon Storage Facilities Near Import/Export Ports</h1>
 <h2 id="import-and-procedural-functions">Import and Procedural Functions</h2>
@@ -8351,10 +8407,10 @@ Università Bocconi, Milan, Italy</p>
 		
 		<item>
 			<title>Potential Carbon and Hydrogen Storage Wells Near Pipelines</title>
-			<link>jnapolitano.com/en/posts/wells-near-pipelines/</link>
+			<link>//localhost:1313/en/posts/wells-near-pipelines/</link>
 			<pubDate>Fri, 06 May 2022 05:30:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/wells-near-pipelines/</guid>
+			<guid>//localhost:1313/en/posts/wells-near-pipelines/</guid>
 			<description><![CDATA[Identifying potential carbon and hydrogen storage facilities from spent well data.]]></description>
 			<content type="html"><![CDATA[<h1 id="potential-carbon-storage-wells-near-pipelines">Potential Carbon Storage Wells Near Pipelines</h1>
 <h2 id="import-and-procedural-functions">Import and Procedural Functions</h2>
@@ -8494,10 +8550,10 @@ Università Bocconi, Milan, Italy</p>
 		
 		<item>
 			<title>The World Trade Organization, Governments, and International Trade</title>
-			<link>jnapolitano.com/en/posts/project-evolution-of-ngos/</link>
+			<link>//localhost:1313/en/posts/project-evolution-of-ngos/</link>
 			<pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/project-evolution-of-ngos/</guid>
+			<guid>//localhost:1313/en/posts/project-evolution-of-ngos/</guid>
 			<description><![CDATA[Integrate JSON data from a rest API into your Neo4j Stack]]></description>
 			<content type="html"><![CDATA[<h1 id="the-world-trade-organization-governments-and-international-trade">The World Trade Organization, Governments, and International Trade</h1>
 <h2 id="intro">Intro</h2>
@@ -8971,10 +9027,10 @@ complicating the analysis</p>
 		
 		<item>
 			<title>EuroZone Gas Imports and Exports</title>
-			<link>jnapolitano.com/en/posts/european-gas-imports/</link>
+			<link>//localhost:1313/en/posts/european-gas-imports/</link>
 			<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
 			
-			<guid>jnapolitano.com/en/posts/european-gas-imports/</guid>
+			<guid>//localhost:1313/en/posts/european-gas-imports/</guid>
 			<description><![CDATA[EuroZone Gas Imports and Exports.]]></description>
 			<content type="html"><![CDATA[<h1 id="eurozone-gas-imports-and-exports">EuroZone Gas Imports and Exports</h1>
 <h2 id="import-and-procedural-functions">Import and Procedural Functions</h2>

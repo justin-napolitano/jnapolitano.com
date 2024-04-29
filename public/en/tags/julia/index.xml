@@ -2,60 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Julia on justin.napolitano</title>
-    <link>jnapolitano.com/en/tags/julia/</link>
+    <link>//localhost:1313/en/tags/julia/</link>
     <description>Recent content in Julia on justin.napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/julia/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/julia/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Model Design and Logistic Regression in Python</title>
-      <link>jnapolitano.com/en/posts/logistic_regression_mockup/</link>
+      <link>//localhost:1313/en/posts/logistic_regression_mockup/</link>
       <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/posts/logistic_regression_mockup/</guid>
+      <guid>//localhost:1313/en/posts/logistic_regression_mockup/</guid>
       <description>Model Design and Logistic Regression in Python I recently modeled customer churn in Julia with logistic regression model. It was interesting to be sure, but I want to extend my analysis skillset by modeling biostatistics data. In this post, I design a logistic regression model of health predictors.&#xA;Imports # load some default Python modules import numpy as np import pandas as pd import matplotlib.pyplot as plt import seaborn as sns plt.</description>
     </item>
     <item>
       <title>Spearman Rank in Standard Julia</title>
-      <link>jnapolitano.com/en/posts/spearman_rank_julia/</link>
+      <link>//localhost:1313/en/posts/spearman_rank_julia/</link>
       <pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/posts/spearman_rank_julia/</guid>
+      <guid>//localhost:1313/en/posts/spearman_rank_julia/</guid>
       <description>Spearman Rank in Standard Julia Well nearly, I did import the erfc function from the SpecialFunctions package. I don&amp;rsquo;t like it either. I&amp;rsquo;ll write my own soon to make up for it.&#xA;Special Thanks I came across the text Numerical Recipes in C. It was first published in 1988, by the Cambridge University Press. The authors are William H. Press, Brian P. Flannery, Saul. A. Teukolsky, and William T. Veterling.</description>
     </item>
     <item>
       <title>Churn Modelling Marketing Data with Julia</title>
-      <link>jnapolitano.com/en/posts/propensity_scoring/</link>
+      <link>//localhost:1313/en/posts/propensity_scoring/</link>
       <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/posts/propensity_scoring/</guid>
+      <guid>//localhost:1313/en/posts/propensity_scoring/</guid>
       <description>Churn Modelling Marketing Data with Julia Introduction I prepared this analysis to learn the logistic regression in Julia. The work is fairly straightforward. I am modelling if a customer will exit a website based on a number of sites. I&amp;rsquo;ll improve the model in an upcoming post. As if, is not as interesting as asking when. That will be my next project&#xA;Imports using Pkg using DataFrames using CSV using Plots using GLM using StatsBase using Lathe using MLBase using ClassImbalance using ROCAnalysis using PyCall sklearn = pyimport(&amp;#34;sklearn.</description>
     </item>
     <item>
       <title>Markov Chains in Julia</title>
-      <link>jnapolitano.com/en/posts/markov-models-julia/</link>
+      <link>//localhost:1313/en/posts/markov-models-julia/</link>
       <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/posts/markov-models-julia/</guid>
+      <guid>//localhost:1313/en/posts/markov-models-julia/</guid>
       <description>Introduction I am currently working on a legal research series where I perform statistical analysis and ml models to legal datasets. My intention is to model the behavior of courts, determine the outcome of cases, and build a pipeline capable of identifying relevant case law by issue area.&#xA;That data set is nearly complete, but I have not decided which models to apply to it. This is where Julia comes into play.</description>
     </item>
     <item>
       <title>Quantitative Julia Problems</title>
-      <link>jnapolitano.com/en/posts/pi-with-julia/</link>
+      <link>//localhost:1313/en/posts/pi-with-julia/</link>
       <pubDate>Tue, 24 May 2022 01:30:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/posts/pi-with-julia/</guid>
+      <guid>//localhost:1313/en/posts/pi-with-julia/</guid>
       <description>Introduction In my previous post, I demonstrated how to configure Rocky Linux and RHEL distributions for quantitative analysis.&#xA;In this post, I include a few sample programs to test your installation.&#xA;How to run the programs I saved them to a folder within the project directory.&#xA;Activate the Project using Pkg Pkg.activate(&amp;#34;.&amp;#34;) #cd(&amp;#34;&amp;lt;sub-directory-containing-files&amp;gt;) optional Run a program include(&amp;#34;path/to/script-name.jl&amp;#34;) Estimate the Value of Pi Use the Monte Carlo method to estimate the value of pi.</description>
     </item>
     <item>
       <title>Configuring Rocky Linux 8 for Quantitative Analysis in Julia</title>
-      <link>jnapolitano.com/en/posts/rocky-linux-8-julia/</link>
+      <link>//localhost:1313/en/posts/rocky-linux-8-julia/</link>
       <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/posts/rocky-linux-8-julia/</guid>
+      <guid>//localhost:1313/en/posts/rocky-linux-8-julia/</guid>
       <description>Install Jupyter Start with installing jupyter. It will serve as our server for development.&#xA;Install Dependencies sudo dnf install gcc python3-devel kernel-headers-$(uname -r) Install Jupyter Via Pip pip3 install --user jupyter Install Julia We will be installing from the official binaries.&#xA;Make a directory in user profile. i simply ran mkdir julia in the home folder. The cd to julia.&#xA;When in the folder run&#xA;Wget wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.2-linux-x86_64.tar.gz Unpack Then unpack</description>
     </item>
     <item>
       <title>Legal Research with AI Part 7: Wrangling Data with Julia</title>
-      <link>jnapolitano.com/en/posts/legal-research-part-7/</link>
+      <link>//localhost:1313/en/posts/legal-research-part-7/</link>
       <pubDate>Sun, 22 May 2022 16:30:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/posts/legal-research-part-7/</guid>
+      <guid>//localhost:1313/en/posts/legal-research-part-7/</guid>
       <description>Intro In a previous post, I seperated all of the results returned from the Library of Congress API into individual JSON documents to be imported as nodes into a neo4j graph.&#xA;In this post, I filter the LOC data against another data set from Oyez that will be integrated in the next post.&#xA;Filtering Data Both data sets have been seperated into individual case nodes stored in the json format as a file with the format : .</description>
     </item>
   </channel>

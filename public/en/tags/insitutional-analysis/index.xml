@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Insitutional Analysis on justin.napolitano</title>
-    <link>jnapolitano.com/en/tags/insitutional-analysis/</link>
+    <link>//localhost:1313/en/tags/insitutional-analysis/</link>
     <description>Recent content in Insitutional Analysis on justin.napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/insitutional-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/insitutional-analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The World Trade Organization, Governments, and International Trade</title>
-      <link>jnapolitano.com/en/posts/project-evolution-of-ngos/</link>
+      <link>//localhost:1313/en/posts/project-evolution-of-ngos/</link>
       <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate>
-      <guid>jnapolitano.com/en/posts/project-evolution-of-ngos/</guid>
+      <guid>//localhost:1313/en/posts/project-evolution-of-ngos/</guid>
       <description>The World Trade Organization, Governments, and International Trade Intro International Organizations are vital to the operation of International politics. They regulate behaviors, facilitate communication, and promote cooperation between states. The process by which International Organizations come into being is well discussed in the literature, however, not equally well debated is the process by which International Organizations come to modify their operating procedure. Or in other words, when the member states renegotiate the terms of their membership.</description>
     </item>
   </channel>
