@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hydrogen on justin.napolitano</title>
-    <link>//localhost:1313/en/tags/hydrogen/</link>
+    <link>jnapolitano.com/en/tags/hydrogen/</link>
     <description>Recent content in Hydrogen on justin.napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/hydrogen/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/hydrogen/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Potential Carbon and Hydrogen Storage Facilities Near Import/Export Ports</title>
-      <link>//localhost:1313/en/posts/wells-near-ports/</link>
+      <link>jnapolitano.com/en/posts/wells-near-ports/</link>
       <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate>
-      <guid>//localhost:1313/en/posts/wells-near-ports/</guid>
+      <guid>jnapolitano.com/en/posts/wells-near-ports/</guid>
       <description>Potential Carbon Storage Facilities Near Import/Export Ports Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import geopandas as gpd import folium import contextily as cx import rtree from zlib import crc32 import hashlib from shapely.geometry import Point, LineString, Polygon import numpy as np from scipy.spatial import cKDTree from shapely.geometry import Point from haversine import Unit from geopy.distance import distance Restrictions Must be near a pipeline terminal Must be Near a petrolium Port Query Plan Imports</description>
     </item>
     <item>
       <title>Potential Carbon and Hydrogen Storage Wells Near Pipelines</title>
-      <link>//localhost:1313/en/posts/wells-near-pipelines/</link>
+      <link>jnapolitano.com/en/posts/wells-near-pipelines/</link>
       <pubDate>Fri, 06 May 2022 05:30:32 +0000</pubDate>
-      <guid>//localhost:1313/en/posts/wells-near-pipelines/</guid>
+      <guid>jnapolitano.com/en/posts/wells-near-pipelines/</guid>
       <description>Potential Carbon Storage Wells Near Pipelines Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import geopandas as gpd import folium import contextily as cx import rtree from zlib import crc32 import hashlib from shapely.geometry import Point, LineString, Polygon import numpy as np from scipy.spatial import cKDTree from shapely.geometry import Point from haversine import Unit from geopy.distance import distance Query Plan Restrictions Must be near a pipeline terminal Imports Pipeline Data Well Data Filtering For each well calculate nearest pipeline</description>
     </item>
   </channel>

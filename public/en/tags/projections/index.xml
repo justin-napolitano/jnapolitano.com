@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projections on justin.napolitano</title>
-    <link>//localhost:1313/en/tags/projections/</link>
+    <link>jnapolitano.com/en/tags/projections/</link>
     <description>Recent content in Projections on justin.napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/projections/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/projections/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to the United States</title>
-      <link>//localhost:1313/en/posts/carbon-shipping-projections/</link>
+      <link>jnapolitano.com/en/posts/carbon-shipping-projections/</link>
       <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
-      <guid>//localhost:1313/en/posts/carbon-shipping-projections/</guid>
+      <guid>jnapolitano.com/en/posts/carbon-shipping-projections/</guid>
       <description>A Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to US Ports Revision An earlier version of this report had reported values that were erroneously elevated by a decimal error in the meters to km conversion of distances between ports. I apologize for unintentionally publishing misleading information.&#xA;Situations like this one, are why I always publish with code. Transparency is the key to rigor.&#xA;Introduction I produced an earlier report that identified potential ports that may be suitable terminals for carbon imports into the United States for storage or industrial applications.</description>
     </item>
   </channel>

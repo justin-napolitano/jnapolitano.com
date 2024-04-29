@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Marketing-Analsyis on justin.napolitano</title>
-    <link>//localhost:1313/en/tags/marketing-analsyis/</link>
+    <link>jnapolitano.com/en/tags/marketing-analsyis/</link>
     <description>Recent content in Marketing-Analsyis on justin.napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/marketing-analsyis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/marketing-analsyis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Churn Modelling Marketing Data with Julia</title>
-      <link>//localhost:1313/en/posts/propensity_scoring/</link>
+      <link>jnapolitano.com/en/posts/propensity_scoring/</link>
       <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate>
-      <guid>//localhost:1313/en/posts/propensity_scoring/</guid>
+      <guid>jnapolitano.com/en/posts/propensity_scoring/</guid>
       <description>Churn Modelling Marketing Data with Julia Introduction I prepared this analysis to learn the logistic regression in Julia. The work is fairly straightforward. I am modelling if a customer will exit a website based on a number of sites. I&amp;rsquo;ll improve the model in an upcoming post. As if, is not as interesting as asking when. That will be my next project&#xA;Imports using Pkg using DataFrames using CSV using Plots using GLM using StatsBase using Lathe using MLBase using ClassImbalance using ROCAnalysis using PyCall sklearn = pyimport(&amp;#34;sklearn.</description>
     </item>
   </channel>
