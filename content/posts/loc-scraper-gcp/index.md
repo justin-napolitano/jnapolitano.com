@@ -3,7 +3,7 @@ title =  "GCP Cloud Run Job Scraper"
 date = "2024-04-28"
 description = "Running a scraper as a gcp cloud run job"
 author = "Justin Napolitano"
-tags = ['git', 'python', 'gcp', 'bash','workflow automation']
+tags = ['git', 'python', 'gcp', 'bash','workflow automation', 'docker','containerization']
 image = "post-image.jpeg"
 featuredimage = "post-image.jpeg"
 thumbnail = "post-image.jpeg"
@@ -21,9 +21,11 @@ This script simply calls the library of congress's public api with a search quer
 
 Each result is transformed to a json string and then dropped into a gcp bucket that can be accessed by other tasks to be built into this workflow. 
 
-## The GCP omponent
+## The GCP Component
 This workflow could be built for my local infrastructure or for a vm somewhere in the cloud... but I've chosen to design each task as a gcp job that will permit an enterprise scale workflow to run.
-c
+
+The reason for doing this is really just to understand how these jobs work. I will write a subsequent post detailing how this job really works. 
+
 ### Why
 Because I want to push myself a bit... but this also could be used as proof of concept tool that can easily be adapted to the needs of enterprise clients or research institutions.
 
@@ -85,6 +87,12 @@ source src/.env \
 ## Running locally
 
 The python script in the ```/src``` can be run locally, however it should be modified if you choose not to use gcp.  There are a number of functions within that can easily be modified to permit writing to the local directory. 
+
+
+## Documentation Sources
+1. ["Google Cloud Run Jobs Automation"](https://cloud.google.com/run/docs/create-jobs)
+
+
 
 
 
