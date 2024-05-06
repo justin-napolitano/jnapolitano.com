@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Posts on justin.napolitano</title>
+		<title>Posts on Justin Napolitano</title>
 		<link>//localhost:1313/en/posts/</link>
-		<description>Recent content in Posts on justin.napolitano</description>
+		<description>Recent content in Posts on Justin Napolitano</description>
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>jayburdindustries</copyright>

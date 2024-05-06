@@ -28,7 +28,7 @@ theme = "hermit-v2"
  
 languageCode = "en-us"
 
-title = "justin.napolitano"
+title = "Justin Napolitano"
 enableGitInfo = true
 
 pygmentsCodefences  = true
