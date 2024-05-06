@@ -150,5 +150,5 @@ expiryDate = ["expiryDate"]
     
   [[menu.main]]
     name = "RESUME"
-    url = "https://analyst.jnapolitano.com/resume.pdf"
+    url = "https://jnapolitano.com/resume.pdf"
     weight = 30

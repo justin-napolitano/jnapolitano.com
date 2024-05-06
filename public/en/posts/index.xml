@@ -10,62 +10,6 @@
 		
 		<item>
 			<title>GCP Cloud Run Job Scraper</title>
-			<link>//localhost:1313/en/posts/loc-scraper-gcp/</link>
-			<pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-			
-			<guid>//localhost:1313/en/posts/loc-scraper-gcp/</guid>
-			<description><![CDATA[Running a scraper as a gcp cloud run job]]></description>
-			<content type="html"><![CDATA[<h1 id="library-of-congress-scraper-job">Library of Congress Scraper Job</h1>
-<p>This <a href="https://github.com/justin-napolitano/loc_scraper">repo</a> scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.</p>
-<h2 id="quick-history-of-this-project">Quick History of this project</h2>
-<p>I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive. I think with current tech I will be able to complete this project in about a week or two.</p>
-<h3 id="what-this-script-does">What this script does</h3>
-<p>This script simply calls the library of congress&rsquo;s public api with a search query and iterates through the search results.</p>
-<p>Each result is transformed to a json string and then dropped into a gcp bucket that can be accessed by other tasks to be built into this workflow.</p>
-<h2 id="the-gcp-component">The GCP Component</h2>
-<p>This workflow could be built for my local infrastructure or for a vm somewhere in the cloud&hellip; but I&rsquo;ve chosen to design each task as a gcp job that will permit an enterprise scale workflow to run.</p>
-<p>The reason for doing this is really just to understand how these jobs work. I will write a subsequent post detailing how this job really works.</p>
-<h3 id="why">Why</h3>
-<p>Because I want to push myself a bit&hellip; but this also could be used as proof of concept tool that can easily be adapted to the needs of enterprise clients or research institutions.</p>
-<h2 id="quickstart">Quickstart</h2>
-<h3 id="download-the-repo">Download the repo</h3>
-<p>Copy the repo at <a href="https://github.com/justin-napolitano/loc_scraper">github.com/justin-napolitano/loc_scraper</a> to get started</p>
-<h3 id="gcloud-cli">Gcloud cli</h3>
-<p>After this you will have to install gcloud cli and configure you&rsquo;re local environment. I will write up some scripts in a subsequent post to automate this process&hellip; but for the time being check out this <a href="https://cloud.google.com/sdk/docs/install">&ldquo;link&rdquo;</a></p>
-<h3 id="create-the-image">Create the image</h3>
-<p>In the repo there is a a bash script called <code>build.sh</code> that will need to be updated to according to your gcp project.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcloud builds submit --region<span class="o">=</span>us-west2 --config cloudbuild.yaml
-</span></span></code></pre></div><p>It calls <code>cloudbuild.yaml</code> which might need to be updated for you, but the following the should work.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;gcr.io/cloud-builders/docker&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
-</span></span></span><span class="line"><span class="cl"><span class="sd">    docker build -t us-west2-docker.pkg.dev/$PROJECT_ID/supreme-court-scraper/supreme-court-scraper-image:dev .</span><span class="w">    
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">automapSubstitutions</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">images</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="s1">&#39;us-west2-docker.pkg.dev/$PROJECT_ID/supreme-court-scraper/supreme-court-scraper-image:dev&#39;</span><span class="w">
-</span></span></span></code></pre></div><h3 id="following-creation-of-the-imge">Following creation of the imge</h3>
-<p>Next you can create a job on gcp by runnning the <code>job_create.sh</code> script&hellip; or by copying the code below and chaging yourproject to the correct project-name</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcloud run <span class="nb">jobs</span> create supreme-court-scraper --image us-west2-docker.pkg.dev/yourproject/supreme-court-scraper/supreme-court-scraper-image:dev <span class="se">\
-</span></span></span></code></pre></div><h3 id="executing-the-job">Executing the job</h3>
-<p>Once complete you can execute the job by running the <code>execute_job.sh</code> script or by running</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcloud run <span class="nb">jobs</span> execute supreme-court-scraper
-</span></span></code></pre></div><h3 id="putting-it-all-together">Putting it all together</h3>
-<p>In a perfect world the following should work. Note that src/.env should be set with your environmental variables such as <code>$GCPPROJECTID</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> src/.env <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="o">&amp;&amp;</span> ./build.sh <span class="se">\ </span>
-</span></span><span class="line"><span class="cl"><span class="o">&amp;&amp;</span> ./job_create.sh <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="o">&amp;&amp;</span> ./execute_job.sh
-</span></span></code></pre></div><h2 id="running-locally">Running locally</h2>
-<p>The python script in the <code>/src</code> can be run locally, however it should be modified if you choose not to use gcp.  There are a number of functions within that can easily be modified to permit writing to the local directory.</p>
-<h2 id="documentation-sources">Documentation Sources</h2>
-<ol>
-<li><a href="https://cloud.google.com/run/docs/create-jobs">&ldquo;Google Cloud Run Jobs Automation&rdquo;</a></li>
-</ol>
-]]></content>
-		</item>
-		
-		<item>
-			<title>GCP Cloud Run Job Scraper</title>
 			<link>//localhost:1313/en/posts/loc_scraper/</link>
 			<pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
 			

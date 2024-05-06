@@ -7,15 +7,8 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Mon, 29 Apr 2024 00:25:52 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GCP Cloud Run Job Scraper</title>
-      <link>//localhost:1313/en/posts/loc-scraper-gcp/</link>
-      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/posts/loc-scraper-gcp/</guid>
-      <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.&#xA;Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
-    </item>
     <item>
       <title>GCP Cloud Run Job Scraper</title>
       <link>//localhost:1313/en/posts/loc_scraper/</link>
@@ -78,6 +71,13 @@
       <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
       <guid>//localhost:1313/en/posts/rocky-linux-8-julia/</guid>
       <description>Install Jupyter Start with installing jupyter. It will serve as our server for development.&#xA;Install Dependencies sudo dnf install gcc python3-devel kernel-headers-$(uname -r) Install Jupyter Via Pip pip3 install --user jupyter Install Julia We will be installing from the official binaries.&#xA;Make a directory in user profile. i simply ran mkdir julia in the home folder. The cd to julia.&#xA;When in the folder run&#xA;Wget wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.2-linux-x86_64.tar.gz Unpack Then unpack</description>
+    </item>
+    <item>
+      <title>Rice Paddy Methane Emissions Estimation: Part 2</title>
+      <link>//localhost:1313/en/posts/rice-paddy-emissions-2/</link>
+      <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/rice-paddy-emissions-2/</guid>
+      <description>Methane Emissions Estimation Data Part 2: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.&#xA;It is fairly code python and pandas heavy.&#xA;The code and data exploration follows the summary below.&#xA;Hypothesis Testing the University of Malaysia Paper Claims That the distributions do not differ between 2020 and 2019 That the means do no differ between 2020 and 2019 What will be Tested.</description>
     </item>
   </channel>
 </rss>
