@@ -1,10 +1,9 @@
-[submodule "themes/hermit-v2"]
-	path = themes/hermit-v2
-	url = https://github.com/1bl4z3r/hermit-V2
-	branch = main
 [submodule "content/posts/gcp-utilities"]
 	path = content/posts/gcp-utilities
 	url = https://github.com/justin-napolitano/gcputils.git
 [submodule "content/posts/loc_scraper"]
 	path = content/posts/loc_scraper
 	url = https://github.com/justin-napolitano/loc_scraper.git
+[submodule "themes/hermit-V2"]
+	path = themes/hermit-V2
+	url = https://github.com/justin-napolitano/hermit-V2.git
