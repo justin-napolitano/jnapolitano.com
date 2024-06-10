@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>carbon-capture on Justin Napolitano</title>
+    <link>jnapolitano.com/tags/carbon-capture/</link>
+    <description>Recent content in carbon-capture on Justin Napolitano</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Sat, 07 May 2022 18:40:32 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/carbon-capture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Feasibility of Transatlantic Carbon Shipping</title>
+      <link>jnapolitano.com/posts/feasibility_study_shipping_carbon/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/feasibility_study_shipping_carbon/</guid>
+      <description>Feasibility of Shipping Carbon Across the Atlantic Methodology Please review the my previous post which details the design of my model.
+The major difference in this report is the sampling of the mean price per voyage.
+The conversion error has been corrected.
+Findings Distance of Transport The standard deviation in mean price per voyage was found to be less than 0. This suggests that the distance of travel within Europe is marginal.</description>
+    </item>
+    
+  </channel>
+</rss>

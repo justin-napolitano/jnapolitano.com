@@ -1,0 +1,584 @@
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days"><link rel="author" href="/jnapolitano.com/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/jnapolitano.com/apple-touch-icon.png"><link rel="icon" href="/jnapolitano.com/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" sizes="32x32" href="/jnapolitano.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/jnapolitano.com/favicon-16x16.png">
+<link rel="manifest" href="/jnapolitano.com/site.webmanifest">
+<meta name="msapplication-TileImage" content="/jnapolitano.com/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/jnapolitano.com/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Justin Napolitano"><meta name="description" content="Integrate JSON data from a rest API into your Neo4j Stack">
+<meta itemprop="name" content="The World Trade Organization, Governments, and International Trade">
+<meta itemprop="description" content="Integrate JSON data from a rest API into your Neo4j Stack"><meta itemprop="datePublished" content="2022-05-04T14:40:32+00:00" />
+<meta itemprop="dateModified" content="2024-04-24T17:23:50-05:00" />
+<meta itemprop="wordCount" content="4559">
+<meta itemprop="keywords" content="legal research,ngos,internatinoal,insitutional analysis," /><meta property="og:title" content="The World Trade Organization, Governments, and International Trade" />
+<meta property="og:description" content="Integrate JSON data from a rest API into your Neo4j Stack" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="jnapolitano.com/posts/project-evolution-of-ngos/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-04T14:40:32+00:00" />
+<meta property="article:modified_time" content="2024-04-24T17:23:50-05:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The World Trade Organization, Governments, and International Trade"/>
+<meta name="twitter:description" content="Integrate JSON data from a rest API into your Neo4j Stack"/>
+<title>The World Trade Organization, Governments, and International Trade</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="/jnapolitano.com/css/style.min.892ecbe8142d407f4d1e5caf8838b8f303d449f054ce94e2d3edeab3116d991d.css" integrity="sha256-iS7L6BQtQH9NHlyviDi48wPUSfBUzpTi0+3qsxFtmR0=" crossorigin="anonymous">
+	</head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="jnapolitano.com">Justin Napolitano</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="jnapolitano.com/posts/">PORTFOLIO</a><a href="https://jnapolitano.com/resume.pdf">RESUME</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/justin-napolitano" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://www.linkedin.com/in/justin-napolitano/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:personal.jnapolitano@gmail.com" target="_blank" rel="noopener me" title="Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="https://instagram.com/jay_burdie" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://mastodon.social/@jnapolitano" target="_blank" rel="noopener me" title="Mastodon"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m 21.474,13.998 c -0.296,1.526 -2.655,3.194 -5.365,3.519 -1.413,0.168 -2.804,0.323 -4.287,0.255 -2.426,-0.111 -4.34,-0.579 -4.34,-0.579 0,0.236 0.015,0.461 0.044,0.672 0.316,2.394 2.373,2.537 4.323,2.604 1.968,0.067 3.721,-0.486 3.721,-0.486 l 0.081,1.779 c 0,0 -1.377,0.739 -3.829,0.875 -1.352,0.075 -3.031,-0.034 -4.987,-0.551 C 2.594,20.963 1.865,16.442 1.752,11.855 1.719,10.493 1.741,9.209 1.741,8.134 1.741,3.443 4.814,2.069 4.814,2.069 6.363,1.356 9.022,1.056 11.787,1.035 h 0.067 c 2.764,0.022 5.426,0.322 6.975,1.033 0,0 3.073,1.375 3.073,6.066 0,0 0.039,3.461 -0.428,5.864"/><path d="M 6.464,13.231 V 7.973 c 0,-1.002 0.549,-2.613 2.613,-2.613 2.064,0 2.741,1.793 2.741,3.484 0,1.692 0,2.23 0,2.23"/><path d="M 17.173,13.231 V 7.973 c 0,-1.002 -0.549,-2.613 -2.613,-2.613 -2.064,0 -2.741,1.793 -2.741,3.484 0,1.692 -0,2.23 -0,2.23"/></svg></a><a href="https://x.com/jayburdybird" target="_blank" rel="noopener me" title="X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a></span><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=jnapolitano.com%2fposts%2fproject-evolution-of-ngos%2f&amp;text=The%20World%20Trade%20Organization%2c%20Governments%2c%20and%20International%20Trade" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=jnapolitano.com%2fposts%2fproject-evolution-of-ngos%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=The%20World%20Trade%20Organization%2c%20Governments%2c%20and%20International%20Trade&amp;body=jnapolitano.com%2fposts%2fproject-evolution-of-ngos%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=jnapolitano.com%2fposts%2fproject-evolution-of-ngos%2f&amp;source=jnapolitano.com&amp;title=The%20World%20Trade%20Organization%2c%20Governments%2c%20and%20International%20Trade&amp;summary=The%20World%20Trade%20Organization%2c%20Governments%2c%20and%20International%20Trade%2c%20by%20Justin%20Napolitano%0a%0aIntegrate%20JSON%20data%20from%20a%20rest%20API%20into%20your%20Neo4j%20Stack%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;The World Trade Organization, Governments, and International Trade&#34;,&#34;jnapolitano.com/posts/project-evolution-of-ngos/&#34;,&#34;The World Trade Organization, Governments, and International Trade, by Justin Napolitano\n\nIntegrate JSON data from a rest API into your Neo4j Stack\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="jnapolitano.com/posts/">PORTFOLIO</a></li>
+			<li><a href="https://jnapolitano.com/resume.pdf">RESUME</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>May 4, 2022</span></div>
+				<h1>The World Trade Organization, Governments, and International Trade</h1>
+			</header>
+			<div class="post-info"><p>Integrate JSON data from a rest API into your Neo4j Stack</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg><a href="" target="_blank">Justin Napolitano</a></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="jnapolitano.com/tags/legal-research">legal research</a></span><span class="tag"><a href="jnapolitano.com/tags/ngos">ngos</a></span><span class="tag"><a href="jnapolitano.com/tags/internatinoal">internatinoal</a></span><span class="tag"><a href="jnapolitano.com/tags/insitutional-analysis">insitutional analysis</a></span></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg><span class="category"><a href="jnapolitano.com/categories/legal-research">Legal Research</a></span><span class="category"><a href="jnapolitano.com/categories/world-trade-organization">World Trade Organization</a></span><span class="category"><a href="jnapolitano.com/categories/ngos">NGOs</a></span><span class="category"><a href="jnapolitano.com/categories/institutional-modeling">Institutional Modeling</a></span><span class="category"><a href="jnapolitano.com/categories/international-relations">International Relations</a></span><span class="category"><a href="jnapolitano.com/categories/international-finance">International Finance</a></span></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    
+    
+    
+    
+    20 Minutes, 43 Seconds</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2022-05-04 09:40 -0500</p></div>
+			<hr class="post-end">
+			<div class="content">
+				<h1 id="the-world-trade-organization-governments-and-international-trade">The World Trade Organization, Governments, and International Trade<a href="#the-world-trade-organization-governments-and-international-trade" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<h2 id="intro">Intro<a href="#intro" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>International Organizations are vital to the operation of International
+politics. They regulate behaviors, facilitate communication, and promote
+cooperation between states. The process by which International
+Organizations come into being is well discussed in the literature,
+however, not equally well debated is the process by which International
+Organizations come to modify their operating procedure. Or in other
+words, when the member states renegotiate the terms of their membership.</p>
+<h2 id="the-question">The Question<a href="#the-question" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>International Organizations are vital to the operation of International
+politics. They regulate behaviors, facilitate communication, and promote
+cooperation between states. The process by which International
+Organizations come into being is well discussed in the literature,
+however, not equally well debated is the process by which International
+Organizations come to modify their operating procedure. Or in other
+words, when the member states renegotiate the terms of their membership.</p>
+<h2 id="literature-review">Literature Review<a href="#literature-review" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Kenneth Waltz argues that domestic politics is irrelevant to the
+calculus of states. He argues primarily that states act according to the
+actions of other states. The bureaucracy, the public, and the legal
+systems are all factors not considered in his framework. He does however
+take the position that &ldquo;politics determines economics (Waltz 2010)&rdquo;, but
+does not further his sociological analyses. In other words, he accepts
+that the behavior of states is derive from the socially constructed
+political process, but does not analyze human systems to other than the
+state when attempting to predict state behavior. (Waltz 2010)</p>
+<p>Robert Keohane builds upon Waltz. He takes the assumption that there are
+inherent common interests between states seeking wealth and power, and
+the maximization of absolute gains. States are then presumed to possess
+preferences dependent on the division of resources and information
+within the international system. To accomplish goals and to minimize
+insecurity states then cooperate by forming international regimes
+defined to be, &ldquo;sets of implicit or explicit principles, norms, rules,
+and decision-making procedures around which actor&rsquo;s expectations
+converge in a given area of international relations&rdquo; (Keohane, 2005, p
+57). In bargaining for international trade deals, states seek to
+maximize power and wealth for all states involved in the process.
+(Keohane, 2005)</p>
+<p>Fearon also adopts this position, however also assumes that states seek
+when bargaining the maximization of gains across time. Therefore the
+logic of the iterated prisoners dilemma is used to explain cooperation.
+Because of the shadow of the future, or the expectations of further
+interaction between states, the most rational choice to maximize gains
+across time is for states to cooperate and to normalize rules in the
+form of a legalistic International Organizations. (Fearon 1998)</p>
+<p>Moravsic adopts a liberal stance, breaking from the neorealist, as well
+as the regime theorist position that the factors of the international
+system determines state behavior. He argues that the preferences of
+powerful coalitions within states and the combined societal will to
+carry them out are the basis for state behavior. His theory rests upon
+three core assumptions. 1. State actors primarily define state
+preference. 2. Domestic institutions and their structure exert influence
+on the realization of coalition preferences. 3. &ldquo;The configuration of
+interdependent state preferences determines state behavior (Moravsic,
+1997).&rdquo; Thus, powerful social coalitions pressure representative
+governments, controlling for regime type, to bargain on the behalf of
+their interests in the international game. This &ldquo;two stage model&rdquo; of
+state behavior accounts for both regime theorist and realist
+assumptions.</p>
+<p>Putnam further formulizes the process with the application of the
+two-level game metaphor (1988). Level 1 is considered the domestic game
+played by representative leaders to appease the domestic interests of
+individuals, groups, and political coalitions. Level 2 is the
+international game in which states compete to appease domestic
+posturing. The win-set, the possible set of actions considered
+acceptable to both the domestic coalition and the international
+coalition, is dependent upon three major factors. 1. The distribution of
+power, preferences, and possible coalitions among level 2 constituents.
+2. The size of the representative body of political institutions. 3. The
+strategies of the level 1 negotiators. The net effect of the three
+limiting factors results in a win-set most probable to be ratified by
+the domestic institutions. In other words, representatives bargaining on
+behalf of powerful domestic coalitions must negotiate trade packages
+acceptable to their domestic handlers. To apply principal-agent theory
+to the intuition, the coalitions are the principle handling the
+representative, their agent.</p>
+<p>Dahl&rsquo;s work on bureaucratic politics and policy networks within the city
+of New Haven Connecticut is the foundation on which I will build to
+identify the process of preferences becoming the action of a state. The
+basis of his argument rests on the fact that certain actors possess the
+authority to draft and to pass legislation. The units are the most
+important actors within the policy network. All of those actors that
+depend on the actor with authority must lobby to institute policy. The
+power of the policy network is defined by their expertise, their social
+standing, and their ability to satisfy the interests of the person or
+persons in positions of authority. Depending on the issue at hand and
+those actors mobilized the policy network is highly dynamic. (Dahl,
+2005); (Dahl, 1957)</p>
+<p>Finnemore explores the ways in which international institutions acquire
+a degree of autonomy and then may influence the states in the system by
+creating rules and regulation to serve the interests of the organization
+itself. Her work relies heavily on sociological analysis of human
+systems. At both the international level and the domestic level of
+politics Finnemore&rsquo;s work argues that as organizations are comprised of
+social actors the legal and social rules by which the institutions
+operate by serve primarily to benefit the preservation of the group.
+However, their legitimacy is dependent upon &ldquo;external recognition&rdquo; by
+those ruled over (Finnemore 1999). In order, then to retain authority
+and legitimacy, the government bureaucracy must development effective
+methods of socialization to convince the public of its legitimacy.
+Scaled up to International Organizations bureaucratic legitimacy is
+equally dependent upon external validity. But as states are the only
+units capable of effectively providing that validity, International
+Organizations are wholly dependent on powerful states to enforce norms.
+(Finnemore 1999); (Finnemore 1993); Finnemore 2001)</p>
+<h2 id="theoretical-intuition">Theoretical Intuition<a href="#theoretical-intuition" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Ultimately one must put forth a state centric argument in order to best
+explain the operation of International Organizations and the
+International System more generally. This heart of this paper will rest
+on the assumption that the state as an organization is most responsible
+for influencing the character of the International System, and
+ultimately the modification of International Organizations. It does not
+however, assume the state to be a rational entity capable of responding
+to external stimuli in a way that maximizes its gains. Rather, as all
+states depend on domestic legitimacy in order to exist, states
+ultimately operate in order to appease the demands of powerful domestic
+constituencies, often without regard to the actions of other states.</p>
+<p>The structure of state can be thought of as a pyramidal hierarchy built
+upon increasing levels of authority within the state. The base of which
+is comprised of all of those people without any employment by the state.
+Moving up from there may be civil servants of the state bureaucracy.
+Ultimately the pinnacle of which is the institution or institutions
+responsible for the management of all lower levels. The most important
+factor binding the structure is legitimacy as each level is inherently
+dependent on the external recognition of its legitimacy by the levels
+beneath it. For instance, the Executive of the United States is
+essentially without power, except for that power which is recognized
+Congress and by extension the general public. A similar argument example
+could be drawn for the military, the police, or any other institution
+within a state.</p>
+<p>The actual codification of this social process is by definition the law
+of a state. It may be thought of as the enforcement mechanism by which
+the social structure is maintained and behavior standardized. Those
+within the state with the authority to create law are those with the
+power to socially reinforce their position of authority.[1] Thus it is
+paramount that a leader once in a position of authority also has the
+means of the state available to him in order to buttress his status.
+Otherwise law will be ignored and the state will devolve into anarchy.</p>
+<p>At the international the same processes occurs. Powerful states, be it
+military power, or economic power, reinforce norms among weaker states
+in order to standardize behavioral outcomes. Great state in of
+themselves may be able to accomplish this by force, but the legitimacy
+of those actions will always be perceived by lesser states as entirely
+illegitimate. Unless a legal institution comprised of members is
+developed in order to give the lesser states the appearance of
+influence, all attempts to institute norms from a position of absolute
+power will surely fail. Hence the breakup of the English Empire. If
+nations, with distinct identities from that of the hegemon are to be
+managed a legal structure accepted to be legitimate must be created.</p>
+<p>Thus, International Organizations come into being. They are an attempt
+to institute a legal order binding to member states in order to minimize
+risk ultimately at the behest of powerful states. The process by which
+weak states join the organization is straightforward. They do so because
+the powerful coalitions within their state seek to acquire the resources
+available to them when entering an International Organization. Such
+states will adapt to the rules of the IO, but only to the extent that
+the IO serves their interest. Otherwise they will refuse to join. Once
+they have joined, they will recognize the legitimacy of the powerful
+state, and the IO only if the disciplinary measures are effective, and
+threaten their ability to rule domestically. There is also the option to
+join the Organization established by another powerful state in the
+International System. If such an option is available, something like the
+order prior to the first world war, and that of the cold war will come
+into being.</p>
+<p>For an IO then to be successful in setting the standards of the entire
+international system, all powerful states must be able to converge about
+a set of common interests. In other words for an international
+organization to truly standardize norms throughout the international
+system all great powers must act in collaboration with one another to
+reinforce agreements to avoid undermining the legitimacy of the
+institution. The difficulty in achieving this is found in the fact the
+dictates of the international order do not determine great power
+behavior, but rather the domestic forces which challenge the authority
+of its leaders do. The prime example of which is the United States war
+in Iraq under President George W. Bush. Despite the protests of the UN
+member states, the government was forced to act under fear of losing
+popularity among its base.</p>
+<p>Only in highly technical and rather nonpolitical areas of international
+affairs does it appear that coalitions of powerful states can manage to
+converge about a set of interests. Especially is this true when it comes
+to renegotiating the terms of membership.</p>
+<h2 id="hypothesis">Hypothesis<a href="#hypothesis" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Therefore, I argue that international organizations modify the terms of
+their agreements only when it is in the interest of the powerful
+domestic constituencies of a coalition of powerful member states. A
+state cannot go it alone at the international level, nor will it
+successfully ratify the agreement if it is not in the interest of the
+domestic camp.</p>
+<h2 id="design-of-the-test">Design of the Test<a href="#design-of-the-test" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>I adopt the intuition of the two-level game, but avoid the calculus by
+way of preferences. Instead I adopt a calculus by way of expectations.
+Preferences are unbounded. Expectations however are the set of expected
+outcomes bounded by law and authority. In other words, expectations are
+preferences bounded by the exercise of a state&rsquo;s institutions. As
+institutions are expected to act in such a way as to maintain
+legitimacy, their free exercise is not unbounded. As opposed to the
+convergence about preferences, I expect that win-sets will converge
+about a common set of expectations that arise from the internal process
+of maintaining political legitimacy. To test my hypothesis then, I first
+analyze the international organization. I then discern which states are
+the most powerful. I then look to the issue, to see whether it is an
+issue is supported by domestic coalitions of the powerful states. If
+that issue is agreed upon by the most influential states within the
+organization it is likely that new agreements will be signed, and the
+policy of the organization will change.</p>
+<h2 id="case-study">Case Study<a href="#case-study" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The transition of the GATT (the General Agreement on Tariffs and Trade)
+to the World Trade Organization will serve as the case study of
+analysis. I will analyze the foundations of the GATT, the basic terms
+under which the states agreed to enter into the agreement. Then I will
+look to the World Trade Organization, and seek to explain why the most
+powerful states in the organization sought to expand the GATT and why
+they agreed to the terms.</p>
+<p>The GATT, formed after the Second World War, spearheaded by the efforts
+of the United States and the United Kingdom, was the only multilateral
+instrument governing international trade from 1948 until 1995 (Cite WTO
+website). The point of its development was to liberalize trade and
+reduce tariffs between members. Interestingly within less than a month
+if its signing, the United States sought to expand the agreement to
+govern all of international trade. The Havana conference of 1947 was to
+do just that and to develop the International Trade Organization. The
+deal proved to be incapable of ratification in the legislatures of many
+member states, notable the Congress of the United States the leader of
+the movement. Thus, marking the first in a series of failed attempts to
+create a multilateral body regulating trade.</p>
+<p>The GATT however was not an unsuccessful agreement. Periodic rounds of
+negotiation, and subsequent agreements expanded the jurisdiction of the
+organization and granted to it greater legitimacy as the years passed.
+The agreements eight round of agreements, the Uruguay Round of 1986-94
+is the most instrumental as it established the World Trade Organization.
+Why is it that previous attempts to develop the body failed, but in this
+one instance it came into being?</p>
+<p>The question is ultimately answered by identifying the expectations of
+the domestic structures of the most powerful states attempting to
+renegotiate the deal. Or what was it that the domestic structure
+pressured the leaders of the state to do? This type of analysis will
+vary between states as it is dependent upon the institutional
+organization of the state. To simplify the process for this analysis, I
+look primarily to who is responsible for ratifying the trade deal, and
+who is it they are responsible to.</p>
+<p>The most powerful states at the time of the creation of the World Trade
+Organization were in order the United States, Japan, Germany, France,
+Italy, the United Kingdom, Canada, China, Brazil, and then Spain.[2] I
+can further reduce the important states to the United States, the
+European Union, Japan, and Canada, collectively known as the quad, as
+they together account for most of international trade and the largest
+share of international GDP (Databank: World Development Indicators).</p>
+<p>In the United States its Senate is officially responsible for the
+ratification of international treaties. However, due to legislative
+enactments the process of ratification at the time the Uruguay rounds
+was modified to require a majority vote in each of house of its Congress
+and the approval of the President. The President and his staff were
+responsible for the negotiation of the deal. Thus, the expectations to
+analyze are those of the constituencies which the members of the
+Congress and president rely on for appointment to their office. This
+differs between each group and is thus a very difficult process to
+determine. It is dependent upon the perceptions of the Congressman, and
+the advice of their most important allies. They will vote for a deal
+only if it is perceived to be a political win. A thorough analysis would
+require reviewing the vote of each senator and then inferring the
+constituents responsible for their appointment and the expectations of
+each group. As this is untenable, reviewing the actions of the president
+is actually a valid point of view to determine the aggregate
+expectations of those within the domestic structure as the ratification
+of the bill is dependent upon their support. Thus, the president is
+negotiating on their behalf. (Trade Act of 1974, 19 U.S.C. Chapter 12);
+(U.S. Constitution, Article 1 Sect. 3); (U.S. Constitution, Amendment
+17)</p>
+<p>The European Union is comprised of a very different political structure
+of hierarchal authority. Individual states do not negotiate trade deals.
+Rather the European Commission comprised of appointed members negotiate
+deals on the behalf of the entire union. These deals must be approved by
+the European Parliament which is comprised of elected representatives
+from each of the members states, but the ultimate power to ratify the
+agreements falls with the council. Members of the council are the heads
+of state each EU member state. Their position in power is dependent upon
+the domestic structures of their individual states. Nonetheless, when
+bargaining internationally, they are doing so in order to maintain their
+position as leader. Thus, they will not agree to a deal that will
+compromise their domestic coalitions. (The European Council, 2018); (The
+European Parliament: About Parliament).</p>
+<p>The Japanese &ldquo;Diet&rdquo;, the state&rsquo;s version of parliament is responsible
+for the ratification of treaties and international trade deals. The
+executive cabinet is solely responsible for the negotiation of the deals
+aided by its bureaucracy. However, as Japan is a parliamentary state,
+unlike the United States, the prime minister, the executive of the
+country, possesses almost free ability to institute law. This is due to
+party discipline, and the fact that as the head of the government, the
+prime minister is also the head of the party in possession of the
+majority seats in the parliament. What then the executive negotiates
+will most likely be passed. There is surely an internal bargaining
+process, but it is not as crucial to the process as that of the United
+States. (Fundamental Structure of the Government of Japan, 2007);
+(Structure of the National Diet, 2014).</p>
+<p>Canada is also structured around a Parliamentary government. The
+executive committee like that of japan is centered around the prime
+minister. The prime minister and his cabinet negotiate the trade deals
+and then put it to parliament for ratification. The same rules of party
+discipline apply here as in Japan. The likelihood of a trade deal
+negotiated by the executive cabinet being ratified is very high.
+(Parliamentary Primer).</p>
+<p>According to my hypothesis then, these states will renegotiate the GATT
+agreements when it is in the domestic interests of the heads of states
+responsible for the ratification of the trade deal. The most difficult
+state to accomplish in would be the United States as the greatest number
+of individuals are responsible for ratification. And, because the
+possible domestic win-set is the smallest in relationship to the other
+powers. It is then expected that the United States will find it most
+difficult to ratify the World Trade Organization agreement.</p>
+<h2 id="findings">Findings<a href="#findings" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>As expected the Quad States (United States, Canada, Japan, EU) were by
+far the most important states involved in the process of negotiation.
+Their economic power and political clout were necessary to develop an
+international organization with actual effect on international trade.
+Thus, the states with economic value were essentially ignored in this
+process. (VanGrasstek, 2013).</p>
+<p>Ratification of the deals also depended on the perceptions of the
+domestic coalitions of states engaged in talks. Dispute resolutions,
+agricultural subsidies, and auto tariffs were the most contentious
+issues between the Quad. Each sate feared primarily the delegitimizing
+their domestic governments. The United States and the EU for instance
+disputed over pork tariffs seriously enough to threaten the deal
+outright. The United States senators and the president were concerned
+that a deal that lifted subsidies would put a large number of their
+constituencies out of a job. If this were to occur they thought their
+positions of authority would be compromised. (VanGrasstek, 2013).</p>
+<p>The solution to the problem came about in the form of substantial
+dispute resolution mechanisms to solve the enforcement problem. The
+United States as the most influential member of the organization most
+likely assumed that it could use the Dispute Settlement Body to its own
+end. The other states in the system perceived it to be capable enough to
+bind the United States to internationally agreed to norms and
+consensuses on trade. The goal of course to put an end to politically
+disruptive tariff spikes targeted at politically relevant sectors of
+economies. Or in other words to regulate international trade in order to
+put an end to trade wards. This to all states at the time seemed to be
+vital to securing the domestic expectations of their constituencies. The
+intent of all measures is to ensure a domestic win at the time of
+signing, but also to ensure ongoing win-sets across time (Fearon, 1998).
+The World Trade Organization embodies that it is inherently an
+organization designed to satisfy the demands of the members states not
+to act as an independent body. (VanGrasstek, 2013).</p>
+<h2 id="discussion">Discussion<a href="#discussion" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Regarding when international organizations likely to modify their
+agreements, they appear to do so when a coalition of powerful states can
+agree to do so. Such a straightforward answer to the question seems
+obvious however, in the process of research many questions arose as to
+if this is actually true. I began this research from an entirely
+different point of view. I sought to answer whether Non-Governmental
+Organizations (NGO) could influence Inter-Governmental organization to
+adopt new policy.</p>
+<p>The answer to that question led me to study states as opposed NGO&rsquo;s
+because in order for an NGO to influence an IGO powerful states must be
+recruited to the cause. The global civil society literature is fairly
+adamant about this. Thus, I led astray from studying only NGO&rsquo;s and
+instead sought to understand why states may modify existing IGO&rsquo;s or
+develop new ones.</p>
+<p>States are a far more interesting unit of analyses as all forms of
+influence within the state could be studied to determine if domestic
+politics really does lead to international politics. To this I would say
+that there is no doubt that international politics begins at home. The
+Logic of the Two Level Game cannot be ignored. Leaders dependent upon
+domestic coalitions must act accordingly to realize their expectations
+or risk losing office. From this one could see how domestic perceptions
+of economic conditions, human rights, or any other issue can influence a
+state&rsquo;s behavior.</p>
+<p>Thus, when approaching IGO&rsquo;s and the forces which influence their
+operation, not only is it more interesting look to states, but also far
+more functional than attempting to discern the influence of NGO&rsquo;s
+operating within states. Such an analysis requires testimony from policy
+makers, meeting minutes, extensive media analysis, and a harmonious
+relationship with an NGO, an IGO, and a state bureaucracy. Frankly
+speaking these resources were not available, nor was I able to establish
+contact with any of the important players. Therefore, one had to default
+to observation from the point of view of a neutral observer.</p>
+<p>In so doing it became evident that states, whether one likes it or not,
+solely possess the legal authority and material capability to influence
+IGO&rsquo;s. Civil society on the other hand, while influential, is without
+the authority or means to actually bring about legitimate change.
+Institutions trusted by citizens, or even possibly willed into being by
+military force, are those with the legitimate power to actually enforce
+laws and norms. As such, I adopted Dahl&rsquo;s intuition into decision making
+that institutions with legal authority regulate and standardize decision
+making procedures and also patterns of influence. These institutions are
+the field in which those seeking to acquire influence play, and
+therefore adapt to the rules. Without then needing to further delve into
+this process I chose to instead analyze relationships between states, as
+opposed to analyzing the operations of NGO&rsquo;s.</p>
+<p>This paper is in need of expansion however in one crucial category. It
+assumes wholeheartedly that the leaders of states are entirely dependent
+on the whims of their domestic coalitions and that they are incapable of
+employing any tactics to manipulate them. A new research project that
+explores the topic in depth is in need. To make the assumption that the
+preferences of influential leaders do not play a role in international
+politics is too great a pill to swallow.</p>
+<h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>When do International Organizations renegotiate the terms of their
+agreements? They do so when powerful states within the organization
+compel it do so. The logic of the Two-Level game though indicates that
+the process is dependent on the expectations of domestic coalitions.
+Also, the relative power between states makes it so that only a minority
+of powerful states are actually important when attempting to renegotiate
+deals. A win-set is achieved when the expectations of the domestic
+coalitions of the most relevant states converge about a deal. The
+transition of the GATT to the World Trade Organization as case study
+demonstrates this process. The Quad states, the most relevant state in
+the international economy Rather, it is apparent that the need for
+politicians to maintain their domestic coalitions was more important to
+the calculus of the leaders than the acquisition of power or wealth.</p>
+<h2 id="works-cited">Works Cited<a href="#works-cited" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Dahl, Robert Alan. &ldquo;Who Governs? Democracy and power in an American
+city.&rdquo; (2005).</p>
+<p>Dahl, Robert A. &ldquo;The concept of power.&rdquo; Systems Research and Behavioral
+Science 2, no. 3 (1957): 201-215.</p>
+<p>&ldquo;Databank: World Development Indicators&rdquo;
+<a href="http://databank.worldbank.org/data/reports.aspx?source=2&amp;series=NY.GDP.PCAP.PP.CD">http://databank.worldbank.org/data/reports.aspx?source=2&amp;series=NY.GDP.PCAP.PP.CD</a></p>
+<p>&ldquo;European Council: Council of the European Union&rdquo;.
+<a href="http://www.consilium.europa.eu/en/">http://www.consilium.europa.eu/en/</a>. (2018)</p>
+<p>Fearon, James D. &ldquo;Bargaining, enforcement, and international
+cooperation.&rdquo; International organization 52, no. 2 (1998): 269-305</p>
+<p>Finnemore, Martha. &ldquo;Norms, culture, and world politics: insights from
+sociology&rsquo;s institutionalism.&rdquo; International organization 50, no. 2
+(1996): 325-347</p>
+<p>Finnemore, Martha, and Stephen J. Toope. &ldquo;Alternatives to
+&ldquo;legalization&rdquo;: richer views of law and politics.&rdquo; International
+Organization 55, no. 3 (2001): 743-758.</p>
+<p>Finnemore, Martha. &ldquo;International organizations as teachers of norms:
+the United Nations Educational, Scientific, and Cutural Organization and
+science policy.&rdquo; International Organization47, no. 4 (1993): 565-597.</p>
+<p>&ldquo;Fundamental Structure of the Government of Japan&rdquo;.
+<a href="http://japan.kantei.go.jp/constitution_and_government_of_japan/fundamental_e.html">http://japan.kantei.go.jp/constitution_and_government_of_japan/fundamental_e.html</a>.
+(2007)</p>
+<p>Keohane, Robert. After Hegemony: Cooperation and Discord in the World
+Political Economy. Princeton University Press. (2005)</p>
+<p>Moravcsik, Andrew. &ldquo;Taking preferences seriously: A liberal theory of
+international politics.&rdquo; International organization 51, no. 4 (1997):
+513-553.</p>
+<p>&ldquo;Parliamentary Primer&rdquo;.
+<a href="https://lop.parl.ca/About/Parliament/Publications/index-e.html">https://lop.parl.ca/About/Parliament/Publications/index-e.html</a></p>
+<p>Putnam, Robert D. &ldquo;Diplomacy and domestic politics: the logic of
+two-level games.&rdquo; International organization 42, no. 3 (1988): 427-460.</p>
+<p>&ldquo;The European Parliament about Parliament&rdquo;
+<a href="http://www.europarl.europa.eu/aboutparliament/en">http://www.europarl.europa.eu/aboutparliament/en</a></p>
+<p>&ldquo;Structure of the National Diet&rdquo;
+<a href="http://www.shugiin.go.jp/internet/itdb_english.nsf/html/statics/guide/structure.htm">http://www.shugiin.go.jp/internet/itdb_english.nsf/html/statics/guide/structure.htm</a>.
+(2014)</p>
+<p>VanGrasstek, Craig. The History and Future of the World Trade
+Organization. World Trade Organization Publication.
+<a href="https://www.wto.org/english/res_e/booksp_e/historywto_e.pdf">https://www.wto.org/english/res_e/booksp_e/historywto_e.pdf</a>.</p>
+<p>(2013)</p>
+<p>Waltz, Kenneth N. Theory of international politics. Waveland Press.
+(2010)</p>
+<p>[1] Power is to be defined as the ability to make someone do what they
+otherwise would not do.</p>
+<p>[2] The European Union is officially a signee of the WTO. It is
+important to note that five of the top ten states are EU members. As
+trade regulation must be uniform throughout the EU, the European Union
+representatives negotiated on behalf of their member. For the purpose of
+this paper I will treat the EU as a single state to avoid greatly
+complicating the analysis</p>
+
+			</div>
+
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="jnapolitano.com/posts/wells-near-pipelines/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;</span><br><span>Potential Carbon and Hydrogen Storage Wells Near Pipelines</span>
+			</a>
+			<a class="prev-post" href="jnapolitano.com/posts/carbon-shipping-projections/">
+				<span class="post-nav-label">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span></span>
+			</a>
+		</div>
+		<div id="comments" class="thin"></div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+	<p>
+		&copy; 2024 <a href="jnapolitano.com">Cobra</a>
+		&#183; JAYBURDINDUSTRIES
+		&#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+		&#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a></p>
+
+</footer>
+<script async src="/jnapolitano.com/js/bundle.min.5034a061023fdc1bbf821910f95d3bda81bc68ba039a2c1202f0d7027638e80f.js" integrity="sha256-UDSgYQI/3Bu/ghkQ+V072oG8aLoDmiwSAvDXAnY46A8=" crossorigin="anonymous"></script><script async src="/jnapolitano.com/js/link-share.min.20ddc5b895a2cb52c811efd9bcf38168838be5cb8671b12ae2997bf38c34f9f0.js" integrity="sha256-IN3FuJWiy1LIEe/ZvPOBaIOL5cuGcbEq4pl784w0+fA=" crossorigin="anonymous"></script>
+</body>
+
+</html>

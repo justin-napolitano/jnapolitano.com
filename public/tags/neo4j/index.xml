@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>neo4j on Justin Napolitano</title>
+    <link>jnapolitano.com/tags/neo4j/</link>
+    <description>Recent content in neo4j on Justin Napolitano</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Tue, 17 May 2022 18:40:32 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/neo4j/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Conduct Legal Research with AI: Part 2</title>
+      <link>jnapolitano.com/posts/legal-reserch-part-2/</link>
+      <pubDate>Tue, 17 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/legal-reserch-part-2/</guid>
+      <description>Integrating the Constitution to Neo4j I am currenlty building a graph database of Supreme Court cases in neo4j to model the behavior and decison making of the court.
+In this post, I include the classes that I will be using to create individual nodes for the articles, sections, clauses, and subclauses of the Consititution.
+Later, these will be related to cases and subjecst in order to train a tensorflow algorithm to recommend case law by issue area and to predict the outcome of cases.</description>
+    </item>
+    
+  </channel>
+</rss>

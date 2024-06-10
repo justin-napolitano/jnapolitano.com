@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spss on Justin Napolitano</title>
+    <link>jnapolitano.com/tags/spss/</link>
+    <description>Recent content in spss on Justin Napolitano</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Sat, 21 May 2022 19:40:32 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/spss/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Legal Research with AI: Part 6</title>
+      <link>jnapolitano.com/posts/masterpiece/</link>
+      <pubDate>Sat, 21 May 2022 19:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/masterpiece/</guid>
+      <description>Introduction Currently, my server is mining data from the neo4j graph database.
+This post contains a control model completed in SPSS that will serve as the base line for comparison to Ml models. It includes a short literature review of the theoritical foundation of the Attitudinal Model of Judicial Behavior.
+Hypothesis When considering the individual Supreme Court Justices, their voting behavior may be best described by the interaction between their ideological precepts and the facts of the case.</description>
+    </item>
+    
+  </channel>
+</rss>

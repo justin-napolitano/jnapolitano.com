@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>data on Justin Napolitano</title>
+    <link>jnapolitano.com/tags/data/</link>
+    <description>Recent content in data on Justin Napolitano</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Mon, 23 May 2022 19:30:32 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rice Paddy Methane Emissions Estimation: Part 2</title>
+      <link>jnapolitano.com/posts/rice-paddy-emissions-2/</link>
+      <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/rice-paddy-emissions-2/</guid>
+      <description>Methane Emissions Estimation Data Part 2: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.
+It is fairly code python and pandas heavy.
+The code and data exploration follows the summary below.
+Hypothesis Testing the University of Malaysia Paper Claims  That the distributions do not differ between 2020 and 2019 That the means do no differ between 2020 and 2019  What will be Tested.</description>
+    </item>
+    
+    <item>
+      <title>Rice Paddy Methane Emissions Estimation: Part 1</title>
+      <link>jnapolitano.com/posts/rice-paddy-emissions-1/</link>
+      <pubDate>Sat, 21 May 2022 08:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/rice-paddy-emissions-1/</guid>
+      <description>Methane Emissions Estimation Data Part 1: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.
+It is fairly code python and pandas heavy.
+The code and data exploration follows the summary below.
+Inspiration for this work The University of Malaysia in partnership with Climate TRACE release a paper stating that the UN undercounts rice paddy methane emissions by about 16%.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,6 +6,116 @@
     <description>Recent content on Justin Napolitano</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>jayburdindustries</copyright><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GCP Cloud Run Job Scraper</title>
+      <link>jnapolitano.com/posts/loc_scraper/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/loc_scraper/</guid>
+      <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.
+Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
+    </item>
+    
+    <item>
+      <title>Creating a GCP Client Tool</title>
+      <link>jnapolitano.com/posts/gcputils/</link>
+      <pubDate>Sat, 27 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/gcputils/</guid>
+      <description>Creating a GCP Client Tool in Python Why I often find myself reuuing the same bits of code when working with GCP. It is very important to avoid creating multiple development trees of the same classes. I have done this before for large projects. It will lead to a very difficult to maintain stack of tools that will spaghettify over time.
+Creating the submodule Create an empty directory mkdir gcpuptils Add the following code to a gcpclient.</description>
+    </item>
+    
+    <item>
+      <title>Model Design and Logistic Regression in Python</title>
+      <link>jnapolitano.com/posts/logistic_regression_mockup/</link>
+      <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/logistic_regression_mockup/</guid>
+      <description>Model Design and Logistic Regression in Python I recently modeled customer churn in Julia with logistic regression model. It was interesting to be sure, but I want to extend my analysis skillset by modeling biostatistics data. In this post, I design a logistic regression model of health predictors.
+Imports # load some default Python modules import numpy as np import pandas as pd import matplotlib.pyplot as plt import seaborn as sns plt.</description>
+    </item>
+    
+    <item>
+      <title>Annual Cost of Living Monte Carlo Models</title>
+      <link>jnapolitano.com/posts/cost-of-living-projections/</link>
+      <pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/cost-of-living-projections/</guid>
+      <description>Cost of Living Projections Introduction I do not like negotiating for salary. Especially, without valid projections to determine a range.
+I prepared this report to estimate a salary expectation that will maintain my current standard of living.
+I present two Monte Carlo models of Houston and NYC annual living costs. The data is somewhat dated and &amp;ndash;particularly in the case of houston&amp;ndash; are high level estimates.
+In order to produce a better report, I am currently scraping data from the internet for more accurate sample distributions.</description>
+    </item>
+    
+    <item>
+      <title>Spearman Rank in Standard Julia</title>
+      <link>jnapolitano.com/posts/spearman_rank_julia/</link>
+      <pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/spearman_rank_julia/</guid>
+      <description>Spearman Rank in Standard Julia Well nearly, I did import the erfc function from the SpecialFunctions package. I don&amp;rsquo;t like it either. I&amp;rsquo;ll write my own soon to make up for it.
+Special Thanks I came across the text Numerical Recipes in C. It was first published in 1988, by the Cambridge University Press. The authors are William H. Press, Brian P. Flannery, Saul. A. Teukolsky, and William T. Veterling.</description>
+    </item>
+    
+    <item>
+      <title>Churn Modelling Marketing Data with Julia</title>
+      <link>jnapolitano.com/posts/propensity_scoring/</link>
+      <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/propensity_scoring/</guid>
+      <description>Churn Modelling Marketing Data with Julia Introduction I prepared this analysis to learn the logistic regression in Julia. The work is fairly straightforward. I am modelling if a customer will exit a website based on a number of sites. I&amp;rsquo;ll improve the model in an upcoming post. As if, is not as interesting as asking when. That will be my next project
+Imports using Pkg using DataFrames using CSV using Plots using GLM using StatsBase using Lathe using MLBase using ClassImbalance using ROCAnalysis using PyCall sklearn = pyimport(&amp;#34;sklearn.</description>
+    </item>
+    
+    <item>
+      <title>Markov Chains in Julia</title>
+      <link>jnapolitano.com/posts/markov-models-julia/</link>
+      <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/markov-models-julia/</guid>
+      <description>Introduction I am currently working on a legal research series where I perform statistical analysis and ml models to legal datasets. My intention is to model the behavior of courts, determine the outcome of cases, and build a pipeline capable of identifying relevant case law by issue area.
+That data set is nearly complete, but I have not decided which models to apply to it. This is where Julia comes into play.</description>
+    </item>
+    
+    <item>
+      <title>Quantitative Julia Problems</title>
+      <link>jnapolitano.com/posts/pi-with-julia/</link>
+      <pubDate>Tue, 24 May 2022 01:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/pi-with-julia/</guid>
+      <description>Introduction In my previous post, I demonstrated how to configure Rocky Linux and RHEL distributions for quantitative analysis.
+In this post, I include a few sample programs to test your installation.
+How to run the programs I saved them to a folder within the project directory.
+Activate the Project using Pkg Pkg.activate(&amp;#34;.&amp;#34;) #cd(&amp;#34;&amp;lt;sub-directory-containing-files&amp;gt;) optional Run a program include(&amp;#34;path/to/script-name.jl&amp;#34;) Estimate the Value of Pi Use the Monte Carlo method to estimate the value of pi.</description>
+    </item>
+    
+    <item>
+      <title>Configuring Rocky Linux 8 for Quantitative Analysis in Julia</title>
+      <link>jnapolitano.com/posts/rocky-linux-8-julia/</link>
+      <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/rocky-linux-8-julia/</guid>
+      <description>Install Jupyter Start with installing jupyter. It will serve as our server for development.
+Install Dependencies sudo dnf install gcc python3-devel kernel-headers-$(uname -r) Install Jupyter Via Pip pip3 install --user jupyter Install Julia We will be installing from the official binaries.
+Make a directory in user profile. i simply ran mkdir julia in the home folder. The cd to julia.
+When in the folder run
+Wget wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.2-linux-x86_64.tar.gz Unpack Then unpack</description>
+    </item>
+    
+    <item>
+      <title>Rice Paddy Methane Emissions Estimation: Part 2</title>
+      <link>jnapolitano.com/posts/rice-paddy-emissions-2/</link>
+      <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/rice-paddy-emissions-2/</guid>
+      <description>Methane Emissions Estimation Data Part 2: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.
+It is fairly code python and pandas heavy.
+The code and data exploration follows the summary below.
+Hypothesis Testing the University of Malaysia Paper Claims  That the distributions do not differ between 2020 and 2019 That the means do no differ between 2020 and 2019  What will be Tested.</description>
+    </item>
+    
   </channel>
 </rss>

@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days"><link rel="author" href="/jnapolitano.com/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/jnapolitano.com/apple-touch-icon.png"><link rel="icon" href="/jnapolitano.com/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" sizes="32x32" href="/jnapolitano.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/jnapolitano.com/favicon-16x16.png">
+<link rel="manifest" href="/jnapolitano.com/site.webmanifest">
+<meta name="msapplication-TileImage" content="/jnapolitano.com/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/jnapolitano.com/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Justin Napolitano"><meta name="description" content="File management with Julia in preperation for data merge.">
+<meta itemprop="name" content="Legal Research with AI Part 7: Wrangling Data with Julia">
+<meta itemprop="description" content="File management with Julia in preperation for data merge."><meta itemprop="datePublished" content="2022-05-22T16:30:32+00:00" />
+<meta itemprop="dateModified" content="2024-06-10T14:26:13-05:00" />
+<meta itemprop="wordCount" content="1038"><meta itemprop="image" content="jnapolitano.com/featured-julia.png">
+<meta itemprop="keywords" content="julia,dataframes,SCOTUS,data-wrangling," /><meta property="og:title" content="Legal Research with AI Part 7: Wrangling Data with Julia" />
+<meta property="og:description" content="File management with Julia in preperation for data merge." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="jnapolitano.com/posts/legal-research-part-7/" /><meta property="og:image" content="jnapolitano.com/featured-julia.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-22T16:30:32+00:00" />
+<meta property="article:modified_time" content="2024-06-10T14:26:13-05:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="jnapolitano.com/featured-julia.png"/>
+
+<meta name="twitter:title" content="Legal Research with AI Part 7: Wrangling Data with Julia"/>
+<meta name="twitter:description" content="File management with Julia in preperation for data merge."/>
+<title>Legal Research with AI Part 7: Wrangling Data with Julia</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="/jnapolitano.com/css/style.min.892ecbe8142d407f4d1e5caf8838b8f303d449f054ce94e2d3edeab3116d991d.css" integrity="sha256-iS7L6BQtQH9NHlyviDi48wPUSfBUzpTi0+3qsxFtmR0=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('jnapolitano.com/featured-julia.png');}</style></head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="jnapolitano.com">Justin Napolitano</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="jnapolitano.com/posts/">PORTFOLIO</a><a href="https://jnapolitano.com/resume.pdf">RESUME</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://github.com/justin-napolitano" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://www.linkedin.com/in/justin-napolitano/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:personal.jnapolitano@gmail.com" target="_blank" rel="noopener me" title="Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="https://instagram.com/jay_burdie" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://mastodon.social/@jnapolitano" target="_blank" rel="noopener me" title="Mastodon"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m 21.474,13.998 c -0.296,1.526 -2.655,3.194 -5.365,3.519 -1.413,0.168 -2.804,0.323 -4.287,0.255 -2.426,-0.111 -4.34,-0.579 -4.34,-0.579 0,0.236 0.015,0.461 0.044,0.672 0.316,2.394 2.373,2.537 4.323,2.604 1.968,0.067 3.721,-0.486 3.721,-0.486 l 0.081,1.779 c 0,0 -1.377,0.739 -3.829,0.875 -1.352,0.075 -3.031,-0.034 -4.987,-0.551 C 2.594,20.963 1.865,16.442 1.752,11.855 1.719,10.493 1.741,9.209 1.741,8.134 1.741,3.443 4.814,2.069 4.814,2.069 6.363,1.356 9.022,1.056 11.787,1.035 h 0.067 c 2.764,0.022 5.426,0.322 6.975,1.033 0,0 3.073,1.375 3.073,6.066 0,0 0.039,3.461 -0.428,5.864"/><path d="M 6.464,13.231 V 7.973 c 0,-1.002 0.549,-2.613 2.613,-2.613 2.064,0 2.741,1.793 2.741,3.484 0,1.692 0,2.23 0,2.23"/><path d="M 17.173,13.231 V 7.973 c 0,-1.002 -0.549,-2.613 -2.613,-2.613 -2.064,0 -2.741,1.793 -2.741,3.484 0,1.692 -0,2.23 -0,2.23"/></svg></a><a href="https://x.com/jayburdybird" target="_blank" rel="noopener me" title="X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a></span><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=jnapolitano.com%2fposts%2flegal-research-part-7%2f&amp;text=Legal%20Research%20with%20AI%20Part%207%3a%20Wrangling%20Data%20with%20Julia" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=jnapolitano.com%2fposts%2flegal-research-part-7%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Legal%20Research%20with%20AI%20Part%207%3a%20Wrangling%20Data%20with%20Julia&amp;body=jnapolitano.com%2fposts%2flegal-research-part-7%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=jnapolitano.com%2fposts%2flegal-research-part-7%2f&amp;source=jnapolitano.com&amp;title=Legal%20Research%20with%20AI%20Part%207%3a%20Wrangling%20Data%20with%20Julia&amp;summary=Legal%20Research%20with%20AI%20Part%207%3a%20Wrangling%20Data%20with%20Julia%2c%20by%20Justin%20Napolitano%0a%0aFile%20management%20with%20Julia%20in%20preperation%20for%20data%20merge.%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Legal Research with AI Part 7: Wrangling Data with Julia&#34;,&#34;jnapolitano.com/posts/legal-research-part-7/&#34;,&#34;Legal Research with AI Part 7: Wrangling Data with Julia, by Justin Napolitano\n\nFile management with Julia in preperation for data merge.\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="jnapolitano.com/posts/">PORTFOLIO</a></li>
+			<li><a href="https://jnapolitano.com/resume.pdf">RESUME</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>May 22, 2022</span></div>
+				<h1>Legal Research with AI Part 7: Wrangling Data with Julia</h1>
+			</header>
+			<div class="post-info"><p>File management with Julia in preperation for data merge.</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg><a href="" target="_blank">Justin Napolitano</a></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="jnapolitano.com/tags/julia">julia</a></span><span class="tag"><a href="jnapolitano.com/tags/dataframes">dataframes</a></span><span class="tag"><a href="jnapolitano.com/tags/scotus">SCOTUS</a></span><span class="tag"><a href="jnapolitano.com/tags/data-wrangling">data-wrangling</a></span></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg><span class="category"><a href="jnapolitano.com/categories/julia">Julia</a></span><span class="category"><a href="jnapolitano.com/categories/tutorials">Tutorials</a></span><span class="category"><a href="jnapolitano.com/categories/legal-research">Legal Research</a></span><span class="category"><a href="jnapolitano.com/categories/data-wrangling">Data Wrangling</a></span></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    
+    
+    
+    
+    4 Minutes, 43 Seconds</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2022-05-22 11:30 -0500</p></div>
+			<hr class="post-end">
+			<div class="content">
+				<h2 id="intro">Intro<a href="#intro" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>In a <a href="https://blog.jnapolitano.io/posts/legal-research-part-5/">previous post</a>, I seperated all of the results returned from the Library of Congress API into individual JSON documents to be imported as nodes into a neo4j graph.</p>
+<p>In this post, I filter the <code>LOC</code> data against another data set from Oyez that will be integrated in the next post.</p>
+<h2 id="filtering-data">Filtering Data<a href="#filtering-data" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Both data sets have been seperated into individual case nodes stored in the json format as a file with the format : <!-- raw HTML omitted -->.json.</p>
+<p>The Library of Congress data contains indices, admonitions, briefs, and other data that I will not yet be incorporating into my data set.</p>
+<p>In order to find only the case data I will be creating a dataframe containing the paths of json files with matching citations.</p>
+<h2 id="using-julia-instead-of-python">Using Julia Instead of Python<a href="#using-julia-instead-of-python" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>I love Python, but I want to try something new.  Julia&rsquo;s <a href="https://docs.julialang.org/en/v1/manual/methods/">multiple dispatch</a> design tempted me to try it out.  This is my first Julia program.  I will be documenting the work more so than usual.</p>
+<h3 id="julia-import-functions">Julia &ldquo;import&rdquo; Functions<a href="#julia-import-functions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Coming from Python, I typically import libraries/packages with an <code>import</code> call.  Something like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+</code></pre></div><p>In Julia, we use the <code>using</code> call to import the package. Like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia">
+<span class="k">using</span> <span class="n">DataFrames</span>
+<span class="k">using</span> <span class="n">CSV</span>
+
+</code></pre></div><p>A package can also be imported, but this does not instantiate the methods and functions within it (As far as I understand it).</p>
+<p>For instance <code>import CSV</code> would only load the package but I would have to call CSV.method to actually do something.  Something like <code>from pandas import to_csv</code> in Python.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia">
+<span class="k">import</span> <span class="n">DataFrames</span>
+<span class="k">import</span> <span class="n">CSV</span>
+
+</code></pre></div><h2 id="the-main-function">The Main Function<a href="#the-main-function" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Just like in C -and like we should in Python-, I declared a main function to run the program.  I call it with main().  I do not know if there is a similar convention to Python&rsquo;s <code>if __name__ == &quot;__main__&quot;</code>.  I will find out soon.</p>
+<p>The main difference in function declaration between Python and Julia is the inclusion of the <code>end</code> keyword and the end of the function.</p>
+<p>For instance review the main function below :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="k">function</span> <span class="n">main</span><span class="p">()</span>
+    
+    <span class="c"># outpath fo the current file</span>
+    <span class="n">outpath</span> <span class="o">=</span> <span class="n">joinpath</span><span class="p">(</span><span class="n">pwd</span><span class="p">(),</span><span class="s">&#34;case_files.csv&#34;</span><span class="p">)</span>
+
+    <span class="c">#Glob files from directory</span>
+    <span class="n">oyez_dataframe</span> <span class="o">=</span> <span class="n">get_files</span><span class="p">(</span><span class="s">&#34;oyez_cited&#34;</span><span class="p">)</span>
+    
+    <span class="c">#Glob files from directory</span>
+    <span class="n">loc_dataframe</span> <span class="o">=</span> <span class="n">get_files</span><span class="p">(</span><span class="s">&#34;loc_cited&#34;</span><span class="p">)</span>
+
+    
+    <span class="c"># Join on File excluding extraneous data not in the oyez dataset</span>
+    <span class="n">master_df</span> <span class="o">=</span> <span class="n">innerjoin</span><span class="p">(</span><span class="n">oyez_dataframe</span><span class="p">,</span> <span class="n">loc_dataframe</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="ss">:File</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nb">true</span><span class="p">),</span> <span class="n">makeunique</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span>
+
+    <span class="c">#Select every file but the .DS_Store from the dataframe.  </span>
+    <span class="n">master_df</span> <span class="o">=</span> <span class="n">filter</span><span class="p">(</span><span class="n">row</span> <span class="o">-&gt;</span> <span class="o">!</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">File</span> <span class="o">==</span> <span class="s">&#34;.DS_Store&#34;</span><span class="p">),</span> <span class="n">master_df</span><span class="p">)</span>
+
+    <span class="c">#Write to file</span>
+    <span class="n">outpath</span> <span class="o">=</span> <span class="n">df_to_file</span><span class="p">(</span><span class="n">master_df</span><span class="p">,</span><span class="n">outpath</span><span class="p">)</span>
+    
+
+<span class="k">end</span>
+
+<span class="n">main</span><span class="p">()</span>
+
+
+</code></pre></div><h3 id="creating-an-outpath">Creating an outpath<a href="#creating-an-outpath" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The main function creates an outpath to write the resultant master df to file by calling <code>joinpath(pwd(), &quot;case_files.csv&quot;)</code>.</p>
+<h3 id="the-get-files-function">The Get Files Function<a href="#the-get-files-function" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Next, the get_files function is called to create two data frames:  the loc_df and the oyez_df.</p>
+<h4 id="declaring-empty-string-arrays">Declaring empty string arrays<a href="#declaring-empty-string-arrays" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Each file name is appended to a file_name array declared with <code>&lt;array_name&gt; = String[]</code></p>
+<h4 id="reading-files-with-readdir">Reading Files with readdir()<a href="#reading-files-with-readdir" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>File names are from from a directory passed to the built in <code>readdir()</code> function.</p>
+<h4 id="appending-files-to-file_name-array">Appending Files to file_name Array<a href="#appending-files-to-file_name-array" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Each file name is appended to a file_name array declared with <code>file_name = String[]</code> and appended to with the push!(file_name,f) call.  Note the <code>!</code> following push.  This typically means that the function is operating on the data in memory and will not return a new value.</p>
+<h4 id="appending-file-paths-to-file_path-array">Appending File Paths to file_path Array<a href="#appending-file-paths-to-file_path-array" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>I also include the file path by appending what is returned by <code>path = joinpath(working_path, f)</code> to the file_path list.</p>
+<p>I love the built in <code>joinpath</code> function.  Pythons <code>os.sep.join()</code> works well, but I really like Julia&rsquo;s implementation.</p>
+<h4 id="sorting-the-arrays-with-merge-sort">Sorting the Arrays with Merge Sort<a href="#sorting-the-arrays-with-merge-sort" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Arrays are soreted by call <code>sort_array(&lt;array&gt;)</code>.  It returns a sorted array using the merge sort alogorithm.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="k">function</span> <span class="n">sort_array</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">sort</span><span class="p">(</span><span class="n">array</span><span class="p">;</span> <span class="n">alg</span><span class="o">=</span><span class="nb">MergeSort</span><span class="p">)</span>
+
+<span class="k">end</span>
+</code></pre></div><h4 id="crating-a-dataframe-with-the-arrays">Crating a Dataframe with the Arrays<a href="#crating-a-dataframe-with-the-arrays" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Finally a dataframe containing the sorted file_name and file_path lists as the columns file and path is created and then returned.</p>
+<h4 id="a-note-on-refactoring">A note on refactoring<a href="#a-note-on-refactoring" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>This function should be refactored into seperate ones, but it works well enough with this workflow that I am going to leave it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="k">function</span> <span class="n">get_files</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="kt">String</span><span class="p">[]</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="kt">String</span><span class="p">[]</span>
+
+    <span class="n">working_path</span> <span class="o">=</span> <span class="n">joinpath</span><span class="p">(</span><span class="n">pwd</span><span class="p">(),</span> <span class="n">directory</span><span class="p">)</span>
+    <span class="c"># context management.  Cd and then go back to the orignal pwd</span>
+    <span class="n">cd</span><span class="p">(</span><span class="n">working_path</span><span class="p">)</span> <span class="k">do</span> 
+        <span class="c">#print(&#34;Current directory: &#34;, working_path)</span>
+        <span class="n">foreach</span><span class="p">(</span><span class="n">readdir</span><span class="p">())</span> <span class="k">do</span> <span class="n">f</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">joinpath</span><span class="p">(</span><span class="n">working_path</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+            <span class="n">push!</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+            <span class="n">push!</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+            <span class="c">#dump(stat(f.desc)) # you can customize what you want to print</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="c">#println(&#39;\n&#39;, pwd())</span>
+    <span class="c">#display(file_paths)</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">sort_array</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">sort_array</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">File</span> <span class="o">=</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">file_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">end</span>
+
+
+</code></pre></div><h3 id="joining-data-frames-by-citation">Joining Data Frames by Citation<a href="#joining-data-frames-by-citation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Julia&rsquo;s DataFrames package can easily join dataframes on a column.  In this workflow the file which is titled after a case citation is used.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="c"># Join on File excluding extraneous data not in the oyez dataset</span>
+<span class="n">master_df</span> <span class="o">=</span> <span class="n">innerjoin</span><span class="p">(</span><span class="n">oyez_dataframe</span><span class="p">,</span> <span class="n">loc_dataframe</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="ss">:File</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nb">true</span><span class="p">),</span> <span class="n">makeunique</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span>
+
+</code></pre></div><h3 id="filtering-the-df-for-extraneous-files">Filtering the DF for Extraneous Files<a href="#filtering-the-df-for-extraneous-files" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The master_df  is filtered to remove <code>.DS_Store</code> from the list of files to be processed.  Below notice the <code>!</code> in this case it will return all a data frame of values that are not equal to .DS_Store in the File column.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="c">#Select every file but the .DS_Store from the dataframe.  </span>
+<span class="n">master_df</span> <span class="o">=</span> <span class="n">filter</span><span class="p">(</span><span class="n">row</span> <span class="o">-&gt;</span> <span class="o">!</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">File</span> <span class="o">==</span> <span class="s">&#34;.DS_Store&#34;</span><span class="p">),</span> <span class="n">master_df</span><span class="p">)</span>
+</code></pre></div><h3 id="the-df_to_file-function">The df_to_file Function<a href="#the-df_to_file-function" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Finally the df is written to file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="c">#Write to file</span>
+<span class="n">outpath</span> <span class="o">=</span> <span class="n">df_to_file</span><span class="p">(</span><span class="n">master_df</span><span class="p">,</span><span class="n">outpath</span><span class="p">)</span>
+
+
+<span class="k">function</span> <span class="n">df_to_file</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">outpath</span><span class="p">)</span>
+    <span class="n">CSV</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">outpath</span>
+
+<span class="k">end</span>
+
+</code></pre></div><h2 id="the-complete-program">The Complete Program<a href="#the-complete-program" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="k">using</span> <span class="n">DataFrames</span>
+<span class="k">using</span> <span class="n">CSV</span>
+
+<span class="k">function</span> <span class="n">get_files</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="kt">String</span><span class="p">[]</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="kt">String</span><span class="p">[]</span>
+
+    <span class="n">working_path</span> <span class="o">=</span> <span class="n">joinpath</span><span class="p">(</span><span class="n">pwd</span><span class="p">(),</span> <span class="n">directory</span><span class="p">)</span>
+    <span class="c"># context management.  Cd and then go back to the orignal pwd</span>
+    <span class="n">cd</span><span class="p">(</span><span class="n">working_path</span><span class="p">)</span> <span class="k">do</span> 
+        <span class="c">#print(&#34;Current directory: &#34;, working_path)</span>
+        <span class="n">foreach</span><span class="p">(</span><span class="n">readdir</span><span class="p">())</span> <span class="k">do</span> <span class="n">f</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">joinpath</span><span class="p">(</span><span class="n">working_path</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+            <span class="n">push!</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+            <span class="n">push!</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+            <span class="c">#dump(stat(f.desc)) # you can customize what you want to print</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="c">#println(&#39;\n&#39;, pwd())</span>
+    <span class="c">#display(file_paths)</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">sort_array</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">sort_array</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">File</span> <span class="o">=</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">file_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">end</span>
+
+
+
+<span class="k">function</span> <span class="n">sort_array</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">sort</span><span class="p">(</span><span class="n">array</span><span class="p">;</span> <span class="n">alg</span><span class="o">=</span><span class="nb">MergeSort</span><span class="p">)</span>
+
+<span class="k">end</span>
+
+
+
+<span class="k">function</span> <span class="n">df_to_file</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">outpath</span><span class="p">)</span>
+    <span class="n">CSV</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">outpath</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">outpath</span>
+
+<span class="k">end</span>
+
+
+<span class="k">function</span> <span class="n">main</span><span class="p">()</span>
+    
+    <span class="c"># outpath fo the current file</span>
+    <span class="n">outpath</span> <span class="o">=</span> <span class="n">joinpath</span><span class="p">(</span><span class="n">pwd</span><span class="p">(),</span><span class="s">&#34;case_files.csv&#34;</span><span class="p">)</span>
+
+    <span class="c">#Glob files from directory</span>
+    <span class="n">oyez_dataframe</span> <span class="o">=</span> <span class="n">get_files</span><span class="p">(</span><span class="s">&#34;oyez_cited&#34;</span><span class="p">)</span>
+    
+    <span class="c">#Glob files from directory</span>
+    <span class="n">loc_dataframe</span> <span class="o">=</span> <span class="n">get_files</span><span class="p">(</span><span class="s">&#34;loc_cited&#34;</span><span class="p">)</span>
+
+    
+    <span class="c"># Join on File excluding extraneous data not in the oyez dataset</span>
+    <span class="n">master_df</span> <span class="o">=</span> <span class="n">innerjoin</span><span class="p">(</span><span class="n">oyez_dataframe</span><span class="p">,</span> <span class="n">loc_dataframe</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="ss">:File</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nb">true</span><span class="p">),</span> <span class="n">makeunique</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span>
+
+    <span class="c">#Select every file but the .DS_Store from the dataframe.  </span>
+    <span class="n">master_df</span> <span class="o">=</span> <span class="n">filter</span><span class="p">(</span><span class="n">row</span> <span class="o">-&gt;</span> <span class="o">!</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">File</span> <span class="o">==</span> <span class="s">&#34;.DS_Store&#34;</span><span class="p">),</span> <span class="n">master_df</span><span class="p">)</span>
+
+    <span class="c">#Write to file</span>
+    <span class="n">outpath</span> <span class="o">=</span> <span class="n">df_to_file</span><span class="p">(</span><span class="n">master_df</span><span class="p">,</span><span class="n">outpath</span><span class="p">)</span>
+    
+
+<span class="k">end</span>
+
+<span class="n">main</span><span class="p">()</span>
+
+</code></pre></div>
+			</div>
+
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="jnapolitano.com/posts/legal-research-part-8/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;</span><br><span>Conduct Legal Research with AI Part 8: Case Nodes Sample Data</span>
+			</a>
+			<a class="prev-post" href="jnapolitano.com/posts/masterpiece/">
+				<span class="post-nav-label">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Legal Research with AI: Part 6</span>
+			</a>
+		</div>
+		<div id="comments" class="thin"></div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+	<p>
+		&copy; 2024 <a href="jnapolitano.com">Cobra</a>
+		&#183; JAYBURDINDUSTRIES
+		&#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+		&#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a></p>
+
+</footer>
+<script async src="/jnapolitano.com/js/bundle.min.5034a061023fdc1bbf821910f95d3bda81bc68ba039a2c1202f0d7027638e80f.js" integrity="sha256-UDSgYQI/3Bu/ghkQ+V072oG8aLoDmiwSAvDXAnY46A8=" crossorigin="anonymous"></script><script async src="/jnapolitano.com/js/link-share.min.20ddc5b895a2cb52c811efd9bcf38168838be5cb8671b12ae2997bf38c34f9f0.js" integrity="sha256-IN3FuJWiy1LIEe/ZvPOBaIOL5cuGcbEq4pl784w0+fA=" crossorigin="anonymous"></script>
+</body>
+
+</html>
