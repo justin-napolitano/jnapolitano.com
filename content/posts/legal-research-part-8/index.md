@@ -7,7 +7,6 @@ image = "post-image.jpeg"
 categories = ['Legal Research', 'Data Wrangling', 'Graph Database', 'Automation']
 tags = ['python','legal', 'json', 'scotus', 'automation']
 images = ['feature-image.png']
-series = ['Legal Research with AI']
 +++
 
 ## Introduction

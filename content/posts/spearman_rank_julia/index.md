@@ -6,7 +6,6 @@ author = "Justin Napolitano"
 categories = ['Julia','Tutorials', 'Quantitative Analysis','Numerical Computing']
 tags = ['julia','numerical-computing','spearman-rank-correlation','statistics']
 images = ['featured-julia.png']
-series = ['Quantitative Analysis in Julia']
 +++
 
 ## Spearman Rank in Standard Julia

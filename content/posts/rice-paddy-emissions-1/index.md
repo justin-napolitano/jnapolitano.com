@@ -7,7 +7,6 @@ title = 'Rice Paddy Methane Emissions Estimation: Part 1'
 featured_image = 'post-image.*'
 author = "Justin Napolitano"
 images = ['featured-rice-paddies.jpeg']
-series = ['Rice Paddy Methane Emissions']
 image = 'featured.*'
 +++
 
@@ -938,8 +937,6 @@ malaysia_emissions_df
 
 
 ```python
-mean_series = malaysia_emissions_df[['tCH4_2015','tCH4_2016','tCH4_2017','tCH4_2018','tCH4_2019']].select_dtypes(np.number).mean(axis=1)
-total_series = malaysia_emissions_df[['tCH4_2015','tCH4_2016','tCH4_2017','tCH4_2018','tCH4_2019']].select_dtypes(np.number).sum(axis=1)
 malaysia_emissions_df["Mean_CH4"] = mean_series
 malaysia_emissions_df['Total_CH4'] = total_series 
 ```
@@ -947,8 +944,6 @@ malaysia_emissions_df['Total_CH4'] = total_series
 
 ```python
 ## the select np.number is uncecessary, but i'm including anyways as it doesnt really hurt but for a small calculation penalty
-mean_series = malaysia_emissions_df[['tCO2_2015','tCO2_2016','tCO2_2017','tCO2_2018','tCO2_2019']].select_dtypes(np.number).mean(axis=1)
-total_series = malaysia_emissions_df[['tCO2_2015','tCO2_2016','tCO2_2017','tCO2_2018','tCO2_2019']].select_dtypes(np.number).sum(axis=1)
 malaysia_emissions_df["Mean_CO2"] = mean_series
 malaysia_emissions_df['Total_CO2'] = total_series 
 ```
@@ -2691,8 +2686,6 @@ faostat_emissions_df.reset_index(inplace=True, drop=True)
 
 
 ```python
-mean_series = faostat_emissions_df[[2015,2016,2017,2018,2019]].select_dtypes(np.number).mean(axis=1)
-total_series = faostat_emissions_df[[2015,2016,2017,2018,2019]].select_dtypes(np.number).sum(axis=1)
 faostat_emissions_df["Mean_CH4"] = mean_series
 faostat_emissions_df['Total_CH4'] = total_series 
 ```
@@ -2700,8 +2693,6 @@ faostat_emissions_df['Total_CH4'] = total_series
 
 ```python
 ## the select np.number is uncecessary, but i'm including anyways as it doesnt really hurt but for a small calculation penalty
-mean_series = faostat_emissions_df[['tCO2_2015','tCO2_2016','tCO2_2017','tCO2_2018','tCO2_2019']].select_dtypes(np.number).mean(axis=1)
-total_series = faostat_emissions_df[['tCO2_2015','tCO2_2016','tCO2_2017','tCO2_2018','tCO2_2019']].select_dtypes(np.number).sum(axis=1)
 faostat_emissions_df["Mean_CO2"] = mean_series
 faostat_emissions_df['Total_CO2'] = total_series 
 ```

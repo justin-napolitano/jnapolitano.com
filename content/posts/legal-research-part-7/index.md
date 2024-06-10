@@ -7,7 +7,6 @@ image = "thumbnail.*"
 categories = ['Julia','Tutorials', 'Legal Research', 'Data Wrangling']
 tags = ['julia', 'dataframes', 'SCOTUS','data-wrangling' ]
 images = ['featured-julia.png']
-series = ['Legal Research with AI']
 +++
 
 ## Intro

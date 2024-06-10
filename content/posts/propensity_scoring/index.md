@@ -6,7 +6,6 @@ author = "Justin Napolitano"
 categories = ['Julia','Tutorials', 'Quantitative Analysis']
 tags = ['julia','logisitic-regression','propensity-models', 'marketing-analsyis','statistics']
 images = ['featured-julia.png']
-series = ['Quantitative Analysis in Julia']
 +++
 
 

@@ -7,7 +7,6 @@ title = 'Rice Paddy Methane Emissions Estimation: Part 2'
 featured_image = 'post-image.*'
 author = "Justin Napolitano"
 images = ['featured-rice-paddies.jpeg']
-series = ['Rice Paddy Methane Emissions']
 image = 'post-image.*'
 +++
 

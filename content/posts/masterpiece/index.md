@@ -7,7 +7,7 @@ image = "post-image.jpeg"
 featuredimage = "post-image.jpeg"
 categories = ['Legal Research', 'Research', 'SCOTUS', 'SPSS', 'Behavioral Modeling', 'Naive Bayesian', 'Statistical Analysis']
 tags = ['python','legal', 'spss', 'scotus', 'statistics']
-series = ['Legal Research with AI']
+
 +++
 
 

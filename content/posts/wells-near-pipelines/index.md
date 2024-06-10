@@ -7,7 +7,6 @@ image = "post-image.png"
 featuredimage = "post-image.png"
 categories = ['Carbon Markets', 'Carbon Capture', 'Hydrogen Markets', 'Energy Sector', 'Geographic Information Systems', 'Liquified Natural Gas Markets', 'Economic Modeling']
 tags = ['carbon', 'hydrogen', 'gis', 'lng', 'python', 'carbon']
-series = ['North American Energy']
 +++
 
 # Potential Carbon Storage Wells Near Pipelines

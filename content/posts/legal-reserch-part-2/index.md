@@ -8,7 +8,6 @@ featuredimage = "post-image.png"
 categories = ['Legal Research', 'Data Wrangling', 'Graph Database', 'Automation']
 tags = ['python','legal', 'json', 'scotus', 'automation', 'neo4j']
 images = ['featured-justices.jpeg']
-series = ['Legal Research with AI']
 +++
 
 # Integrating the Constitution to Neo4j

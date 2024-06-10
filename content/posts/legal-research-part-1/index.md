@@ -8,7 +8,6 @@ featuredimage = "post-image.png"
 categories = ['Legal Research', 'Data Wrangling', 'Graph Database', 'Automation']
 tags = ['python','legal', 'json', 'scotus', 'automation']
 images = ['featured-justices.jpeg']
-series = ['Legal Research with AI']
 +++
 
 

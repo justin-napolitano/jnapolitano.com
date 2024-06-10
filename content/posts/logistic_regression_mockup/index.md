@@ -6,7 +6,6 @@ author = "Justin Napolitano"
 categories = ['Python','Tutorials', 'Quantitative Analysis']
 tags = ['julia','numerical-computing','Logistic Regression','statistics']
 images = ['feature-image.png']
-series = ["Quantitative Analysis in Python"]
 +++
 
 # Model Design and Logistic Regression in Python

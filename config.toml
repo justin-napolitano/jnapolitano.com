@@ -7,7 +7,7 @@
 baseURL = "jnapolitano.com"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
-theme = "hermit-v2"
+theme = "hermit-V2"
 
 #[languages]
 #  [languages.en]

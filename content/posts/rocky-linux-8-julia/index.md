@@ -6,7 +6,6 @@ author = "Justin Napolitano"
 categories = ['Julia','Tutorials', 'Legal Research', 'Data Wrangling']
 tags = ['julia', 'dataframes', 'SCOTUS','data-wrangling' ]
 images = ['featured-julia.png']
-series = ['Quantitative Analysis in Julia']
 +++
 
 ## Install Jupyter

@@ -1,3 +1,4 @@
+ls
 +++
 title =  "Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to the United States"
 date = "2022-05-07T18:40:32.169Z"
@@ -7,7 +8,6 @@ image = "post-image.jpeg"
 featuredimage = "post-image.jpeg"
 categories = ['Python', 'Statistical Analysis', 'Economic Projections']
 tags = ['ml','projections','montecarlo','python']
-series =['Transatlantic Shipping']
 +++
 
 # A Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to US Ports

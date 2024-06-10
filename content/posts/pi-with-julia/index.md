@@ -6,7 +6,6 @@ author = "Justin Napolitano"
 categories = ['Julia','Tutorials', 'Quantitative Analysis']
 tags = ['julia', 'dataframes', 'mathematics' ]
 images = ['featured-julia.png']
-series = ['Quantitative Analysis in Julia']
 +++
 ## Introduction
 

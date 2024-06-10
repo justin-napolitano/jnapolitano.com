@@ -7,7 +7,6 @@ image = "post-image.jpeg"
 featuredimage = "post-image.jpeg"
 categories = ['Python', 'Energy Sector', 'Carbon Capture', 'Economic Modeling', 'Shipping', 'EuroZone', 'Statistical Analysis', 'Economic Projections']
 tags = ['energy','lng', 'carbon-capture','python',]
-series =['Transatlantic Shipping']
 +++
 
 # Feasibility of Shipping Carbon Across the Atlantic
