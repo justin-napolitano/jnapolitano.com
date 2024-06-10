@@ -122,33 +122,44 @@ expiryDate = ["expiryDate"]
   #  name = "x"
   #  url = "https://twitter.com/"
 
- # [[params.socialLinks]]
- #   name = "github"
- #   url = "https://github.com/justin-napolitano"
+  [[params.socialLinks]]
+    name = "github"
+    url = "https://github.com/justin-napolitano"
 
- #[[params.socialLinks]]
- #   name = "linkedin"
- #   url = "https://www.linkedin.com/in/justin-napolitano/"
+  [[params.socialLinks]]
+      name = "linkedin"
+      url = "https://www.linkedin.com/in/justin-napolitano/"
 
- # [[params.socialLinks]]
- #   name = "email"
- #   url = "personal.jnapolitano@gmail.com"
+  [[params.socialLinks]]
+      name = "email"
+      url = "mailto:personal.jnapolitano@gmail.com"
 
+  [[params.socialLinks]]
+    name = "instagram"
+    url = "https://instagram.com/jay_burdie"
+
+  [[params.socialLinks]]
+    name = "mastodon"
+    url = "https://mastodon.social/@jnapolitano"
+
+  [[params.socialLinks]]
+    name = "x"
+    url = "https://x.com/jayburdybird"
     
 
 [menu]
 
   [[menu.main]]
-    name = "POSTS"
+    name = "PORTFOLIO"
     url = "posts/"
     weight = 10
 
-  [[menu.main]]
-    name = "CONTACT"
-    url = "https://links.jnapolitano.com/@justin"
-    weight = 20
+#  [[menu.main]]
+#    name = "CONTACT"
+#    url = "https://links.jnapolitano.com/@justin"
+#    weight = 20
     
   [[menu.main]]
     name = "RESUME"
     url = "https://jnapolitano.com/resume.pdf"
-    weight = 30
+    weight = 20
