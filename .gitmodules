@@ -7,3 +7,6 @@
 [submodule "content/posts/gcputils"]
 	path = content/posts/gcputils
 	url = https://github.com/justin-napolitano/gcputils.git
+[submodule "content/posts/gh-pages-workflow"]
+	path = content/posts/gh-pages-workflow
+	url = https://github.com/justin-napolitano/gh-pages-workflow.git
