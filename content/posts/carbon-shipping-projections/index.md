@@ -1,4 +1,3 @@
-ls
 +++
 title =  "Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to the United States"
 date = "2022-05-07T18:40:32.169Z"

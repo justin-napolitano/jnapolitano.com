@@ -8,8 +8,7 @@ tags = ['python','numerical-computing','monte-carlo','statistics']
 images = ['featured-ny.jpeg']
 +++
 
-
-# Cost of Living Projections
+## Cost of Living Projections
 
 
 ## Introduction

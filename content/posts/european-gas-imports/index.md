@@ -1,6 +1,6 @@
 +++
 title =  "EuroZone Gas Imports and Exports"
-date = "2022-05-5T18:40:32.169Z"
+date = "2022-05-05"
 description = "EuroZone Gas Imports and Exports."
 author = "Justin Napolitano"
 image = "post-image.jpeg"
