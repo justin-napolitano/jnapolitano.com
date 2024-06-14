@@ -40,7 +40,7 @@ Markov Chains are sets that contain the Markov Property.  A markov property cons
 
 Thus, the probability of going from x to y in one step of unit time can be computed.  If we consider the state changes within a stochastic matrix we can then determine the overall probabily of arriving at states within a system.
 
-Review the [formal defition](https://julia.quantecon.org/tools_and_techniques/finite_markov.html#equation-mpp).
+Review the [formal definition](https://julia.quantecon.org/tools_and_techniques/finite_markov.html#equation-mpp).
 
 ## Application to My Work
 
