@@ -10,3 +10,6 @@
 [submodule "content/posts/gh-pages-workflow"]
 	path = content/posts/gh-pages-workflow
 	url = https://github.com/justin-napolitano/gh-pages-workflow.git
+[submodule "content/posts/accord-headliner"]
+	path = content/posts/accord-headliner
+	url = https://github.com/justin-napolitano/accord-headliner.git
