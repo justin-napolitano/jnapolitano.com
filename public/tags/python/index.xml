@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo Build and Deploy GH Workflow</title>
+      <link>jnapolitano.com/posts/gh-pages-workflow/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/gh-pages-workflow/</guid>
+      <description>Creating a GH Workflow to Build and Deploy a hugo site to gh-pages Why To simplify the build process.
+Creating the Workflow create your yaml config file touch hugo.yaml Set the trigger and the environment defaults The code below creates a trigger on push from the main and the gh-pages branches. It also sets read and write permissions to permit executing code and building hugo.
+on:# Runs on pushes targeting the default branchpush:branches:- main# - pit# - ghpages- gh-pages# Allows you to run this workflow manually from the Actions tabworkflow_dispatch:# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pagespermissions:contents:readpages:writeid-token:write# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.</description>
+    </item>
+    
     <item>
       <title>GCP Cloud Run Job Scraper</title>
       <link>jnapolitano.com/posts/loc_scraper/</link>
@@ -104,18 +115,6 @@ You can find the others at:
       <description>Integrating the Constitution to Neo4j I am currenlty building a graph database of Supreme Court cases in neo4j to model the behavior and decison making of the court.
 In this post, I include the classes that I will be using to create individual nodes for the articles, sections, clauses, and subclauses of the Consititution.
 Later, these will be related to cases and subjecst in order to train a tensorflow algorithm to recommend case law by issue area and to predict the outcome of cases.</description>
-    </item>
-    
-    <item>
-      <title>Conduct Legal Research with AI: Part 1</title>
-      <link>jnapolitano.com/posts/legal-research-part-1/</link>
-      <pubDate>Mon, 16 May 2022 14:40:32 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/legal-research-part-1/</guid>
-      <description>Introduction In a previous post, I detailed the process of crawling the Library of Congress API to generate json files that could be intergrated into you DB of choice.
-In this discussion, we will integrate JSON data into a Neo4j graph database.
-Overview The process is fairly straightforward. The most difficult part is wrangling your json data into the right format for integration.
-The main function first instantiates the database config informormation.</description>
     </item>
     
   </channel>

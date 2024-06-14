@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Sat, 27 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/submodules/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/submodules/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo Build and Deploy GH Workflow</title>
+      <link>jnapolitano.com/posts/gh-pages-workflow/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/gh-pages-workflow/</guid>
+      <description>Creating a GH Workflow to Build and Deploy a hugo site to gh-pages Why To simplify the build process.
+Creating the Workflow create your yaml config file touch hugo.yaml Set the trigger and the environment defaults The code below creates a trigger on push from the main and the gh-pages branches. It also sets read and write permissions to permit executing code and building hugo.
+on:# Runs on pushes targeting the default branchpush:branches:- main# - pit# - ghpages- gh-pages# Allows you to run this workflow manually from the Actions tabworkflow_dispatch:# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pagespermissions:contents:readpages:writeid-token:write# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.</description>
+    </item>
+    
     <item>
       <title>Creating a GCP Client Tool</title>
       <link>jnapolitano.com/posts/gcputils/</link>

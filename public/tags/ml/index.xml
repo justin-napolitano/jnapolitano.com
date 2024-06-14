@@ -19,5 +19,16 @@ You can find the others at:
  blog.jnapolitano.io/neo4j_integration/ blog.jnapolitano.io/constitution_to_neo/  Introduction In this post, I will be testing a sample TensorFlow pipeline against the Supreme Court Database maintained by the Washington University Law School in order to build a proof of concept model for a Supreme Court Graph Analysis project.</description>
     </item>
     
+    <item>
+      <title>Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to the United States</title>
+      <link>jnapolitano.com/posts/carbon-shipping-projections/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/carbon-shipping-projections/</guid>
+      <description>A Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to US Ports Revision An earlier version of this report had reported values that were erroneously elevated by a decimal error in the meters to km conversion of distances between ports. I apologize for unintentionally publishing misleading information.
+Situations like this one, are why I always publish with code. Transparency is the key to rigor.
+Introduction I produced an earlier report that identified potential ports that may be suitable terminals for carbon imports into the United States for storage or industrial applications.</description>
+    </item>
+    
   </channel>
 </rss>

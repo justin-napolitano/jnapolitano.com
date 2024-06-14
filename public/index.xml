@@ -7,7 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Honda Accord Headliner Redo</title>
+      <link>jnapolitano.com/posts/accord-headliner/</link>
+      <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/accord-headliner/</guid>
+      <description>Look at that beautiful 12 year old Honda
+Why The foam holding it in place to the headliner board deteriorated. I am too broke to buy a new liner&amp;hellip; and the car is too old to make it perfect.
+Find a suitable headliner replacement fabric I live in Texas and its hot. Really hot. Without some insulation the heat from the sun would bake me inside my car. I have an old quilt with some sort of poly batting that I will use for the headliner.</description>
+    </item>
+    
+    <item>
+      <title>Hugo Build and Deploy GH Workflow</title>
+      <link>jnapolitano.com/posts/gh-pages-workflow/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/gh-pages-workflow/</guid>
+      <description>Creating a GH Workflow to Build and Deploy a hugo site to gh-pages Why To simplify the build process.
+Creating the Workflow create your yaml config file touch hugo.yaml Set the trigger and the environment defaults The code below creates a trigger on push from the main and the gh-pages branches. It also sets read and write permissions to permit executing code and building hugo.
+on:# Runs on pushes targeting the default branchpush:branches:- main# - pit# - ghpages- gh-pages# Allows you to run this workflow manually from the Actions tabworkflow_dispatch:# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pagespermissions:contents:readpages:writeid-token:write# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.</description>
+    </item>
+    
     <item>
       <title>GCP Cloud Run Job Scraper</title>
       <link>jnapolitano.com/posts/loc_scraper/</link>
@@ -90,31 +112,6 @@ That data set is nearly complete, but I have not decided which models to apply t
 In this post, I include a few sample programs to test your installation.
 How to run the programs I saved them to a folder within the project directory.
 Activate the Project using Pkg Pkg.activate(&amp;#34;.&amp;#34;) #cd(&amp;#34;&amp;lt;sub-directory-containing-files&amp;gt;) optional Run a program include(&amp;#34;path/to/script-name.jl&amp;#34;) Estimate the Value of Pi Use the Monte Carlo method to estimate the value of pi.</description>
-    </item>
-    
-    <item>
-      <title>Configuring Rocky Linux 8 for Quantitative Analysis in Julia</title>
-      <link>jnapolitano.com/posts/rocky-linux-8-julia/</link>
-      <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/rocky-linux-8-julia/</guid>
-      <description>Install Jupyter Start with installing jupyter. It will serve as our server for development.
-Install Dependencies sudo dnf install gcc python3-devel kernel-headers-$(uname -r) Install Jupyter Via Pip pip3 install --user jupyter Install Julia We will be installing from the official binaries.
-Make a directory in user profile. i simply ran mkdir julia in the home folder. The cd to julia.
-When in the folder run
-Wget wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.2-linux-x86_64.tar.gz Unpack Then unpack</description>
-    </item>
-    
-    <item>
-      <title>Rice Paddy Methane Emissions Estimation: Part 2</title>
-      <link>jnapolitano.com/posts/rice-paddy-emissions-2/</link>
-      <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/rice-paddy-emissions-2/</guid>
-      <description>Methane Emissions Estimation Data Part 2: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.
-It is fairly code python and pandas heavy.
-The code and data exploration follows the summary below.
-Hypothesis Testing the University of Malaysia Paper Claims  That the distributions do not differ between 2020 and 2019 That the means do no differ between 2020 and 2019  What will be Tested.</description>
     </item>
     
   </channel>

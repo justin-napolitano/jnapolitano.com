@@ -2,6 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>jnapolitano.com/tags/automotive/</loc>
+    <lastmod>2024-06-14T14:07:28-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/accord-headliner/</loc>
+    <lastmod>2024-06-14T14:07:28-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/</loc>
+    <lastmod>2024-06-14T15:57:20-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/</loc>
+    <lastmod>2024-06-14T15:57:20-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/automation/</loc>
+    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/git/</loc>
+    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/gh-pages-workflow/</loc>
+    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/python/</loc>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/submodules/</loc>
+    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/workflow/</loc>
+    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>jnapolitano.com/tags/bash/</loc>
     <lastmod>2024-04-28T00:00:00+00:00</lastmod>
   </url><url>
@@ -17,35 +47,14 @@
     <loc>jnapolitano.com/posts/loc_scraper/</loc>
     <lastmod>2024-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/tags/git/</loc>
-    <lastmod>2024-04-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/python/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
-  </url><url>
     <loc>jnapolitano.com/tags/workflow-automation/</loc>
     <lastmod>2024-04-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/automation/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/gcputils/</loc>
     <lastmod>2024-04-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/tags/submodules/</loc>
-    <lastmod>2024-04-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/workflow/</loc>
-    <lastmod>2024-04-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>jnapolitano.com/tags/julia/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
+    <lastmod>2024-06-14T15:57:20-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/logistic-regression/</loc>
     <lastmod>2024-06-10T14:26:13-05:00</lastmod>
@@ -54,16 +63,16 @@
     <lastmod>2024-06-10T14:26:13-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/numerical-computing/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/statistics/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
+    <lastmod>2024-06-14T15:57:20-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/cost-of-living-projections/</loc>
-    <lastmod>2024-04-24T17:23:50-05:00</lastmod>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/monte-carlo/</loc>
-    <lastmod>2024-04-24T17:23:50-05:00</lastmod>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/spearman_rank_julia/</loc>
     <lastmod>2024-06-10T14:26:13-05:00</lastmod>
@@ -84,16 +93,16 @@
     <lastmod>2024-06-10T14:26:13-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/dataframes/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
+    <lastmod>2024-06-14T15:57:20-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/markov/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
+    <lastmod>2024-06-14T15:57:20-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/markov-models-julia/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
+    <lastmod>2024-06-14T15:57:20-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/mathematics/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
+    <lastmod>2024-06-14T15:57:20-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/pi-with-julia/</loc>
     <lastmod>2024-06-10T14:26:13-05:00</lastmod>
@@ -159,7 +168,7 @@
     <lastmod>2024-06-10T14:26:13-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/ml/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/legal-reserch-part-2/</loc>
     <lastmod>2024-06-10T14:26:13-05:00</lastmod>
@@ -177,13 +186,22 @@
     <lastmod>2024-06-10T14:26:13-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/energy/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/feasibility_study_shipping_carbon/</loc>
     <lastmod>2024-06-10T14:26:13-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/lng/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/carbon-shipping-projections/</loc>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/montecarlo/</loc>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/projections/</loc>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/carbon/</loc>
     <lastmod>2024-06-10T14:26:13-05:00</lastmod>
@@ -203,6 +221,12 @@
     <loc>jnapolitano.com/posts/wells-near-pipelines/</loc>
     <lastmod>2024-06-10T14:26:13-05:00</lastmod>
   </url><url>
+    <loc>jnapolitano.com/tags/europe/</loc>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/european-gas-imports/</loc>
+    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
+  </url><url>
     <loc>jnapolitano.com/tags/insitutional-analysis/</loc>
     <lastmod>2024-04-24T17:23:50-05:00</lastmod>
   </url><url>
@@ -216,15 +240,6 @@
     <lastmod>2024-04-24T17:23:50-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/project-evolution-of-ngos/</loc>
-    <lastmod>2024-04-24T17:23:50-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/posts/carbon-shipping-projections/</loc>
-    <lastmod>2024-06-10T14:26:13-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/europe/</loc>
-    <lastmod>2024-04-24T17:23:50-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/posts/european-gas-imports/</loc>
     <lastmod>2024-04-24T17:23:50-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/index/</loc>

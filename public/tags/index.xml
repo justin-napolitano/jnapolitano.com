@@ -7,7 +7,61 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>automotive</title>
+      <link>jnapolitano.com/tags/automotive/</link>
+      <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/automotive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>automation</title>
+      <link>jnapolitano.com/tags/automation/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>jnapolitano.com/tags/git/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>jnapolitano.com/tags/python/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>submodules</title>
+      <link>jnapolitano.com/tags/submodules/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/submodules/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>workflow</title>
+      <link>jnapolitano.com/tags/workflow/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/workflow/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>bash</title>
       <link>jnapolitano.com/tags/bash/</link>
@@ -41,60 +95,6 @@
       <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/tags/gcp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>jnapolitano.com/tags/git/</link>
-      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>jnapolitano.com/tags/python/</link>
-      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>workflow automation</title>
-      <link>jnapolitano.com/tags/workflow-automation/</link>
-      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/workflow-automation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>automation</title>
-      <link>jnapolitano.com/tags/automation/</link>
-      <pubDate>Sat, 27 Apr 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/automation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>submodules</title>
-      <link>jnapolitano.com/tags/submodules/</link>
-      <pubDate>Sat, 27 Apr 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/submodules/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>workflow</title>
-      <link>jnapolitano.com/tags/workflow/</link>
-      <pubDate>Sat, 27 Apr 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/workflow/</guid>
       <description></description>
     </item>
     
