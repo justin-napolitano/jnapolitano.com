@@ -16,3 +16,6 @@
 [submodule "content/posts/accord-bumper-weld"]
 	path = content/posts/accord-bumper-weld
 	url = https://github.com/justin-napolitano/accord-bumper-weld
+[submodule "content/posts/make-an-outdoor-living-space"]
+	path = content/posts/make-an-outdoor-living-space
+	url = https://github.com/justin-napolitano/making-an-outdoor-living-room.git
