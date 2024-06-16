@@ -22,3 +22,6 @@
 [submodule "content/posts/hugo-social-publisher"]
 	path = content/posts/hugo-social-publisher
 	url = https://github.com/justin-napolitano/hugo-social-publisher.git
+[submodule "content/posts/python-rss-reader"]
+	path = content/posts/python-rss-reader
+	url = https://github.com/justin-napolitano/python-rss-reader.git
