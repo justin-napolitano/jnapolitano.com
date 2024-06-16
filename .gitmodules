@@ -19,3 +19,6 @@
 [submodule "content/posts/make-an-outdoor-living-space"]
 	path = content/posts/make-an-outdoor-living-space
 	url = https://github.com/justin-napolitano/making-an-outdoor-living-room.git
+[submodule "content/posts/hugo-social-publisher"]
+	path = content/posts/hugo-social-publisher
+	url = https://github.com/justin-napolitano/hugo-social-publisher.git
