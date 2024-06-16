@@ -9,31 +9,341 @@
 		<atom:link href="jnapolitano.com/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
-			<title>Honda Accord Headliner Redo</title>
+			<title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
+			<link>jnapolitano.com/posts/python-rss-reader/</link>
+			<pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>
+			
+			<guid>jnapolitano.com/posts/python-rss-reader/</guid>
+			<description><![CDATA[How To automate posting to social sites]]></description>
+			<content type="html"><![CDATA[<h2 id="thoughts-on-this-second-pass">Thoughts on This Second Pass</h2>
+<ol>
+<li>I will create a script that parses the sites rss feed&hellip;</li>
+<li>it will then traverse the xml tree entries&hellip;</li>
+<li>if a date is newer than the last publish date&hellip;</li>
+<li>publish that post&hellip;</li>
+</ol>
+<p>I am still thinking through how to publish. I will likely write a monolithic script here, but ideally I would write an api or a batch processor to handle this in some way. I am currently thinking.</p>
+<h2 id="create-a-script-that-parses-my-sites-rss-feed">Create a Script that Parses my Sites RSS Feed</h2>
+<p>Pull last run date from a local file.. or from a bucket if running on the cloud.. I&rsquo;ll update this later</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;last_run.txt&#34;</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">epoch</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># convert to integer</span>
+<span class="n">epoch</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+
+</code></pre></div><h3 id="parse-the-rss-feed">Parse the rss feed</h3>
+<p>Something like&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="kn">import</span> <span class="nn">feedparser</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">NewsFeed</span> <span class="o">=</span> <span class="n">feedparser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&#34;https://jnapolitano.com/index.xml&#34;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">NewsFeed</span><span class="o">.</span><span class="n">entries</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">published</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span> <span class="p">:</span>
+    <span class="k">raise</span> <span class="n">e</span>
+
+<span class="c1"># entry is returned in the following format and needs to be parsed into epoch</span>
+<span class="c1"># Wed, 12 Jun 2024 00:00:00 +0000</span>
+
+
+</code></pre></div><h3 id="convert-the-returned-date-to-epoch">Convert the returned date to epoch</h3>
+<p>the given format is
+<code>Wed, 12 Jun 2024 00:00:00 +0000</code></p>
+<p>I&rsquo;ll have to conver that to epoch for a point of comparison. Some code below&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+
+<span class="c1"># The given date string</span>
+<span class="n">date_str</span> <span class="o">=</span> <span class="s2">&#34;Wed, 12 Jun 2024 00:00:00 +0000&#34;</span>
+
+<span class="c1"># Define the format of the date string</span>
+<span class="n">date_format</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="si">%a</span><span class="s2">, </span><span class="si">%d</span><span class="s2"> %b %Y %H:%M:%S %z&#34;</span>
+
+<span class="c1"># Convert the date string to a datetime object</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">date_format</span><span class="p">)</span>
+
+<span class="c1"># Convert the datetime object to a timestamp (epoch time)</span>
+<span class="n">epoch_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">epoch_time</span><span class="p">)</span>
+
+</code></pre></div><h3 id="compare-the-returned-date-to-the-last-run-date">Compare the returned date to the last run date</h3>
+<p>This is the really important step. I am currently just printing true&hellip; but in the next post i will write a script that actually publishes the information to socials.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">if</span> <span class="n">publish_date_epoch</span> <span class="o">&gt;</span> <span class="n">last_run_epoch</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div><h3 id="write-latest-to-file-when-traversal-is-complete">Write latest to file when traversal is complete</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">write_current_dt_to_file</span><span class="p">(</span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&#34;last_run.txt&#34;</span><span class="p">):</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Get the current epoch time</span>
+        <span class="n">current_epoch_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+
+        <span class="c1"># Write the current epoch time to the file</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">current_epoch_time</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">e</span>
+</code></pre></div><h3 id="putting-it-all-together">Putting it all together</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="c1"># convert to integer</span>
+<span class="k">def</span> <span class="nf">get_last_run</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;last_run.txt&#34;</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">epoch</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="n">epoch</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">epoch</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">e</span>
+
+<span class="k">def</span> <span class="nf">get_news_feed</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">NewsFeed</span> <span class="o">=</span> <span class="n">feedparser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&#34;https://jnapolitano.com/index.xml&#34;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">NewsFeed</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">e</span>
+
+
+<span class="k">def</span> <span class="nf">convert_to_epoch</span><span class="p">(</span><span class="n">given</span><span class="p">):</span>
+
+    <span class="k">try</span><span class="p">:</span> 
+        <span class="c1"># The given date string</span>
+        <span class="n">date_str</span> <span class="o">=</span> <span class="n">given</span>
+
+        <span class="c1"># Define the format of the date string</span>
+        <span class="n">date_format</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="si">%a</span><span class="s2">, </span><span class="si">%d</span><span class="s2"> %b %Y %H:%M:%S %z&#34;</span>
+
+        <span class="c1"># Convert the date string to a datetime object</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">date_format</span><span class="p">)</span>
+
+        <span class="c1"># Convert the datetime object to a timestamp (epoch time)</span>
+        <span class="n">epoch_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">epoch_time</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">e</span>
+
+<span class="k">def</span> <span class="nf">write_current_dt_to_file</span><span class="p">(</span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&#34;last_run.txt&#34;</span><span class="p">):</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Get the current epoch time</span>
+        <span class="n">current_epoch_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+
+        <span class="c1"># Write the current epoch time to the file</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">current_epoch_time</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">e</span>
+
+
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">last_run_epoch</span> <span class="o">=</span> <span class="n">get_last_run</span><span class="p">()</span>
+    <span class="n">NewsFeed</span> <span class="o">=</span> <span class="n">get_news_feed</span><span class="p">()</span>
+   
+    <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">NewsFeed</span><span class="o">.</span><span class="n">entries</span><span class="p">:</span>
+        <span class="n">given</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">published</span>
+        <span class="c1"># print(given)</span>
+        <span class="c1"># print(convert_to_epoch(given))</span>
+        <span class="n">publish_date_epoch</span> <span class="o">=</span> <span class="n">convert_to_epoch</span><span class="p">(</span><span class="n">given</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">publish_date_epoch</span> <span class="o">&gt;</span> <span class="n">last_run_epoch</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="c1"># in the next pass this will run the social update workflow</span>
+    
+    <span class="c1"># run the write epoch to file function</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">write_current_dt_to_file</span><span class="p">()</span>
+
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span> <span class="p">:</span>
+    <span class="k">raise</span> <span class="n">e</span>
+
+</code></pre></div><h2 id="next-steps">Next Steps</h2>
+<p>I need to write the publishing application. I haven&rsquo;t figure out how I&rsquo;ll do that yet. I want to do some cool things, but tbh it is probably overkill for my use case. I will think on it.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Automate Posting Hugo Blog to Social Sites... Failure</title>
+			<link>jnapolitano.com/posts/hugo-social-publisher/</link>
+			<pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+			
+			<guid>jnapolitano.com/posts/hugo-social-publisher/</guid>
+			<description><![CDATA[How not to automate posting to social sites]]></description>
+			<content type="html"><![CDATA[<h2 id="why">Why</h2>
+<p>I have a hugo blog that is a pian to share across my social feeds. I want to automate it.</p>
+<h2 id="create-a-mockup">Create a mockup</h2>
+<p>For this I quickly sketched out my thoughts onto a writing pad.  My thinking is that I will drop a yaml file into each post directory to be read by a a python application calling social apis.</p>
+<h4 id="mockup">Mockup</h4>
+<p>As you can see this is very rudimentary. I will traverse the posts directories looking for a publish.yaml file that will help a python program to auto-generate some arguments to pass to some apis.</p>
+<p><img src="./images/auto-post-sketch.jpg" alt="mock-up"></p>
+<h3 id="mockup-a-yaml-file">Mockup a yaml file</h3>
+<p>So I&rsquo;m thinking that my file will have a pretty basic structure something like.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">mastodon</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">x </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">linkedin </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></code></pre></div><h3 id="mockup-the-json-config-file">Mockup the json config file</h3>
+<p>I do not know which arguments the apis will need but I&rsquo;m going to guess I&rsquo;ll need something like&hellip;</p>
+<ul>
+<li>Post body</li>
+<li>Tags</li>
+</ul>
+<p>I might need some other open graph items, but I am hoping that these can be pulled from the rendered html.. we&rsquo;ll see.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;urls: [
+</span><span class="nt">    {
+</span><span class="nt">    &#34;</span><span class="err">post-url</span><span class="s2">&#34;: &#34;</span><span class="err">$GENERATED</span> <span class="err">BY</span> <span class="err">DIRECTORY</span><span class="s2">&#34;,
+</span><span class="s2">    &#34;</span><span class="err">post-body</span><span class="s2">&#34;:&#34;</span><span class="err">GENERATED</span> <span class="err">BY</span> <span class="err">POST</span> <span class="err">DESCRIPTION</span><span class="s2">&#34;,
+</span><span class="s2">    &#34;</span><span class="err">post-tags</span><span class="s2">&#34;: &#34;</span><span class="err">GENERATED</span> <span class="err">BY</span> <span class="err">POST</span> <span class="err">TAGS</span><span class="s2">&#34;,
+</span><span class="s2">    &#34;</span><span class="err">mastodon</span><span class="s2">&#34; :{
+</span><span class="s2">        &#34;</span><span class="err">publish</span><span class="s2">&#34;:true,
+</span><span class="s2">        &#34;</span><span class="err">publish-date</span><span class="s2">&#34;:epoch_date,
+</span><span class="s2">        &#34;</span><span class="err">publish-data&#34;</span><span class="p">:</span> <span class="err">Whatever</span> <span class="err">is</span> <span class="err">returned</span> <span class="err">by</span> <span class="err">the</span> <span class="err">api</span>
+        <span class="p">}</span>
+    <span class="err">}</span>
+    <span class="err">]</span>
+</code></pre></div><h3 id="mockup-the-python-publisher">Mockup the python publisher</h3>
+<p>I am sure there is a better way to do this. Maybe a more dynamic way? I am just writing quickly to get this done. I&rsquo;ll 100% revisit this when I actually write the program and experiment.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+
+<span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">url</span><span class="p">[</span><span class="s1">&#39;post-body&#39;</span><span class="p">],</span><span class="n">url</span><span class="p">[</span><span class="s1">&#39;post-url&#39;</span><span class="p">],</span><span class="s2">&#34;# &#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">url</span><span class="p">[</span><span class="s1">&#39;post-tags&#39;</span><span class="p">])])</span>
+    <span class="k">if</span> <span class="n">url</span><span class="p">[</span><span class="s1">&#39;mastodon&#39;</span><span class="p">]][</span><span class="s2">&#34;publish&#34;</span><span class="p">]:</span>
+        
+        <span class="n">publish_mastodon_article</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">url</span><span class="p">[</span><span class="s1">&#39;facebook&#39;</span><span class="p">][</span><span class="s2">&#34;publish&#34;</span><span class="p">]:</span>
+        <span class="n">publish_facebook_article</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+
+</code></pre></div><h3 id="mockup-the-python-directory-walker">Mockup the python directory walker</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">content_dirs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;content/posts&#34;</span><span class="p">]</span>
+<span class="n">out</span><span class="o">-</span><span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="nb">dir</span> <span class="ow">in</span> <span class="n">content_dirs</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">topdown</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+        <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">name</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">out_paths</span>
+    <span class="n">generate_json_config</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="c1"># for name in dirs:</span>
+    <span class="c1">#     print(os.path.join(root, name))</span>
+</code></pre></div><h3 id="mockup-the-yaml-reader">Mockup the yaml reader</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pyyaml</span>
+
+<span class="k">def</span> <span class="nf">generate_json_config</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">json_gibberish</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&#34;post-url&#34;</span><span class="p">:</span> <span class="s2">&#34;jnapolitano.com/en/&#34;</span> <span class="o">+</span> <span class="n">path</span><span class="p">,</span>
+                <span class="s2">&#34;post-body&#34;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&#34;post-tags&#34;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&#34;mastodon&#34;</span> <span class="p">:{</span>
+                    <span class="s2">&#34;publish&#34;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span>
+                    <span class="s2">&#34;publish-date&#34;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span>
+                    <span class="s2">&#34;publish-data&#34;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">yaml_path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="n">publish</span><span class="o">.</span><span class="n">yaml</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">yaml_gibberish</span><span class="p">:</span>
+            <span class="c1">#whatver the yaml code is insert here... basiclly just translate it over to json and return</span>
+            <span class="n">yaml_json</span> <span class="o">-</span> <span class="n">yaml_gibberish</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">json_gibberish</span><span class="p">[</span><span class="s1">&#39;mastodon&#39;</span><span class="p">][</span><span class="s2">&#34;publish&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">yaml_json</span><span class="p">[</span><span class="s2">&#34;mastodon&#34;</span><span class="p">]</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;No mastodon setting passing default to no&#34;</span><span class="p">)</span>
+            <span class="n">json_gibberish</span><span class="p">[</span><span class="s1">&#39;mastodon&#39;</span><span class="p">][</span><span class="s2">&#34;publish&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">false</span>
+    
+    <span class="k">return</span> <span class="n">json_gibberish</span>
+</code></pre></div><h2 id="scrap-everything-and-change-course">Scrap Everything and Change Course</h2>
+<p>So as I was writing the above, I came up with another solution. Writing out a mockup of the code made the entire thing feel to kludgy. I don&rsquo;t like writing to file&hellip; keeping configs up to date.. etc.  I will write an rss feed tracker that will just listen to the published site and then run the social jobs when the xml is updated.</p>
+<h3 id="my-new-approach">My new approach</h3>
+<p>My thinking is that I will add some options to the front matter of the posts that can easily be scraped from the rendered html.  The advantage of this approach is that it will permit me to always be up to date.  I will not add a republish feature&hellip; yet. I might but that will be another option.</p>
+<h3 id="stay-tuned">Stay tuned</h3>
+<p>I am breaking away from this post as I am changing direction. So in the mean time here is a photo of my cat.</p>
+<p><img src="/images/featured-caesar.jpg" alt="&lsquo;caesar"></p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>JB &#39;Welding&#39; My Bumper</title>
+			<link>jnapolitano.com/posts/accord-bumper-weld/</link>
+			<pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
+			
+			<guid>jnapolitano.com/posts/accord-bumper-weld/</guid>
+			<description><![CDATA[JB Welding a bumper]]></description>
+			<content type="html"><![CDATA[<!-- raw HTML omitted -->
+<p>So, I snagged my already hanging on by a thread bumper on a piece of rebar. I reversed thinking it was a small bump in the parking lot&hellip; I was wrong.</p>
+<h2 id="why">Why</h2>
+<p>Bumpers are expensive. I am looking at around $400.00 of bumper + paint if I try to do this on my own. Taking it to the shop&hellip; yeah I won&rsquo;t do that.  So, rather than trying to make the prettiest beater in the car lot, I am going to make it at least a functional beater.</p>
+<h2 id="tools">Tools</h2>
+<p>I don&rsquo;t really need much of anything for this one, but like always I have a razor blade, a flat head, and a phillips in my overall pockets.</p>
+<h2 id="jb-weld">Jb Weld</h2>
+<p>I used <a href="https://www.amazon.com/J-B-Weld-50176-KwikWeld-Reinforced/dp/B009EU5ZMA/ref=sr_1_9?crid=E7906IRBRALN&amp;dib=eyJ2IjoiMSJ9.H2AK46mHNlIUo4r-NYZbhYIKI4RetkiJACCrYWumMLNg1qa9S3ng3fxU427OaLfPN4ZODtnZCdNrvbpecLryLyHYMnFiVQbTdSto4IE5ypCvF6CwCm9Hq_E4h1WusqSuxUbdmB11XZ-gupPWJkgVGJpzYRNLmJ4e4mv5WNF3xFbEN9R7p5zP9ZKGvixdCfkxKPSs3MmMIVwEoTRSmKsbatGKPDz5gC_YAgdxIZqr-e8.lSvh4Kpw7vBPORArKFP3njWeNd_JkACbvUe8dsy4JMQ&amp;dib_tag=se&amp;keywords=jb+weld&amp;qid=1718407395&amp;sprefix=jb+weld%2Caps%2C107&amp;sr=8-9">this version of jb weld</a> because it was inexpensive and kinda matched the color of my car.</p>
+<h2 id="fix-the-brackets">Fix the brackets</h2>
+<p>So on my car there are two brackets underneath the wheel well that broke. On one side the plastic around the screw holding the bumper to the bracket cracked. On the other side the bracket that attaches to the impact bar snapped completely off.</p>
+<h3 id="start-on-the-easier-side">Start on the easier side</h3>
+<p>So the side with the broken attachment point is pretty easy to fix. My goal is not really to make it strong. My goal is only to hold the bumper to the mounting screw until I (if I ever do ) replace the bumper.  Yeah it is kind of annoying, but I&rsquo;ll rip that off and replace the screw when the time comes.</p>
+<h4 id="weld-that-plastic-to-the-metal">Weld that plastic to the metal</h4>
+<p><img src="./photos/ghetto-left.jpg" alt="ghetto-left"></p>
+<h3 id="move-on-to-the-harder-side">Move on to the harder side</h3>
+<p>The right side is a little bit more difficult because the bracket itself snapped off. IF it aligned perfectly with the plastic on the other side, it would be an easy fix&hellip; unfortunately it does not. So to fix this one I&rsquo;ll need to rig something up to hold the bumper in place as the resin sets.</p>
+<p>I went with this beatiful set up below.  A trekking pole up against the mounting screw holds the mount against the bit of plastic behind it. The box containing a jack stand holds the bumper just far enough back to make sure that the &lsquo;rig&rsquo; does stays exactly where it needs to stay.</p>
+<h4 id="the-stick-to-the-screw">The stick to the screw</h4>
+<p><img src="./photos/ghetto-weld-idk.jpg" alt="ghetto-weld-idk"></p>
+<h4 id="the-box-and-the-bumper">The box and the bumper</h4>
+<p><img src="./photos/ghetto-weld-far.jpg" alt="ghetto-right-far"></p>
+<h4 id="the-whole-thing-looking-great">The whole thing looking great</h4>
+<p><img src="./photos/ghetto-far.jpg" alt="ghetto-far"></p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Justin-ify a Car Headliner</title>
 			<link>jnapolitano.com/posts/accord-headliner/</link>
-			<pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
+			<pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
 			
 			<guid>jnapolitano.com/posts/accord-headliner/</guid>
-			<description><![CDATA[Redoing the headliner in a n old Honda Accord]]></description>
-			<content type="html"><![CDATA[<p>Look at that beautiful 12 year old Honda</p>
+			<description><![CDATA[Installing a suitable headliner]]></description>
+			<content type="html"><![CDATA[<p>My beautiful 12 year old Honda has a bad headliner.  It was gross. I did not like it.</p>
 <p><img src="./photos/my-baby-2.jpg" alt="my-baby"></p>
 <h2 id="why">Why</h2>
-<p>The foam holding it in place to the headliner board deteriorated. I am too broke to buy a new liner&hellip; and the car is too old to make it perfect.</p>
+<p>The foam holding it in place to the headliner board deteriorated. The car is too old to make it perfect so any headliner fabric will work.</p>
 <h2 id="find-a-suitable-headliner-replacement-fabric">Find a suitable headliner replacement fabric</h2>
 <p>I live in Texas and its hot. Really hot.  Without some insulation the heat from the sun would bake me inside my car.  I have an old quilt with some sort of poly batting that I will use for the headliner.</p>
 <p><img src="./photos/quilt-1.jpg" alt="old quilt"></p>
 <h2 id="use-some-mylar">Use some mylar</h2>
-<p>I also have some old emergency blankets that I use for various projects and to build kits when I go out camping.  I plan to add a sheet or two to the top of the board to make sure to help refelct some of the summer heat away from the passenger compartment.</p>
+<p>I also have some old emergency blankets that I use for various projects and to build kits when I go out camping.  I plan to add a sheet or two to the top of the board to make sure to help reflect some of the summer heat away from the passenger compartment.</p>
 <h2 id="remove-the-headliner">Remove the headliner</h2>
 <p>The headliner is held together by just a few plastic rivets and the accessories in the the roof. Reference the video below</p>
-<p><a href="https://www.youtube.com/watch?v=jVpBV9uR7Z8">Headline Removal Link</a></p>
-<h2 id="peeling-off-the-headliner">Peeling off the headliner</h2>
+<!-- raw HTML omitted -->
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/jVpBV9uR7Z8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="peeling-off-the-headliner">Peeling off the headliner</h3>
 <p>The foam on my headliner had completely deteriorated. I would recommend using a mask and safety glasses for this part of the job.</p>
 <h3 id="remove-the-fabric">Remove the fabric</h3>
 <p>The fabric is easy to peel off.  Just start by pulling it away.</p>
 <h3 id="remove-the-excess-foam">Remove the excess foam</h3>
 <p>I made a mistake when I first started by using a wet brush that only caused the adhesive to stick everywhere. Once I let the brush dry, I took it to the board and scrubbed as much of the old foam away as I could.  I then took used adhesive remover to remove the old glue. After the solvent did its work I rinsed the whole thing off with a slightly damp rag</p>
-<h2 id="instal-the-new-headliner">Instal the new headliner</h2>
+<h2 id="install-the-new-headliner">Install the new headliner</h2>
 <h3 id="cut-the-new-headliner">Cut the new headliner</h3>
 <p>First place the headliner material onto the board.  Then, put the accessories removed from the headliner in the previous steps into place.  With a razor cut holes in the board to fit the accessories. Place them through the headliner as if they were attached to the board.  When all are in place cut the excess headliner material around the board leaving about 2 inches or so to fold around the edges.</p>
 <h3 id="glue-to-the-board">Glue to the board</h3>
@@ -41,20 +351,89 @@
 <p>I adhered the headliner in strips starting at the top of the board moving to the back. I went about a quarter of the board at a time and placed the accessories into their correct spots as I glued.</p>
 <h3 id="wait-to-set">Wait to set</h3>
 <p>The adhesive sets quickly, but I let it sit for about two hours prior to working with it again.</p>
-<h2 id="instal-the-mylar">Instal the mylar</h2>
-<p>On the back of the board I laid out a sheet of mylar and cut holes in it to allow the plastic rivits and accessories to connect to the sheet metal of the roof of the car. I then sprayed the whole thing down with adhesive.  This was an easy step and far more forgiving than the headliner because it is out of site.</p>
+<h2 id="install-the-mylar">Install the mylar</h2>
+<p>On the back of the board I laid out a sheet of mylar and cut holes in it to allow the plastic rivets and accessories to connect to the sheet metal of the roof of the car. I then sprayed the whole thing down with adhesive.  This was an easy step and far more forgiving than the headliner because it is out of site.</p>
 <h2 id="reinstalling-the-headliner-board">Reinstalling the headliner board</h2>
 <h3 id="get-the-board-in-the-car">Get the board in the car</h3>
 <p>To get the board back into the car, I had to remove the head supports from the the seats and move the seats as far back as possible. I then pushed the back of the board into the car first and slowly maneuvered the board into place.</p>
 <h3 id="reattach-the-board">Reattach the board</h3>
 <p>I just went in reverse from removal. It was a simple process.</p>
 <h3 id="reattach-the-headliner-accessories">Reattach the headliner accessories</h3>
-<p>Again go in reverse from what you had done previously.  If the acessories do not fit then some of the headliner material will likely need to be removed so the plastic can attach to the correct points in the sheet metal.</p>
+<p>Again go in reverse from what you had done previously.  If the accessories do not fit then some of the headliner material will likely need to be removed so the plastic can attach to the correct points in the sheet metal.</p>
 <h2 id="finished-product">Finished product</h2>
 <p>The finished headliner looks okay..I admit it looks kinda diy, but that is the thrill of doing things like this.  The quilt goes well enough with the car to not be annoying.  The mylar sheets work surprisingly well. I am considering going back and filling the empty space with aluminum foil clumps to improve the insulating power.</p>
 <p><img src="./photos/roof_1.jpg" alt="headliner-1">
 <img src="./photos/roof_2.jpg" alt="headliner-2">
 <img src="./photos/roof_3.jpg" alt="headliner-3"></p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Make an Outdoor Living Room</title>
+			<link>jnapolitano.com/posts/make-an-outdoor-living-space/</link>
+			<pubDate>Thu, 13 Jun 2024 00:00:00 +0000</pubDate>
+			
+			<guid>jnapolitano.com/posts/make-an-outdoor-living-space/</guid>
+			<description><![CDATA[Making an outdoor space to kick it]]></description>
+			<content type="html"><![CDATA[<!-- raw HTML omitted -->
+<p><img src="./photos/patio-1.jpg" alt="patio-1"></p>
+<p>Even in the heat a nice outdoor space can be a reprieve from every day life.</p>
+<h2 id="why">Why</h2>
+<p>It is hot out. It is sunny. My bike doesn&rsquo;t like the uv. I don&rsquo;t like the uv. I also make stinky food. So I need a tarp protect myself from the heat and a stove to cook.</p>
+<h2 id="tools-and-materials">Tools and Materials</h2>
+<ul>
+<li>A solid little knife.</li>
+<li>Some bank line.</li>
+<li>Any old tarp.</li>
+<li>A stove.</li>
+<li>A chair you&rsquo;ve picked up off the side of the road.</li>
+<li>A table.</li>
+<li>A random bow</li>
+<li>Rice cooker.</li>
+<li>A water boiler</li>
+</ul>
+<h2 id="skills">Skills</h2>
+<p>Know how to tie</p>
+<ul>
+<li>Half hitches.</li>
+<li>Trucker hitches.</li>
+<li>Alpine butterflies.</li>
+<li>Clove hitches.</li>
+</ul>
+<h2 id="hang-your-tarp">Hang your tarp</h2>
+<h3 id="affix-a-ridge-line">Affix a ridge line</h3>
+<p>Place a ridge line across two points. Make it high and tight.</p>
+<p>I tie off the anchor side side with a clove hitch and some half hitches to keep the thing from coming apart.</p>
+<p>The other side I tie off with a constrictor and a truckers hitch. I&rsquo;ll detail that in another post that&rsquo;ll be linked here.</p>
+<h3 id="pull-the-tarp-over-the-ridge-line">Pull the tarp over the ridge line</h3>
+<p>Pull your tarp over the ridge line. There are a ton of variations, but I chose an oblong diamond shaped pattern to better fit my location.</p>
+<h3 id="anchor-the-tarp-to-the-ground">Anchor the tarp to the ground</h3>
+<p>In my case I tied the bottom grommets to the fence posts, a grill, and a water storm drain. These worked for me and did not require any stakes or rocks.</p>
+<h3 id="tie-out-the-midpoints">Tie out the midpoints</h3>
+<p>My tarp has a few point that I can use to pull middle of the tarp out to extend coverage. Once side broke during a previous storm, so I just put a ball of some fabric in the tarp and tied that off instead.</p>
+<h2 id="create-your-kitchen">Create your kitchen</h2>
+<p><img src="./photos/kitchen.jpg" alt="kitchen"></p>
+<h3 id="put-up-your-table">Put up your table</h3>
+<p>You don&rsquo;t really need a table. Before I bought one, I just squated on the ground. It wasn&rsquo;t very comfortable, but it was a great workout.  Anyways, you should get a table if you can afford one.</p>
+<h3 id="put-up-your-stove">Put up your stove</h3>
+<p>I just have a little jinyu portable stove that I bought years ago for hot pot.  Now I use it as my primary to avoid stinking up my house with curry and five spice powder.</p>
+<h4 id="make-a-heat-shield">Make a heat shield</h4>
+<p>I created a little heat shield for the stove by cutting a cardboard box. I then wrapped it in aluminum foil. I taped the edges to create little hinges to close it up when not cooking. This is important because it protects the table, the walls, and the rice cooker.</p>
+<h3 id="set-up-the-rice-cooker">Set up the Rice Cooker</h3>
+<p>It is absolutely necessary</p>
+<h3 id="set-up-the-boiler">Set up the boiler</h3>
+<p>A water boiler is used to make sure all of the water (especially the tap water) is clean before drinking or cooking. A few liters a day will be good for you.</p>
+<h3 id="organize-your-things">Organize your things</h3>
+<p>Just organize all of your things.  Do not leave this place messy. That would be gross.</p>
+<h2 id="set-up-your-entrance">Set up your entrance</h2>
+<h3 id="clothing-space">Clothing space</h3>
+<p>I do not like wearing my dirty chore clothing inside my home. I change right there in my private space into my underwear and hang the dirty clothes up on the fence to air out.  My sun shirts and base layers come in after a few hours. The work jeans and the overalls mostly stay out there until I wash them.</p>
+<h3 id="shoe-space">Shoe space</h3>
+<p>I take my shoes off when I enter my home.  Its the right way to do it. So keep some sandals for indoors and outdoors ready. Also make sure this space is tidy.</p>
+<h4 id="that-tidy-shoe-line">That tidy shoe line</h4>
+<p><img src="./photos/shoes.jpg" alt="shoes"></p>
+<h2 id="enjoy">Enjoy</h2>
+<p>So this space is now protected from the sun. It is organized. And it is tidy. It is a good spot to store your bike. It is a good spot to cook. It is a good spot to sit. It is good.</p>
 ]]></content>
 		</item>
 		

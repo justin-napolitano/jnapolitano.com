@@ -7,16 +7,57 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Wed, 12 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jun 2024 22:36:34 -0500</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Honda Accord Headliner Redo</title>
+      <title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
+      <link>jnapolitano.com/posts/python-rss-reader/</link>
+      <pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/python-rss-reader/</guid>
+      <description>Thoughts on This Second Pass  I will create a script that parses the sites rss feed&amp;hellip; it will then traverse the xml tree entries&amp;hellip; if a date is newer than the last publish date&amp;hellip; publish that post&amp;hellip;  I am still thinking through how to publish. I will likely write a monolithic script here, but ideally I would write an api or a batch processor to handle this in some way.</description>
+    </item>
+    
+    <item>
+      <title>Automate Posting Hugo Blog to Social Sites... Failure</title>
+      <link>jnapolitano.com/posts/hugo-social-publisher/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/hugo-social-publisher/</guid>
+      <description>Why I have a hugo blog that is a pian to share across my social feeds. I want to automate it.
+Create a mockup For this I quickly sketched out my thoughts onto a writing pad. My thinking is that I will drop a yaml file into each post directory to be read by a a python application calling social apis.
+Mockup As you can see this is very rudimentary. I will traverse the posts directories looking for a publish.</description>
+    </item>
+    
+    <item>
+      <title>JB &#39;Welding&#39; My Bumper</title>
+      <link>jnapolitano.com/posts/accord-bumper-weld/</link>
+      <pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/accord-bumper-weld/</guid>
+      <description>So, I snagged my already hanging on by a thread bumper on a piece of rebar. I reversed thinking it was a small bump in the parking lot&amp;hellip; I was wrong.
+Why Bumpers are expensive. I am looking at around $400.00 of bumper + paint if I try to do this on my own. Taking it to the shop&amp;hellip; yeah I won&amp;rsquo;t do that. So, rather than trying to make the prettiest beater in the car lot, I am going to make it at least a functional beater.</description>
+    </item>
+    
+    <item>
+      <title>Justin-ify a Car Headliner</title>
       <link>jnapolitano.com/posts/accord-headliner/</link>
-      <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/posts/accord-headliner/</guid>
-      <description>Look at that beautiful 12 year old Honda
-Why The foam holding it in place to the headliner board deteriorated. I am too broke to buy a new liner&amp;hellip; and the car is too old to make it perfect.
-Find a suitable headliner replacement fabric I live in Texas and its hot. Really hot. Without some insulation the heat from the sun would bake me inside my car. I have an old quilt with some sort of poly batting that I will use for the headliner.</description>
+      <description>My beautiful 12 year old Honda has a bad headliner. It was gross. I did not like it.
+Why The foam holding it in place to the headliner board deteriorated. The car is too old to make it perfect so any headliner fabric will work.
+Find a suitable headliner replacement fabric I live in Texas and its hot. Really hot. Without some insulation the heat from the sun would bake me inside my car.</description>
+    </item>
+    
+    <item>
+      <title>Make an Outdoor Living Room</title>
+      <link>jnapolitano.com/posts/make-an-outdoor-living-space/</link>
+      <pubDate>Thu, 13 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/make-an-outdoor-living-space/</guid>
+      <description>Even in the heat a nice outdoor space can be a reprieve from every day life.
+Why It is hot out. It is sunny. My bike doesn&amp;rsquo;t like the uv. I don&amp;rsquo;t like the uv. I also make stinky food. So I need a tarp protect myself from the heat and a stove to cook.
+Tools and Materials  A solid little knife. Some bank line. Any old tarp. A stove.</description>
     </item>
     
     <item>
@@ -70,48 +111,6 @@ Imports # load some default Python modules import numpy as np import pandas as p
 I prepared this report to estimate a salary expectation that will maintain my current standard of living.
 I present two Monte Carlo models of Houston and NYC annual living costs. The data is somewhat dated and &amp;ndash;particularly in the case of houston&amp;ndash; are high level estimates.
 In order to produce a better report, I am currently scraping data from the internet for more accurate sample distributions.</description>
-    </item>
-    
-    <item>
-      <title>Spearman Rank in Standard Julia</title>
-      <link>jnapolitano.com/posts/spearman_rank_julia/</link>
-      <pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/spearman_rank_julia/</guid>
-      <description>Spearman Rank in Standard Julia Well nearly, I did import the erfc function from the SpecialFunctions package. I don&amp;rsquo;t like it either. I&amp;rsquo;ll write my own soon to make up for it.
-Special Thanks I came across the text Numerical Recipes in C. It was first published in 1988, by the Cambridge University Press. The authors are William H. Press, Brian P. Flannery, Saul. A. Teukolsky, and William T. Veterling.</description>
-    </item>
-    
-    <item>
-      <title>Churn Modelling Marketing Data with Julia</title>
-      <link>jnapolitano.com/posts/propensity_scoring/</link>
-      <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/propensity_scoring/</guid>
-      <description>Churn Modelling Marketing Data with Julia Introduction I prepared this analysis to learn the logistic regression in Julia. The work is fairly straightforward. I am modelling if a customer will exit a website based on a number of sites. I&amp;rsquo;ll improve the model in an upcoming post. As if, is not as interesting as asking when. That will be my next project
-Imports using Pkg using DataFrames using CSV using Plots using GLM using StatsBase using Lathe using MLBase using ClassImbalance using ROCAnalysis using PyCall sklearn = pyimport(&amp;#34;sklearn.</description>
-    </item>
-    
-    <item>
-      <title>Markov Chains in Julia</title>
-      <link>jnapolitano.com/posts/markov-models-julia/</link>
-      <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/markov-models-julia/</guid>
-      <description>Introduction I am currently working on a legal research series where I perform statistical analysis and ml models to legal datasets. My intention is to model the behavior of courts, determine the outcome of cases, and build a pipeline capable of identifying relevant case law by issue area.
-That data set is nearly complete, but I have not decided which models to apply to it. This is where Julia comes into play.</description>
-    </item>
-    
-    <item>
-      <title>Quantitative Julia Problems</title>
-      <link>jnapolitano.com/posts/pi-with-julia/</link>
-      <pubDate>Tue, 24 May 2022 01:30:32 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/pi-with-julia/</guid>
-      <description>Introduction In my previous post, I demonstrated how to configure Rocky Linux and RHEL distributions for quantitative analysis.
-In this post, I include a few sample programs to test your installation.
-How to run the programs I saved them to a folder within the project directory.
-Activate the Project using Pkg Pkg.activate(&amp;#34;.&amp;#34;) #cd(&amp;#34;&amp;lt;sub-directory-containing-files&amp;gt;) optional Run a program include(&amp;#34;path/to/script-name.jl&amp;#34;) Estimate the Value of Pi Use the Monte Carlo method to estimate the value of pi.</description>
     </item>
     
   </channel>

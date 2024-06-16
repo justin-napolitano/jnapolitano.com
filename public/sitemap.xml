@@ -2,17 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>jnapolitano.com/posts/python-rss-reader/</loc>
+    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/fail/</loc>
+    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/hugo/</loc>
+    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/</loc>
+    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/programming/</loc>
+    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/python/</loc>
+    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/</loc>
+    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/hugo-social-publisher/</loc>
+    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>jnapolitano.com/tags/automotive/</loc>
     <lastmod>2024-06-14T14:07:28-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/accord-bumper-weld/</loc>
+    <lastmod>2024-06-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/accord-headliner/</loc>
     <lastmod>2024-06-14T14:07:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/</loc>
-    <lastmod>2024-06-14T15:57:20-05:00</lastmod>
+    <loc>jnapolitano.com/tags/diy/</loc>
+    <lastmod>2024-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/tags/</loc>
-    <lastmod>2024-06-14T15:57:20-05:00</lastmod>
+    <loc>jnapolitano.com/tags/lifestyle/</loc>
+    <lastmod>2024-06-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/make-an-outdoor-living-space/</loc>
+    <lastmod>2024-06-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/automation/</loc>
     <lastmod>2024-06-11T00:00:00+00:00</lastmod>
@@ -22,9 +52,6 @@
   </url><url>
     <loc>jnapolitano.com/posts/gh-pages-workflow/</loc>
     <lastmod>2024-06-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/python/</loc>
-    <lastmod>2024-06-11T11:21:29-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/submodules/</loc>
     <lastmod>2024-06-11T00:00:00+00:00</lastmod>
