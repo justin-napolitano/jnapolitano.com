@@ -163,3 +163,10 @@ expiryDate = ["expiryDate"]
     name = "RESUME"
     url = "https://jnapolitano.com/resume.pdf"
     weight = 20
+
+
+  [outputs]
+  home = ['html', 'rss']
+  section = ['html', 'rss']
+  taxonomy = ['html']
+  term = ['html']
