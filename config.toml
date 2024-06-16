@@ -9,6 +9,8 @@ defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 theme = "hermit-V2"
 
+images = ["feature-image.png"]
+
 #[languages]
 #  [languages.en]
 #    title = 'CHANGE ME'

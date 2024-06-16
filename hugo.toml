@@ -9,6 +9,8 @@ defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 theme = "hermit-V2"
 
+images = ["feature-image.png"]
+
 #[languages]
 #  [languages.en]
 #    title = 'CHANGE ME'
@@ -163,3 +165,10 @@ expiryDate = ["expiryDate"]
     name = "RESUME"
     url = "https://jnapolitano.com/resume.pdf"
     weight = 20
+
+
+  [outputs]
+  home = ['html', 'rss']
+  section = ['html', 'rss']
+  taxonomy = ['html']
+  term = ['html']
