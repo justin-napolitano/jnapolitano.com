@@ -50,17 +50,6 @@ Find a suitable headliner replacement fabric I live in Texas and its hot. Really
     </item>
     
     <item>
-      <title>Make an Outdoor Living Room</title>
-      <link>jnapolitano.com/posts/make-an-outdoor-living-space/</link>
-      <pubDate>Thu, 13 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/make-an-outdoor-living-space/</guid>
-      <description>Even in the heat a nice outdoor space can be a reprieve from every day life.
-Why It is hot out. It is sunny. My bike doesn&amp;rsquo;t like the uv. I don&amp;rsquo;t like the uv. I also make stinky food. So I need a tarp protect myself from the heat and a stove to cook.
-Tools and Materials  A solid little knife. Some bank line. Any old tarp. A stove.</description>
-    </item>
-    
-    <item>
       <title>Hugo Build and Deploy GH Workflow</title>
       <link>jnapolitano.com/posts/gh-pages-workflow/</link>
       <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
@@ -111,6 +100,16 @@ Imports # load some default Python modules import numpy as np import pandas as p
 I prepared this report to estimate a salary expectation that will maintain my current standard of living.
 I present two Monte Carlo models of Houston and NYC annual living costs. The data is somewhat dated and &amp;ndash;particularly in the case of houston&amp;ndash; are high level estimates.
 In order to produce a better report, I am currently scraping data from the internet for more accurate sample distributions.</description>
+    </item>
+    
+    <item>
+      <title>Spearman Rank in Standard Julia</title>
+      <link>jnapolitano.com/posts/spearman_rank_julia/</link>
+      <pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/spearman_rank_julia/</guid>
+      <description>Spearman Rank in Standard Julia Well nearly, I did import the erfc function from the SpecialFunctions package. I don&amp;rsquo;t like it either. I&amp;rsquo;ll write my own soon to make up for it.
+Special Thanks I came across the text Numerical Recipes in C. It was first published in 1988, by the Cambridge University Press. The authors are William H. Press, Brian P. Flannery, Saul. A. Teukolsky, and William T. Veterling.</description>
     </item>
     
   </channel>
