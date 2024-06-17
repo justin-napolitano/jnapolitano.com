@@ -11,6 +11,10 @@ theme = "hermit-V2"
 
 images = ["feature-image.png"]
 
+#[markup.goldmark.parser.attribute]
+  #block = true # default is false
+  #title = true
+
 #[languages]
 #  [languages.en]
 #    title = 'CHANGE ME'

@@ -28,3 +28,6 @@
 [submodule "content/posts/prepare-chicken-salad"]
 	path = content/posts/prepare-chicken-salad
 	url = https://github.com/justin-napolitano/prepare-chicken-salad.git
+[submodule "content/posts/curate-an-edc-pouch"]
+	path = content/posts/curate-an-edc-pouch
+	url = https://github.com/justin-napolitano/curate-an-edc-pouch.git
