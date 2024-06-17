@@ -9,6 +9,55 @@
 		<atom:link href="jnapolitano.com/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
+			<title>Prepare Chicken Salad</title>
+			<link>jnapolitano.com/posts/prepare-chicken-salad/</link>
+			<pubDate>Sun, 16 Jun 2024 21:35:34 -0500</pubDate>
+			
+			<guid>jnapolitano.com/posts/prepare-chicken-salad/</guid>
+			<description><![CDATA[Preparing chicken salad with some left-over supplies]]></description>
+			<content type="html"><![CDATA[<p><img src="./images/dinner.jpg" alt="dinner"></p>
+<h2 id="why">Why</h2>
+<p>I am hungry. I have a bunch of ingredients. I have a left over rotisserie chicken. I do not want to waste.</p>
+<h2 id="audit-your-supplies">Audit your supplies</h2>
+<p>In my case I have at my disposal</p>
+<ol>
+<li>About half a rotisserie chicken.</li>
+<li>Greek yogurt.</li>
+<li>Coriander.</li>
+<li>Grape tomatotes.</li>
+<li>Honey.</li>
+<li>Dates.</li>
+</ol>
+<h2 id="prepare-your-food">Prepare your food</h2>
+<h3 id="cut-up-the-chicken-breast">Cut up the chicken breast</h3>
+<p>Just remove chicken breast. Then cut it up into small chunks.</p>
+<h3 id="cut-up-the-herbs">Cut up the herbs</h3>
+<p>I am using left-over coriander leaves to add some vitamins and flavor to my dinner. I just chop and chop and chop until I find the consistency that I like.</p>
+<h3 id="mix-the-chicken-and-herbs">Mix the chicken and herbs</h3>
+<p>I wasn&rsquo;t sure what all I would add to this yet, so I mixed in the herbs and chicken into bowl.  I tried it and felt like it was missing something.</p>
+<h3 id="mix-in-some-greek-yogurt">Mix in some greek yogurt</h3>
+<p>So next I added some greek yogrut. I like the fage 5%. Use whichver you like, but this is right one.</p>
+<h3 id="cut-up-some-tomatoes">Cut up some tomatoes</h3>
+<p>The consistency of the mix with just the yogurt, chicken, and herbs wasn&rsquo;t bad actually&hellip; but it wasn&rsquo;t really what I wasn&rsquo;t looking for.  Maybe if I had wanted something savory i could have used the base i had as is&hellip; anyways&hellip; Next i cut up some grape tomatoes. i cut maybe 8 or 9 into quarters. I mixed that in and things tasted better.</p>
+<h3 id="cut-up-some-dates">Cut up some dates</h3>
+<p>I decided that i wanted something a bit more sweet to go with my millet rice.  I added about 6 dates to the mix cut into 6 pieces each. This was a good choice.</p>
+<h3 id="add-some-honey">Add some honey</h3>
+<p>The mix was really good, but i wanted something sweet. Not quite desert sweet, but i wanted something to cut through the tanginess of the yogurt and the planty-ness of the 1 day old herbs. I added honey. Just a bit. Another good choice</p>
+<h3 id="serve-with-millet-rice">Serve with millet-rice</h3>
+<p>One of my favorite ways to eat grains is a mixture of millet, quinoa, and rice.  I&rsquo;ll detail the mixture in another post, but the basic mixture is</p>
+<ol>
+<li>2 parts rice</li>
+<li>1 part millet</li>
+<li>1 part quinoa</li>
+</ol>
+<p>I am no expert but this seems like a pretty healthy mixture of grains for nutrition.</p>
+<h2 id="enjoy-with-your-cat">Enjoy with your cat</h2>
+<p>So if you&rsquo;re making and reading this&hellip; i would imagine that you are a cat person like me. Idk how we get to this point in our lives.. but thats where we are.  Here is my boy watching me eat</p>
+<p><img src="./images/casesar.jpg" alt="caesar"></p>
+]]></content>
+		</item>
+		
+		<item>
 			<title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
 			<link>jnapolitano.com/posts/python-rss-reader/</link>
 			<pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>

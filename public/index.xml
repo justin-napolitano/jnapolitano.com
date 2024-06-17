@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Sat, 15 Jun 2024 22:36:34 -0500</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Jun 2024 21:35:34 -0500</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prepare Chicken Salad</title>
+      <link>jnapolitano.com/posts/prepare-chicken-salad/</link>
+      <pubDate>Sun, 16 Jun 2024 21:35:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/prepare-chicken-salad/</guid>
+      <description>Why I am hungry. I have a bunch of ingredients. I have a left over rotisserie chicken. I do not want to waste.
+Audit your supplies In my case I have at my disposal
+ About half a rotisserie chicken. Greek yogurt. Coriander. Grape tomatotes. Honey. Dates.  Prepare your food Cut up the chicken breast Just remove chicken breast. Then cut it up into small chunks.
+Cut up the herbs I am using left-over coriander leaves to add some vitamins and flavor to my dinner.</description>
+    </item>
+    
     <item>
       <title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
       <link>jnapolitano.com/posts/python-rss-reader/</link>
@@ -100,16 +112,6 @@ Imports # load some default Python modules import numpy as np import pandas as p
 I prepared this report to estimate a salary expectation that will maintain my current standard of living.
 I present two Monte Carlo models of Houston and NYC annual living costs. The data is somewhat dated and &amp;ndash;particularly in the case of houston&amp;ndash; are high level estimates.
 In order to produce a better report, I am currently scraping data from the internet for more accurate sample distributions.</description>
-    </item>
-    
-    <item>
-      <title>Spearman Rank in Standard Julia</title>
-      <link>jnapolitano.com/posts/spearman_rank_julia/</link>
-      <pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/spearman_rank_julia/</guid>
-      <description>Spearman Rank in Standard Julia Well nearly, I did import the erfc function from the SpecialFunctions package. I don&amp;rsquo;t like it either. I&amp;rsquo;ll write my own soon to make up for it.
-Special Thanks I came across the text Numerical Recipes in C. It was first published in 1988, by the Cambridge University Press. The authors are William H. Press, Brian P. Flannery, Saul. A. Teukolsky, and William T. Veterling.</description>
     </item>
     
   </channel>

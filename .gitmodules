@@ -25,3 +25,6 @@
 [submodule "content/posts/python-rss-reader"]
 	path = content/posts/python-rss-reader
 	url = https://github.com/justin-napolitano/python-rss-reader.git
+[submodule "content/posts/prepare-chicken-salad"]
+	path = content/posts/prepare-chicken-salad
+	url = https://github.com/justin-napolitano/prepare-chicken-salad.git
