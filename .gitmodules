@@ -34,3 +34,6 @@
 [submodule "content/posts/overtrain"]
 	path = content/posts/overtrain
 	url = https://github.com/justin-napolitano/overtrain.git
+[submodule "content/posts/mysql-install-buntu"]
+	path = content/posts/mysql-install-buntu
+	url = https://github.com/justin-napolitano/mysql-setup-buntu.git
