@@ -2,16 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>jnapolitano.com/</loc>
+    <lastmod>2024-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/lifestyle/</loc>
+    <lastmod>2024-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/overtrain/</loc>
+    <lastmod>2024-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/</loc>
+    <lastmod>2024-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/training/</loc>
+    <lastmod>2024-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/curate-an-edc-pouch/</loc>
+    <lastmod>2024-06-17T15:42:34-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/edc/</loc>
+    <lastmod>2024-06-17T15:42:34-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/preperation/</loc>
+    <lastmod>2024-06-17T15:42:34-05:00</lastmod>
+  </url><url>
     <loc>jnapolitano.com/tags/cooking/</loc>
     <lastmod>2024-06-16T21:35:34-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/</loc>
-    <lastmod>2024-06-16T21:35:34-05:00</lastmod>
-  </url><url>
     <loc>jnapolitano.com/posts/prepare-chicken-salad/</loc>
-    <lastmod>2024-06-16T21:35:34-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/</loc>
     <lastmod>2024-06-16T21:35:34-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/python-rss-reader/</loc>

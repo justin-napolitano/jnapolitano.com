@@ -7,7 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Sun, 16 Jun 2024 21:35:34 -0500</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Overtrain</title>
+      <link>jnapolitano.com/posts/overtrain/</link>
+      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/overtrain/</guid>
+      <description>Why i like to exercise. i like to over-exercise. i do not listen to my body when it needs rest. i feel as if more movement is more better.
+i am getting older. i do not recover quickly.
+Running when i feel stressed i run. it is a low cost way to move.
+Over running when i run, i feel a need to prove to myself that i am a runner.</description>
+    </item>
+    
+    <item>
+      <title>Curate an EDC Pouch</title>
+      <link>jnapolitano.com/posts/curate-an-edc-pouch/</link>
+      <pubDate>Mon, 17 Jun 2024 15:42:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/curate-an-edc-pouch/</guid>
+      <description>Why i have a bunch of random tools and pouches laying about. I don&amp;rsquo;t like it. So to feel better i want to organize a pouch that i can throw into any of my bags so that i can deal with most things i face in day to day to life.
+Guiding principles  I want tools that reduce the friction in my average day to day dealings I want the pouch to be small enough to fit inside all of my bags I want the tool set to be modular so that it can be used as the base of other kits.</description>
+    </item>
+    
     <item>
       <title>Prepare Chicken Salad</title>
       <link>jnapolitano.com/posts/prepare-chicken-salad/</link>
@@ -90,28 +112,6 @@ Quick History of this project I had started work on this as an undergraduate at 
       <guid>jnapolitano.com/posts/gcputils/</guid>
       <description>Creating a GCP Client Tool in Python Why I often find myself reuuing the same bits of code when working with GCP. It is very important to avoid creating multiple development trees of the same classes. I have done this before for large projects. It will lead to a very difficult to maintain stack of tools that will spaghettify over time.
 Creating the submodule Create an empty directory mkdir gcpuptils Add the following code to a gcpclient.</description>
-    </item>
-    
-    <item>
-      <title>Model Design and Logistic Regression in Python</title>
-      <link>jnapolitano.com/posts/logistic_regression_mockup/</link>
-      <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/logistic_regression_mockup/</guid>
-      <description>Model Design and Logistic Regression in Python I recently modeled customer churn in Julia with logistic regression model. It was interesting to be sure, but I want to extend my analysis skillset by modeling biostatistics data. In this post, I design a logistic regression model of health predictors.
-Imports # load some default Python modules import numpy as np import pandas as pd import matplotlib.pyplot as plt import seaborn as sns plt.</description>
-    </item>
-    
-    <item>
-      <title>Annual Cost of Living Monte Carlo Models</title>
-      <link>jnapolitano.com/posts/cost-of-living-projections/</link>
-      <pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/cost-of-living-projections/</guid>
-      <description>Cost of Living Projections Introduction I do not like negotiating for salary. Especially, without valid projections to determine a range.
-I prepared this report to estimate a salary expectation that will maintain my current standard of living.
-I present two Monte Carlo models of Houston and NYC annual living costs. The data is somewhat dated and &amp;ndash;particularly in the case of houston&amp;ndash; are high level estimates.
-In order to produce a better report, I am currently scraping data from the internet for more accurate sample distributions.</description>
     </item>
     
   </channel>

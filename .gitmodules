@@ -31,3 +31,6 @@
 [submodule "content/posts/curate-an-edc-pouch"]
 	path = content/posts/curate-an-edc-pouch
 	url = https://github.com/justin-napolitano/curate-an-edc-pouch.git
+[submodule "content/posts/overtrain"]
+	path = content/posts/overtrain
+	url = https://github.com/justin-napolitano/overtrain.git
