@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Tue, 18 Jun 2024 21:41:37 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Jun 2024 13:20:17 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Install mysql server on ubuntu</title>
+      <title>Install MySQL Server on Ubuntu</title>
       <link>jnapolitano.com/posts/mysql-install-buntu/</link>
-      <pubDate>Tue, 18 Jun 2024 21:41:37 -0500</pubDate>
+      <pubDate>Wed, 19 Jun 2024 13:20:17 -0500</pubDate>
       
       <guid>jnapolitano.com/posts/mysql-install-buntu/</guid>
       <description>Why  I am working on an autoposting tool for social sites. in order to complete that i want a db to log the metadata of my posts  Parts of this series  part 1 part 2  MYSQL Resources  APT install guide MYSQL config guide Post Install configuration  Install Download the config files go to this link and download the script.

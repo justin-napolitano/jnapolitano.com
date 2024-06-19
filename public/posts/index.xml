@@ -12,10 +12,164 @@
 		<atom:link href="jnapolitano.com/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
-			<title>Install mysql server on ubuntu</title>
-			<link>jnapolitano.com/posts/mysql-install-buntu/</link>
-			<pubDate>Tue, 18 Jun 2024 21:41:37 -0500</pubDate>
+			<title>Configure Hugo XML Output for RSS Feed</title>
+			<link>jnapolitano.com/posts/hugo-rss-setup/</link>
+			<pubDate>Wed, 19 Jun 2024 13:36:12 -0500</pubDate>
+			<guid>jnapolitano.com/posts/hugo-rss-setup/</guid>
+			<description><![CDATA[Hugo Custom RSS for my reader]]></description>
+			<content type="html"><![CDATA[<h2 id="why">Why</h2>
+<p>I have a mysql db that will be used to store values read from the rss feed of my hugo site. I need some add some keys to help with organization</p>
+<h3 id="parts-of-this-series">Parts of this series</h3>
+<ol>
+<li><a href="https://jnapolitano.com/en/posts/hugo-social-publisher/">part 1</a></li>
+<li><a href="https://jnapolitano.com/en/posts/python-rss-reader/">part 2</a></li>
+<li><a href="https://jnapolitano.com/en/posts/mysql-install-buntu/">part 3</a></li>
+<li><a href="https://jnapolitano.com/en/posts/mysql-config/">part 4</a></li>
+</ol>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://gohugo.io/content-management/page-resources/">Hugo Page Resources</a></li>
+<li><a href="https://gohugo.io/methods/page/params/">Hugo Page Params</a></li>
+<li><a href="https://gohugo.io/templates/rss/">Hugo RSS Templates</a></li>
+</ul>
+<h2 id="rss-config">RSS Config</h2>
+<h3 id="copy-over-the-postsrssxml-file-from-your-theme">Copy over the posts/rss.xml file from your theme</h3>
+<p>From hugo root you would do something like&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+mkdir layouts <span class="o">&amp;&amp;</span> mkdir layouts/posts <span class="o">&amp;&amp;</span> cp themes/<span class="o">[</span>theme<span class="o">]</span>/layouts/posts/index.xml
+
+</code></pre></div><h3 id="modify-the-rssxml-file">Modify the rss.xml file</h3>
+<h4 id="add-post-id">Add post id</h4>
+<p>Hugo supports a hash of the files path. It is not always unique&hellip; but for my purposes it will likely be good enough.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;postid&gt;</span> {{ .File.UniqueID }}<span class="nt">&lt;/postid&gt;</span>
+</code></pre></div><h4 id="add-the-authors-name-when-defined">Add the author&rsquo;s name when defined</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">{{ with .Site.Params.author.name }}<span class="nt">&lt;author_name&gt;</span>{{.}}<span class="nt">&lt;/author_name&gt;</span>{{end}}
+</code></pre></div><h4 id="add-the-author-email-when-defined">Add the author email when defined</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">
+      {{ with .Site.Params.author.email }}<span class="nt">&lt;author_email&gt;</span>{{.}}<span class="nt">&lt;/author_email&gt;</span>{{end}}
+</code></pre></div><h4 id="add-a-hash-of-the-author-email-when-defined">Add a hash of the author email when defined</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">{{ with .Site.Params.author.email }}<span class="nt">&lt;author_id&gt;</span>{{sha256 .}}<span class="nt">&lt;/author_id&gt;</span>{{end}}
+</code></pre></div><h4 id="the-entire-file">The entire file</h4>
+<p>The most up to date rss file is found at <a href="https://github.com/justin-napolitano/jnapolitano.com/blob/main/layouts/posts/rss.xml">this github link</a></p>
+]]></content>
+			<postid> 919e738a843baf19044479d6451528eb</postid>
+			<author></author>
+			<author_name>Justin Napolitano</author_name>
 			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
+			<title>Configure mysql server on ubuntu</title>
+			<link>jnapolitano.com/posts/mysql-config/</link>
+			<pubDate>Wed, 19 Jun 2024 13:20:56 -0500</pubDate>
+			<guid>jnapolitano.com/posts/mysql-config/</guid>
+			<description><![CDATA[MYSQL config buntu]]></description>
+			<content type="html"><![CDATA[<h2 id="why">Why</h2>
+<p>I installed mysql in the previous post. Now I need to setup users, create a db, and create a table.</p>
+<h3 id="parts-of-this-series">Parts of this series</h3>
+<ol>
+<li><a href="https://jnapolitano.com/en/posts/hugo-social-publisher/">part 1</a></li>
+<li><a href="https://jnapolitano.com/en/posts/python-rss-reader/">part 2</a></li>
+<li><a href="https://jnapolitano.com/en/posts/mysql-install-buntu/">part 3</a></li>
+</ol>
+<h2 id="mysql-resources">MYSQL Resources</h2>
+<ul>
+<li><a href="https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/">APT install guide</a></li>
+<li><a href="https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing">MYSQL config guide</a></li>
+</ul>
+<h2 id="create-a-new-user">Create a new user</h2>
+<h3 id="login-as-root">Login as Root</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+mysql -u root -p
+
+</code></pre></div><h3 id="create-some-users">Create some users</h3>
+<p>In my case I will create 4 users accounts.</p>
+<ol>
+<li>Cobra@localhost</li>
+<li><a href="mailto:Cobra@jnapolitano.com">Cobra@jnapolitano.com</a></li>
+<li>admin@localhost</li>
+<li>dummy@localhost</li>
+</ol>
+<p><code>dummy is just used to test service connection and has not access grants or writes</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;cobra&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w">
+</span><span class="w">  </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w">
+</span><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w">
+</span><span class="w">  </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;cobra&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w">
+</span><span class="w">  </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"> 
+</span><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w">
+</span><span class="w">  </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="n">RELOAD</span><span class="p">,</span><span class="n">PROCESS</span><span class="w">
+</span><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w">
+</span><span class="w">  </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;dummy&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span></code></pre></div><blockquote>
+<p>ACTUALLY enter a password above. Do not use password as the user password'</p>
+</blockquote>
+<h3 id="logout-of-root">Logout of root</h3>
+<p>enter <code>EXIT</code> in terminal</p>
+<h3 id="login-as-your-user">Login as your user</h3>
+<p>In my case I pass <code>mysql -u cobra -p</code> back to the terminal.</p>
+<h2 id="create-a-db">Create a DB</h2>
+<p>I will create a db for my personal website. The first command to run is</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">jnapolitano</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span></code></pre></div><h3 id="use-your-new-db">Use your new db</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">
+</span><span class="w"></span><span class="n">USE</span><span class="w"> </span><span class="n">jnapolitano</span><span class="p">;</span><span class="w">
+</span></code></pre></div><h3 id="create-the-posts-table">Create the posts table</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">posts</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="w">
+</span><span class="w">  </span><span class="n">id</span><span class="w">                    </span><span class="nb">BINARY</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="p">(</span><span class="n">UUID_TO_BIN</span><span class="p">(</span><span class="n">UUID</span><span class="p">())),</span><span class="w">  </span><span class="o">#</span><span class="w"> </span><span class="k">Unique</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">smallish</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">very</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="n">performance</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">fine</span><span class="p">.</span><span class="w"> 
+</span><span class="w">  </span><span class="n">author</span><span class="w">                </span><span class="nb">BINARY</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span><span class="w">                                         </span><span class="o">#</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">author</span><span class="w">
+</span><span class="w">  </span><span class="n">publish_date</span><span class="w">          </span><span class="nb">DATE</span><span class="p">,</span><span class="w">                                               </span><span class="o">#</span><span class="w"> </span><span class="n">publish</span><span class="w"> </span><span class="nb">date</span><span class="w">
+</span><span class="w">  </span><span class="n">description</span><span class="w">           </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">150</span><span class="p">),</span><span class="w">                                       </span><span class="o">#</span><span class="w"> </span><span class="n">post</span><span class="w"> </span><span class="n">description</span><span class="w">
+</span><span class="w">  </span><span class="n">link</span><span class="w">                  </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">150</span><span class="p">),</span><span class="w">                                       </span><span class="o">#</span><span class="w"> </span><span class="n">Link</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">post</span><span class="w">
+</span><span class="w">  </span><span class="n">title</span><span class="w">                 </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">150</span><span class="p">),</span><span class="w">                                       </span><span class="o">#</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">hte</span><span class="w"> </span><span class="n">post</span><span class="w">
+</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w">           </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">                                                </span><span class="o">#</span><span class="w"> </span><span class="n">Make</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w">
+</span><span class="w"></span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span></code></pre></div><h3 id="create-the-authors-table">Create the authors table</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">authors</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="w">
+</span><span class="w">  </span><span class="n">id</span><span class="w">                    </span><span class="nb">BINARY</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="p">(</span><span class="n">UUID_TO_BIN</span><span class="p">(</span><span class="n">UUID</span><span class="p">())),</span><span class="w">  </span><span class="o">#</span><span class="w"> </span><span class="k">Unique</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">smallish</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">very</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="n">performance</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">fine</span><span class="p">.</span><span class="w"> 
+</span><span class="w">  </span><span class="n">name</span><span class="w">                  </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">150</span><span class="p">),</span><span class="w">                                      </span><span class="o">#</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">author</span><span class="w">
+</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w">           </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">                                                </span><span class="o">#</span><span class="w"> </span><span class="n">Make</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w">
+</span><span class="w"></span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span></code></pre></div><h3 id="create-the-mastodon-post-table">Create the mastodon post table</h3>
+<p>I will be adding support for other systems. I am starting with mastodon.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">mastodon_posts</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="w">
+</span><span class="w">  </span><span class="n">id</span><span class="w">                    </span><span class="nb">BINARY</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="p">(</span><span class="n">UUID_TO_BIN</span><span class="p">(</span><span class="n">UUID</span><span class="p">())),</span><span class="w">  </span><span class="o">#</span><span class="w"> </span><span class="k">Unique</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">smallish</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">very</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="n">performance</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">fine</span><span class="p">.</span><span class="w"> 
+</span><span class="w">  </span><span class="n">post_id</span><span class="w">               </span><span class="nb">BINARY</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span><span class="w">                                         </span><span class="o">#</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">author</span><span class="w">
+</span><span class="w">  </span><span class="n">mastodon_post</span><span class="w">         </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">150</span><span class="p">),</span><span class="w">                                       </span><span class="o">#</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="n">POST</span><span class="w"> </span><span class="n">ID</span><span class="p">..</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="k">returns</span><span class="w">
+</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w">           </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">                                                </span><span class="o">#</span><span class="w"> </span><span class="n">Make</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w">
+</span><span class="w"></span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span></code></pre></div>]]></content>
+			<postid> 6d2e65c78de495ec2761ef43463243d6</postid>
+			<author></author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
+			<title>Install MySQL Server on Ubuntu</title>
+			<link>jnapolitano.com/posts/mysql-install-buntu/</link>
+			<pubDate>Wed, 19 Jun 2024 13:20:17 -0500</pubDate>
 			<guid>jnapolitano.com/posts/mysql-install-buntu/</guid>
 			<description><![CDATA[MYSQL buntu]]></description>
 			<content type="html"><![CDATA[<h2 id="why">Why</h2>
@@ -61,63 +215,14 @@ systemctl status mysql
 			<postid> 450ccef4af7ea020c1c1307e54be206d</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
-		</item>
-		
-		<item>
-			<title>Configure MySQL Server on Ubuntu</title>
-			<link>jnapolitano.com/posts/mysql-config/</link>
-			<pubDate>Tue, 18 Jun 2024 15:22:40 -0500</pubDate>
 			<author_email>personal.jnapolitano@gmail.com</author_email>
-			<guid>jnapolitano.com/posts/mysql-config/</guid>
-			<description><![CDATA[MYSQL config buntu]]></description>
-			<content type="html"><![CDATA[<!-- raw HTML omitted -->
-<h2 id="why">Why</h2>
-<p>I installed mysql in the previous post. now i need to setup users, create a db, and create a table.</p>
-<h3 id="parts-of-this-series">Parts of this series</h3>
-<ol>
-<li><a href="https://jnapolitano.com/en/posts/hugo-social-publisher/">part 1</a></li>
-<li><a href="https://jnapolitano.com/en/posts/python-rss-reader/">part 2</a></li>
-<li><a href="https://jnapolitano.com/en/posts/mysql-install-buntu/">part 3</a></li>
-</ol>
-<h2 id="mysql-resources">MYSQL Resources</h2>
-<ul>
-<li><a href="https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/">APT install guide</a></li>
-<li><a href="https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing">MYSQL config guide</a></li>
-</ul>
-<h2 id="install">Install</h2>
-<h3 id="download-the-config-files">Download the config files</h3>
-<p>go to this link and download the script.</p>
-<p><code>https://dev.mysql.com/downloads/repo/apt/</code></p>
-<h3 id="install-the-release-package-with-dpkg">Install the release package with dpkg</h3>
-<blockquote>
-<p>note that the w.x.y.z will change according to the release package</p>
-</blockquote>
-<p>run</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-sudo dpkg -i mysql-apt-config_w.x.y-z_all.deb
-</code></pre></div><p>in my case i ran</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-sudo dpkg -i mysql-apt-config_0.8.30-1_all.deb 
-
-</code></pre></div><h3 id="update-apt-and-install">Update apt and install</h3>
-<p>so the package above just added the mysql repository to the apt package manager. to actually install we will run</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get update <span class="o">&amp;&amp;</span>  sudo apt-get install mysql-server
-</code></pre></div><h3 id="start-mysql">Start mysql</h3>
-<p>mysql will likely alrady be running post install. Check the status by running</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-systemctl status mysql
-
-</code></pre></div>]]></content>
-			<postid> 6d2e65c78de495ec2761ef43463243d6</postid>
-			<author></author>
-			<author_name>Justin Napolitano</author_name>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Overtrain</title>
 			<link>jnapolitano.com/posts/overtrain/</link>
 			<pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/overtrain/</guid>
 			<description><![CDATA[Do not overtrain]]></description>
 			<content type="html"><![CDATA[<h2 id="why">Why</h2>
@@ -135,13 +240,14 @@ systemctl status mysql
 			<postid> 28e361d2dcd3966b7528981414551aa8</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Curate an EDC Pouch</title>
 			<link>jnapolitano.com/posts/curate-an-edc-pouch/</link>
 			<pubDate>Mon, 17 Jun 2024 15:42:34 -0500</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/curate-an-edc-pouch/</guid>
 			<description><![CDATA[Organizing your random tools into an edc pouch]]></description>
 			<content type="html"><![CDATA[<h2 id="why">Why</h2>
@@ -242,13 +348,14 @@ systemctl status mysql
 			<postid> 4dd3b316e635b12974781cebf7fa5db8</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Prepare Chicken Salad</title>
 			<link>jnapolitano.com/posts/prepare-chicken-salad/</link>
 			<pubDate>Sun, 16 Jun 2024 21:35:34 -0500</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/prepare-chicken-salad/</guid>
 			<description><![CDATA[Preparing chicken salad with some left-over supplies]]></description>
 			<content type="html"><![CDATA[<p><img src="./images/dinner.jpg" alt="dinner"></p>
@@ -294,13 +401,14 @@ systemctl status mysql
 			<postid> f91dbcafc91e75d08a6121d7e19a867e</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
 			<link>jnapolitano.com/posts/python-rss-reader/</link>
 			<pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/python-rss-reader/</guid>
 			<description><![CDATA[How To automate posting to social sites]]></description>
 			<content type="html"><![CDATA[<h2 id="thoughts-on-this-second-pass">Thoughts on This Second Pass</h2>
@@ -464,13 +572,14 @@ systemctl status mysql
 			<postid> e96b7764cd0230e572e3fcffb07caf32</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Automate Posting Hugo Blog to Social Sites... Failure</title>
 			<link>jnapolitano.com/posts/hugo-social-publisher/</link>
 			<pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/hugo-social-publisher/</guid>
 			<description><![CDATA[How not to automate posting to social sites]]></description>
 			<content type="html"><![CDATA[<h2 id="why">Why</h2>
@@ -572,13 +681,14 @@ systemctl status mysql
 			<postid> 38c3ecc9a62587a9ae67c0b4d7332487</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>JB &#39;Welding&#39; My Bumper</title>
 			<link>jnapolitano.com/posts/accord-bumper-weld/</link>
 			<pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/accord-bumper-weld/</guid>
 			<description><![CDATA[JB Welding a bumper]]></description>
 			<content type="html"><![CDATA[<!-- raw HTML omitted -->
@@ -608,13 +718,14 @@ systemctl status mysql
 			<postid> 91d7735107250b364d13f0bd2dbbe73d</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Justin-ify a Car Headliner</title>
 			<link>jnapolitano.com/posts/accord-headliner/</link>
 			<pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/accord-headliner/</guid>
 			<description><![CDATA[Installing a suitable headliner]]></description>
 			<content type="html"><![CDATA[<p>My beautiful 12 year old Honda has a bad headliner.  It was gross. I did not like it.</p>
@@ -666,13 +777,14 @@ systemctl status mysql
 			<postid> b87d44b2b2bd7dc3d130a2a172095e70</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Hugo Build and Deploy GH Workflow</title>
 			<link>jnapolitano.com/posts/gh-pages-workflow/</link>
 			<pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/gh-pages-workflow/</guid>
 			<description><![CDATA[Hugo Build GH Workflow]]></description>
 			<content type="html"><![CDATA[<h1 id="creating-a-gh-workflow-to-build-and-deploy-a-hugo-site-to-gh-pages">Creating a GH Workflow to Build and Deploy a hugo site to gh-pages</h1>
@@ -806,13 +918,14 @@ systemctl status mysql
 			<postid> 321d72486372f767f4353c3f330e781e</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>GCP Cloud Run Job Scraper</title>
 			<link>jnapolitano.com/posts/loc_scraper/</link>
 			<pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/loc_scraper/</guid>
 			<description><![CDATA[Running a scraper as a gcp cloud run job]]></description>
 			<content type="html"><![CDATA[<h1 id="library-of-congress-scraper-job">Library of Congress Scraper Job</h1>
@@ -865,13 +978,14 @@ systemctl status mysql
 			<postid> 95a5955c58bfab2c165c0a737de6d60e</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Creating a GCP Client Tool</title>
 			<link>jnapolitano.com/posts/gcputils/</link>
 			<pubDate>Sat, 27 Apr 2024 00:00:00 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/gcputils/</guid>
 			<description><![CDATA[GCP Submodules for repetitive tasks]]></description>
 			<content type="html"><![CDATA[<h1 id="creating-a-gcp-client-tool-in-python">Creating a GCP Client Tool in Python</h1>
@@ -921,13 +1035,14 @@ systemctl status mysql
 			<postid> 9da79aa2a6c916c2e433365b2b4b7d86</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Model Design and Logistic Regression in Python</title>
 			<link>jnapolitano.com/posts/logistic_regression_mockup/</link>
 			<pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/logistic_regression_mockup/</guid>
 			<description><![CDATA[Designing a logistic regression model from randomized bioinformatics data.]]></description>
 			<content type="html"><![CDATA[<h1 id="model-design-and-logistic-regression-in-python">Model Design and Logistic Regression in Python</h1>
@@ -1322,13 +1437,14 @@ weighted avg       0.56      0.56      0.55      4000
 			<postid> 975ec172d2f9b34f351eb19096ee5c89</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Annual Cost of Living Monte Carlo Models</title>
 			<link>jnapolitano.com/posts/cost-of-living-projections/</link>
 			<pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/cost-of-living-projections/</guid>
 			<description><![CDATA[Monte Carlo Model to determine the cost of living in your city.]]></description>
 			<content type="html"><![CDATA[<h2 id="cost-of-living-projections">Cost of Living Projections</h2>
@@ -1684,13 +1800,14 @@ weighted avg       0.56      0.56      0.55      4000
 			<postid> 19d722a3367160b90fe1dcc2ee5c46ab</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Spearman Rank in Standard Julia</title>
 			<link>jnapolitano.com/posts/spearman_rank_julia/</link>
 			<pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/spearman_rank_julia/</guid>
 			<description><![CDATA[Numerical Recipes in Julia.  Spearman Rank Correlation adapted to nearly standard Julia.]]></description>
 			<content type="html"><![CDATA[<h2 id="spearman-rank-in-standard-julia">Spearman Rank in Standard Julia</h2>
@@ -1807,13 +1924,14 @@ weighted avg       0.56      0.56      0.55      4000
 			<postid> ff8605f008dc9c93a61db7de1dfaba2d</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Churn Modelling Marketing Data with Julia</title>
 			<link>jnapolitano.com/posts/propensity_scoring/</link>
 			<pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/propensity_scoring/</guid>
 			<description><![CDATA[Logistic Regression Propensity Models of Marketing Data with Julia.]]></description>
 			<content type="html"><![CDATA[<h1 id="churn-modelling-marketing-data-with-julia">Churn Modelling Marketing Data with Julia</h1>
@@ -2076,13 +2194,14 @@ ROCNums{Int64}
 			<postid> 6a43f28a598460fe5a7c550c77e26b44</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Markov Chains in Julia</title>
 			<link>jnapolitano.com/posts/markov-models-julia/</link>
 			<pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/markov-models-julia/</guid>
 			<description><![CDATA[Writing a Markov Simulation Problem the hard way.]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
@@ -2150,13 +2269,14 @@ ROCNums{Int64}
 			<postid> 30dbb45f9db9508988799d727fecded2</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Quantitative Julia Problems</title>
 			<link>jnapolitano.com/posts/pi-with-julia/</link>
 			<pubDate>Tue, 24 May 2022 01:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/pi-with-julia/</guid>
 			<description><![CDATA[Testing your Julia Configuration with some numerical computing.]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
@@ -2214,13 +2334,14 @@ ROCNums{Int64}
 			<postid> 6b4d2501f3e215b4ddec60d24e0a9057</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Configuring Rocky Linux 8 for Quantitative Analysis in Julia</title>
 			<link>jnapolitano.com/posts/rocky-linux-8-julia/</link>
 			<pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/rocky-linux-8-julia/</guid>
 			<description><![CDATA[Configure Rocky Linux 8 for Julia development and quantitative analysis.]]></description>
 			<content type="html"><![CDATA[<h2 id="install-jupyter">Install Jupyter</h2>
@@ -2270,13 +2391,14 @@ git clone https://github.com/quantecon/lecture-julia.notebooks
 			<postid> 8e234204207845c3c43e75b983a9cb01</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Rice Paddy Methane Emissions Estimation: Part 2</title>
 			<link>jnapolitano.com/posts/rice-paddy-emissions-2/</link>
 			<pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/rice-paddy-emissions-2/</guid>
 			<description><![CDATA[Comparing 5 years of methane emissions to determine if Climate Trace forecasts greater emissions than UN FAOSTAT.]]></description>
 			<content type="html"><![CDATA[<h1 id="methane-emissions-estimation-data-part-2-a-comparison-between-faostat-and-university-of-malaysia-estimates">Methane Emissions Estimation Data Part 2: A Comparison between FAOSTAT and University of Malaysia Estimates</h1>
@@ -2426,13 +2548,14 @@ Probably different distributions
 			<postid> 322d693892ecb0bfc2023d0a9099d0f5</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Conduct Legal Research with AI Part 8: Case Nodes Sample Data</title>
 			<link>jnapolitano.com/posts/legal-research-part-8/</link>
 			<pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/legal-research-part-8/</guid>
 			<description><![CDATA[Merging Oyez and Library of Congress Data into a Comprehensive Data Set]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
@@ -3506,13 +3629,14 @@ Probably different distributions
 			<postid> 8a7f426a22b4ef47a37750941b78570c</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Legal Research with AI Part 7: Wrangling Data with Julia</title>
 			<link>jnapolitano.com/posts/legal-research-part-7/</link>
 			<pubDate>Sun, 22 May 2022 16:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/legal-research-part-7/</guid>
 			<description><![CDATA[File management with Julia in preperation for data merge.]]></description>
 			<content type="html"><![CDATA[<h2 id="intro">Intro</h2>
@@ -3716,13 +3840,14 @@ Probably different distributions
 			<postid> db6caa3bc9a9590b628925a0b061f9c2</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Legal Research with AI: Part 6</title>
 			<link>jnapolitano.com/posts/masterpiece/</link>
 			<pubDate>Sat, 21 May 2022 19:40:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/masterpiece/</guid>
 			<description><![CDATA[Control Model: A traditional statistical analysis of voting behavior in SPSS.]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
@@ -4969,13 +5094,14 @@ the chart below.</p>
 			<postid> 32a5f76d6e0693af16c1a0fdf5f14ee4</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 5</title>
 			<link>jnapolitano.com/posts/legal-research-part-5/</link>
 			<pubDate>Sat, 21 May 2022 14:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/legal-research-part-5/</guid>
 			<description><![CDATA[Transforming the Library of Congress results into individual json documents contaning case information.]]></description>
 			<content type="html"><![CDATA[<h1 id="legal-research-with-ai-part-5">Legal Research with AI: Part 5&quot;</h1>
@@ -5054,13 +5180,14 @@ the chart below.</p>
 			<postid> 3cb320c8b411159d5d3ffe1a95808307</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Rice Paddy Methane Emissions Estimation: Part 1</title>
 			<link>jnapolitano.com/posts/rice-paddy-emissions-1/</link>
 			<pubDate>Sat, 21 May 2022 08:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/rice-paddy-emissions-1/</guid>
 			<description><![CDATA[Fact checking reported methane emissions proposed by the UN and Climate TRACE]]></description>
 			<content type="html"><![CDATA[<h1 id="methane-emissions-estimation-data-part-1-a-comparison-between-faostat-and-university-of-malaysia-estimates">Methane Emissions Estimation Data Part 1: A Comparison between FAOSTAT and University of Malaysia Estimates</h1>
@@ -5485,13 +5612,14 @@ the chart below.</p>
 			<postid> 477064bf1a183c84a108497c0b1d6787</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 4</title>
 			<link>jnapolitano.com/posts/legal-research-part-4/</link>
 			<pubDate>Thu, 19 May 2022 22:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/legal-research-part-4/</guid>
 			<description><![CDATA[Importing case variables and established relationships to the graph.]]></description>
 			<content type="html"><![CDATA[<h1 id="conduct-legal-research-with-ai-part-4">Conduct Legal Research with AI Part 4</h1>
@@ -5672,13 +5800,14 @@ the chart below.</p>
 			<postid> 9f5aaaa103ede6048db01cc188d7d733</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 3</title>
 			<link>jnapolitano.com/posts/legal-research-part-3/</link>
 			<pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/legal-research-part-3/</guid>
 			<description><![CDATA[Testing TensorFlow models against the SCDB data set.]]></description>
 			<content type="html"><![CDATA[<h1 id="conduct-legal-research-with-ai-part-3">Conduct Legal Research with AI: Part 3</h1>
@@ -6246,13 +6375,14 @@ the chart below.</p>
 			<postid> b5f3ceb4a57b8625893a7e9dfeed9f2d</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 2</title>
 			<link>jnapolitano.com/posts/legal-reserch-part-2/</link>
 			<pubDate>Tue, 17 May 2022 18:40:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/legal-reserch-part-2/</guid>
 			<description><![CDATA[Documenting classes and an application to integrate the US Constitution into my Neo4j DB]]></description>
 			<content type="html"><![CDATA[<h1 id="integrating-the-constitution-to-neo4j">Integrating the Constitution to Neo4j</h1>
@@ -6420,13 +6550,14 @@ the chart below.</p>
 			<postid> 5c42ac4525fd6ecc725586606ddd9e5a</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 1</title>
 			<link>jnapolitano.com/posts/legal-research-part-1/</link>
 			<pubDate>Mon, 16 May 2022 14:40:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/legal-research-part-1/</guid>
 			<description><![CDATA[Integrate JSON data from a rest API into your Neo4j Stack]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
@@ -7490,13 +7621,14 @@ the chart below.</p>
 			<postid> 195b62a4cb89d78174066484e6330741</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 0</title>
 			<link>jnapolitano.com/posts/legal-research-part-0/</link>
 			<pubDate>Mon, 16 May 2022 13:40:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/legal-research-part-0/</guid>
 			<description><![CDATA[Crawl the Library of Congress API to automate your next research project.]]></description>
 			<content type="html"><![CDATA[<h1 id="crawling-the-library-of-congress-api">Crawling the Library of Congress API</h1>
@@ -8317,13 +8449,14 @@ the chart below.</p>
 			<postid> 4be1e9ba594e3327f7e5a515c1f03950</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Feasibility of Transatlantic Carbon Shipping</title>
 			<link>jnapolitano.com/posts/feasibility_study_shipping_carbon/</link>
 			<pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/feasibility_study_shipping_carbon/</guid>
 			<description><![CDATA[A feasibility study of shipping carbon from Europe to the United States]]></description>
 			<content type="html"><![CDATA[<h1 id="feasibility-of-shipping-carbon-across-the-atlantic">Feasibility of Shipping Carbon Across the Atlantic</h1>
@@ -8720,13 +8853,14 @@ the chart below.</p>
 			<postid> 3123e99b5f952de3022e704482b40f6a</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to the United States</title>
 			<link>jnapolitano.com/posts/carbon-shipping-projections/</link>
 			<pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/carbon-shipping-projections/</guid>
 			<description><![CDATA[Monte Carlo Carbon Shipping Projections]]></description>
 			<content type="html"><![CDATA[<h1 id="a-monte-carlo-projection-of-the-annual-cost-of-shipping-carbon-from-europe-to-us-ports">A Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to US Ports</h1>
@@ -9112,13 +9246,14 @@ Università Bocconi, Milan, Italy</p>
 			<postid> d0547a51c0ff8492b0c1be4c8f830192</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Potential Carbon and Hydrogen Storage Facilities Near Import/Export Ports</title>
 			<link>jnapolitano.com/posts/wells-near-ports/</link>
 			<pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/wells-near-ports/</guid>
 			<description><![CDATA[Identifying potential carbon and hydrogen storage facilities near lng ports.]]></description>
 			<content type="html"><![CDATA[<h1 id="potential-carbon-storage-facilities-near-importexport-ports">Potential Carbon Storage Facilities Near Import/Export Ports</h1>
@@ -9308,13 +9443,14 @@ Università Bocconi, Milan, Italy</p>
 			<postid> 8c061e5781494b7cf69ce174f8d317bb</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>Potential Carbon and Hydrogen Storage Wells Near Pipelines</title>
 			<link>jnapolitano.com/posts/wells-near-pipelines/</link>
 			<pubDate>Fri, 06 May 2022 05:30:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/wells-near-pipelines/</guid>
 			<description><![CDATA[Identifying potential carbon and hydrogen storage facilities from spent well data.]]></description>
 			<content type="html"><![CDATA[<h1 id="potential-carbon-storage-wells-near-pipelines">Potential Carbon Storage Wells Near Pipelines</h1>
@@ -9455,13 +9591,14 @@ Università Bocconi, Milan, Italy</p>
 			<postid> f281eaf448d0735ce644be2acbbd7451</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>EuroZone Gas Imports and Exports</title>
 			<link>jnapolitano.com/posts/european-gas-imports/</link>
 			<pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/european-gas-imports/</guid>
 			<description><![CDATA[EuroZone Gas Imports and Exports.]]></description>
 			<content type="html"><![CDATA[<h1 id="eurozone-gas-imports-and-exports">EuroZone Gas Imports and Exports</h1>
@@ -9742,13 +9879,14 @@ cubic metres (at 15oC and 760 mm Hg, i.e. Standard Conditions)</p>
 			<postid> 699a654ac2ef0c47b42912e400b333ee</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 		<item>
 			<title>The World Trade Organization, Governments, and International Trade</title>
 			<link>jnapolitano.com/posts/project-evolution-of-ngos/</link>
 			<pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
 			<guid>jnapolitano.com/posts/project-evolution-of-ngos/</guid>
 			<description><![CDATA[Integrate JSON data from a rest API into your Neo4j Stack]]></description>
 			<content type="html"><![CDATA[<h1 id="the-world-trade-organization-governments-and-international-trade">The World Trade Organization, Governments, and International Trade</h1>
@@ -10216,6 +10354,8 @@ complicating the analysis</p>
 			<postid> 64db5d49835973203d6a017aceac1131</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
 		</item>
 		
 	</channel>
