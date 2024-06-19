@@ -65,6 +65,7 @@ enableEmoji = true
 
 [params.author]
   name = "Justin Napolitano"
+  email = "personal.jnapolitano@gmail.com"
   #about = "being him"
 
 [blackfriday]
@@ -181,4 +182,3 @@ enableEmoji = true
   taxonomy = ['html','rss']
   term = ['html','rss']
 
-  

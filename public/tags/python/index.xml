@@ -7,7 +7,39 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Tue, 11 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Jun 2024 15:22:40 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configure MySQL Server on Ubuntu</title>
+      <link>jnapolitano.com/posts/mysql-config/</link>
+      <pubDate>Tue, 18 Jun 2024 15:22:40 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/mysql-config/</guid>
+      <description>Why I installed mysql in the previous post. now i need to setup users, create a db, and create a table.
+Parts of this series  part 1 part 2 part 3  MYSQL Resources  APT install guide MYSQL config guide  Install Download the config files go to this link and download the script.
+https://dev.mysql.com/downloads/repo/apt/
+Install the release package with dpkg  note that the w.x.y.z will change according to the release package</description>
+    </item>
+    
+    <item>
+      <title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
+      <link>jnapolitano.com/posts/python-rss-reader/</link>
+      <pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/python-rss-reader/</guid>
+      <description>Thoughts on This Second Pass  I will create a script that parses the sites rss feed&amp;hellip; it will then traverse the xml tree entries&amp;hellip; if a date is newer than the last publish date&amp;hellip; publish that post&amp;hellip;  I am still thinking through how to publish. I will likely write a monolithic script here, but ideally I would write an api or a batch processor to handle this in some way.</description>
+    </item>
+    
+    <item>
+      <title>Automate Posting Hugo Blog to Social Sites... Failure</title>
+      <link>jnapolitano.com/posts/hugo-social-publisher/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/hugo-social-publisher/</guid>
+      <description>Why I have a hugo blog that is a pian to share across my social feeds. I want to automate it.
+Create a mockup For this I quickly sketched out my thoughts onto a writing pad. My thinking is that I will drop a yaml file into each post directory to be read by a a python application calling social apis.
+Mockup As you can see this is very rudimentary. I will traverse the posts directories looking for a publish.</description>
+    </item>
+    
     <item>
       <title>Hugo Build and Deploy GH Workflow</title>
       <link>jnapolitano.com/posts/gh-pages-workflow/</link>
@@ -115,6 +147,78 @@ You can find the others at:
       <description>Integrating the Constitution to Neo4j I am currenlty building a graph database of Supreme Court cases in neo4j to model the behavior and decison making of the court.
 In this post, I include the classes that I will be using to create individual nodes for the articles, sections, clauses, and subclauses of the Consititution.
 Later, these will be related to cases and subjecst in order to train a tensorflow algorithm to recommend case law by issue area and to predict the outcome of cases.</description>
+    </item>
+    
+    <item>
+      <title>Conduct Legal Research with AI: Part 1</title>
+      <link>jnapolitano.com/posts/legal-research-part-1/</link>
+      <pubDate>Mon, 16 May 2022 14:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/legal-research-part-1/</guid>
+      <description>Introduction In a previous post, I detailed the process of crawling the Library of Congress API to generate json files that could be intergrated into you DB of choice.
+In this discussion, we will integrate JSON data into a Neo4j graph database.
+Overview The process is fairly straightforward. The most difficult part is wrangling your json data into the right format for integration.
+The main function first instantiates the database config informormation.</description>
+    </item>
+    
+    <item>
+      <title>Conduct Legal Research with AI: Part 0</title>
+      <link>jnapolitano.com/posts/legal-research-part-0/</link>
+      <pubDate>Mon, 16 May 2022 13:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/legal-research-part-0/</guid>
+      <description>Crawling the Library of Congress API Introduction The United States Library of Congress maintains a rest api for developers to crawl their collections. It is an open source tool that anyone can access in order to conduct research. Check out the documenation at https://libraryofcongress.github.io/data-exploration/.
+Creating a crawler I took the approach of writing a generator that produces a search result page object that can be operated upon with each iteration.</description>
+    </item>
+    
+    <item>
+      <title>Feasibility of Transatlantic Carbon Shipping</title>
+      <link>jnapolitano.com/posts/feasibility_study_shipping_carbon/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/feasibility_study_shipping_carbon/</guid>
+      <description>Feasibility of Shipping Carbon Across the Atlantic Methodology Please review the my previous post which details the design of my model.
+The major difference in this report is the sampling of the mean price per voyage.
+The conversion error has been corrected.
+Findings Distance of Transport The standard deviation in mean price per voyage was found to be less than 0. This suggests that the distance of travel within Europe is marginal.</description>
+    </item>
+    
+    <item>
+      <title>Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to the United States</title>
+      <link>jnapolitano.com/posts/carbon-shipping-projections/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/carbon-shipping-projections/</guid>
+      <description>A Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to US Ports Revision An earlier version of this report had reported values that were erroneously elevated by a decimal error in the meters to km conversion of distances between ports. I apologize for unintentionally publishing misleading information.
+Situations like this one, are why I always publish with code. Transparency is the key to rigor.
+Introduction I produced an earlier report that identified potential ports that may be suitable terminals for carbon imports into the United States for storage or industrial applications.</description>
+    </item>
+    
+    <item>
+      <title>Potential Carbon and Hydrogen Storage Facilities Near Import/Export Ports</title>
+      <link>jnapolitano.com/posts/wells-near-ports/</link>
+      <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/wells-near-ports/</guid>
+      <description>Potential Carbon Storage Facilities Near Import/Export Ports Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import geopandas as gpd import folium import contextily as cx import rtree from zlib import crc32 import hashlib from shapely.geometry import Point, LineString, Polygon import numpy as np from scipy.spatial import cKDTree from shapely.geometry import Point from haversine import Unit from geopy.distance import distance Restrictions  Must be near a pipeline terminal Must be Near a petrolium Port  Query Plan Imports</description>
+    </item>
+    
+    <item>
+      <title>Potential Carbon and Hydrogen Storage Wells Near Pipelines</title>
+      <link>jnapolitano.com/posts/wells-near-pipelines/</link>
+      <pubDate>Fri, 06 May 2022 05:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/wells-near-pipelines/</guid>
+      <description>Potential Carbon Storage Wells Near Pipelines Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import geopandas as gpd import folium import contextily as cx import rtree from zlib import crc32 import hashlib from shapely.geometry import Point, LineString, Polygon import numpy as np from scipy.spatial import cKDTree from shapely.geometry import Point from haversine import Unit from geopy.distance import distance Query Plan Restrictions  Must be near a pipeline terminal  Imports  Pipeline Data Well Data  Filtering   For each well calculate nearest pipeline</description>
+    </item>
+    
+    <item>
+      <title>EuroZone Gas Imports and Exports</title>
+      <link>jnapolitano.com/posts/european-gas-imports/</link>
+      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/european-gas-imports/</guid>
+      <description>EuroZone Gas Imports and Exports Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import numpy as np from geopy.distance import distance import re import matplotlib.pyplot as plt from IPython.core.display import HTML #import IPython.core.display as display def hugo_safe_render(styler): &amp;#34;&amp;#34;&amp;#34; Removes spacing from HTML output of df.style to prevent rendering issues in Hugo. &amp;#34;&amp;#34;&amp;#34; raw_html = styler.to_html() clean_html = &amp;#39; &amp;#39;.join(raw_html.split()) return HTML(clean_html) def magnify(): return [dict(selector=&amp;#34;th&amp;#34;, props=[(&amp;#34;font-size&amp;#34;, &amp;#34;4pt&amp;#34;)]), dict(selector=&amp;#34;td&amp;#34;, props=[(&amp;#39;padding&amp;#39;, &amp;#34;0em 0em&amp;#34;)]), dict(selector=&amp;#34;th:hover&amp;#34;, props=[(&amp;#34;font-size&amp;#34;, &amp;#34;12pt&amp;#34;)]), dict(selector=&amp;#34;tr:hover td:hover&amp;#34;, props=[(&amp;#39;max-width&amp;#39;, &amp;#39;200px&amp;#39;), (&amp;#39;font-size&amp;#39;, &amp;#39;12pt&amp;#39;)]) ] Query Strategy Imports TO many to list&amp;hellip; I&amp;rsquo;ll ad them as I go below</description>
     </item>
     
   </channel>

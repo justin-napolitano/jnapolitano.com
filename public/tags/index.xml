@@ -7,11 +7,128 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Wed, 12 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Jun 2024 21:41:37 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bash</title>
+      <link>jnapolitano.com/tags/bash/</link>
+      <pubDate>Tue, 18 Jun 2024 21:41:37 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>databases</title>
+      <link>jnapolitano.com/tags/databases/</link>
+      <pubDate>Tue, 18 Jun 2024 21:41:37 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/databases/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>jnapolitano.com/tags/linux/</link>
+      <pubDate>Tue, 18 Jun 2024 21:41:37 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>jnapolitano.com/tags/mysql/</link>
+      <pubDate>Tue, 18 Jun 2024 21:41:37 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>jnapolitano.com/tags/python/</link>
+      <pubDate>Tue, 18 Jun 2024 15:22:40 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lifestyle</title>
+      <link>jnapolitano.com/tags/lifestyle/</link>
+      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/lifestyle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>training</title>
+      <link>jnapolitano.com/tags/training/</link>
+      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/training/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>edc</title>
+      <link>jnapolitano.com/tags/edc/</link>
+      <pubDate>Mon, 17 Jun 2024 15:42:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/edc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>preperation</title>
+      <link>jnapolitano.com/tags/preperation/</link>
+      <pubDate>Mon, 17 Jun 2024 15:42:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/preperation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cooking</title>
+      <link>jnapolitano.com/tags/cooking/</link>
+      <pubDate>Sun, 16 Jun 2024 21:35:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/cooking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fail</title>
+      <link>jnapolitano.com/tags/fail/</link>
+      <pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/fail/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>jnapolitano.com/tags/hugo/</link>
+      <pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>jnapolitano.com/tags/programming/</link>
+      <pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/programming/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>automotive</title>
       <link>jnapolitano.com/tags/automotive/</link>
-      <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/tags/automotive/</guid>
       <description></description>
@@ -36,15 +153,6 @@
     </item>
     
     <item>
-      <title>python</title>
-      <link>jnapolitano.com/tags/python/</link>
-      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>submodules</title>
       <link>jnapolitano.com/tags/submodules/</link>
       <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
@@ -59,15 +167,6 @@
       <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/tags/workflow/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bash</title>
-      <link>jnapolitano.com/tags/bash/</link>
-      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/bash/</guid>
       <description></description>
     </item>
     
@@ -95,6 +194,375 @@
       <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/tags/gcp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>workflow automation</title>
+      <link>jnapolitano.com/tags/workflow-automation/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/workflow-automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>index</title>
+      <link>jnapolitano.com/tags/index/</link>
+      <pubDate>Wed, 24 Apr 2024 17:23:50 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>julia</title>
+      <link>jnapolitano.com/tags/julia/</link>
+      <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/julia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Logistic Regression</title>
+      <link>jnapolitano.com/tags/logistic-regression/</link>
+      <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/logistic-regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>numerical-computing</title>
+      <link>jnapolitano.com/tags/numerical-computing/</link>
+      <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/numerical-computing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>statistics</title>
+      <link>jnapolitano.com/tags/statistics/</link>
+      <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>monte-carlo</title>
+      <link>jnapolitano.com/tags/monte-carlo/</link>
+      <pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/monte-carlo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spearman-rank-correlation</title>
+      <link>jnapolitano.com/tags/spearman-rank-correlation/</link>
+      <pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/spearman-rank-correlation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>logisitic-regression</title>
+      <link>jnapolitano.com/tags/logisitic-regression/</link>
+      <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/logisitic-regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>marketing-analsyis</title>
+      <link>jnapolitano.com/tags/marketing-analsyis/</link>
+      <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/marketing-analsyis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>propensity-models</title>
+      <link>jnapolitano.com/tags/propensity-models/</link>
+      <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/propensity-models/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dataframes</title>
+      <link>jnapolitano.com/tags/dataframes/</link>
+      <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/dataframes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>markov</title>
+      <link>jnapolitano.com/tags/markov/</link>
+      <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/markov/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mathematics</title>
+      <link>jnapolitano.com/tags/mathematics/</link>
+      <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/mathematics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data-wrangling</title>
+      <link>jnapolitano.com/tags/data-wrangling/</link>
+      <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/data-wrangling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scotus</title>
+      <link>jnapolitano.com/tags/scotus/</link>
+      <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/scotus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>climate-change</title>
+      <link>jnapolitano.com/tags/climate-change/</link>
+      <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/climate-change/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data</title>
+      <link>jnapolitano.com/tags/data/</link>
+      <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>emissions</title>
+      <link>jnapolitano.com/tags/emissions/</link>
+      <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/emissions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>university-of-malaysia</title>
+      <link>jnapolitano.com/tags/university-of-malaysia/</link>
+      <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/university-of-malaysia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>json</title>
+      <link>jnapolitano.com/tags/json/</link>
+      <pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/json/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>legal</title>
+      <link>jnapolitano.com/tags/legal/</link>
+      <pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/legal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spss</title>
+      <link>jnapolitano.com/tags/spss/</link>
+      <pubDate>Sat, 21 May 2022 19:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/spss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ai</title>
+      <link>jnapolitano.com/tags/ai/</link>
+      <pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine-learning</title>
+      <link>jnapolitano.com/tags/machine-learning/</link>
+      <pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ml</title>
+      <link>jnapolitano.com/tags/ml/</link>
+      <pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/ml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>neo4j</title>
+      <link>jnapolitano.com/tags/neo4j/</link>
+      <pubDate>Tue, 17 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/neo4j/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>carbon-capture</title>
+      <link>jnapolitano.com/tags/carbon-capture/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/carbon-capture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>energy</title>
+      <link>jnapolitano.com/tags/energy/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/energy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lng</title>
+      <link>jnapolitano.com/tags/lng/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/lng/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>montecarlo</title>
+      <link>jnapolitano.com/tags/montecarlo/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/montecarlo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>projections</title>
+      <link>jnapolitano.com/tags/projections/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/projections/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>carbon</title>
+      <link>jnapolitano.com/tags/carbon/</link>
+      <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/carbon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gis</title>
+      <link>jnapolitano.com/tags/gis/</link>
+      <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/gis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hydrogen</title>
+      <link>jnapolitano.com/tags/hydrogen/</link>
+      <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/hydrogen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shipping</title>
+      <link>jnapolitano.com/tags/shipping/</link>
+      <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/shipping/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>europe</title>
+      <link>jnapolitano.com/tags/europe/</link>
+      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/europe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>insitutional analysis</title>
+      <link>jnapolitano.com/tags/insitutional-analysis/</link>
+      <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/insitutional-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>internatinoal</title>
+      <link>jnapolitano.com/tags/internatinoal/</link>
+      <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/internatinoal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>legal research</title>
+      <link>jnapolitano.com/tags/legal-research/</link>
+      <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/legal-research/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ngos</title>
+      <link>jnapolitano.com/tags/ngos/</link>
+      <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/ngos/</guid>
       <description></description>
     </item>
     

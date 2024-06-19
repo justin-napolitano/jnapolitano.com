@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>bash on Justin Napolitano</title>
-    <link>jnapolitano.com/tags/bash/</link>
-    <description>Recent content in bash on Justin Napolitano</description>
+    <title>databases on Justin Napolitano</title>
+    <link>jnapolitano.com/tags/databases/</link>
+    <description>Recent content in databases on Justin Napolitano</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Tue, 18 Jun 2024 21:41:37 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Jun 2024 21:41:37 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/databases/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Install mysql server on ubuntu</title>
       <link>jnapolitano.com/posts/mysql-install-buntu/</link>
@@ -20,13 +20,15 @@ Install the release package with dpkg  note that the w.</description>
     </item>
     
     <item>
-      <title>GCP Cloud Run Job Scraper</title>
-      <link>jnapolitano.com/posts/loc_scraper/</link>
-      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      <title>Configure MySQL Server on Ubuntu</title>
+      <link>jnapolitano.com/posts/mysql-config/</link>
+      <pubDate>Tue, 18 Jun 2024 15:22:40 -0500</pubDate>
       
-      <guid>jnapolitano.com/posts/loc_scraper/</guid>
-      <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.
-Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
+      <guid>jnapolitano.com/posts/mysql-config/</guid>
+      <description>Why I installed mysql in the previous post. now i need to setup users, create a db, and create a table.
+Parts of this series  part 1 part 2 part 3  MYSQL Resources  APT install guide MYSQL config guide  Install Download the config files go to this link and download the script.
+https://dev.mysql.com/downloads/repo/apt/
+Install the release package with dpkg  note that the w.x.y.z will change according to the release package</description>
     </item>
     
   </channel>

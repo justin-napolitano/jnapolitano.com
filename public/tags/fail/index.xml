@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fail on Justin Napolitano</title>
+    <link>jnapolitano.com/tags/fail/</link>
+    <description>Recent content in fail on Justin Napolitano</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Sat, 15 Jun 2024 22:36:34 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/fail/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
+      <link>jnapolitano.com/posts/python-rss-reader/</link>
+      <pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/python-rss-reader/</guid>
+      <description>Thoughts on This Second Pass  I will create a script that parses the sites rss feed&amp;hellip; it will then traverse the xml tree entries&amp;hellip; if a date is newer than the last publish date&amp;hellip; publish that post&amp;hellip;  I am still thinking through how to publish. I will likely write a monolithic script here, but ideally I would write an api or a batch processor to handle this in some way.</description>
+    </item>
+    
+    <item>
+      <title>Automate Posting Hugo Blog to Social Sites... Failure</title>
+      <link>jnapolitano.com/posts/hugo-social-publisher/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/hugo-social-publisher/</guid>
+      <description>Why I have a hugo blog that is a pian to share across my social feeds. I want to automate it.
+Create a mockup For this I quickly sketched out my thoughts onto a writing pad. My thinking is that I will drop a yaml file into each post directory to be read by a a python application calling social apis.
+Mockup As you can see this is very rudimentary. I will traverse the posts directories looking for a publish.</description>
+    </item>
+    
+  </channel>
+</rss>

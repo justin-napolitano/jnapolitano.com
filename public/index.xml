@@ -7,7 +7,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Tue, 18 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Jun 2024 21:41:37 -0500</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install mysql server on ubuntu</title>
+      <link>jnapolitano.com/posts/mysql-install-buntu/</link>
+      <pubDate>Tue, 18 Jun 2024 21:41:37 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/mysql-install-buntu/</guid>
+      <description>Why  I am working on an autoposting tool for social sites. in order to complete that i want a db to log the metadata of my posts  Parts of this series  part 1 part 2  MYSQL Resources  APT install guide MYSQL config guide Post Install configuration  Install Download the config files go to this link and download the script.
+https://dev.mysql.com/downloads/repo/apt/
+Install the release package with dpkg  note that the w.</description>
+    </item>
+    
+    <item>
+      <title>Configure MySQL Server on Ubuntu</title>
+      <link>jnapolitano.com/posts/mysql-config/</link>
+      <pubDate>Tue, 18 Jun 2024 15:22:40 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/mysql-config/</guid>
+      <description>Why I installed mysql in the previous post. now i need to setup users, create a db, and create a table.
+Parts of this series  part 1 part 2 part 3  MYSQL Resources  APT install guide MYSQL config guide  Install Download the config files go to this link and download the script.
+https://dev.mysql.com/downloads/repo/apt/
+Install the release package with dpkg  note that the w.x.y.z will change according to the release package</description>
+    </item>
+    
     <item>
       <title>Overtrain</title>
       <link>jnapolitano.com/posts/overtrain/</link>
@@ -112,6 +135,265 @@ Quick History of this project I had started work on this as an undergraduate at 
       <guid>jnapolitano.com/posts/gcputils/</guid>
       <description>Creating a GCP Client Tool in Python Why I often find myself reuuing the same bits of code when working with GCP. It is very important to avoid creating multiple development trees of the same classes. I have done this before for large projects. It will lead to a very difficult to maintain stack of tools that will spaghettify over time.
 Creating the submodule Create an empty directory mkdir gcpuptils Add the following code to a gcpclient.</description>
+    </item>
+    
+    <item>
+      <title>Model Design and Logistic Regression in Python</title>
+      <link>jnapolitano.com/posts/logistic_regression_mockup/</link>
+      <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/logistic_regression_mockup/</guid>
+      <description>Model Design and Logistic Regression in Python I recently modeled customer churn in Julia with logistic regression model. It was interesting to be sure, but I want to extend my analysis skillset by modeling biostatistics data. In this post, I design a logistic regression model of health predictors.
+Imports # load some default Python modules import numpy as np import pandas as pd import matplotlib.pyplot as plt import seaborn as sns plt.</description>
+    </item>
+    
+    <item>
+      <title>Annual Cost of Living Monte Carlo Models</title>
+      <link>jnapolitano.com/posts/cost-of-living-projections/</link>
+      <pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/cost-of-living-projections/</guid>
+      <description>Cost of Living Projections Introduction I do not like negotiating for salary. Especially, without valid projections to determine a range.
+I prepared this report to estimate a salary expectation that will maintain my current standard of living.
+I present two Monte Carlo models of Houston and NYC annual living costs. The data is somewhat dated and &amp;ndash;particularly in the case of houston&amp;ndash; are high level estimates.
+In order to produce a better report, I am currently scraping data from the internet for more accurate sample distributions.</description>
+    </item>
+    
+    <item>
+      <title>Spearman Rank in Standard Julia</title>
+      <link>jnapolitano.com/posts/spearman_rank_julia/</link>
+      <pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/spearman_rank_julia/</guid>
+      <description>Spearman Rank in Standard Julia Well nearly, I did import the erfc function from the SpecialFunctions package. I don&amp;rsquo;t like it either. I&amp;rsquo;ll write my own soon to make up for it.
+Special Thanks I came across the text Numerical Recipes in C. It was first published in 1988, by the Cambridge University Press. The authors are William H. Press, Brian P. Flannery, Saul. A. Teukolsky, and William T. Veterling.</description>
+    </item>
+    
+    <item>
+      <title>Churn Modelling Marketing Data with Julia</title>
+      <link>jnapolitano.com/posts/propensity_scoring/</link>
+      <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/propensity_scoring/</guid>
+      <description>Churn Modelling Marketing Data with Julia Introduction I prepared this analysis to learn the logistic regression in Julia. The work is fairly straightforward. I am modelling if a customer will exit a website based on a number of sites. I&amp;rsquo;ll improve the model in an upcoming post. As if, is not as interesting as asking when. That will be my next project
+Imports using Pkg using DataFrames using CSV using Plots using GLM using StatsBase using Lathe using MLBase using ClassImbalance using ROCAnalysis using PyCall sklearn = pyimport(&amp;#34;sklearn.</description>
+    </item>
+    
+    <item>
+      <title>Markov Chains in Julia</title>
+      <link>jnapolitano.com/posts/markov-models-julia/</link>
+      <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/markov-models-julia/</guid>
+      <description>Introduction I am currently working on a legal research series where I perform statistical analysis and ml models to legal datasets. My intention is to model the behavior of courts, determine the outcome of cases, and build a pipeline capable of identifying relevant case law by issue area.
+That data set is nearly complete, but I have not decided which models to apply to it. This is where Julia comes into play.</description>
+    </item>
+    
+    <item>
+      <title>Quantitative Julia Problems</title>
+      <link>jnapolitano.com/posts/pi-with-julia/</link>
+      <pubDate>Tue, 24 May 2022 01:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/pi-with-julia/</guid>
+      <description>Introduction In my previous post, I demonstrated how to configure Rocky Linux and RHEL distributions for quantitative analysis.
+In this post, I include a few sample programs to test your installation.
+How to run the programs I saved them to a folder within the project directory.
+Activate the Project using Pkg Pkg.activate(&amp;#34;.&amp;#34;) #cd(&amp;#34;&amp;lt;sub-directory-containing-files&amp;gt;) optional Run a program include(&amp;#34;path/to/script-name.jl&amp;#34;) Estimate the Value of Pi Use the Monte Carlo method to estimate the value of pi.</description>
+    </item>
+    
+    <item>
+      <title>Configuring Rocky Linux 8 for Quantitative Analysis in Julia</title>
+      <link>jnapolitano.com/posts/rocky-linux-8-julia/</link>
+      <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/rocky-linux-8-julia/</guid>
+      <description>Install Jupyter Start with installing jupyter. It will serve as our server for development.
+Install Dependencies sudo dnf install gcc python3-devel kernel-headers-$(uname -r) Install Jupyter Via Pip pip3 install --user jupyter Install Julia We will be installing from the official binaries.
+Make a directory in user profile. i simply ran mkdir julia in the home folder. The cd to julia.
+When in the folder run
+Wget wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.2-linux-x86_64.tar.gz Unpack Then unpack</description>
+    </item>
+    
+    <item>
+      <title>Rice Paddy Methane Emissions Estimation: Part 2</title>
+      <link>jnapolitano.com/posts/rice-paddy-emissions-2/</link>
+      <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/rice-paddy-emissions-2/</guid>
+      <description>Methane Emissions Estimation Data Part 2: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.
+It is fairly code python and pandas heavy.
+The code and data exploration follows the summary below.
+Hypothesis Testing the University of Malaysia Paper Claims  That the distributions do not differ between 2020 and 2019 That the means do no differ between 2020 and 2019  What will be Tested.</description>
+    </item>
+    
+    <item>
+      <title>Conduct Legal Research with AI Part 8: Case Nodes Sample Data</title>
+      <link>jnapolitano.com/posts/legal-research-part-8/</link>
+      <pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/legal-research-part-8/</guid>
+      <description>Introduction The legal Research with AI Series is expanding quickly. This is the 9th post related to it in someway. Building this pipeline and integrating multiple datasets into nodes is proving to be verbose.
+This post documents merging Oyez and Library of Congress of data structured json files that represent nodes and hierarchal relationships.
+Main Function The plan for this program is to:
+ Read the prepared dataframe created in the legal research part 7 post for each row of the df load a dictionary from the the libary of congress path and the oyez path Set keys on the Oyez dataset Write the updated Oyez dataset to file  Review the work below:</description>
+    </item>
+    
+    <item>
+      <title>Legal Research with AI Part 7: Wrangling Data with Julia</title>
+      <link>jnapolitano.com/posts/legal-research-part-7/</link>
+      <pubDate>Sun, 22 May 2022 16:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/legal-research-part-7/</guid>
+      <description>Intro In a previous post, I seperated all of the results returned from the Library of Congress API into individual JSON documents to be imported as nodes into a neo4j graph.
+In this post, I filter the LOC data against another data set from Oyez that will be integrated in the next post.
+Filtering Data Both data sets have been seperated into individual case nodes stored in the json format as a file with the format : .</description>
+    </item>
+    
+    <item>
+      <title>Legal Research with AI: Part 6</title>
+      <link>jnapolitano.com/posts/masterpiece/</link>
+      <pubDate>Sat, 21 May 2022 19:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/masterpiece/</guid>
+      <description>Introduction Currently, my server is mining data from the neo4j graph database.
+This post contains a control model completed in SPSS that will serve as the base line for comparison to Ml models. It includes a short literature review of the theoritical foundation of the Attitudinal Model of Judicial Behavior.
+Hypothesis When considering the individual Supreme Court Justices, their voting behavior may be best described by the interaction between their ideological precepts and the facts of the case.</description>
+    </item>
+    
+    <item>
+      <title>Conduct Legal Research with AI: Part 5</title>
+      <link>jnapolitano.com/posts/legal-research-part-5/</link>
+      <pubDate>Sat, 21 May 2022 14:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/legal-research-part-5/</guid>
+      <description>Legal Research with AI: Part 5&amp;quot; In the previous posts in this series, I have downloaded the data required to build the neo4j graph. In this post, I will arrange the data into a data structure that will permit me to easily create graph nodes and most importantly relationships.
+The Runner Program The raw structure of the data is organized by the results of the api requests. There are thus 80 cases per file.</description>
+    </item>
+    
+    <item>
+      <title>Rice Paddy Methane Emissions Estimation: Part 1</title>
+      <link>jnapolitano.com/posts/rice-paddy-emissions-1/</link>
+      <pubDate>Sat, 21 May 2022 08:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/rice-paddy-emissions-1/</guid>
+      <description>Methane Emissions Estimation Data Part 1: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.
+It is fairly code python and pandas heavy.
+The code and data exploration follows the summary below.
+Inspiration for this work The University of Malaysia in partnership with Climate TRACE release a paper stating that the UN undercounts rice paddy methane emissions by about 16%.</description>
+    </item>
+    
+    <item>
+      <title>Conduct Legal Research with AI: Part 4</title>
+      <link>jnapolitano.com/posts/legal-research-part-4/</link>
+      <pubDate>Thu, 19 May 2022 22:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/legal-research-part-4/</guid>
+      <description>Conduct Legal Research with AI Part 4 This is the fourth post in a series documenting the process of building an ml pipeline used to train models to predict the outcomes of Supreme Court cases.
+You can find the others at:
+ Part 1: blog.jnapolitano.io/neo4j_integration/ Part 2: blog.jnapolitano.io/constitution_to_neo/ Part 3: blog.jnapolitano.io/ai-proof-of-concept/  Modeling the Supreme Court Thankfully, much of the ground work has been done by contributors to The Washington University of St.</description>
+    </item>
+    
+    <item>
+      <title>Conduct Legal Research with AI: Part 3</title>
+      <link>jnapolitano.com/posts/legal-research-part-3/</link>
+      <pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/legal-research-part-3/</guid>
+      <description>Conduct Legal Research with AI: Part 3 This is the third post in a series documenting the process of building an ml pipeline that will be used to train models to predict the outcomes of Supreme Court Cases.
+You can find the others at:
+ blog.jnapolitano.io/neo4j_integration/ blog.jnapolitano.io/constitution_to_neo/  Introduction In this post, I will be testing a sample TensorFlow pipeline against the Supreme Court Database maintained by the Washington University Law School in order to build a proof of concept model for a Supreme Court Graph Analysis project.</description>
+    </item>
+    
+    <item>
+      <title>Conduct Legal Research with AI: Part 2</title>
+      <link>jnapolitano.com/posts/legal-reserch-part-2/</link>
+      <pubDate>Tue, 17 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/legal-reserch-part-2/</guid>
+      <description>Integrating the Constitution to Neo4j I am currenlty building a graph database of Supreme Court cases in neo4j to model the behavior and decison making of the court.
+In this post, I include the classes that I will be using to create individual nodes for the articles, sections, clauses, and subclauses of the Consititution.
+Later, these will be related to cases and subjecst in order to train a tensorflow algorithm to recommend case law by issue area and to predict the outcome of cases.</description>
+    </item>
+    
+    <item>
+      <title>Conduct Legal Research with AI: Part 1</title>
+      <link>jnapolitano.com/posts/legal-research-part-1/</link>
+      <pubDate>Mon, 16 May 2022 14:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/legal-research-part-1/</guid>
+      <description>Introduction In a previous post, I detailed the process of crawling the Library of Congress API to generate json files that could be intergrated into you DB of choice.
+In this discussion, we will integrate JSON data into a Neo4j graph database.
+Overview The process is fairly straightforward. The most difficult part is wrangling your json data into the right format for integration.
+The main function first instantiates the database config informormation.</description>
+    </item>
+    
+    <item>
+      <title>Conduct Legal Research with AI: Part 0</title>
+      <link>jnapolitano.com/posts/legal-research-part-0/</link>
+      <pubDate>Mon, 16 May 2022 13:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/legal-research-part-0/</guid>
+      <description>Crawling the Library of Congress API Introduction The United States Library of Congress maintains a rest api for developers to crawl their collections. It is an open source tool that anyone can access in order to conduct research. Check out the documenation at https://libraryofcongress.github.io/data-exploration/.
+Creating a crawler I took the approach of writing a generator that produces a search result page object that can be operated upon with each iteration.</description>
+    </item>
+    
+    <item>
+      <title>Feasibility of Transatlantic Carbon Shipping</title>
+      <link>jnapolitano.com/posts/feasibility_study_shipping_carbon/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/feasibility_study_shipping_carbon/</guid>
+      <description>Feasibility of Shipping Carbon Across the Atlantic Methodology Please review the my previous post which details the design of my model.
+The major difference in this report is the sampling of the mean price per voyage.
+The conversion error has been corrected.
+Findings Distance of Transport The standard deviation in mean price per voyage was found to be less than 0. This suggests that the distance of travel within Europe is marginal.</description>
+    </item>
+    
+    <item>
+      <title>Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to the United States</title>
+      <link>jnapolitano.com/posts/carbon-shipping-projections/</link>
+      <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/carbon-shipping-projections/</guid>
+      <description>A Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to US Ports Revision An earlier version of this report had reported values that were erroneously elevated by a decimal error in the meters to km conversion of distances between ports. I apologize for unintentionally publishing misleading information.
+Situations like this one, are why I always publish with code. Transparency is the key to rigor.
+Introduction I produced an earlier report that identified potential ports that may be suitable terminals for carbon imports into the United States for storage or industrial applications.</description>
+    </item>
+    
+    <item>
+      <title>Potential Carbon and Hydrogen Storage Facilities Near Import/Export Ports</title>
+      <link>jnapolitano.com/posts/wells-near-ports/</link>
+      <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/wells-near-ports/</guid>
+      <description>Potential Carbon Storage Facilities Near Import/Export Ports Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import geopandas as gpd import folium import contextily as cx import rtree from zlib import crc32 import hashlib from shapely.geometry import Point, LineString, Polygon import numpy as np from scipy.spatial import cKDTree from shapely.geometry import Point from haversine import Unit from geopy.distance import distance Restrictions  Must be near a pipeline terminal Must be Near a petrolium Port  Query Plan Imports</description>
+    </item>
+    
+    <item>
+      <title>Potential Carbon and Hydrogen Storage Wells Near Pipelines</title>
+      <link>jnapolitano.com/posts/wells-near-pipelines/</link>
+      <pubDate>Fri, 06 May 2022 05:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/wells-near-pipelines/</guid>
+      <description>Potential Carbon Storage Wells Near Pipelines Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import geopandas as gpd import folium import contextily as cx import rtree from zlib import crc32 import hashlib from shapely.geometry import Point, LineString, Polygon import numpy as np from scipy.spatial import cKDTree from shapely.geometry import Point from haversine import Unit from geopy.distance import distance Query Plan Restrictions  Must be near a pipeline terminal  Imports  Pipeline Data Well Data  Filtering   For each well calculate nearest pipeline</description>
+    </item>
+    
+    <item>
+      <title>EuroZone Gas Imports and Exports</title>
+      <link>jnapolitano.com/posts/european-gas-imports/</link>
+      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/european-gas-imports/</guid>
+      <description>EuroZone Gas Imports and Exports Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import numpy as np from geopy.distance import distance import re import matplotlib.pyplot as plt from IPython.core.display import HTML #import IPython.core.display as display def hugo_safe_render(styler): &amp;#34;&amp;#34;&amp;#34; Removes spacing from HTML output of df.style to prevent rendering issues in Hugo. &amp;#34;&amp;#34;&amp;#34; raw_html = styler.to_html() clean_html = &amp;#39; &amp;#39;.join(raw_html.split()) return HTML(clean_html) def magnify(): return [dict(selector=&amp;#34;th&amp;#34;, props=[(&amp;#34;font-size&amp;#34;, &amp;#34;4pt&amp;#34;)]), dict(selector=&amp;#34;td&amp;#34;, props=[(&amp;#39;padding&amp;#39;, &amp;#34;0em 0em&amp;#34;)]), dict(selector=&amp;#34;th:hover&amp;#34;, props=[(&amp;#34;font-size&amp;#34;, &amp;#34;12pt&amp;#34;)]), dict(selector=&amp;#34;tr:hover td:hover&amp;#34;, props=[(&amp;#39;max-width&amp;#39;, &amp;#39;200px&amp;#39;), (&amp;#39;font-size&amp;#39;, &amp;#39;12pt&amp;#39;)]) ] Query Strategy Imports TO many to list&amp;hellip; I&amp;rsquo;ll ad them as I go below</description>
+    </item>
+    
+    <item>
+      <title>The World Trade Organization, Governments, and International Trade</title>
+      <link>jnapolitano.com/posts/project-evolution-of-ngos/</link>
+      <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/project-evolution-of-ngos/</guid>
+      <description>The World Trade Organization, Governments, and International Trade Intro International Organizations are vital to the operation of International politics. They regulate behaviors, facilitate communication, and promote cooperation between states. The process by which International Organizations come into being is well discussed in the literature, however, not equally well debated is the process by which International Organizations come to modify their operating procedure. Or in other words, when the member states renegotiate the terms of their membership.</description>
     </item>
     
   </channel>

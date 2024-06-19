@@ -2,98 +2,119 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>jnapolitano.com/tags/bash/</loc>
+    <lastmod>2024-06-18T21:41:37-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/databases/</loc>
+    <lastmod>2024-06-18T21:41:37-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/mysql-install-buntu/</loc>
+    <lastmod>2024-06-18T21:41:37-05:00</lastmod>
+  </url><url>
     <loc>jnapolitano.com/</loc>
-    <lastmod>2024-06-18T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-18T21:41:37-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/tags/lifestyle/</loc>
-    <lastmod>2024-06-18T00:00:00+00:00</lastmod>
+    <loc>jnapolitano.com/tags/linux/</loc>
+    <lastmod>2024-06-18T21:41:37-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/posts/overtrain/</loc>
-    <lastmod>2024-06-18T00:00:00+00:00</lastmod>
+    <loc>jnapolitano.com/tags/mysql/</loc>
+    <lastmod>2024-06-18T21:41:37-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/</loc>
-    <lastmod>2024-06-18T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-18T21:41:37-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/tags/training/</loc>
-    <lastmod>2024-06-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/posts/curate-an-edc-pouch/</loc>
-    <lastmod>2024-06-17T15:42:34-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/edc/</loc>
-    <lastmod>2024-06-17T15:42:34-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/preperation/</loc>
-    <lastmod>2024-06-17T15:42:34-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/cooking/</loc>
-    <lastmod>2024-06-16T21:35:34-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/posts/prepare-chicken-salad/</loc>
-    <lastmod>2024-06-16T21:35:34-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/posts/python-rss-reader/</loc>
-    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/fail/</loc>
-    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/hugo/</loc>
-    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/programming/</loc>
-    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
+    <loc>jnapolitano.com/posts/mysql-config/</loc>
+    <lastmod>2024-06-18T15:22:40-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/python/</loc>
-    <lastmod>2024-06-15T22:36:34-05:00</lastmod>
+    <lastmod>2024-06-18T15:22:40-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/lifestyle/</loc>
+    <lastmod>2024-06-18T13:10:36-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/overtrain/</loc>
+    <lastmod>2024-06-18T13:10:36-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/training/</loc>
+    <lastmod>2024-06-18T13:10:36-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/curate-an-edc-pouch/</loc>
+    <lastmod>2024-06-17T16:11:08-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/edc/</loc>
+    <lastmod>2024-06-17T16:11:08-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/preperation/</loc>
+    <lastmod>2024-06-17T16:11:08-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/cooking/</loc>
+    <lastmod>2024-06-16T21:35:41-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/prepare-chicken-salad/</loc>
+    <lastmod>2024-06-16T21:35:41-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/python-rss-reader/</loc>
+    <lastmod>2024-06-16T00:24:40-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/fail/</loc>
+    <lastmod>2024-06-16T00:24:40-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/hugo/</loc>
+    <lastmod>2024-06-16T00:24:40-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/programming/</loc>
+    <lastmod>2024-06-16T00:24:40-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/hugo-social-publisher/</loc>
-    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:20:01-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/automotive/</loc>
-    <lastmod>2024-06-14T14:07:28-05:00</lastmod>
+    <lastmod>2024-06-16T00:27:21-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/accord-bumper-weld/</loc>
-    <lastmod>2024-06-14T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:27:21-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/accord-headliner/</loc>
     <lastmod>2024-06-14T14:07:28-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/automation/</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:29:29-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/git/</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:31:03-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/gh-pages-workflow/</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:28:11-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/submodules/</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:29:29-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/workflow/</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/bash/</loc>
-    <lastmod>2024-04-28T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:29:29-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/containerization/</loc>
-    <lastmod>2024-04-28T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:31:03-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/docker/</loc>
-    <lastmod>2024-04-28T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:31:03-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/gcp/</loc>
-    <lastmod>2024-04-28T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:31:03-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/loc_scraper/</loc>
-    <lastmod>2024-04-28T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:31:03-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/workflow-automation/</loc>
-    <lastmod>2024-04-28T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:31:03-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/gcputils/</loc>
-    <lastmod>2024-04-27T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-16T00:29:29-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/index/</loc>
+    <lastmod>2024-04-24T17:23:50-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/</loc>
+    <lastmod>2024-04-24T17:23:50-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/julia/</loc>
     <lastmod>2024-06-14T15:57:20-05:00</lastmod>
@@ -282,12 +303,6 @@
     <lastmod>2024-04-24T17:23:50-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/project-evolution-of-ngos/</loc>
-    <lastmod>2024-04-24T17:23:50-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/index/</loc>
-    <lastmod>2024-04-24T17:23:50-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/posts/</loc>
     <lastmod>2024-04-24T17:23:50-05:00</lastmod>
   </url>
 </urlset>
