@@ -37,13 +37,14 @@ images = ["feature-image.png"]
 languageCode = "en-us"
 
 title = "Justin Napolitano"
+
 enableGitInfo = true
 
 pygmentsCodefences  = true
 pygmentsUseClasses  = true
 #hasCJKLanguage = true
 
-rssLimit = 10
+rssLimit = -1
 
 copyright = "jayburdindustries"
 enableEmoji = true
@@ -55,14 +56,16 @@ enableEmoji = true
 #    id = ''
 
 [frontmatter]
-  date = [':git','date', 'publishdate', 'pubdate', 'published', 'lastmod', 'modified']
+  date = ['date',':git',':fileModTime','lastmod','publishDate']
   expiryDate = ['expirydate', 'unpublishdate']
   lastmod = [':git', ':fileModTime', 'lastmod', 'modified', 'date', 'publishdate', 'pubdate', 'published']
   publishDate = ['publishdate', 'pubdate', 'published', 'date']
+  images = ["public/images/feature-image.png","images/feature-image.png"]
 
 
 [params.author]
   name = "Justin Napolitano"
+  email = "personal.jnapolitano@gmail.com"
   #about = "being him"
 
 [blackfriday]
@@ -176,5 +179,6 @@ enableEmoji = true
   [outputs]
   home = ['html', 'rss']
   section = ['html', 'rss']
-  taxonomy = ['html']
-  term = ['html']
+  taxonomy = ['html','rss']
+  term = ['html','rss']
+

@@ -40,3 +40,6 @@
 [submodule "content/posts/mysql-config"]
 	path = content/posts/mysql-config
 	url = https://github.com/justin-napolitano/mysql-config.git
+[submodule "content/posts/hugo-rss-setup"]
+	path = content/posts/hugo-rss-setup
+	url = https://github.com/justin-napolitano/hugo-rss-setup.git
