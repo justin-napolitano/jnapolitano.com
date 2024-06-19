@@ -11,6 +11,12 @@ theme = "hermit-V2"
 
 images = ["feature-image.png"]
 
+
+
+#[markup.goldmark.parser.attribute]
+  #block = true # default is false
+  #title = true
+
 #[languages]
 #  [languages.en]
 #    title = 'CHANGE ME'
@@ -49,14 +55,14 @@ enableEmoji = true
 #    id = ''
 
 [frontmatter]
-date = ["date", "publishDate", "lastmod"]
-lastmod = ["lastmod", ":git", "date", "publishDate"]
-publishDate = ["publishDate", "date"]
-expiryDate = ["expiryDate"]
+  date = [':git','date', 'publishdate', 'pubdate', 'published', 'lastmod', 'modified']
+  expiryDate = ['expirydate', 'unpublishdate']
+  lastmod = [':git', ':fileModTime', 'lastmod', 'modified', 'date', 'publishdate', 'pubdate', 'published']
+  publishDate = ['publishdate', 'pubdate', 'published', 'date']
 
 
 [params.author]
-  name = "Cobra"
+  name = "Justin Napolitano"
   #about = "being him"
 
 [blackfriday]

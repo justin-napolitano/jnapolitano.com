@@ -11,6 +11,8 @@ theme = "hermit-V2"
 
 images = ["feature-image.png"]
 
+
+
 #[markup.goldmark.parser.attribute]
   #block = true # default is false
   #title = true
@@ -35,13 +37,14 @@ images = ["feature-image.png"]
 languageCode = "en-us"
 
 title = "Justin Napolitano"
+
 enableGitInfo = true
 
 pygmentsCodefences  = true
 pygmentsUseClasses  = true
 #hasCJKLanguage = true
 
-rssLimit = 10
+rssLimit = -1
 
 copyright = "jayburdindustries"
 enableEmoji = true
@@ -53,14 +56,15 @@ enableEmoji = true
 #    id = ''
 
 [frontmatter]
-date = ["date", "publishDate", "lastmod"]
-lastmod = ["lastmod", ":git", "date", "publishDate"]
-publishDate = ["publishDate", "date"]
-expiryDate = ["expiryDate"]
+  date = ['date',':git',':fileModTime','lastmod','publishDate']
+  expiryDate = ['expirydate', 'unpublishdate']
+  lastmod = [':git', ':fileModTime', 'lastmod', 'modified', 'date', 'publishdate', 'pubdate', 'published']
+  publishDate = ['publishdate', 'pubdate', 'published', 'date']
+  images = ["public/images/feature-image.png","images/feature-image.png"]
 
 
 [params.author]
-  name = "Cobra"
+  name = "Justin Napolitano"
   #about = "being him"
 
 [blackfriday]
@@ -174,5 +178,7 @@ expiryDate = ["expiryDate"]
   [outputs]
   home = ['html', 'rss']
   section = ['html', 'rss']
-  taxonomy = ['html']
-  term = ['html']
+  taxonomy = ['html','rss']
+  term = ['html','rss']
+
+  
