@@ -43,3 +43,6 @@
 [submodule "content/posts/hugo-rss-setup"]
 	path = content/posts/hugo-rss-setup
 	url = https://github.com/justin-napolitano/hugo-rss-setup.git
+[submodule "content/posts/hugo-rss-mysql-update"]
+	path = content/posts/hugo-rss-mysql-update
+	url = https://github.com/justin-napolitano/hugo-rss-mysql-update.git
