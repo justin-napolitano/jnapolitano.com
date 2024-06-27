@@ -49,3 +49,6 @@
 [submodule "content/posts/embrace_mundanity"]
 	path = content/posts/embrace_mundanity
 	url = https://github.com/justin-napolitano/embrace_mundanity.git
+[submodule "content/posts/enter_my_car"]
+	path = content/posts/enter_my_car
+	url = https://github.com/justin-napolitano/enter_my_car.git
