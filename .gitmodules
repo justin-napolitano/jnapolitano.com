@@ -46,3 +46,6 @@
 [submodule "content/posts/hugo-rss-mysql-update"]
 	path = content/posts/hugo-rss-mysql-update
 	url = https://github.com/justin-napolitano/hugo-rss-mysql-update.git
+[submodule "content/posts/embrace_mundanity"]
+	path = content/posts/embrace_mundanity
+	url = https://github.com/justin-napolitano/embrace_mundanity.git
