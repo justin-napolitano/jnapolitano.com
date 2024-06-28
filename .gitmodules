@@ -55,3 +55,9 @@
 [submodule "content/posts/create_a_github_template_repo"]
 	path = content/posts/create_a_github_template_repo
 	url = https://github.com/justin-napolitano/create_a_github_template_repo.git
+[submodule "content/posts/github_scripts"]
+	path = content/posts/github_scripts
+	url = https://github.com/justin-napolitano/github_scripts.git
+[submodule "content/posts/gh_submodule_sync"]
+	path = content/posts/gh_submodule_sync
+	url = https://github.com/justin-napolitano/gh_submodule_sync.git
