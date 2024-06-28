@@ -61,3 +61,6 @@
 [submodule "content/posts/gh_submodule_sync"]
 	path = content/posts/gh_submodule_sync
 	url = https://github.com/justin-napolitano/gh_submodule_sync.git
+[submodule "content/posts/raising_canes"]
+	path = content/posts/raising_canes
+	url = https://github.com/justin-napolitano/raising-canes.git
