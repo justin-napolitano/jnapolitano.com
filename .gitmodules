@@ -64,3 +64,6 @@
 [submodule "content/posts/raising_canes"]
 	path = content/posts/raising_canes
 	url = https://github.com/justin-napolitano/raising-canes.git
+[submodule "content/posts/todo_es_sacre"]
+	path = content/posts/todo_es_sacre
+	url = https://github.com/justin-napolitano/todo_es_sacre.git
