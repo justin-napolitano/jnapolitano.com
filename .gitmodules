@@ -52,3 +52,6 @@
 [submodule "content/posts/enter_my_car"]
 	path = content/posts/enter_my_car
 	url = https://github.com/justin-napolitano/enter_my_car.git
+[submodule "content/posts/create_a_github_template_repo"]
+	path = content/posts/create_a_github_template_repo
+	url = https://github.com/justin-napolitano/create_a_github_template_repo.git
