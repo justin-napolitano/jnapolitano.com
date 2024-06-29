@@ -56,7 +56,7 @@ enableEmoji = true
 #    id = ''
 
 [frontmatter]
-  date = ['date',':git',':fileModTime','lastmod','publishDate']
+  date = ['date',':fileModTime',':git','lastmod','publishDate']
   expiryDate = ['expirydate', 'unpublishdate']
   lastmod = [':git', ':fileModTime', 'lastmod', 'modified', 'date', 'publishdate', 'pubdate', 'published']
   publishDate = ['publishdate', 'pubdate', 'published', 'date']
