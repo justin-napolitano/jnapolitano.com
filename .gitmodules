@@ -67,3 +67,6 @@
 [submodule "content/posts/todo_es_sacre"]
 	path = content/posts/todo_es_sacre
 	url = https://github.com/justin-napolitano/todo_es_sacre.git
+[submodule "content/posts/cigarettes"]
+	path = content/posts/cigarettes
+	url = https://github.com/justin-napolitano/cigarettes.git
