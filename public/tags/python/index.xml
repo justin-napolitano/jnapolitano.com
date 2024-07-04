@@ -7,49 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 27 Jun 2024 22:23:12 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Sync Gh Submodules Across a Super Project</title>
-      <link>jnapolitano.com/posts/gh_submodule_sync/</link>
-      <pubDate>Thu, 27 Jun 2024 22:23:12 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/gh_submodule_sync/</guid>
-      <description>Overview This script is designed to initialize and update all submodules in a GitHub repository to the latest commits from their respective remote repositories. It ensures that all submodules, including nested submodules, are synchronized with their remote counterparts.
-Prerequisites  Ensure that you have Git installed on your system. Ensure that you have cloned the repository containing the submodules.  Usage  Save the script to a file, for example, sync_submodules.</description>
-    </item>
-    
-    <item>
-      <title>Store Useful Github Scripts</title>
-      <link>jnapolitano.com/posts/github_scripts/</link>
-      <pubDate>Thu, 27 Jun 2024 22:19:33 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/github_scripts/</guid>
-      <description>Overview The github-scripts repository is a collection of useful scripts for managing and automating tasks in GitHub repositories. Each script is maintained as a submodule, allowing for modular management and easy updates.
-Table of Contents  Overview Repository Structure Submodules  Sync Submodules Script Add Your Submodule Here   How to Use Contributing License  Repository Structure github-scripts/ ├── sync-submodules-script/ # Submodule for syncing Git submodules │ ├── sync_submodules.sh # Bash script to sync submodules │ └── README.</description>
-    </item>
-    
-    <item>
-      <title>Configure mysql server on ubuntu</title>
-      <link>jnapolitano.com/posts/mysql-config/</link>
-      <pubDate>Thu, 27 Jun 2024 21:25:03 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/mysql-config/</guid>
-      <description>Why I installed mysql in the previous post. Now I need to setup users, create a db, and create a table.
-Parts of this series  part 1 part 2 part 3  MYSQL Resources  APT install guide MYSQL config guide  Create a new user Login as Root mysql -u root -p Create some users In my case I will create 4 users accounts.
- Cobra@localhost Cobra@jnapolitano.com admin@localhost dummy@localhost  dummy is just used to test service connection and has not access grants or writes</description>
-    </item>
-    
-    <item>
-      <title>Automate Posting Hugo Blog to Social Sites (with a db)</title>
-      <link>jnapolitano.com/posts/hugo-rss-mysql-update/</link>
-      <pubDate>Thu, 27 Jun 2024 21:24:58 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/hugo-rss-mysql-update/</guid>
-      <description>Background In the previous few posts I detailed my progress in automating a site. I am going about this by using an rss scraper to post new posts to social.
-I had initally thought about doing this really naively, but I want a database. It doesn&amp;rsquo;t feel right without using one. I am somewhat upset with myself, because I am basically just recreating wordpress&amp;hellip; but so it goes.
-Previous posts in this series  part 1 part 2 part 3 part 4 part 5  Expand a previous script In a previous post I wrote about how to scan an rss feed on my personal site.</description>
-    </item>
-    
+    <lastBuildDate>Wed, 19 Jun 2024 13:36:12 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configure Hugo XML Output for RSS Feed</title>
       <link>jnapolitano.com/posts/hugo-rss-setup/</link>
@@ -58,6 +16,17 @@ Previous posts in this series  part 1 part 2 part 3 part 4 part 5  Expand a prev
       <guid>jnapolitano.com/posts/hugo-rss-setup/</guid>
       <description>Why I have a mysql db that will be used to store values read from the rss feed of my hugo site. I need some add some keys to help with organization
 Parts of this series  part 1 part 2 part 3 part 4  Resources  Hugo Page Resources Hugo Page Params Hugo RSS Templates  RSS Config Copy over the posts/rss.xml file from your theme From hugo root you would do something like&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Configure mysql server on ubuntu</title>
+      <link>jnapolitano.com/posts/mysql-config/</link>
+      <pubDate>Wed, 19 Jun 2024 13:20:56 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/mysql-config/</guid>
+      <description>Why I installed mysql in the previous post. Now I need to setup users, create a db, and create a table.
+Parts of this series  part 1 part 2 part 3  MYSQL Resources  APT install guide MYSQL config guide  Create a new user Login as Root mysql -u root -p Create some users In my case I will create 4 users accounts.
+ Cobra@localhost Cobra@jnapolitano.com admin@localhost dummy@localhost  dummy is just used to test service connection and has not access grants or writes</description>
     </item>
     
     <item>
