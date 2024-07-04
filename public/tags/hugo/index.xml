@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Sat, 15 Jun 2024 22:36:34 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Jun 2024 21:24:58 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Automate Posting Hugo Blog to Social Sites (with a db)</title>
+      <link>jnapolitano.com/posts/hugo-rss-mysql-update/</link>
+      <pubDate>Thu, 27 Jun 2024 21:24:58 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/hugo-rss-mysql-update/</guid>
+      <description>Background In the previous few posts I detailed my progress in automating a site. I am going about this by using an rss scraper to post new posts to social.
+I had initally thought about doing this really naively, but I want a database. It doesn&amp;rsquo;t feel right without using one. I am somewhat upset with myself, because I am basically just recreating wordpress&amp;hellip; but so it goes.
+Previous posts in this series  part 1 part 2 part 3 part 4 part 5  Expand a previous script In a previous post I wrote about how to scan an rss feed on my personal site.</description>
+    </item>
+    
     <item>
       <title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
       <link>jnapolitano.com/posts/python-rss-reader/</link>

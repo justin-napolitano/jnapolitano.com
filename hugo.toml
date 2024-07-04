@@ -95,7 +95,7 @@ enableEmoji = true
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04 -0700"
 
-  description = "trying"
+  description = "Jay's personal site"
   # images = [""]
   themeColor = "#494f5c"
   #themeColor = "#FFCCCC"
