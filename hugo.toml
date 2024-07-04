@@ -58,7 +58,7 @@ enableEmoji = true
 [frontmatter]
   date = ['date',':fileModTime',':git','lastmod','publishDate']
   expiryDate = ['expirydate', 'unpublishdate']
-  lastmod = [':git', ':fileModTime', 'lastmod', 'modified', 'date', 'publishdate', 'pubdate', 'published']
+  lastmod = [':fileModTime', ':git', 'lastmod', 'modified', 'date', 'publishdate', 'pubdate', 'published']
   publishDate = ['publishdate', 'pubdate', 'published', 'date']
   images = ["public/images/feature-image.png","images/feature-image.png"]
 
