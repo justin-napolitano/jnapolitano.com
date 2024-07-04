@@ -73,3 +73,6 @@
 [submodule "content/posts/cigarettes_again"]
 	path = content/posts/cigarettes_again
 	url = https://github.com/justin-napolitano/cigarettes-again.git
+[submodule "content/posts/love-is-hard"]
+	path = content/posts/love-is-hard
+	url = https://github.com/justin-napolitano/love-is-hard.git
