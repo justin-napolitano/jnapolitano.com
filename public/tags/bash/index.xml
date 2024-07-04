@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Wed, 19 Jun 2024 13:20:17 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Jul 2024 13:49:38 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Install MySQL Server on Ubuntu</title>
       <link>jnapolitano.com/posts/mysql-install-buntu/</link>
-      <pubDate>Wed, 19 Jun 2024 13:20:17 -0500</pubDate>
+      <pubDate>Thu, 04 Jul 2024 13:49:38 -0500</pubDate>
       
       <guid>jnapolitano.com/posts/mysql-install-buntu/</guid>
       <description>Why  I am working on an autoposting tool for social sites. in order to complete that i want a db to log the metadata of my posts  Parts of this series  part 1 part 2  MYSQL Resources  APT install guide MYSQL config guide Post Install configuration  Install Download the config files go to this link and download the script.
@@ -20,13 +20,13 @@ Install the release package with dpkg  note that the w.</description>
     </item>
     
     <item>
-      <title>GCP Cloud Run Job Scraper</title>
-      <link>jnapolitano.com/posts/loc_scraper/</link>
-      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      <title>Sync Gh Submodules Across a Super Project</title>
+      <link>jnapolitano.com/posts/gh_submodule_sync/</link>
+      <pubDate>Thu, 04 Jul 2024 13:49:31 -0500</pubDate>
       
-      <guid>jnapolitano.com/posts/loc_scraper/</guid>
-      <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.
-Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
+      <guid>jnapolitano.com/posts/gh_submodule_sync/</guid>
+      <description>Overview This script is designed to initialize and update all submodules in a GitHub repository to the latest commits from their respective remote repositories. It ensures that all submodules, including nested submodules, are synchronized with their remote counterparts.
+Prerequisites  Ensure that you have Git installed on your system. Ensure that you have cloned the repository containing the submodules.  Usage  Save the script to a file, for example, sync_submodules.</description>
     </item>
     
   </channel>

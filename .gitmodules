@@ -1,9 +1,6 @@
 [submodule "themes/hermit-V2"]
 	path = themes/hermit-V2
 	url = https://github.com/justin-napolitano/hermit-V2.git
-[submodule "content/posts/loc_scraper"]
-	path = content/posts/loc_scraper
-	url = https://github.com/justin-napolitano/loc_scraper.git
 [submodule "content/posts/gcputils"]
 	path = content/posts/gcputils
 	url = https://github.com/justin-napolitano/gcputils.git
@@ -55,9 +52,6 @@
 [submodule "content/posts/create_a_github_template_repo"]
 	path = content/posts/create_a_github_template_repo
 	url = https://github.com/justin-napolitano/create_a_github_template_repo.git
-[submodule "content/posts/github_scripts"]
-	path = content/posts/github_scripts
-	url = https://github.com/justin-napolitano/github_scripts.git
 [submodule "content/posts/gh_submodule_sync"]
 	path = content/posts/gh_submodule_sync
 	url = https://github.com/justin-napolitano/gh_submodule_sync.git

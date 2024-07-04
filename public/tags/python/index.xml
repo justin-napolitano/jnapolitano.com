@@ -7,11 +7,33 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Wed, 19 Jun 2024 13:36:12 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Jul 2024 13:49:37 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configure mysql server on ubuntu</title>
+      <link>jnapolitano.com/posts/mysql-config/</link>
+      <pubDate>Thu, 04 Jul 2024 13:49:37 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/mysql-config/</guid>
+      <description>Why I installed mysql in the previous post. Now I need to setup users, create a db, and create a table.
+Parts of this series  part 1 part 2 part 3  MYSQL Resources  APT install guide MYSQL config guide  Create a new user Login as Root mysql -u root -p Create some users In my case I will create 4 users accounts.
+ Cobra@localhost Cobra@jnapolitano.com admin@localhost dummy@localhost  dummy is just used to test service connection and has not access grants or writes</description>
+    </item>
+    
+    <item>
+      <title>Automate Posting Hugo Blog to Social Sites (with a db)</title>
+      <link>jnapolitano.com/posts/hugo-rss-mysql-update/</link>
+      <pubDate>Thu, 04 Jul 2024 13:49:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/hugo-rss-mysql-update/</guid>
+      <description>Background In the previous few posts I detailed my progress in automating a site. I am going about this by using an rss scraper to post new posts to social.
+I had initally thought about doing this really naively, but I want a database. It doesn&amp;rsquo;t feel right without using one. I am somewhat upset with myself, because I am basically just recreating wordpress&amp;hellip; but so it goes.
+Previous posts in this series  part 1 part 2 part 3 part 4 part 5  Expand a previous script In a previous post I wrote about how to scan an rss feed on my personal site.</description>
+    </item>
+    
     <item>
       <title>Configure Hugo XML Output for RSS Feed</title>
       <link>jnapolitano.com/posts/hugo-rss-setup/</link>
-      <pubDate>Wed, 19 Jun 2024 13:36:12 -0500</pubDate>
+      <pubDate>Thu, 04 Jul 2024 13:49:34 -0500</pubDate>
       
       <guid>jnapolitano.com/posts/hugo-rss-setup/</guid>
       <description>Why I have a mysql db that will be used to store values read from the rss feed of my hugo site. I need some add some keys to help with organization
@@ -19,14 +41,13 @@ Parts of this series  part 1 part 2 part 3 part 4  Resources  Hugo Page Resource
     </item>
     
     <item>
-      <title>Configure mysql server on ubuntu</title>
-      <link>jnapolitano.com/posts/mysql-config/</link>
-      <pubDate>Wed, 19 Jun 2024 13:20:56 -0500</pubDate>
+      <title>Sync Gh Submodules Across a Super Project</title>
+      <link>jnapolitano.com/posts/gh_submodule_sync/</link>
+      <pubDate>Thu, 04 Jul 2024 13:49:31 -0500</pubDate>
       
-      <guid>jnapolitano.com/posts/mysql-config/</guid>
-      <description>Why I installed mysql in the previous post. Now I need to setup users, create a db, and create a table.
-Parts of this series  part 1 part 2 part 3  MYSQL Resources  APT install guide MYSQL config guide  Create a new user Login as Root mysql -u root -p Create some users In my case I will create 4 users accounts.
- Cobra@localhost Cobra@jnapolitano.com admin@localhost dummy@localhost  dummy is just used to test service connection and has not access grants or writes</description>
+      <guid>jnapolitano.com/posts/gh_submodule_sync/</guid>
+      <description>Overview This script is designed to initialize and update all submodules in a GitHub repository to the latest commits from their respective remote repositories. It ensures that all submodules, including nested submodules, are synchronized with their remote counterparts.
+Prerequisites  Ensure that you have Git installed on your system. Ensure that you have cloned the repository containing the submodules.  Usage  Save the script to a file, for example, sync_submodules.</description>
     </item>
     
     <item>
@@ -58,16 +79,6 @@ Mockup As you can see this is very rudimentary. I will traverse the posts direct
       <description>Creating a GH Workflow to Build and Deploy a hugo site to gh-pages Why To simplify the build process.
 Creating the Workflow create your yaml config file touch hugo.yaml Set the trigger and the environment defaults The code below creates a trigger on push from the main and the gh-pages branches. It also sets read and write permissions to permit executing code and building hugo.
 on:# Runs on pushes targeting the default branchpush:branches:- main# - pit# - ghpages- gh-pages# Allows you to run this workflow manually from the Actions tabworkflow_dispatch:# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pagespermissions:contents:readpages:writeid-token:write# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.</description>
-    </item>
-    
-    <item>
-      <title>GCP Cloud Run Job Scraper</title>
-      <link>jnapolitano.com/posts/loc_scraper/</link>
-      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/loc_scraper/</guid>
-      <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.
-Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
     </item>
     
     <item>

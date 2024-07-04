@@ -1,4 +1,4 @@
-CREATE TABLE posts
+CREATE TABLE IF NOT EXISTS posts
 (
   id                    BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID())),  # Unique ID for the record. This a smallish and not a very high performance db this should be fine. 
   author                BINARY(16),                                         # id of author
