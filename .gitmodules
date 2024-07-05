@@ -1,9 +1,6 @@
 [submodule "themes/hermit-V2"]
 	path = themes/hermit-V2
 	url = https://github.com/justin-napolitano/hermit-V2.git
-[submodule "content/posts/gcputils"]
-	path = content/posts/gcputils
-	url = https://github.com/justin-napolitano/gcputils.git
 [submodule "content/posts/gh-pages-workflow"]
 	path = content/posts/gh-pages-workflow
 	url = https://github.com/justin-napolitano/gh-pages-workflow.git
