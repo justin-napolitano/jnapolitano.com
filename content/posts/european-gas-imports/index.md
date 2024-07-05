@@ -5,7 +5,7 @@ description = "EuroZone Gas Imports and Exports."
 author = "Justin Napolitano"
 image = "post-image.jpeg"
 featuredimage = "post-image.jpeg"
-categories = ['Python', 'Energy Sector', 'Liquified Natural Gas', 'EuroZone', 'Economic Modeling']
+categories = ['Portfolio']
 tags = ['energy','lng', 'europe','python',]
 +++
 
