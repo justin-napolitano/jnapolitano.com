@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 04 Jul 2024 13:49:34 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db)</title>
       <link>jnapolitano.com/posts/hugo-rss-mysql-update/</link>
-      <pubDate>Thu, 04 Jul 2024 13:49:34 -0500</pubDate>
+      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/posts/hugo-rss-mysql-update/</guid>
       <description>Background In the previous few posts I detailed my progress in automating a site. I am going about this by using an rss scraper to post new posts to social.
@@ -22,7 +22,7 @@ Previous posts in this series  part 1 part 2 part 3 part 4 part 5  Expand a prev
     <item>
       <title>Sync Gh Submodules Across a Super Project</title>
       <link>jnapolitano.com/posts/gh_submodule_sync/</link>
-      <pubDate>Thu, 04 Jul 2024 13:49:31 -0500</pubDate>
+      <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/posts/gh_submodule_sync/</guid>
       <description>Overview This script is designed to initialize and update all submodules in a GitHub repository to the latest commits from their respective remote repositories. It ensures that all submodules, including nested submodules, are synchronized with their remote counterparts.
