@@ -67,3 +67,6 @@
 [submodule "content/posts/love-is-hard"]
 	path = content/posts/love-is-hard
 	url = https://github.com/justin-napolitano/love-is-hard.git
+[submodule "content/posts/win-sets"]
+	path = content/posts/win-sets
+	url = https://github.com/justin-napolitano/win-sets.git
