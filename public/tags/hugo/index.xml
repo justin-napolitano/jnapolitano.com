@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 04 Jul 2024 13:49:34 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db)</title>
       <link>jnapolitano.com/posts/hugo-rss-mysql-update/</link>
-      <pubDate>Thu, 04 Jul 2024 13:49:34 -0500</pubDate>
+      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/posts/hugo-rss-mysql-update/</guid>
       <description>Background In the previous few posts I detailed my progress in automating a site. I am going about this by using an rss scraper to post new posts to social.

@@ -7,11 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 04 Jul 2024 13:49:38 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/databases/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/databases/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configure Hugo XML Output for RSS Feed</title>
+      <link>jnapolitano.com/posts/hugo-rss-setup/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/hugo-rss-setup/</guid>
+      <description>Why I have a mysql db that will be used to store values read from the rss feed of my hugo site. I need some add some keys to help with organization
+Parts of this series  part 1 part 2 part 3 part 4  Resources  Hugo Page Resources Hugo Page Params Hugo RSS Templates  RSS Config Copy over the posts/rss.xml file from your theme From hugo root you would do something like&amp;hellip;</description>
+    </item>
+    
     <item>
       <title>Install MySQL Server on Ubuntu</title>
       <link>jnapolitano.com/posts/mysql-install-buntu/</link>
-      <pubDate>Thu, 04 Jul 2024 13:49:38 -0500</pubDate>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/posts/mysql-install-buntu/</guid>
       <description>Why  I am working on an autoposting tool for social sites. in order to complete that i want a db to log the metadata of my posts  Parts of this series  part 1 part 2  MYSQL Resources  APT install guide MYSQL config guide Post Install configuration  Install Download the config files go to this link and download the script.
@@ -22,22 +32,12 @@ Install the release package with dpkg  note that the w.</description>
     <item>
       <title>Configure mysql server on ubuntu</title>
       <link>jnapolitano.com/posts/mysql-config/</link>
-      <pubDate>Thu, 04 Jul 2024 13:49:37 -0500</pubDate>
+      <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/posts/mysql-config/</guid>
       <description>Why I installed mysql in the previous post. Now I need to setup users, create a db, and create a table.
 Parts of this series  part 1 part 2 part 3  MYSQL Resources  APT install guide MYSQL config guide  Create a new user Login as Root mysql -u root -p Create some users In my case I will create 4 users accounts.
  Cobra@localhost Cobra@jnapolitano.com admin@localhost dummy@localhost  dummy is just used to test service connection and has not access grants or writes</description>
-    </item>
-    
-    <item>
-      <title>Configure Hugo XML Output for RSS Feed</title>
-      <link>jnapolitano.com/posts/hugo-rss-setup/</link>
-      <pubDate>Thu, 04 Jul 2024 13:49:34 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/hugo-rss-setup/</guid>
-      <description>Why I have a mysql db that will be used to store values read from the rss feed of my hugo site. I need some add some keys to help with organization
-Parts of this series  part 1 part 2 part 3 part 4  Resources  Hugo Page Resources Hugo Page Params Hugo RSS Templates  RSS Config Copy over the posts/rss.xml file from your theme From hugo root you would do something like&amp;hellip;</description>
     </item>
     
   </channel>
