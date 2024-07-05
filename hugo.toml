@@ -76,7 +76,8 @@ enableEmoji = true
 [taxonomies]
   tag = "tags"
   # Categories are disabled by default.
-  # category = "categories"
+  category = "categories"
+  series = "series"
 
 # Enable to get proper Mathjax support
 [markup]
@@ -169,11 +170,16 @@ enableEmoji = true
 #    name = "CONTACT"
 #    url = "https://links.jnapolitano.com/@justin"
 #    weight = 20
-    
+
+  [[menu.main]]
+    name = "PORTFOLIO"
+    url = "https://jnapolitano.com/en/categories/portfolio/"
+    weight = 20
+
   [[menu.main]]
     name = "RESUME"
     url = "https://jnapolitano.com/resume.pdf"
-    weight = 20
+    weight = 30
 
 
   [outputs]
