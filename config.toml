@@ -177,9 +177,14 @@ enableEmoji = true
     weight = 20
 
   [[menu.main]]
+    name = "TUTORIALS"
+    url = "https://jnapolitano.com/en/categories/tutorials/"
+    weight = 30
+
+  [[menu.main]]
     name = "RESUME"
     url = "https://jnapolitano.com/resume.pdf"
-    weight = 30
+    weight = 40
 
 
   [outputs]
