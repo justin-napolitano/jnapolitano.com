@@ -73,3 +73,6 @@
 [submodule "content/posts/driving"]
 	path = content/posts/driving
 	url = https://github.com/justin-napolitano/driving.git
+[submodule "content/posts/add-submodule-script"]
+	path = content/posts/add-submodule-script
+	url = https://github.com/justin-napolitano/add-submodule-script.git
