@@ -4,7 +4,7 @@ date = "2022-05-21T14:30:32.169Z"
 description = "Transforming the Library of Congress results into individual json documents contaning case information."
 author = "Justin Napolitano"
 image = "post-image.jpeg"
-categories = ['Legal Research', 'Data Wrangling', 'Graph Database', 'Automation']
+categories = ['Portfoio']
 tags = ['python','legal', 'json', 'scotus', 'automation']
 images = ['feature-image.png']
 +++

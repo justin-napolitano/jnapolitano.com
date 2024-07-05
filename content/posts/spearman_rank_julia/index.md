@@ -3,7 +3,7 @@ title =  "Spearman Rank in Standard Julia"
 date = "2022-05-30T20:20:32.169Z"
 description = "Numerical Recipes in Julia.  Spearman Rank Correlation adapted to nearly standard Julia."
 author = "Justin Napolitano"
-categories = ['Julia','Tutorials', 'Quantitative Analysis','Numerical Computing']
+categories = ["Portfolio"]
 tags = ['julia','numerical-computing','spearman-rank-correlation','statistics']
 images = ['featured-julia.png']
 +++

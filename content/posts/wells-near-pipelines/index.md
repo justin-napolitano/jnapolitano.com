@@ -5,7 +5,7 @@ description = "Identifying potential carbon and hydrogen storage facilities from
 author = "Justin Napolitano"
 image = "post-image.png"
 featuredimage = "post-image.png"
-categories = ['Carbon Markets', 'Carbon Capture', 'Hydrogen Markets', 'Energy Sector', 'Geographic Information Systems', 'Liquified Natural Gas Markets', 'Economic Modeling']
+categories = ['Portfolio']
 tags = ['carbon', 'hydrogen', 'gis', 'lng', 'python', 'carbon']
 +++
 

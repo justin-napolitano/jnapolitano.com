@@ -3,7 +3,7 @@ title =  "Configuring Rocky Linux 8 for Quantitative Analysis in Julia"
 date = "2022-05-24T00:30:32.169Z"
 description = "Configure Rocky Linux 8 for Julia development and quantitative analysis."
 author = "Justin Napolitano"
-categories = ['Julia','Tutorials', 'Legal Research', 'Data Wrangling']
+categories = ['Portfolio']
 tags = ['julia', 'dataframes', 'SCOTUS','data-wrangling' ]
 images = ['featured-julia.png']
 +++

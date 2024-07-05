@@ -6,7 +6,7 @@ author = "Justin Napolitano"
 image = "post-image.jpeg"
 featuredimage = "post-image.jpeg"
 thumbnail = "post-image.jpeg"
-categories = ['Legal Research', 'Data Wrangling', 'Graph Database', 'Automation']
+categories = ['Portfolio']
 tags = ['python','legal', 'json', 'scotus', 'automation']
 images = ['featured-justices.jpeg']
 +++

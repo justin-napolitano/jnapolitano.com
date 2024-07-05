@@ -3,7 +3,7 @@ title =  "Markov Chains in Julia"
 date = "2022-05-26T01:30:32.169Z"
 description = "Writing a Markov Simulation Problem the hard way."
 author = "Justin Napolitano"
-categories = ['Julia','Tutorials', 'Quantitative Analysis']
+categories = ['Tutorials', 'Quantitative Analysis']
 tags = ['julia', 'dataframes', 'mathematics','statistics','markov' ]
 images = ['featured-julia.png']
 +++
