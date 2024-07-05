@@ -3,7 +3,7 @@ title =  "Churn Modelling Marketing Data with Julia"
 date = "2022-05-30T13:30:32.169Z"
 description = "Logistic Regression Propensity Models of Marketing Data with Julia."
 author = "Justin Napolitano"
-categories = ['Julia','Tutorials', 'Quantitative Analysis']
+categories = ['Portfolio']
 tags = ['julia','logisitic-regression','propensity-models', 'marketing-analsyis','statistics']
 images = ['featured-julia.png']
 +++

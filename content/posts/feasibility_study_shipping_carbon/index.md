@@ -5,8 +5,8 @@ description = "A feasibility study of shipping carbon from Europe to the United 
 author = "Justin Napolitano"
 image = "post-image.jpeg"
 featuredimage = "post-image.jpeg"
-categories = ['Python', 'Energy Sector', 'Carbon Capture', 'Economic Modeling', 'Shipping', 'EuroZone', 'Statistical Analysis', 'Economic Projections']
-tags = ['energy','lng', 'carbon-capture','python',]
+tags = ['energy','lng', 'carbon-capture','python']
+categories = ["Portfolio"]
 +++
 
 # Feasibility of Shipping Carbon Across the Atlantic

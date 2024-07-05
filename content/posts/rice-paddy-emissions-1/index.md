@@ -1,5 +1,5 @@
 +++
-categories = ['Statistical Analysis', 'Python']
+categories = ['Portfolio']
 date = '2022-05-21T08:30:32'
 description = 'Fact checking reported methane emissions proposed by the UN and Climate TRACE'
 tags = ['data', 'university-of-malaysia', 'climate-change', 'emissions']

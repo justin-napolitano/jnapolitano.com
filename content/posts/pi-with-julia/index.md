@@ -3,7 +3,7 @@ title =  "Quantitative Julia Problems"
 date = "2022-05-24T01:30:32.169Z"
 description = "Testing your Julia Configuration with some numerical computing."
 author = "Justin Napolitano"
-categories = ['Julia','Tutorials', 'Quantitative Analysis']
+categories = ['Tutorial']
 tags = ['julia', 'dataframes', 'mathematics' ]
 images = ['featured-julia.png']
 +++
