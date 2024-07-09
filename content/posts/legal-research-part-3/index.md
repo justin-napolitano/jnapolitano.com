@@ -5,7 +5,7 @@ title = 'Conduct Legal Research with AI: Part 3'
 featured_image = 'post-image.png'
 author = "Justin Napolitano"
 image = "post-image.*"
-categories = ['Portfolio']
+categories = ['projects']
 tags = ['python','legal', 'json', 'scotus', 'automation','machine-learning', 'ai', 'ml']
 images = ['featured-justices.jpeg']
 +++

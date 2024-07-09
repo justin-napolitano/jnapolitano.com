@@ -6,7 +6,7 @@ author = "Justin Napolitano"
 image = "post-image.jpeg"
 featuredimage = "post-image.jpeg"
 tags = ['energy','lng', 'carbon-capture','python']
-categories = ["Portfolio"]
+categories = ["projects"]
 +++
 
 # Feasibility of Shipping Carbon Across the Atlantic

@@ -5,7 +5,7 @@ description = "Integrate JSON data from a rest API into your Neo4j Stack"
 author = "Justin Napolitano"
 image = "post-image.jpeg"
 featuredimage = "post-image.jpeg"
-categories = ['Portfolio']
+categories = ['projects']
 tags = ['legal research', 'ngos','internatinoal', 'insitutional analysis',]
 +++
 

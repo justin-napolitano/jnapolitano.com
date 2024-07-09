@@ -4,7 +4,7 @@ date = "2022-05-23T16:30:32.169Z"
 description = "Merging Oyez and Library of Congress Data into a Comprehensive Data Set"
 author = "Justin Napolitano"
 image = "post-image.jpeg"
-categories = ['Portfolio']
+categories = ['projects']
 tags = ['python','legal', 'json', 'scotus', 'automation']
 images = ['feature-image.png']
 +++

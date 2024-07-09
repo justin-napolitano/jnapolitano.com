@@ -3,7 +3,7 @@ title =  "Annual Cost of Living Monte Carlo Models"
 date = "2022-06-01T15:24:32.169Z"
 description = "Monte Carlo Model to determine the cost of living in your city."
 author = "Justin Napolitano"
-categories = ['Python','Tutorials', 'Quantitative Analysis','Numerical Computing']
+categories = ['Projects']
 tags = ['python','numerical-computing','monte-carlo','statistics']
 images = ['featured-ny.jpeg']
 +++

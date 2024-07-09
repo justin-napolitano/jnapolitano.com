@@ -5,7 +5,7 @@ description = "Documenting classes and an application to integrate the US Consti
 author = "Justin Napolitano"
 image = "post-image.png"
 featuredimage = "post-image.png"
-categories = ['Portfolio']
+categories = ['projects']
 tags = ['python','legal', 'json', 'scotus', 'automation', 'neo4j']
 images = ['featured-justices.jpeg']
 +++

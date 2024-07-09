@@ -1,5 +1,5 @@
 +++
-categories = ['Portfolio']
+categories = ['projects']
 date = '2022-05-23T19:30:32'
 description = 'Comparing 5 years of methane emissions to determine if Climate Trace forecasts greater emissions than UN FAOSTAT.'
 tags = ['data', 'university-of-malaysia', 'climate-change', 'emissions']
