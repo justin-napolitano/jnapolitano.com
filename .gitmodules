@@ -79,3 +79,9 @@
 [submodule "content/posts/giving-up"]
 	path = content/posts/giving-up
 	url = https://github.com/justin-napolitano/giving-up.git
+[submodule "content/posts/seat-covers"]
+	path = content/posts/seat-covers
+	url = https://github.com/justin-napolitano/seat-covers.git
+[submodule "content/posts/grays-peak"]
+	path = content/posts/grays-peak
+	url = https://github.com/justin-napolitano/grays-peak.git
