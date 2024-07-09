@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on Justin Napolitano</title>
-    <link>jnapolitano.com/tags/linux/</link>
-    <description>Recent content in linux on Justin Napolitano</description>
+    <title>ubuntu on Justin Napolitano</title>
+    <link>jnapolitano.com/tags/ubuntu/</link>
+    <description>Recent content in ubuntu on Justin Napolitano</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Tue, 09 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Signal Desktop Installation Script</title>
       <link>jnapolitano.com/posts/signal-install-script/</link>
@@ -17,17 +17,6 @@
       <description>Signal Desktop Installation Script This script automates the process of installing Signal Desktop on 64-bit Debian-based Linux distributions such as Ubuntu and Mint.
 Prerequisites  A 64-bit Debian-based Linux distribution (e.g., Ubuntu, Mint) Administrative (sudo) privileges  Script Overview The script performs the following steps:
  Installs the official Signal public software signing key. Adds the Signal repository to the system&amp;rsquo;s list of repositories. Updates the package database and installs Signal Desktop.</description>
-    </item>
-    
-    <item>
-      <title>Install MySQL Server on Ubuntu</title>
-      <link>jnapolitano.com/posts/mysql-install-buntu/</link>
-      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/mysql-install-buntu/</guid>
-      <description>Why  I am working on an autoposting tool for social sites. in order to complete that i want a db to log the metadata of my posts  Parts of this series  part 1 part 2  MYSQL Resources  APT install guide MYSQL config guide Post Install configuration  Install Download the config files go to this link and download the script.
-https://dev.mysql.com/downloads/repo/apt/
-Install the release package with dpkg  note that the w.</description>
     </item>
     
   </channel>
