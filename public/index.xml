@@ -7,7 +7,60 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 04 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Baja Seat Covers</title>
+      <link>jnapolitano.com/posts/seat-covers/</link>
+      <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/seat-covers/</guid>
+      <description>Baja Seat Covers So my car is ready for some new seat covers. I am not going to spend the money to replace the original ones. It doesn&amp;rsquo;t make sense. So I am going to cover them with blankets and hope for the best.
+The plan I am going to drape them over the front seats and cut some holes for the head rest to pass through. Then I will sew the seat covers together (probably) to keep them from moving around.</description>
+    </item>
+    
+    <item>
+      <title>Giving Up</title>
+      <link>jnapolitano.com/posts/giving-up/</link>
+      <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/giving-up/</guid>
+      <description>Giving Up There are a lot of things that I do not want to do. I do them still. I do not entirely know why. I want to give them up.
+Food There is much food that I find disgusting&amp;hellip;Yet I eat it because well I need to eat.. or I&amp;rsquo;m with people that want to eat certain foods.
+Street Food So this trend of eating at taco trucks or food trucks was fun to follow along with years ago&amp;hellip; but I am tired of getting sick.</description>
+    </item>
+    
+    <item>
+      <title>Gray&#39;s Peak</title>
+      <link>jnapolitano.com/posts/grays-peak/</link>
+      <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/grays-peak/</guid>
+      <description>Gray&amp;rsquo;s Gray&amp;rsquo;s is a rather easy 14&amp;rsquo;er about an hour west of Denver.
+ 14er Link  Details  Coordinates: 39.66087, -105.78462 Elevation: 11,280&#39; Trailhead Access: High Clearence Vehicle Camping: Yeah Restrooms: Yeah  The Approach I borrowed an SUV. It was a doable drive. I kept her in first gear and took it slow. There were a few sketchy parts along the way.. but it really wasn&amp;rsquo;t too bad.. at least in the right vehicle.</description>
+    </item>
+    
+    <item>
+      <title>Driving Win-Set</title>
+      <link>jnapolitano.com/posts/driving/</link>
+      <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/driving/</guid>
+      <description>Driving Win-Set I think there are many dimensions to win-sets. I&amp;rsquo;ll write them below
+What Do I Want What are my goals? What do I want from a situation.. that is bound in time and context?
+While driving what do I really want?
+ I do not want impact anyting I do not want to hit others I do not want a ticket I want to minimize damage to my car I want to drive efficiently  How do I accomplish these things This is harder.</description>
+    </item>
+    
+    <item>
+      <title>Win-Sets</title>
+      <link>jnapolitano.com/posts/win-sets/</link>
+      <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/win-sets/</guid>
+      <description>Win-Sets I read a paper in university about the way institutions make decisions&amp;hellip; Or should I say the people wihtin an institution make decisions. I have applied it to analysis, but not my actual life. I&amp;rsquo;m going to try that now.
+Background A decision is made when all parties responsible for making a decision permit a decision to be made. The author I think posed this as when it is in the perceived interest of the legitimate decision maker.</description>
+    </item>
+    
     <item>
       <title>Love is Hard</title>
       <link>jnapolitano.com/posts/love-is-hard/</link>
@@ -226,16 +279,6 @@ Find a suitable headliner replacement fabric I live in Texas and its hot. Really
       <description>Creating a GH Workflow to Build and Deploy a hugo site to gh-pages Why To simplify the build process.
 Creating the Workflow create your yaml config file touch hugo.yaml Set the trigger and the environment defaults The code below creates a trigger on push from the main and the gh-pages branches. It also sets read and write permissions to permit executing code and building hugo.
 on:# Runs on pushes targeting the default branchpush:branches:- main# - pit# - ghpages- gh-pages# Allows you to run this workflow manually from the Actions tabworkflow_dispatch:# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pagespermissions:contents:readpages:writeid-token:write# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.</description>
-    </item>
-    
-    <item>
-      <title>Creating a GCP Client Tool</title>
-      <link>jnapolitano.com/posts/gcputils/</link>
-      <pubDate>Sat, 27 Apr 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/gcputils/</guid>
-      <description>Creating a GCP Client Tool in Python Why I often find myself reuuing the same bits of code when working with GCP. It is very important to avoid creating multiple development trees of the same classes. I have done this before for large projects. It will lead to a very difficult to maintain stack of tools that will spaghettify over time.
-Creating the submodule Create an empty directory mkdir gcpuptils Add the following code to a gcpclient.</description>
     </item>
     
     <item>

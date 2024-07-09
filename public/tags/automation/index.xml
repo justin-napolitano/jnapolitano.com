@@ -30,16 +30,6 @@ on:# Runs on pushes targeting the default branchpush:branches:- main# - pit# - g
     </item>
     
     <item>
-      <title>Creating a GCP Client Tool</title>
-      <link>jnapolitano.com/posts/gcputils/</link>
-      <pubDate>Sat, 27 Apr 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/gcputils/</guid>
-      <description>Creating a GCP Client Tool in Python Why I often find myself reuuing the same bits of code when working with GCP. It is very important to avoid creating multiple development trees of the same classes. I have done this before for large projects. It will lead to a very difficult to maintain stack of tools that will spaghettify over time.
-Creating the submodule Create an empty directory mkdir gcpuptils Add the following code to a gcpclient.</description>
-    </item>
-    
-    <item>
       <title>Conduct Legal Research with AI Part 8: Case Nodes Sample Data</title>
       <link>jnapolitano.com/posts/legal-research-part-8/</link>
       <pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate>

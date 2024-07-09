@@ -1,11 +1,102 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on My New Hugo Site</title>
-    <link>https://example.org/categories/</link>
-    <description>Recent content in Categories on My New Hugo Site</description>
-    <generator>Hugo</generator>
+    <title>Categories on Justin Napolitano</title>
+    <link>jnapolitano.com/categories/</link>
+    <description>Recent content in Categories on Justin Napolitano</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://example.org/categories/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Tue, 09 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DIY</title>
+      <link>jnapolitano.com/categories/diy/</link>
+      <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/categories/diy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>procedures</title>
+      <link>jnapolitano.com/categories/procedures/</link>
+      <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/categories/procedures/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>adventures</title>
+      <link>jnapolitano.com/categories/adventures/</link>
+      <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/categories/adventures/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>projects</title>
+      <link>jnapolitano.com/categories/projects/</link>
+      <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/categories/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reflection</title>
+      <link>jnapolitano.com/categories/reflection/</link>
+      <pubDate>Thu, 04 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/categories/reflection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Personal</title>
+      <link>jnapolitano.com/categories/personal/</link>
+      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/categories/personal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>food</title>
+      <link>jnapolitano.com/categories/food/</link>
+      <pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/categories/food/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gear</title>
+      <link>jnapolitano.com/categories/gear/</link>
+      <pubDate>Mon, 17 Jun 2024 15:42:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/categories/gear/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Portfolio</title>
+      <link>jnapolitano.com/categories/portfolio/</link>
+      <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/categories/portfolio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>project</title>
+      <link>jnapolitano.com/categories/project/</link>
+      <pubDate>Sun, 22 May 2022 16:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/categories/project/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
