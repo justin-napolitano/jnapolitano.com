@@ -172,13 +172,14 @@ enableEmoji = true
 #    weight = 20
 
   [[menu.main]]
-    name = "PORTFOLIO"
-    url = "https://jnapolitano.com/en/categories/portfolio/"
+    name = "PROJECTS"
+    url = "https://jnapolitano.com/en/categories/projects/"
     weight = 20
 
+
   [[menu.main]]
-    name = "TUTORIALS"
-    url = "https://jnapolitano.com/en/categories/tutorials/"
+    name = "ADVENTURES"
+    url = "https://jnapolitano.com/en/categories/adventures/"
     weight = 30
 
   [[menu.main]]
