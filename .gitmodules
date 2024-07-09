@@ -85,3 +85,6 @@
 [submodule "content/posts/grays-peak"]
 	path = content/posts/grays-peak
 	url = https://github.com/justin-napolitano/grays-peak.git
+[submodule "content/posts/signal-install-script"]
+	path = content/posts/signal-install-script
+	url = https://github.com/justin-napolitano/signal-install-script.git
