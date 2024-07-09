@@ -5,7 +5,7 @@ description = "Control Model: A traditional statistical analysis of voting behav
 author = "Justin Napolitano"
 image = "post-image.jpeg"
 featuredimage = "post-image.jpeg"
-categories = ['Portfolio']
+categories = ['projects']
 tags = ['python','legal', 'spss', 'scotus', 'statistics']
 
 +++
