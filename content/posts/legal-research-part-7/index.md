@@ -4,7 +4,7 @@ date = "2022-05-22T16:30:32.169Z"
 description = "File management with Julia in preperation for data merge."
 author = "Justin Napolitano"
 image = "thumbnail.*"
-categories = ['Portfolio']
+categories = ['project']
 tags = ['julia', 'dataframes', 'SCOTUS','data-wrangling' ]
 images = ['featured-julia.png']
 +++
