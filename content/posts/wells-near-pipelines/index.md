@@ -5,7 +5,7 @@ description = "Identifying potential carbon and hydrogen storage facilities from
 author = "Justin Napolitano"
 image = "post-image.png"
 featuredimage = "post-image.png"
-categories = ['Portfolio']
+categories = ['projects']
 tags = ['carbon', 'hydrogen', 'gis', 'lng', 'python', 'carbon']
 +++
 
