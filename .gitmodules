@@ -76,3 +76,6 @@
 [submodule "content/posts/add-submodule-script"]
 	path = content/posts/add-submodule-script
 	url = https://github.com/justin-napolitano/add-submodule-script.git
+[submodule "content/posts/giving-up"]
+	path = content/posts/giving-up
+	url = https://github.com/justin-napolitano/giving-up.git
