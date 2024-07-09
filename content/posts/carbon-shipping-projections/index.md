@@ -5,7 +5,7 @@ description = "Monte Carlo Carbon Shipping Projections"
 author = "Justin Napolitano"
 image = "post-image.jpeg"
 featuredimage = "post-image.jpeg"
-categories = ['Portfolio']
+categories = ['projects']
 tags = ['ml','projections','montecarlo','python']
 +++
 
