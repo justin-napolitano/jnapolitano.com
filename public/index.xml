@@ -30,6 +30,17 @@ Street Food So this trend of eating at taco trucks or food trucks was fun to fol
     </item>
     
     <item>
+      <title>Signal Desktop Installation Script</title>
+      <link>jnapolitano.com/posts/signal-install-script/</link>
+      <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/signal-install-script/</guid>
+      <description>Signal Desktop Installation Script This script automates the process of installing Signal Desktop on 64-bit Debian-based Linux distributions such as Ubuntu and Mint.
+Prerequisites  A 64-bit Debian-based Linux distribution (e.g., Ubuntu, Mint) Administrative (sudo) privileges  Script Overview The script performs the following steps:
+ Installs the official Signal public software signing key. Adds the Signal repository to the system&amp;rsquo;s list of repositories. Updates the package database and installs Signal Desktop.</description>
+    </item>
+    
+    <item>
       <title>Gray&#39;s Peak</title>
       <link>jnapolitano.com/posts/grays-peak/</link>
       <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>

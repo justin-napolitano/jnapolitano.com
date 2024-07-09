@@ -167,6 +167,76 @@
 		</item>
 		
 		<item>
+			<title>Signal Desktop Installation Script</title>
+			<link>jnapolitano.com/posts/signal-install-script/</link>
+			<pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
+			<guid>jnapolitano.com/posts/signal-install-script/</guid>
+			<description><![CDATA[Install Signal on Debian Devices]]></description>
+			<content type="html"><![CDATA[<h1 id="signal-desktop-installation-script">Signal Desktop Installation Script</h1>
+<p>This script automates the process of installing Signal Desktop on 64-bit Debian-based Linux distributions such as Ubuntu and Mint.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>A 64-bit Debian-based Linux distribution (e.g., Ubuntu, Mint)</li>
+<li>Administrative (sudo) privileges</li>
+</ul>
+<h2 id="script-overview">Script Overview</h2>
+<p>The script performs the following steps:</p>
+<ol>
+<li>Installs the official Signal public software signing key.</li>
+<li>Adds the Signal repository to the system&rsquo;s list of repositories.</li>
+<li>Updates the package database and installs Signal Desktop.</li>
+</ol>
+<h2 id="usage-instructions">Usage Instructions</h2>
+<h3 id="step-1-save-the-script">Step 1: Save the Script</h3>
+<p>Save the following script to a file, e.g., <code>install_signal.sh</code>:</p>
+<p>```bash
+#!/bin/bash</p>
+<h1 id="exit-immediately-if-a-command-exits-with-a-non-zero-status">Exit immediately if a command exits with a non-zero status</h1>
+<p>set -e</p>
+<h1 id="1-install-the-official-public-software-signing-key">1. Install the official public software signing key</h1>
+<p>echo &ldquo;Installing the Signal public software signing key&hellip;&rdquo;
+wget -O- <a href="https://updates.signal.org/desktop/apt/keys.asc">https://updates.signal.org/desktop/apt/keys.asc</a> | gpg &ndash;dearmor &gt; signal-desktop-keyring.gpg
+cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg &gt; /dev/null</p>
+<h1 id="2-add-the-signal-repository-to-the-list-of-repositories">2. Add the Signal repository to the list of repositories</h1>
+<p>echo &ldquo;Adding the Signal repository to the list of repositories&hellip;&rdquo;
+echo &lsquo;deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] <a href="https://updates.signal.org/desktop/apt">https://updates.signal.org/desktop/apt</a> xenial main&rsquo; |<br>
+sudo tee /etc/apt/sources.list.d/signal-xenial.list</p>
+<h1 id="3-update-the-package-database-and-install-signal">3. Update the package database and install Signal</h1>
+<p>echo &ldquo;Updating the package database&hellip;&rdquo;
+sudo apt update</p>
+<p>echo &ldquo;Installing Signal Desktop&hellip;&rdquo;
+sudo apt install -y signal-desktop</p>
+<p>echo &ldquo;Signal Desktop installation completed successfully!&rdquo;
+```</p>
+<h3 id="step-2-make-the-script-executable">Step 2: Make the Script Executable</h3>
+<p>Open a terminal and navigate to the directory where the script is saved. Run the following command to make the script executable:</p>
+<p>```bash
+chmod +x install_signal.sh
+```</p>
+<h3 id="step-3-execute-the-script">Step 3: Execute the Script</h3>
+<p>Run the script with the following command:</p>
+<p>```bash
+./install_signal.sh
+```</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>Ensure you have a stable internet connection.</li>
+<li>Verify that you have administrative (sudo) privileges.</li>
+<li>If you encounter any errors, read the error messages carefully and ensure that all steps are followed correctly.</li>
+</ul>
+<h2 id="additional-information">Additional Information</h2>
+<p>For more information about Signal Desktop and its installation process, visit the <a href="https://signal.org/download/">official Signal website</a>.</p>
+<hr>
+<p><strong>Note:</strong> This script and documentation are intended for users with basic knowledge of using the terminal and running scripts on Linux systems. Always review and understand scripts before executing them on your system.</p>
+]]></content>
+			<postid> 9561986b864f8e6e2a33b2b1cd10d6df</postid>
+			<author>Justin Napolitano</author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
 			<title>Gray&#39;s Peak</title>
 			<link>jnapolitano.com/posts/grays-peak/</link>
 			<pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
