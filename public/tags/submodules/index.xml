@@ -19,15 +19,5 @@ Creating the Workflow create your yaml config file touch hugo.yaml Set the trigg
 on:# Runs on pushes targeting the default branchpush:branches:- main# - pit# - ghpages- gh-pages# Allows you to run this workflow manually from the Actions tabworkflow_dispatch:# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pagespermissions:contents:readpages:writeid-token:write# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.</description>
     </item>
     
-    <item>
-      <title>Creating a GCP Client Tool</title>
-      <link>jnapolitano.com/posts/gcputils/</link>
-      <pubDate>Sat, 27 Apr 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/gcputils/</guid>
-      <description>Creating a GCP Client Tool in Python Why I often find myself reuuing the same bits of code when working with GCP. It is very important to avoid creating multiple development trees of the same classes. I have done this before for large projects. It will lead to a very difficult to maintain stack of tools that will spaghettify over time.
-Creating the submodule Create an empty directory mkdir gcpuptils Add the following code to a gcpclient.</description>
-    </item>
-    
   </channel>
 </rss>

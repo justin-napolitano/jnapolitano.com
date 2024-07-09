@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Portfolio on Justin Napolitano</title>
+    <link>jnapolitano.com/categories/portfolio/</link>
+    <description>Recent content in Portfolio on Justin Napolitano</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Tue, 24 May 2022 00:30:32 +0000</lastBuildDate><atom:link href="jnapolitano.com/categories/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configuring Rocky Linux 8 for Quantitative Analysis in Julia</title>
+      <link>jnapolitano.com/posts/rocky-linux-8-julia/</link>
+      <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/rocky-linux-8-julia/</guid>
+      <description>Install Jupyter Start with installing jupyter. It will serve as our server for development.
+Install Dependencies sudo dnf install gcc python3-devel kernel-headers-$(uname -r) Install Jupyter Via Pip pip3 install --user jupyter Install Julia We will be installing from the official binaries.
+Make a directory in user profile. i simply ran mkdir julia in the home folder. The cd to julia.
+When in the folder run
+Wget wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.2-linux-x86_64.tar.gz Unpack Then unpack</description>
+    </item>
+    
+  </channel>
+</rss>
