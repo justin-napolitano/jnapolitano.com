@@ -19,5 +19,15 @@ Creating the Workflow create your yaml config file touch hugo.yaml Set the trigg
 on:# Runs on pushes targeting the default branchpush:branches:- main# - pit# - ghpages- gh-pages# Allows you to run this workflow manually from the Actions tabworkflow_dispatch:# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pagespermissions:contents:readpages:writeid-token:write# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.</description>
     </item>
     
+    <item>
+      <title>GCP Cloud Run: LOC Normalizer</title>
+      <link>jnapolitano.com/posts/loc_normalizer/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/loc_normalizer/</guid>
+      <description>Library of Congress Normalizer Job This repo normalizes the existing library of congress schema into a db that wil then be used to construct a knowledge graph of supreme court law.
+Plan  Setup a venv to run locally Install requirements Write out the script to interface with gcp Set up a docker container and test locally build the image upload to gcp create the job  Setup the venv Install I installed virtualenv locally on ubuntu</description>
+    </item>
+    
   </channel>
 </rss>
