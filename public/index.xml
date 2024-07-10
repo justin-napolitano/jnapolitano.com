@@ -293,6 +293,16 @@ on:# Runs on pushes targeting the default branchpush:branches:- main# - pit# - g
     </item>
     
     <item>
+      <title>GCP Cloud Run: LOC Normalizer</title>
+      <link>jnapolitano.com/posts/loc_normalizer/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/loc_normalizer/</guid>
+      <description>Library of Congress Normalizer Job This repo normalizes the existing library of congress schema into a db that wil then be used to construct a knowledge graph of supreme court law.
+Plan  Setup a venv to run locally Install requirements Write out the script to interface with gcp Set up a docker container and test locally build the image upload to gcp create the job  Setup the venv Install I installed virtualenv locally on ubuntu</description>
+    </item>
+    
+    <item>
       <title>Model Design and Logistic Regression in Python</title>
       <link>jnapolitano.com/posts/logistic_regression_mockup/</link>
       <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
