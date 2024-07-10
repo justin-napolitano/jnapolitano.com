@@ -88,3 +88,6 @@
 [submodule "content/posts/signal-install-script"]
 	path = content/posts/signal-install-script
 	url = https://github.com/justin-napolitano/signal-install-script.git
+[submodule "content/posts/loc_normalizer"]
+	path = content/posts/loc_normalizer
+	url = https://github.com/justin-napolitano/loc_normalizer.git
