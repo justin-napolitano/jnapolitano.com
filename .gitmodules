@@ -91,3 +91,6 @@
 [submodule "content/posts/loc_normalizer"]
 	path = content/posts/loc_normalizer
 	url = https://github.com/justin-napolitano/loc_normalizer.git
+[submodule "content/posts/running"]
+	path = content/posts/running
+	url = https://github.com/justin-napolitano/running.git
