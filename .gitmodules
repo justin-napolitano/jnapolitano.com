@@ -20,13 +20,13 @@
 	path = content/posts/python-rss-reader
 	url = https://github.com/justin-napolitano/python-rss-reader.git
 [submodule "content/posts/prepare-chicken-salad"]
-	path = content/posts/prepare-chicken-salad
+	path = archived-posts/prepare-chicken-salad
 	url = https://github.com/justin-napolitano/prepare-chicken-salad.git
 [submodule "content/posts/curate-an-edc-pouch"]
 	path = content/posts/curate-an-edc-pouch
 	url = https://github.com/justin-napolitano/curate-an-edc-pouch.git
 [submodule "content/posts/overtrain"]
-	path = content/posts/overtrain
+	path = archived-posts/overtrain
 	url = https://github.com/justin-napolitano/overtrain.git
 [submodule "content/posts/mysql-install-buntu"]
 	path = content/posts/mysql-install-buntu
@@ -53,19 +53,19 @@
 	path = content/posts/gh_submodule_sync
 	url = https://github.com/justin-napolitano/gh_submodule_sync.git
 [submodule "content/posts/raising_canes"]
-	path = content/posts/raising_canes
+	path = archived-posts/raising_canes
 	url = https://github.com/justin-napolitano/raising-canes.git
 [submodule "content/posts/todo_es_sacre"]
-	path = content/posts/todo_es_sacre
+	path = archived-posts/todo_es_sacre
 	url = https://github.com/justin-napolitano/todo_es_sacre.git
 [submodule "content/posts/cigarettes"]
-	path = content/posts/cigarettes
+	path = archived-posts/cigarettes
 	url = https://github.com/justin-napolitano/cigarettes.git
 [submodule "content/posts/cigarettes_again"]
-	path = content/posts/cigarettes_again
+	path = archived-posts/cigarettes_again
 	url = https://github.com/justin-napolitano/cigarettes-again.git
 [submodule "content/posts/love-is-hard"]
-	path = content/posts/love-is-hard
+	path = archived-posts/love-is-hard
 	url = https://github.com/justin-napolitano/love-is-hard.git
 [submodule "content/posts/win-sets"]
 	path = content/posts/win-sets
@@ -80,7 +80,7 @@
 	path = content/posts/giving-up
 	url = https://github.com/justin-napolitano/giving-up.git
 [submodule "content/posts/seat-covers"]
-	path = content/posts/seat-covers
+	path = archived-posts/seat-covers
 	url = https://github.com/justin-napolitano/seat-covers.git
 [submodule "content/posts/grays-peak"]
 	path = content/posts/grays-peak
