@@ -94,3 +94,6 @@
 [submodule "content/posts/running"]
 	path = content/posts/running
 	url = https://github.com/justin-napolitano/running.git
+[submodule "content/posts/create_deploy_cloud_run_job"]
+	path = content/posts/create_deploy_cloud_run_job
+	url = https://github.com/justin-napolitano/create_deploy_cloud_run_job.git
