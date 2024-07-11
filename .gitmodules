@@ -5,10 +5,10 @@
 	path = content/posts/gh-pages-workflow
 	url = https://github.com/justin-napolitano/gh-pages-workflow.git
 [submodule "content/posts/accord-headliner"]
-	path = content/posts/accord-headliner
+	path = archived-posts/accord-headliner
 	url = https://github.com/justin-napolitano/accord-headliner.git
 [submodule "content/posts/accord-bumper-weld"]
-	path = content/posts/accord-bumper-weld
+	path = archived-posts/accord-bumper-weld
 	url = https://github.com/justin-napolitano/accord-bumper-weld
 [submodule "content/posts/make-an-outdoor-living-space"]
 	path = content/posts/make-an-outdoor-living-space
@@ -23,7 +23,7 @@
 	path = archived-posts/prepare-chicken-salad
 	url = https://github.com/justin-napolitano/prepare-chicken-salad.git
 [submodule "content/posts/curate-an-edc-pouch"]
-	path = content/posts/curate-an-edc-pouch
+	path = archived-posts/curate-an-edc-pouch
 	url = https://github.com/justin-napolitano/curate-an-edc-pouch.git
 [submodule "content/posts/overtrain"]
 	path = archived-posts/overtrain
@@ -41,10 +41,10 @@
 	path = content/posts/hugo-rss-mysql-update
 	url = https://github.com/justin-napolitano/hugo-rss-mysql-update.git
 [submodule "content/posts/embrace_mundanity"]
-	path = content/posts/embrace_mundanity
+	path = archived-posts/embrace_mundanity
 	url = https://github.com/justin-napolitano/embrace_mundanity.git
 [submodule "content/posts/enter_my_car"]
-	path = content/posts/enter_my_car
+	path = archived-posts/enter_my_car
 	url = https://github.com/justin-napolitano/enter_my_car.git
 [submodule "content/posts/create_a_github_template_repo"]
 	path = content/posts/create_a_github_template_repo
@@ -68,16 +68,16 @@
 	path = archived-posts/love-is-hard
 	url = https://github.com/justin-napolitano/love-is-hard.git
 [submodule "content/posts/win-sets"]
-	path = content/posts/win-sets
+	path = archived-posts/win-sets
 	url = https://github.com/justin-napolitano/win-sets.git
 [submodule "content/posts/driving"]
-	path = content/posts/driving
+	path = archived-posts/driving
 	url = https://github.com/justin-napolitano/driving.git
 [submodule "content/posts/add-submodule-script"]
 	path = content/posts/add-submodule-script
 	url = https://github.com/justin-napolitano/add-submodule-script.git
 [submodule "content/posts/giving-up"]
-	path = content/posts/giving-up
+	path = archived-posts/giving-up
 	url = https://github.com/justin-napolitano/giving-up.git
 [submodule "content/posts/seat-covers"]
 	path = archived-posts/seat-covers
