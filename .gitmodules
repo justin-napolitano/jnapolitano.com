@@ -97,3 +97,6 @@
 [submodule "content/posts/create_deploy_cloud_run_job"]
 	path = content/posts/create_deploy_cloud_run_job
 	url = https://github.com/justin-napolitano/create_deploy_cloud_run_job.git
+[submodule "content/posts/l_o_c_scraper"]
+	path = content/posts/l_o_c_scraper
+	url = https://github.com/justin-napolitano/loc_scraper.git
