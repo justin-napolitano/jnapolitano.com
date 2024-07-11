@@ -7,26 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Tue, 09 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Jul 2024 16:26:32 -0500</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Baja Seat Covers</title>
-      <link>jnapolitano.com/posts/seat-covers/</link>
-      <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
+      <title>Create and Deploy Cloud Run Job Script</title>
+      <link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>
+      <pubDate>Thu, 11 Jul 2024 16:26:32 -0500</pubDate>
       
-      <guid>jnapolitano.com/posts/seat-covers/</guid>
-      <description>Baja Seat Covers So my car is ready for some new seat covers. I am not going to spend the money to replace the original ones. It doesn&amp;rsquo;t make sense. So I am going to cover them with blankets and hope for the best.
-The plan I am going to drape them over the front seats and cut some holes for the head rest to pass through. Then I will sew the seat covers together (probably) to keep them from moving around.</description>
+      <guid>jnapolitano.com/posts/create_deploy_cloud_run_job/</guid>
+      <description>Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build.
+Prerequisites Before using the deployment script, ensure you have the following:
+ Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.</description>
     </item>
     
     <item>
-      <title>Giving Up</title>
-      <link>jnapolitano.com/posts/giving-up/</link>
-      <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
+      <title>GCP Cloud Run: LOC Flattener</title>
+      <link>jnapolitano.com/posts/loc_normalizer/</link>
+      <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
       
-      <guid>jnapolitano.com/posts/giving-up/</guid>
-      <description>Giving Up There are a lot of things that I do not want to do. I do them still. I do not entirely know why. I want to give them up.
-Food There is much food that I find disgusting&amp;hellip;Yet I eat it because well I need to eat.. or I&amp;rsquo;m with people that want to eat certain foods.
-Street Food So this trend of eating at taco trucks or food trucks was fun to follow along with years ago&amp;hellip; but I am tired of getting sick.</description>
+      <guid>jnapolitano.com/posts/loc_normalizer/</guid>
+      <description>Library of Congress Normalizer Job This repo normalizes the existing library of congress schema into a db that wil then be used to construct a knowledge graph of supreme court law.
+Plan  Setup a venv to run locally Install requirements Write out the script to interface with gcp Set up a docker container and test locally build the image upload to gcp create the job  Setup the venv Install I installed virtualenv locally on ubuntu</description>
+    </item>
+    
+    <item>
+      <title>Running</title>
+      <link>jnapolitano.com/posts/running/</link>
+      <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/running/</guid>
+      <description>Running I like to run&amp;hellip; or maybe I like to jog. It doesn&amp;rsquo;t really matter. I like move a little faster than walking.
+My Goals When I run I just move. I don&amp;rsquo;t really think about what my goals are. I guess I try to be fast. I think this is wrong. What would I rather focus on?
+ Breathing Avoiding injury Remaining balanced Adapting to the terrain  Breathing I hold my breath when I run.</description>
     </item>
     
     <item>
@@ -51,38 +62,6 @@ Prerequisites  A 64-bit Debian-based Linux distribution (e.g., Ubuntu, Mint) Adm
     </item>
     
     <item>
-      <title>Driving Win-Set</title>
-      <link>jnapolitano.com/posts/driving/</link>
-      <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/driving/</guid>
-      <description>Driving Win-Set I think there are many dimensions to win-sets. I&amp;rsquo;ll write them below
-What Do I Want What are my goals? What do I want from a situation.. that is bound in time and context?
-While driving what do I really want?
- I do not want impact anyting I do not want to hit others I do not want a ticket I want to minimize damage to my car I want to drive efficiently  How do I accomplish these things This is harder.</description>
-    </item>
-    
-    <item>
-      <title>Win-Sets</title>
-      <link>jnapolitano.com/posts/win-sets/</link>
-      <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/win-sets/</guid>
-      <description>Win-Sets I read a paper in university about the way institutions make decisions&amp;hellip; Or should I say the people wihtin an institution make decisions. I have applied it to analysis, but not my actual life. I&amp;rsquo;m going to try that now.
-Background A decision is made when all parties responsible for making a decision permit a decision to be made. The author I think posed this as when it is in the perceived interest of the legitimate decision maker.</description>
-    </item>
-    
-    <item>
-      <title>Love is Hard</title>
-      <link>jnapolitano.com/posts/love-is-hard/</link>
-      <pubDate>Thu, 04 Jul 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/love-is-hard/</guid>
-      <description>To Will The Good In The Other I watched a youtube video once about &amp;ldquo;what is love?&amp;rdquo;. I listened to a Roman Catholic Bishop discuss St. Thomas Acquinas&#39; understanding of love. To will the good in the other.. to let go of oneself in order to will for good in the person that one loves. This is hard.
-Love is Hard I am living through one of those periods in my life where I have to overcome myself in order to meet the demands of reality.</description>
-    </item>
-    
-    <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db)</title>
       <link>jnapolitano.com/posts/hugo-rss-mysql-update/</link>
       <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
@@ -91,37 +70,6 @@ Love is Hard I am living through one of those periods in my life where I have to
       <description>Background In the previous few posts I detailed my progress in automating a site. I am going about this by using an rss scraper to post new posts to social.
 I had initally thought about doing this really naively, but I want a database. It doesn&amp;rsquo;t feel right without using one. I am somewhat upset with myself, because I am basically just recreating wordpress&amp;hellip; but so it goes.
 Previous posts in this series  part 1 part 2 part 3 part 4 part 5  Expand a previous script In a previous post I wrote about how to scan an rss feed on my personal site.</description>
-    </item>
-    
-    <item>
-      <title>Everything Matters</title>
-      <link>jnapolitano.com/posts/todo_es_sacre/</link>
-      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/todo_es_sacre/</guid>
-      <description>Why am I writing this I think that everything&amp;hellip; literally every detail is important.
-Everything Matters I do not know if this a radical idea. From my experience, I recall people saying to me&amp;hellip; &amp;ldquo;it is fine&amp;rdquo;, &amp;ldquo;it is good enough&amp;rdquo;, &amp;ldquo;that doesn&amp;rsquo;t matter&amp;rdquo;&amp;hellip; I disagree. To me, every individual detail matters. The context of a situation or the state of an environment at any given state in time influences my mind.</description>
-    </item>
-    
-    <item>
-      <title>Smoking Cigarettes... Again</title>
-      <link>jnapolitano.com/posts/cigarettes_again/</link>
-      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/cigarettes_again/</guid>
-      <description>Smoking Cigarettes&amp;hellip; Again Yesterday I wrote about smoking cigarettes and going out. I had told myself I was over it&amp;hellip;.
-A Date Before I Leave Town I had coffee with someone that I am interested before taking off on a road trip to Colorado. At the root of it I think I am attracted to her. I can come up with a number of reasons why.. but I do not really know.</description>
-    </item>
-    
-    <item>
-      <title>Eating Raising Canes</title>
-      <link>jnapolitano.com/posts/raising_canes/</link>
-      <pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/raising_canes/</guid>
-      <description>Why am I writing this Tonight, I mistreated my body. I had raising Canes. I feel disgusting.
-Food review I tried the combo box - a massive amount of french fries served with coleslaw, some bread, and some chicken tenders.
-The Fries They were fries - the crinkle cut variety- fried up in old grease. They tasted like typical fries, but the oil was so old that the fries tasted like the grease underneath the lunch room tables you&amp;rsquo;d find a public high school.</description>
     </item>
     
     <item>
@@ -135,16 +83,6 @@ Parts of this series  part 1 part 2 part 3 part 4  Resources  Hugo Page Resource
     </item>
     
     <item>
-      <title>Embrace Mundanity</title>
-      <link>jnapolitano.com/posts/embrace_mundanity/</link>
-      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/embrace_mundanity/</guid>
-      <description>Why Life is hard enough. Do not chase glory.
-What do I mean Life is hard enough. Every single act within my daily life is incredibly difficult. I am nearly 30 years old and still have to force myself to brush my teath every day, to shower, to eat a few square meals a day. These little daily tasks that are truly important to our health and wellbeing are by far the most difficult and sometimes the least prioritized.</description>
-    </item>
-    
-    <item>
       <title>Install MySQL Server on Ubuntu</title>
       <link>jnapolitano.com/posts/mysql-install-buntu/</link>
       <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
@@ -153,16 +91,6 @@ What do I mean Life is hard enough. Every single act within my daily life is inc
       <description>Why  I am working on an autoposting tool for social sites. in order to complete that i want a db to log the metadata of my posts  Parts of this series  part 1 part 2  MYSQL Resources  APT install guide MYSQL config guide Post Install configuration  Install Download the config files go to this link and download the script.
 https://dev.mysql.com/downloads/repo/apt/
 Install the release package with dpkg  note that the w.</description>
-    </item>
-    
-    <item>
-      <title>Smoking Cigarettes</title>
-      <link>jnapolitano.com/posts/cigarettes/</link>
-      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/cigarettes/</guid>
-      <description>Smoking Cigarettes I used to smoke when I went out with friends. That was years ago. I left that behind me as one of those things I did in college.
-Tonight I went out with someone I met recently at a cafe. A friend of a friend. We had an okay time, but I did not feel the chemistry I had hoped for. We went to a restaurant that was okay.</description>
     </item>
     
     <item>
@@ -187,16 +115,6 @@ Parts of this series  part 1 part 2 part 3  MYSQL Resources  APT install guide M
     </item>
     
     <item>
-      <title>Entering my Car</title>
-      <link>jnapolitano.com/posts/enter_my_car/</link>
-      <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/enter_my_car/</guid>
-      <description>Why am I writing this I am trying to approach life from the perspective that every action throughout the day&amp;hellip; no matter how mundane&amp;hellip; defines in some way my character. Each little action can either make life easier or more difficult for me. I do not know if it is possible for an action to be completely neutral.. I am thinking that through.
-Entering my car How do I currently enter my car?</description>
-    </item>
-    
-    <item>
       <title>Sync Gh Submodules Across a Super Project</title>
       <link>jnapolitano.com/posts/gh_submodule_sync/</link>
       <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
@@ -204,40 +122,6 @@ Entering my car How do I currently enter my car?</description>
       <guid>jnapolitano.com/posts/gh_submodule_sync/</guid>
       <description>Overview This script is designed to initialize and update all submodules in a GitHub repository to the latest commits from their respective remote repositories. It ensures that all submodules, including nested submodules, are synchronized with their remote counterparts.
 Prerequisites  Ensure that you have Git installed on your system. Ensure that you have cloned the repository containing the submodules.  Usage  Save the script to a file, for example, sync_submodules.</description>
-    </item>
-    
-    <item>
-      <title>Overtrain</title>
-      <link>jnapolitano.com/posts/overtrain/</link>
-      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/overtrain/</guid>
-      <description>Why i like to exercise. i like to over-exercise. i do not listen to my body when it needs rest. i feel as if more movement is more better.
-i am getting older. i do not recover quickly.
-Running when i feel stressed i run. it is a low cost way to move.
-Running too far when i run, i feel a need to prove to myself that i am a runner.</description>
-    </item>
-    
-    <item>
-      <title>Curate an EDC Pouch</title>
-      <link>jnapolitano.com/posts/curate-an-edc-pouch/</link>
-      <pubDate>Mon, 17 Jun 2024 15:42:34 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/curate-an-edc-pouch/</guid>
-      <description>Why i have a bunch of random tools and pouches laying about. I don&amp;rsquo;t like it. So to feel better i want to organize a pouch that i can throw into any of my bags so that i can deal with most things i face in day to day to life.
-Guiding principles  I want tools that reduce the friction in my average day to day dealings I want the pouch to be small enough to fit inside all of my bags I want the tool set to be modular so that it can be used as the base of other kits.</description>
-    </item>
-    
-    <item>
-      <title>Prepare Chicken Salad</title>
-      <link>jnapolitano.com/posts/prepare-chicken-salad/</link>
-      <pubDate>Sun, 16 Jun 2024 21:35:34 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/prepare-chicken-salad/</guid>
-      <description>Why I am hungry. I have a bunch of ingredients. I have a left over rotisserie chicken. I do not want to waste.
-Audit your supplies In my case I have at my disposal
- About half a rotisserie chicken. Greek yogurt. Coriander. Grape tomatotes. Honey. Dates.  Prepare your food Cut up the chicken breast Just remove chicken breast. Then cut it up into small chunks.
-Cut up the herbs I am using left-over coriander leaves to add some vitamins and flavor to my dinner.</description>
     </item>
     
     <item>
@@ -261,27 +145,6 @@ Mockup As you can see this is very rudimentary. I will traverse the posts direct
     </item>
     
     <item>
-      <title>JB &#39;Welding&#39; My Bumper</title>
-      <link>jnapolitano.com/posts/accord-bumper-weld/</link>
-      <pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/accord-bumper-weld/</guid>
-      <description>So, I snagged my already hanging on by a thread bumper on a piece of rebar. I reversed thinking it was a small bump in the parking lot&amp;hellip; I was wrong.
-Why Bumpers are expensive. I am looking at around $400.00 of bumper + paint if I try to do this on my own. Taking it to the shop&amp;hellip; yeah I won&amp;rsquo;t do that. So, rather than trying to make the prettiest beater in the car lot, I am going to make it at least a functional beater.</description>
-    </item>
-    
-    <item>
-      <title>Justin-ify a Car Headliner</title>
-      <link>jnapolitano.com/posts/accord-headliner/</link>
-      <pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/accord-headliner/</guid>
-      <description>My beautiful 12 year old Honda has a bad headliner. It was gross. I did not like it.
-Why The foam holding it in place to the headliner board deteriorated. The car is too old to make it perfect so any headliner fabric will work.
-Find a suitable headliner replacement fabric I live in Texas and its hot. Really hot. Without some insulation the heat from the sun would bake me inside my car.</description>
-    </item>
-    
-    <item>
       <title>Hugo Build and Deploy GH Workflow</title>
       <link>jnapolitano.com/posts/gh-pages-workflow/</link>
       <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
@@ -293,13 +156,13 @@ on:# Runs on pushes targeting the default branchpush:branches:- main# - pit# - g
     </item>
     
     <item>
-      <title>GCP Cloud Run: LOC Normalizer</title>
-      <link>jnapolitano.com/posts/loc_normalizer/</link>
+      <title>GCP Cloud Run Job Scraper</title>
+      <link>jnapolitano.com/posts/l_o_c_scraper/</link>
       <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
       
-      <guid>jnapolitano.com/posts/loc_normalizer/</guid>
-      <description>Library of Congress Normalizer Job This repo normalizes the existing library of congress schema into a db that wil then be used to construct a knowledge graph of supreme court law.
-Plan  Setup a venv to run locally Install requirements Write out the script to interface with gcp Set up a docker container and test locally build the image upload to gcp create the job  Setup the venv Install I installed virtualenv locally on ubuntu</description>
+      <guid>jnapolitano.com/posts/l_o_c_scraper/</guid>
+      <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.
+Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
     </item>
     
     <item>

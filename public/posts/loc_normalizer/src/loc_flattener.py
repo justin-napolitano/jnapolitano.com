@@ -20,7 +20,7 @@ def initialize_bq_client(project_id, credentials_path=None):
 def list_gcs_buckets(client):
     try:
         buckets = client.list_buckets()
-        print("Buckets:", buckets)
+    
         logging.info(f"Buckets: {buckets}")
     except Exception as e:
         logging.error(f"Error listing buckets: {e}")
@@ -28,8 +28,8 @@ def list_gcs_buckets(client):
 def create_gcs_bucket(client, bucket_name):
     try:
         bucket = client.create_bucket(bucket_name=bucket_name)
+        
         logging.info(bucket)
-        print(bucket)
     except Exception as e:
         logging.error(f"Error creating bucket: {e}")
 
@@ -132,7 +132,7 @@ def process_blob(gcs_client, bq_client, bucket_name, processed_bucket_name, patt
     if not first_blob:
         return False
 
-    print(f"Processing blob: {first_blob.name}")
+    logging.info(f"Processing blob: {first_blob.name}")
 
     # Download to memory
     blob_data = gcs_client.download_blob_to_memory(bucket_name, first_blob.name)
@@ -179,15 +179,17 @@ def process_blob(gcs_client, bq_client, bucket_name, processed_bucket_name, patt
     # Move the blob to the processed_results bucket
     gcs_client.copy_blob(bucket_name, first_blob.name, processed_bucket_name, first_blob.name)
     gcs_client.delete_blob(bucket_name, first_blob.name)
-    print(f"Blob {first_blob.name} moved to {processed_bucket_name} and deleted from {bucket_name}")
+    logging.info(f"Blob {first_blob.name} moved to {processed_bucket_name} and deleted from {bucket_name}")
 
     return True
 
 def main():
+    # logging.info(f"I wonder if the ARg parser is killing it...")
     parser = argparse.ArgumentParser(description='Run the script locally or in the cloud.')
     parser.add_argument('--local', action='store_true', help='Run the script locally with credentials path')
     args = parser.parse_args()
 
+    # logging.info(f"arg parser passed")
     dataset_id = "supreme_court"
     patterns_file = os.getenv('PATTERNS_FILE', 'exclude.txt')
     project_id = os.getenv('GCP_PROJECT_ID', 'smart-axis-421517')
@@ -198,29 +200,43 @@ def main():
     if args.local:
         credentials_path = os.getenv('GCP_CREDENTIALS_PATH', 'secret.json')
 
+    
     # Initialize logging
     logging_client = initialize_google_cloud_logging_client(project_id, credentials_path)
     logging_client.setup_logging()
 
+    logging.info(f"logging initialized")
     # List Buckets for testing
     gcs_client = initialize_gcs_client(project_id, credentials_path)
     list_gcs_buckets(gcs_client)
+    logging.info(f"Buckets: pulled")
 
     # Create the processed_results bucket if not exists
     # gcs_client.create_bucket(processed_bucket_name)
 
+    logging.info(f"initalizing bq")
+
     bq_client = initialize_bq_client(project_id, credentials_path)
+
+    logging.info(f"initalized bq")
+
+    logging.info(f"creating dataset")
 
     # Create the dataset if not exists
     bq_client.create_dataset(dataset_id)
 
+    logging.info(f"dataset created")
+    
+    logging.info(f"Creating table schemas")
     # Create tables and schemas
     create_tables_and_schemas(bq_client, bucket_name, patterns_file, gcs_client, dataset_id)
     # def create_tables_and_schemas(bq_client, bucket_name, patterns_file, gcs_client, dataset_id):
 
+    logging.info(f"schema created")
     # Process blobs in a loop
+    logging.info(f"processing blob")
     while process_blob(gcs_client, bq_client, bucket_name, processed_bucket_name, patterns_file, dataset_id):
-        print("Processed a blob, checking for more...")
+        logging.info("Processed a blob, checking for more...")
         
 
 if __name__ == "__main__":

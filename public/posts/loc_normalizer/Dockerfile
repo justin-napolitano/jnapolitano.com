@@ -27,5 +27,8 @@ COPY requirements.txt /app
 # Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Expose port 8080 for Cloud Run
+# EXPOSE 8080
+
 # Run the Python script when the container launches
-CMD ["python", "loc_scraper.py"]
+CMD ["python", "loc_flattener.py"]

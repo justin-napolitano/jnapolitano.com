@@ -13,24 +13,24 @@
 <meta name="msapplication-TileImage" content="/jnapolitano.com/mstile-144x144.png">
 <meta name="theme-color" content="#494f5c">
 <meta name="msapplication-TileColor" content="#494f5c">
-<link rel="mask-icon" href="/jnapolitano.com/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Justin Napolitano"><meta name="description" content="Normalizing a JSON into A DB.. Autonomously. ">
-<meta itemprop="name" content="GCP Cloud Run: LOC Normalizer">
-<meta itemprop="description" content="Normalizing a JSON into A DB.. Autonomously. "><meta itemprop="datePublished" content="2024-04-28T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2024-07-10T18:20:20-05:00" />
-<meta itemprop="wordCount" content="5255"><meta itemprop="image" content="jnapolitano.com/images/feature-gcp.png">
-<meta itemprop="keywords" content="git,python,gcp,bash,workflow automation,docker,containerization," /><meta property="og:title" content="GCP Cloud Run: LOC Normalizer" />
-<meta property="og:description" content="Normalizing a JSON into A DB.. Autonomously. " />
+<link rel="mask-icon" href="/jnapolitano.com/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Justin Napolitano"><meta name="description" content="Flattening and injesting JSON into data lake.. Autonomously. ">
+<meta itemprop="name" content="GCP Cloud Run: LOC Flattener">
+<meta itemprop="description" content="Flattening and injesting JSON into data lake.. Autonomously. "><meta itemprop="datePublished" content="2024-07-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-07-11T16:24:23-05:00" />
+<meta itemprop="wordCount" content="5685"><meta itemprop="image" content="jnapolitano.com/images/feature-gcp.png">
+<meta itemprop="keywords" content="git,python,gcp,bash,workflow automation,docker,containerization," /><meta property="og:title" content="GCP Cloud Run: LOC Flattener" />
+<meta property="og:description" content="Flattening and injesting JSON into data lake.. Autonomously. " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="jnapolitano.com/posts/loc_normalizer/" /><meta property="og:image" content="jnapolitano.com/images/feature-gcp.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-04-28T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-07-10T18:20:20-05:00" />
+<meta property="article:published_time" content="2024-07-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-07-11T16:24:23-05:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="jnapolitano.com/images/feature-gcp.png"/>
 
-<meta name="twitter:title" content="GCP Cloud Run: LOC Normalizer"/>
-<meta name="twitter:description" content="Normalizing a JSON into A DB.. Autonomously. "/>
-<title>GCP Cloud Run: LOC Normalizer</title>
+<meta name="twitter:title" content="GCP Cloud Run: LOC Flattener"/>
+<meta name="twitter:description" content="Flattening and injesting JSON into data lake.. Autonomously. "/>
+<title>GCP Cloud Run: LOC Flattener</title>
 <link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="/jnapolitano.com/css/style.min.e0b1c1b8d997f495fcb6256067ff9553b62e50837603056ab2905cd59b0b5e73.css" integrity="sha256-4LHBuNmX9JX8tiVgZ/+VU7YuUIN2AwVqspBc1ZsLXnM=" crossorigin="anonymous">
 	<style>.bg-img {background-image: url('jnapolitano.com/images/feature-gcp.png');}</style></head>
 <body id="page">
@@ -52,19 +52,19 @@
     
     <ul>
         <li>
-            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=jnapolitano.com%2fposts%2floc_normalizer%2f&amp;text=GCP%20Cloud%20Run%3a%20LOC%20Normalizer" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=jnapolitano.com%2fposts%2floc_normalizer%2f&amp;text=GCP%20Cloud%20Run%3a%20LOC%20Flattener" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
         </li>
         <li>
             <a href="https://facebook.com/sharer/sharer.php?u=jnapolitano.com%2fposts%2floc_normalizer%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
         </li>
         <li>
-            <a href="mailto:?subject=GCP%20Cloud%20Run%3a%20LOC%20Normalizer&amp;body=jnapolitano.com%2fposts%2floc_normalizer%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+            <a href="mailto:?subject=GCP%20Cloud%20Run%3a%20LOC%20Flattener&amp;body=jnapolitano.com%2fposts%2floc_normalizer%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
         </li>
         <li>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=jnapolitano.com%2fposts%2floc_normalizer%2f&amp;source=jnapolitano.com&amp;title=GCP%20Cloud%20Run%3a%20LOC%20Normalizer&amp;summary=GCP%20Cloud%20Run%3a%20LOC%20Normalizer%2c%20by%20Justin%20Napolitano%0a%0aNormalizing%20a%20JSON%20into%20A%20DB..%20Autonomously.%20%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=jnapolitano.com%2fposts%2floc_normalizer%2f&amp;source=jnapolitano.com&amp;title=GCP%20Cloud%20Run%3a%20LOC%20Flattener&amp;summary=GCP%20Cloud%20Run%3a%20LOC%20Flattener%2c%20by%20Justin%20Napolitano%0a%0aFlattening%20and%20injesting%20JSON%20into%20data%20lake..%20Autonomously.%20%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
         </li>
         <li>
-            <a href="#" onclick="linkShare(&#34;GCP Cloud Run: LOC Normalizer&#34;,&#34;jnapolitano.com/posts/loc_normalizer/&#34;,&#34;GCP Cloud Run: LOC Normalizer, by Justin Napolitano\n\nNormalizing a JSON into A DB.. Autonomously. \n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+            <a href="#" onclick="linkShare(&#34;GCP Cloud Run: LOC Flattener&#34;,&#34;jnapolitano.com/posts/loc_normalizer/&#34;,&#34;GCP Cloud Run: LOC Flattener, by Justin Napolitano\n\nFlattening and injesting JSON into data lake.. Autonomously. \n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
         </li>
     </ul>
 </div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
@@ -84,10 +84,10 @@
 	<div class="bg-img"></div>
 	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
 			<header class="post-header">
-				<div class="post-meta"><span>Apr 28, 2024</span></div>
-				<h1>GCP Cloud Run: LOC Normalizer</h1>
+				<div class="post-meta"><span>Jul 11, 2024</span></div>
+				<h1>GCP Cloud Run: LOC Flattener</h1>
 			</header>
-			<div class="post-info"><p>Normalizing a JSON into A DB.. Autonomously. </p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg><a href="" target="_blank">Justin Napolitano</a></p>
+			<div class="post-info"><p>Flattening and injesting JSON into data lake.. Autonomously. </p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg><a href="" target="_blank">Justin Napolitano</a></p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="jnapolitano.com/tags/git">git</a></span><span class="tag"><a href="jnapolitano.com/tags/python">python</a></span><span class="tag"><a href="jnapolitano.com/tags/gcp">gcp</a></span><span class="tag"><a href="jnapolitano.com/tags/bash">bash</a></span><span class="tag"><a href="jnapolitano.com/tags/workflow-automation">workflow automation</a></span><span class="tag"><a href="jnapolitano.com/tags/docker">docker</a></span><span class="tag"><a href="jnapolitano.com/tags/containerization">containerization</a></span></p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg><span class="category"><a href="jnapolitano.com/categories/projects">projects</a></span></p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
@@ -95,8 +95,8 @@
     
     
     
-    23 Minutes, 53 Seconds</p>
-<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2024-04-27 19:00 -0500</p></div>
+    25 Minutes, 50 Seconds</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2024-07-10 19:00 -0500</p></div>
 			<hr class="post-end">
 			<div class="content">
 				<h1 id="library-of-congress-normalizer-job">Library of Congress Normalizer Job<a href="#library-of-congress-normalizer-job" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
@@ -236,6 +236,38 @@ Requirement already satisfied: rsa==4.9 in /home/cobra/.config/jupyterlab-deskto
 Requirement already satisfied: six==1.16.0 in /home/cobra/.config/jupyterlab-desktop/jlab_server/lib/python3.12/site-packages (from -r ../requirements.txt (line 27)) (1.16.0)
 Requirement already satisfied: soupsieve==2.5 in /home/cobra/.config/jupyterlab-desktop/jlab_server/lib/python3.12/site-packages (from -r ../requirements.txt (line 28)) (2.5)
 Requirement already satisfied: urllib3==2.2.1 in /home/cobra/.config/jupyterlab-desktop/jlab_server/lib/python3.12/site-packages (from -r ../requirements.txt (line 29)) (2.2.1)
+Requirement already satisfied: google-cloud-bigquery==3.25.0 in /home/cobra/.config/jupyterlab-desktop/jlab_server/lib/python3.12/site-packages (from -r ../requirements.txt (line 40)) (3.25.0)
+Collecting numpy==2.0.0 (from -r ../requirements.txt (line 51))
+  Downloading numpy-2.0.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+[2K     [38;2;114;156;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m60.9/60.9 kB[0m [31m1.1 MB/s[0m eta [36m0:00:00[0m[31m1.1 MB/s[0m eta [36m0:00:01[0m
+[?25hCollecting packaging==24.1 (from -r ../requirements.txt (line 52))
+  Downloading packaging-24.1-py3-none-any.whl.metadata (3.2 kB)
+Requirement already satisfied: pandas==2.2.2 in /home/cobra/.config/jupyterlab-desktop/jlab_server/lib/python3.12/site-packages (from -r ../requirements.txt (line 53)) (2.2.2)
+Requirement already satisfied: pyarrow==16.1.0 in /home/cobra/.config/jupyterlab-desktop/jlab_server/lib/python3.12/site-packages (from -r ../requirements.txt (line 56)) (16.1.0)
+Collecting python-dateutil==2.9.0.post0 (from -r ../requirements.txt (line 59))
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Requirement already satisfied: pytz==2024.1 in /home/cobra/.config/jupyterlab-desktop/jlab_server/lib/python3.12/site-packages (from -r ../requirements.txt (line 60)) (2024.1)
+Requirement already satisfied: tzdata==2024.1 in /home/cobra/.config/jupyterlab-desktop/jlab_server/lib/python3.12/site-packages (from -r ../requirements.txt (line 65)) (2024.1)
+Downloading numpy-2.0.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.0 MB)
+[2K   [38;2;114;156;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m19.0/19.0 MB[0m [31m2.2 MB/s[0m eta [36m0:00:00[0mm eta [36m0:00:01[0m[36m0:00:01[0m
+[?25hDownloading packaging-24.1-py3-none-any.whl (53 kB)
+[2K   [38;2;114;156;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m54.0/54.0 kB[0m [31m1.7 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+[2K   [38;2;114;156;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m229.9/229.9 kB[0m [31m2.3 MB/s[0m eta [36m0:00:00[0m MB/s[0m eta [36m0:00:01[0m
+[?25hInstalling collected packages: python-dateutil, packaging, numpy
+  Attempting uninstall: python-dateutil
+    Found existing installation: python-dateutil 2.9.0
+    Uninstalling python-dateutil-2.9.0:
+      Successfully uninstalled python-dateutil-2.9.0
+  Attempting uninstall: packaging
+    Found existing installation: packaging 24.0
+    Uninstalling packaging-24.0:
+      Successfully uninstalled packaging-24.0
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.26.4
+    Uninstalling numpy-1.26.4:
+      Successfully uninstalled numpy-1.26.4
+Successfully installed numpy-2.0.0 packaging-24.1 python-dateutil-2.9.0.post0
 Note: you may need to restart the kernel to use updated packages.
 </code></pre>
 <h2 id="write-out-the-script-1">Write out the Script<a href="#write-out-the-script-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
@@ -336,7 +368,7 @@ Note: you may need to restart the kernel to use updated packages.
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div><pre><code>trying creds file
-Buckets: ['loc-scraper', 'smart-axis-421517_cloudbuild']
+Buckets: ['loc-scraper', 'loc_flattener_processed', 'processed_results', 'smart-axis-421517_cloudbuild']
 </code></pre>
 <h4 id="access-the-blobs-within-the-bucket">Access the Blobs within the bucket<a href="#access-the-blobs-within-the-bucket" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
 <p>Now I need to grab a blob from the bucket. IN this case I just want to grab one from the top of the heap without pulling a lot of data into context.</p>
@@ -431,7 +463,7 @@ Buckets: ['loc-scraper', 'smart-axis-421517_cloudbuild']
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div><pre><code>trying creds file
-Buckets: ['loc-scraper', 'smart-axis-421517_cloudbuild']
+Buckets: ['loc-scraper', 'loc_flattener_processed', 'processed_results', 'smart-axis-421517_cloudbuild']
 First valid blob selected: last_page.txt
 First blob name: last_page.txt
 </code></pre>
@@ -517,9 +549,9 @@ First blob name: last_page.txt
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div><pre><code>trying creds file
-Buckets: ['loc-scraper', 'smart-axis-421517_cloudbuild']
-First valid blob selected: result-1-.json
-First blob name: result-1-.json
+Buckets: ['loc-scraper', 'loc_flattener_processed', 'processed_results', 'smart-axis-421517_cloudbuild']
+First valid blob selected: result-10.json
+First blob name: result-10.json
 </code></pre>
 <h3 id="download-the-data">Download the data<a href="#download-the-data" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>Now I need to process the information. First off i need to grab the data from the blob</p>
@@ -600,10 +632,10 @@ First blob name: result-1-.json
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div><pre><code>trying creds file
-Buckets: ['loc-scraper', 'smart-axis-421517_cloudbuild']
-First valid blob selected: result-1-.json
-First blob name: result-1-.json
-Blob 'result-1-.json' downloaded to memory.
+Buckets: ['loc-scraper', 'loc_flattener_processed', 'processed_results', 'smart-axis-421517_cloudbuild']
+First valid blob selected: result-10.json
+First blob name: result-10.json
+Blob 'result-10.json' downloaded to memory.
 b'{&quot;breadcrumbs&quot;: [{&quot;Library of Congress&quot;: &quot;https://www.loc.gov&quot;}, {&quot;Digital Collections&quot;: &quot;https://ww'
 </code></pre>
 <h4 id="flatten-and-process-the-json">Flatten and process the JSON<a href="#flatten-and-process-the-json" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
@@ -656,10 +688,10 @@ b'{&quot;breadcrumbs&quot;: [{&quot;Library of Congress&quot;: &quot;https://www
 <span class="nb">print</span><span class="p">(</span><span class="n">blob_data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">])</span>
     <span class="c1"># create_gcs_bucket(gcs_client, bucket_name)</span>
 </code></pre></div><pre><code>trying creds file
-Buckets: ['loc-scraper', 'smart-axis-421517_cloudbuild']
-First valid blob selected: result-1-.json
-First blob name: result-1-.json
-Blob 'result-1-.json' downloaded to memory.
+Buckets: ['loc-scraper', 'loc_flattener_processed', 'processed_results', 'smart-axis-421517_cloudbuild']
+First valid blob selected: result-10.json
+First blob name: result-10.json
+Blob 'result-10.json' downloaded to memory.
 b'{&quot;breadcrumbs&quot;: [{&quot;Library of Congress&quot;: &quot;https://www.loc.gov&quot;}, {&quot;Digital Collections&quot;: &quot;https://ww'
 </code></pre>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">json_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
@@ -667,99 +699,96 @@ b'{&quot;breadcrumbs&quot;: [{&quot;Library of Congress&quot;: &quot;https://www
 </code></pre>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">json_data</span><span class="p">[</span><span class="s2">&#34;results&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div><pre><code>{'access_restricted': False,
- 'aka': ['http://www.loc.gov/item/usrep101572/',
-  'http://www.loc.gov/resource/usrep.usrep101572/',
-  'http://www.loc.gov/item/usrep.usrep101572/'],
+ 'aka': ['http://www.loc.gov/item/usrep308213/',
+  'http://www.loc.gov/resource/usrep.usrep308213/',
+  'http://www.loc.gov/item/usrep.usrep308213/'],
  'campaigns': [],
- 'contributor': ['supreme court of the united states',
-  'field, stephen johnson'],
- 'date': '1879',
- 'dates': ['1879'],
+ 'contributor': ['stone, harlan fiske', 'supreme court of the united states'],
+ 'date': '1939',
+ 'dates': ['1939'],
  'digitized': True,
- 'extract_timestamp': '2023-12-04T18:39:03.474Z',
- 'group': ['usrep101', 'us-report'],
+ 'extract_timestamp': '2023-12-04T18:41:50.547Z',
+ 'group': ['usrep103', 'us-report'],
  'hassegments': False,
- 'id': 'http://www.loc.gov/item/usrep101572/',
- 'image_url': ['https://tile.loc.gov/storage-services/service/ll/usrep/usrep101/usrep101572/usrep101572.gif#h=150&amp;w=100'],
- 'index': 1,
+ 'id': 'http://www.loc.gov/item/usrep308213/',
+ 'image_url': ['https://tile.loc.gov/storage-services/service/ll/usrep/usrep308/usrep308213/usrep308213.gif#h=150&amp;w=100'],
+ 'index': 631,
  'item': {'call_number': ['Call Number: KF101',
-   'Series: Accounting Law',
-   'Series: Volume 101'],
-  'contributors': ['Field, Stephen Johnson (Judge)',
+   'Series: Administrative Law',
+   'Series: Volume 308'],
+  'contributors': ['Stone, Harlan Fiske (Judge)',
    'Supreme Court of the United States (Author)'],
-  'created_published': ['1879'],
-  'date': '18790000',
+  'created_published': ['1939'],
+  'date': '19390000',
   'format': 'periodical',
   'genre': ['Periodical'],
   'language': ['eng'],
-  'notes': ['Description: U.S. Reports Volume 101; October Term, 1879; Cowdrey v. Vandenburgh'],
+  'notes': ['Description: U.S. Reports Volume 308; October Term, 1939; Union Stock Yard &amp; Transit Co. v. United States et al.'],
   'rights': 'no known restrictions on use or reproduction',
   'source_collection': 'U.S. Reports',
-  'subjects': ['Contracts',
+  'subjects': ['Livestock',
    'Law',
+   'Railroads',
    'Law Library',
    'Supreme Court',
    'United States',
    'Government Documents',
    'Judicial review and appeals',
-   'Roads and highways',
-   'Accounting and auditing',
-   'State and local government',
-   'Public works',
+   'Agency',
+   'Tariffs',
+   'Interstate commerce',
+   'Administrative law and regulatory procedure',
    'U.S. Reports',
    'Common law',
    'Court opinions',
    'Judicial decisions',
    'Court cases',
    'Court decisions',
-   'Equity',
-   'Estoppel',
-   'Municipal corporations and associations',
-   'Non-negotiable demand',
+   'Interstate Commerce Commission (I.C.C.)',
+   'Agency jurisdiction',
    'Periodical'],
-  'title': 'U.S. Reports: Cowdrey v. Vandenburgh, 101 U.S. 572 (1880).'},
+  'title': 'U.S. Reports: Union Stock Yard Co. v. U.S., 308 U.S. 213 (1939).'},
  'language': ['english'],
  'mime_type': ['image/gif', 'application/pdf'],
  'online_format': ['image', 'pdf'],
  'original_format': ['periodical'],
  'other_title': [],
- 'partof': ['u.s. reports: accounting law',
-  'u.s. reports: volume 101',
+ 'partof': ['u.s. reports: volume 308',
+  'u.s. reports: administrative law',
   'law library of congress',
   'united states reports (official opinions of the u.s. supreme court)'],
  'resources': [{'files': 1,
-   'image': 'https://tile.loc.gov/storage-services/service/ll/usrep/usrep101/usrep101572/usrep101572.gif',
-   'pdf': 'https://tile.loc.gov/storage-services/service/ll/usrep/usrep101/usrep101572/usrep101572.pdf',
-   'url': 'https://www.loc.gov/resource/usrep.usrep101572/'}],
- 'shelf_id': 'Call Number: KF101 Series: Accounting Law Series: Volume 101',
- 'subject': ['accounting and auditing',
-  'accounting law',
+   'image': 'https://tile.loc.gov/storage-services/service/ll/usrep/usrep308/usrep308213/usrep308213.gif',
+   'pdf': 'https://tile.loc.gov/storage-services/service/ll/usrep/usrep308/usrep308213/usrep308213.pdf',
+   'url': 'https://www.loc.gov/resource/usrep.usrep308213/'}],
+ 'shelf_id': 'Call Number: KF101 Series: Administrative Law Series: Volume 308',
+ 'subject': ['administrative law',
+  'livestock',
+  'railroads',
   'supreme court',
   'united states',
   'court opinions',
   'periodical',
-  'state and local government',
+  'agency',
+  'interstate commerce',
   'court cases',
   'judicial decisions',
-  'equity',
   'law library',
-  'roads and highways',
-  'municipal corporations and associations',
+  'interstate commerce commission (i.c.c.)',
   'judicial review and appeals',
-  'contracts',
-  'public works',
   'government documents',
-  'estoppel',
+  'administrative law and regulatory procedure',
   'law',
   'common law',
   'court decisions',
   'u.s. reports',
-  'non-negotiable demand'],
- 'subject_major_case_topic': ['accounting law'],
- 'timestamp': '2023-12-04T18:50:24.710Z',
- 'title': 'U.S. Reports: Cowdrey v. Vandenburgh, 101 U.S. 572 (1880).',
+  'tariffs',
+  'agency jurisdiction'],
+ 'subject_major_case_topic': ['administrative law'],
+ 'timestamp': '2023-12-04T19:05:12.397Z',
+ 'title': 'U.S. Reports: Union Stock Yard Co. v. U.S., 308 U.S. 213 (1939).',
  'type': ['periodical'],
- 'url': 'https://www.loc.gov/item/usrep101572/'}
+ 'url': 'https://www.loc.gov/item/usrep308213/'}
 </code></pre>
 <h4 id="use-pandas-to-normalize-the-data">Use Pandas to normalize the data<a href="#use-pandas-to-normalize-the-data" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">       <span class="c1"># Flatten the JSON content</span>
@@ -995,10 +1024,10 @@ b'{&quot;breadcrumbs&quot;: [{&quot;Library of Congress&quot;: &quot;https://www
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div><pre><code>trying creds file
-Buckets: ['loc-scraper', 'smart-axis-421517_cloudbuild']
-First valid blob selected: result-1-.json
-First blob name: result-1-.json
-Blob 'result-1-.json' downloaded to memory.
+Buckets: ['loc-scraper', 'loc_flattener_processed', 'processed_results', 'smart-axis-421517_cloudbuild']
+First valid blob selected: result-10.json
+First blob name: result-10.json
+Blob 'result-10.json' downloaded to memory.
 b'{&quot;breadcrumbs&quot;: [{&quot;Library of Congress&quot;: &quot;https://www.loc.gov&quot;}, {&quot;Digital Collections&quot;: &quot;https://ww'
 </code></pre>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># parser = argparse.ArgumentParser(description=&#39;Run the script locally or in the cloud.&#39;)</span>
@@ -1132,11 +1161,11 @@ b'{&quot;breadcrumbs&quot;: [{&quot;Library of Congress&quot;: &quot;https://www
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div><pre><code>trying creds file
-Buckets: ['loc-scraper', 'smart-axis-421517_cloudbuild']
+Buckets: ['loc-scraper', 'loc_flattener_processed', 'processed_results', 'smart-axis-421517_cloudbuild']
 Dataset supreme_court created.
-First valid blob selected: result-1-.json
-First blob name: result-1-.json
-Blob 'result-1-.json' downloaded to memory.
+First valid blob selected: result-10.json
+First blob name: result-10.json
+Blob 'result-10.json' downloaded to memory.
 Table items_staging created in dataset supreme_court.
 Table resources_staging created in dataset supreme_court.
 Table call_numbers_staging created in dataset supreme_court.
@@ -1145,9 +1174,9 @@ Table subjects_staging created in dataset supreme_court.
 Table notes_staging created in dataset supreme_court.
 Loaded 70 rows into supreme_court:items_staging.
 Loaded 70 rows into supreme_court:resources_staging.
-Loaded 227 rows into supreme_court:call_numbers_staging.
-Loaded 137 rows into supreme_court:contributors_staging.
-Loaded 1558 rows into supreme_court:subjects_staging.
+Loaded 210 rows into supreme_court:call_numbers_staging.
+Loaded 138 rows into supreme_court:contributors_staging.
+Loaded 1570 rows into supreme_court:subjects_staging.
 Loaded 70 rows into supreme_court:notes_staging.
 </code></pre>
 <h4 id="moving-the-processed-blobs-to-a-processed-bucket">Moving the Processed blobs to a Processed Bucket<a href="#moving-the-processed-blobs-to-a-processed-bucket" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
@@ -1404,11 +1433,11 @@ Loaded 70 rows into supreme_court:notes_staging.
     <span class="n">main</span><span class="p">()</span>
 
 </code></pre></div><pre><code>trying creds file
-Buckets: ['loc-scraper', 'loc_flattener_processed', 'smart-axis-421517_cloudbuild']
+Buckets: ['loc-scraper', 'loc_flattener_processed', 'processed_results', 'smart-axis-421517_cloudbuild']
 Dataset supreme_court created.
-First valid blob selected: result-1-.json
-First blob name: result-1-.json
-Blob 'result-1-.json' downloaded to memory.
+First valid blob selected: result-10.json
+First blob name: result-10.json
+Blob 'result-10.json' downloaded to memory.
 Table items_staging created in dataset supreme_court.
 Table resources_staging created in dataset supreme_court.
 Table call_numbers_staging created in dataset supreme_court.
@@ -1417,11 +1446,11 @@ Table subjects_staging created in dataset supreme_court.
 Table notes_staging created in dataset supreme_court.
 Loaded 70 rows into supreme_court:items_staging.
 Loaded 70 rows into supreme_court:resources_staging.
-Loaded 227 rows into supreme_court:call_numbers_staging.
-Loaded 137 rows into supreme_court:contributors_staging.
-Loaded 1558 rows into supreme_court:subjects_staging.
+Loaded 210 rows into supreme_court:call_numbers_staging.
+Loaded 138 rows into supreme_court:contributors_staging.
+Loaded 1570 rows into supreme_court:subjects_staging.
 Loaded 70 rows into supreme_court:notes_staging.
-Blob result-1-.json moved to loc_flattener_processed and deleted from loc-scraper
+Blob result-10.json moved to loc_flattener_processed and deleted from loc-scraper
 </code></pre>
 <h4 id="add-while-true-logic-and-clean-up-the-script">Add while true logic and clean up the script<a href="#add-while-true-logic-and-clean-up-the-script" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">import</span> <span class="nn">os</span>
@@ -1653,35 +1682,102 @@ Blob result-1-.json moved to loc_flattener_processed and deleted from loc-scrape
     <span class="n">main</span><span class="p">()</span>
 
 
-</code></pre></div><h3 id="next-steps">Next Steps<a href="#next-steps" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<p>Run this in gcp cloud run</p>
-
+</code></pre></div><h3 id="gcp-cloud-run">GCP Cloud Run<a href="#gcp-cloud-run" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>I want this to run autonomously for me on GCP</p>
+<p>To do this I will need to</p>
+<ol>
+<li>Create a DockerFile</li>
+<li>Build the image on gcp</li>
+<li>create a job to run it</li>
+</ol>
+<h3 id="create-the-dockerfile">Create the DockerFile<a href="#create-the-dockerfile" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>My Dockerfile looks something like this. Ignore the quickstart code thta i&rsquo;ve commente dout. I use that as a reference.</p>
+<p><a href="https://raw.githubusercontent.com/justin-napolitano/loc_normalizer/main/Dockerfile">GH Link</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># # Use the Alpine Linux base image</span><span class="w">
+</span><span class="w"></span><span class="c"># FROM alpine:latest</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># # Set the working directory inside the container</span><span class="w">
+</span><span class="w"></span><span class="c"># WORKDIR /app</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># # Copy a simple script that prints &#34;Hello, World!&#34; into the container</span><span class="w">
+</span><span class="w"></span><span class="c"># COPY /src/hello.sh .</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># # Make the script executable</span><span class="w">
+</span><span class="w"></span><span class="c"># RUN chmod +x hello.sh</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># # Define the command to run when the container starts</span><span class="w">
+</span><span class="w"></span><span class="c"># CMD [&#34;./hello.sh&#34;]</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># Use the official Python image from Docker Hub</span><span class="w">
+</span><span class="w"></span><span class="l">FROM python:3.10-slim</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># Set the working directory in the container</span><span class="w">
+</span><span class="w"></span><span class="l">WORKDIR /app</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># Copy the current directory contents into the container at /app</span><span class="w">
+</span><span class="w"></span><span class="l">COPY ./src /app</span><span class="w">
+</span><span class="w"></span><span class="l">COPY requirements.txt /app</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># Install any needed dependencies specified in requirements.txt</span><span class="w">
+</span><span class="w"></span><span class="l">RUN pip install --no-cache-dir -r requirements.txt</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># Run the Python script when the container launches</span><span class="w">
+</span><span class="w"></span><span class="l">CMD [&#34;python&#34;, &#34;loc_scraper.py&#34;]</span><span class="w">
+</span></code></pre></div><h4 id="using-cloudbuild">Using Cloudbuild<a href="#using-cloudbuild" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>I want to automate the entire build and deploy process by passing the steps to google&rsquo;s cloud build service.</p>
+<p>My <a href="https://github.com/justin-napolitano/loc_normalizer/blob/main/src/cloudbuild.yaml">file</a> looks like this&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">
+</span><span class="w"></span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;gcr.io/cloud-builders/docker&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;build&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;-t&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;gcr.io/$PROJECT_ID/$IMAGE_NAME&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;gcr.io/cloud-builders/docker&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;push&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;gcr.io/$PROJECT_ID/$IMAGE_NAME&#39;</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;gcr.io/cloud-builders/gcloud&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;run&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;deploy&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$SERVICE_NAME&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">           </span><span class="s1">&#39;--image&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;gcr.io/$PROJECT_ID/$IMAGE_NAME&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">           </span><span class="s1">&#39;--platform&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;managed&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">           </span><span class="s1">&#39;--region&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$REGION&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">           </span><span class="s1">&#39;--allow-unauthenticated&#39;</span><span class="p">]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">substitutions</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">_PROJECT_ID</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;smart-axis-421517&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">_IMAGE_NAME</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;loc-flattener-image&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;loc-flattener&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">_REGION</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;us-west2&#39;</span><span class="w">  </span><span class="c"># e.g., us-central1</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;1200s&#39;</span><span class="w">
+</span></code></pre></div><h4 id="submit-the-build">Submit the build<a href="#submit-the-build" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>To sbumit the build run the following from the cli or save to as script.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">gcloud builds submit --config cloudbuild.yaml .
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+</code></pre></div>
 			</div>
 
 <div class="related-posts thin">
 	<h2></h2>
 	<ul>
 	
-	<li><a href="jnapolitano.com/posts/cost-of-living-projections/">Annual Cost of Living Monte Carlo Models</a></li>
+	<li><a href="jnapolitano.com/posts/l_o_c_scraper/">GCP Cloud Run Job Scraper</a></li>
 	
-	<li><a href="jnapolitano.com/posts/legal-research-part-8/">Conduct Legal Research with AI Part 8: Case Nodes Sample Data</a></li>
+	<li><a href="jnapolitano.com/posts/gh_submodule_sync/">Sync Gh Submodules Across a Super Project</a></li>
 	
-	<li><a href="jnapolitano.com/posts/masterpiece/">Legal Research with AI: Part 6</a></li>
+	<li><a href="jnapolitano.com/posts/gh-pages-workflow/">Hugo Build and Deploy GH Workflow</a></li>
 	
-	<li><a href="jnapolitano.com/posts/legal-research-part-5/">Conduct Legal Research with AI: Part 5</a></li>
+	<li><a href="jnapolitano.com/posts/create_deploy_cloud_run_job/">Create and Deploy Cloud Run Job Script</a></li>
 	
-	<li><a href="jnapolitano.com/posts/legal-research-part-4/">Conduct Legal Research with AI: Part 4</a></li>
+	<li><a href="jnapolitano.com/posts/hugo-rss-mysql-update/">Automate Posting Hugo Blog to Social Sites (with a db)</a></li>
 	
 	</ul>
 </div>
 
 		</article>
 		<div class="post-nav thin">
-			<a class="next-post" href="jnapolitano.com/posts/gh-pages-workflow/">
-				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;</span><br><span>Hugo Build and Deploy GH Workflow</span>
+			<a class="next-post" href="jnapolitano.com/posts/create_deploy_cloud_run_job/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;</span><br><span>Create and Deploy Cloud Run Job Script</span>
 			</a>
-			<a class="prev-post" href="jnapolitano.com/posts/logistic_regression_mockup/">
-				<span class="post-nav-label">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Model Design and Logistic Regression in Python</span>
+			<a class="prev-post" href="jnapolitano.com/posts/running/">
+				<span class="post-nav-label">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Running</span>
 			</a>
 		</div>
 		<div id="comments" class="thin"></div>

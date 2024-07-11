@@ -7,15 +7,36 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/gcp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Jul 2024 16:26:32 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/gcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>GCP Cloud Run: LOC Normalizer</title>
+      <title>Create and Deploy Cloud Run Job Script</title>
+      <link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>
+      <pubDate>Thu, 11 Jul 2024 16:26:32 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/create_deploy_cloud_run_job/</guid>
+      <description>Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build.
+Prerequisites Before using the deployment script, ensure you have the following:
+ Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.</description>
+    </item>
+    
+    <item>
+      <title>GCP Cloud Run: LOC Flattener</title>
       <link>jnapolitano.com/posts/loc_normalizer/</link>
-      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/posts/loc_normalizer/</guid>
       <description>Library of Congress Normalizer Job This repo normalizes the existing library of congress schema into a db that wil then be used to construct a knowledge graph of supreme court law.
 Plan  Setup a venv to run locally Install requirements Write out the script to interface with gcp Set up a docker container and test locally build the image upload to gcp create the job  Setup the venv Install I installed virtualenv locally on ubuntu</description>
+    </item>
+    
+    <item>
+      <title>GCP Cloud Run Job Scraper</title>
+      <link>jnapolitano.com/posts/l_o_c_scraper/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/l_o_c_scraper/</guid>
+      <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.
+Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
     </item>
     
   </channel>
