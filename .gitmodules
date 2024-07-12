@@ -103,3 +103,6 @@
 [submodule "content/posts/instagram"]
 	path = content/posts/instagram
 	url = https://github.com/justin-napolitano/instagram.git
+[submodule "content/posts/hugo-mysql-db-setup"]
+	path = content/posts/hugo-mysql-db-setup
+	url = https://github.com/justin-napolitano/hugo-mysql-db-setup.git
