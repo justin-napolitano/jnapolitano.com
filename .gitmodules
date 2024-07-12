@@ -109,3 +109,6 @@
 [submodule "content/posts/setup-mysql-gcp"]
 	path = content/posts/setup-mysql-gcp
 	url = https://github.com/justin-napolitano/setup-mysql-gcp
+[submodule "content/posts/flask-api-updater"]
+	path = content/posts/flask-api-updater
+	url = https://github.com/justin-napolitano/flask-api-updater.git
