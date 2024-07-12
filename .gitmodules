@@ -100,3 +100,6 @@
 [submodule "content/posts/l_o_c_scraper"]
 	path = content/posts/l_o_c_scraper
 	url = https://github.com/justin-napolitano/loc_scraper.git
+[submodule "content/posts/instagram"]
+	path = content/posts/instagram
+	url = https://github.com/justin-napolitano/instagram.git
