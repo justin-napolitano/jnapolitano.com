@@ -106,3 +106,6 @@
 [submodule "content/posts/hugo-mysql-db-setup"]
 	path = content/posts/hugo-mysql-db-setup
 	url = https://github.com/justin-napolitano/hugo-mysql-db-setup.git
+[submodule "content/posts/setup-mysql-gcp"]
+	path = content/posts/setup-mysql-gcp
+	url = https://github.com/justin-napolitano/setup-mysql-gcp
