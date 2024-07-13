@@ -115,3 +115,6 @@
 [submodule "content/posts/video-games"]
 	path = content/posts/video-games
 	url = https://github.com/justin-napolitano/video-games.git
+[submodule "content/posts/bad-food"]
+	path = content/posts/bad-food
+	url = https://github.com/justin-napolitano/bad-food.git
