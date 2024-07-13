@@ -127,3 +127,6 @@
 [submodule "content/posts/current-time-script"]
 	path = content/posts/current-time-script
 	url = https://github.com/justin-napolitano/current-time-script.git
+[submodule "content/posts/windy-peak-mountain-lion-loop"]
+	path = content/posts/windy-peak-mountain-lion-loop
+	url = https://github.com/justin-napolitano/windy-peak-mountain-lion-loop.git
