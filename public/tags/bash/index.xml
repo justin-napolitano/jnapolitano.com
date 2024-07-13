@@ -7,7 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 11 Jul 2024 16:26:32 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jul 2024 14:30:55 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pull.. Commit.. And Push Bash Script</title>
+      <link>jnapolitano.com/posts/push-commits/</link>
+      <pubDate>Sat, 13 Jul 2024 14:30:55 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/push-commits/</guid>
+      <description>Push Committed and Uncommitted Changes Script This script traverses a specified directory of git repositories, pulls updates for all branches, checks for committed and uncommitted changes across all branches, and pushes those changes to the remote repository. For uncommitted changes, it creates a new branch called uncommitted, commits the changes with a message detailing the original branch, and then pushes the new branch to the remote. For the main branch, if there are committed changes, it moves those changes to a new branch called bad-practice and then pushes that branch to the remote repository.</description>
+    </item>
+    
+    <item>
+      <title>Update All Repos Bash Script</title>
+      <link>jnapolitano.com/posts/pull-all-repos/</link>
+      <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/pull-all-repos/</guid>
+      <description>Update Repositories Script This script recursively finds all git repositories in a specified directory and pulls the latest changes for each one.
+Prerequisites  Bash shell Git installed Proper permissions to access and modify the repositories  Installation   Create the script: Save the following script to a file named update_repos.sh:
+#!/bin/bash  # Define the default root directory where your repos are located DEFAULT_ROOT_DIR=&amp;#34;/home/cobra/Repos&amp;#34; # Use the provided argument as the root directory, or the default if none is provided ROOT_DIR=${1:-$DEFAULT_ROOT_DIR} echo &amp;#34;Starting update process for repositories in $ROOT_DIR&amp;#34; # Function to pull changes in a git repository pull_repo() { local repo_dir=$1 echo &amp;#34;Pulling updates in $repo_dir&amp;#34; cd &amp;#34;$repo_dir&amp;#34; || return git pull echo &amp;#34;Completed update in $repo_dir&amp;#34; cd - || return } # Export the function so it can be used by find -exec export -f pull_repo # Find all .</description>
+    </item>
+    
     <item>
       <title>Create and Deploy Cloud Run Job Script</title>
       <link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>

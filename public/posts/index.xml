@@ -12,6 +12,706 @@
 		<atom:link href="jnapolitano.com/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
+			<title>Pull.. Commit.. And Push Bash Script</title>
+			<link>jnapolitano.com/posts/push-commits/</link>
+			<pubDate>Sat, 13 Jul 2024 14:30:55 -0500</pubDate>
+			<guid>jnapolitano.com/posts/push-commits/</guid>
+			<description><![CDATA[Utility script to update all repos within a directory.]]></description>
+			<content type="html"><![CDATA[<h1 id="push-committed-and-uncommitted-changes-script">Push Committed and Uncommitted Changes Script</h1>
+<p>This script traverses a specified directory of git repositories, pulls updates for all branches, checks for committed and uncommitted changes across all branches, and pushes those changes to the remote repository. For uncommitted changes, it creates a new branch called <code>uncommitted</code>, commits the changes with a message detailing the original branch, and then pushes the new branch to the remote. For the <code>main</code> branch, if there are committed changes, it moves those changes to a new branch called <code>bad-practice</code> and then pushes that branch to the remote repository.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Bash shell</li>
+<li>Git installed</li>
+<li>Proper permissions to access and modify the repositories</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<h3 id="2-create-the-script">2. <strong>Create the script</strong>:</h3>
+<p>Save the following script to a file named <code>push_committed_changes.sh</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="c1"># Define the default root directory where your repos are located</span>
+<span class="nv">DEFAULT_ROOT_DIR</span><span class="o">=</span><span class="s2">&#34;/home/cobra/Repos&#34;</span>
+
+<span class="c1"># Define the default blacklist file location</span>
+<span class="nv">BLACKLIST_FILE</span><span class="o">=</span><span class="s2">&#34;/etc/commit_push_blacklist.conf&#34;</span>
+
+<span class="c1"># Define the GitHub username to check against</span>
+<span class="nv">GITHUB_USERNAME</span><span class="o">=</span><span class="s2">&#34;your_github_username&#34;</span>
+
+<span class="c1"># Parse arguments</span>
+<span class="nv">LOCAL_MODE</span><span class="o">=</span><span class="nb">false</span>
+<span class="k">while</span> <span class="o">[[</span> <span class="nv">$#</span> -gt <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">do</span>
+    <span class="k">case</span> <span class="nv">$1</span> in
+        --local<span class="o">)</span>
+            <span class="nv">LOCAL_MODE</span><span class="o">=</span><span class="nb">true</span>
+            <span class="nb">shift</span>
+            <span class="p">;;</span>
+        *<span class="o">)</span>
+            <span class="nv">ROOT_DIR</span><span class="o">=</span><span class="nv">$1</span>
+            <span class="nb">shift</span>
+            <span class="p">;;</span>
+    <span class="k">esac</span>
+<span class="k">done</span>
+
+<span class="c1"># Set ROOT_DIR to default if not set</span>
+<span class="nv">ROOT_DIR</span><span class="o">=</span><span class="si">${</span><span class="nv">ROOT_DIR</span><span class="k">:-</span><span class="nv">$DEFAULT_ROOT_DIR</span><span class="si">}</span>
+
+<span class="c1"># Export the BLACKLIST_FILE and GITHUB_USERNAME variables so they are available in subshells</span>
+<span class="nb">export</span> BLACKLIST_FILE
+<span class="nb">export</span> GITHUB_USERNAME
+
+<span class="c1"># Function to check if a repository is blacklisted</span>
+is_blacklisted<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">local</span> <span class="nv">repo_dir</span><span class="o">=</span><span class="nv">$1</span>
+    <span class="nb">echo</span> <span class="s2">&#34;    Checking for Blacklisted </span><span class="nv">$repo_dir</span><span class="s2"> in </span><span class="nv">$BLACKLIST_FILE</span><span class="s2">&#34;</span>
+    <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&#34;</span><span class="nv">$BLACKLIST_FILE</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;    BLACKLIST_FILE is not set&#34;</span>
+        <span class="k">return</span> <span class="m">1</span>
+    <span class="k">fi</span>
+    <span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">&#34;</span><span class="nv">$BLACKLIST_FILE</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;    Blacklist file does not exist: </span><span class="nv">$BLACKLIST_FILE</span><span class="s2">&#34;</span>
+        <span class="k">return</span> <span class="m">1</span>
+    <span class="k">fi</span>
+    grep -qxF <span class="s2">&#34;</span><span class="nv">$repo_dir</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$BLACKLIST_FILE</span><span class="s2">&#34;</span>
+    <span class="nb">local</span> <span class="nv">result</span><span class="o">=</span><span class="nv">$?</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$result</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;    </span><span class="nv">$repo_dir</span><span class="s2"> is blacklisted&#34;</span>
+    <span class="k">else</span>
+        <span class="nb">echo</span> <span class="s2">&#34;    </span><span class="nv">$repo_dir</span><span class="s2"> is not blacklisted&#34;</span>
+    <span class="k">fi</span>
+    <span class="k">return</span> <span class="nv">$result</span>
+<span class="o">}</span>
+
+<span class="c1"># Function to check if a repository belongs to the specified user</span>
+belongs_to_user<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">local</span> <span class="nv">repo_dir</span><span class="o">=</span><span class="nv">$1</span>
+    <span class="nb">local</span> <span class="nv">remote_url</span><span class="o">=</span><span class="k">$(</span>git -C <span class="s2">&#34;</span><span class="nv">$repo_dir</span><span class="s2">&#34;</span> remote get-url origin 2&gt;/dev/null<span class="k">)</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$remote_url</span><span class="s2">&#34;</span> <span class="o">==</span> *<span class="s2">&#34;</span><span class="nv">$GITHUB_USERNAME</span><span class="s2">&#34;</span>* <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="k">return</span> <span class="m">0</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="m">1</span>
+    <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="c1"># Function to check if a remote branch exists</span>
+remote_branch_exists<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">local</span> <span class="nv">branch</span><span class="o">=</span><span class="nv">$1</span>
+    <span class="nb">local</span> <span class="nv">repo_dir</span><span class="o">=</span><span class="nv">$2</span>
+    git -C <span class="s2">&#34;</span><span class="nv">$repo_dir</span><span class="s2">&#34;</span> ls-remote --exit-code --heads origin <span class="s2">&#34;</span><span class="nv">$branch</span><span class="s2">&#34;</span> &gt;/dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span>
+    <span class="k">return</span> <span class="nv">$?</span>
+<span class="o">}</span>
+
+<span class="c1"># Function to pull all branches</span>
+pull_all_branches<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">local</span> <span class="nv">repo_dir</span><span class="o">=</span><span class="nv">$1</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Pulling updates in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+    <span class="nb">cd</span> <span class="s2">&#34;</span><span class="nv">$repo_dir</span><span class="s2">&#34;</span> <span class="o">||</span> <span class="k">return</span>
+    
+    <span class="c1"># Fetch all branches</span>
+    git fetch --all
+    
+    <span class="c1"># Get a list of all branches</span>
+    <span class="nv">branches</span><span class="o">=</span><span class="k">$(</span>git branch -r <span class="p">|</span> grep -v <span class="s1">&#39;\-&gt;&#39;</span><span class="k">)</span>
+    
+    <span class="c1"># Checkout and pull each branch</span>
+    <span class="k">for</span> branch in <span class="nv">$branches</span><span class="p">;</span> <span class="k">do</span>
+        <span class="nv">local_branch</span><span class="o">=</span><span class="si">${</span><span class="nv">branch</span><span class="p">#origin/</span><span class="si">}</span>
+        git checkout <span class="s2">&#34;</span><span class="nv">$local_branch</span><span class="s2">&#34;</span> <span class="o">||</span> git checkout -b <span class="s2">&#34;</span><span class="nv">$local_branch</span><span class="s2">&#34;</span> <span class="s2">&#34;origin/</span><span class="nv">$local_branch</span><span class="s2">&#34;</span>
+        git pull origin <span class="s2">&#34;</span><span class="nv">$local_branch</span><span class="s2">&#34;</span>
+    <span class="k">done</span>
+    
+    <span class="nb">cd</span> - <span class="o">||</span> <span class="k">return</span>
+<span class="o">}</span>
+
+<span class="c1"># Function to push only committed changes across all branches</span>
+push_committed_changes<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">local</span> <span class="nv">repo_dir</span><span class="o">=</span><span class="nv">$1</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Processing repository in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+    <span class="nb">cd</span> <span class="s2">&#34;</span><span class="nv">$repo_dir</span><span class="s2">&#34;</span> <span class="o">||</span> <span class="k">return</span>
+
+    <span class="k">if</span> is_blacklisted <span class="s2">&#34;</span><span class="nv">$repo_dir</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;    Repository is blacklisted, skipping </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+        <span class="nb">cd</span> - <span class="o">||</span> <span class="k">return</span>
+        <span class="k">return</span>
+    <span class="k">fi</span>
+
+    <span class="k">if</span> ! belongs_to_user <span class="s2">&#34;</span><span class="nv">$repo_dir</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;    Repository does not belong to user </span><span class="nv">$GITHUB_USERNAME</span><span class="s2">, skipping </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+        <span class="nb">cd</span> - <span class="o">||</span> <span class="k">return</span>
+        <span class="k">return</span>
+    <span class="k">fi</span>
+
+    <span class="c1"># Pull all branches first</span>
+    pull_all_branches <span class="s2">&#34;</span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+
+    <span class="c1"># Get all branches</span>
+    <span class="nv">branches</span><span class="o">=</span><span class="k">$(</span>git <span class="k">for</span>-each-ref --format<span class="o">=</span><span class="s1">&#39;%(refname:short)&#39;</span> refs/heads/<span class="k">)</span>
+
+    <span class="k">for</span> branch in <span class="nv">$branches</span><span class="p">;</span> <span class="k">do</span>
+        git checkout <span class="s2">&#34;</span><span class="nv">$branch</span><span class="s2">&#34;</span>
+
+        <span class="c1"># Handle uncommitted changes</span>
+        <span class="k">if</span> <span class="o">[</span> -n <span class="s2">&#34;</span><span class="k">$(</span>git status --porcelain<span class="k">)</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nb">echo</span> <span class="s2">&#34;    Uncommitted changes found on branch </span><span class="nv">$branch</span><span class="s2"> in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+            git checkout -b uncommitted
+            git add .
+            git commit -m <span class="s2">&#34;Uncommitted changes from branch </span><span class="nv">$branch</span><span class="s2">&#34;</span>
+            git push --set-upstream origin uncommitted
+            <span class="nb">echo</span> <span class="s2">&#34;    Uncommitted changes have been committed and pushed to uncommitted branch in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+        <span class="k">fi</span>
+
+        <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$branch</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;main&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="c1"># Check if there are committed changes on the main branch</span>
+            <span class="k">if</span> git log origin/main..HEAD <span class="p">|</span> grep -q <span class="s2">&#34;.&#34;</span><span class="p">;</span> <span class="k">then</span>
+                <span class="nb">echo</span> <span class="s2">&#34;    Committed changes found on main branch in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+
+                <span class="c1"># Create and switch to the bad-practice branch</span>
+                git checkout -b bad-practice
+
+                <span class="c1"># Check if remote branch bad-practice exists, create if it doesn&#39;t</span>
+                <span class="k">if</span> ! remote_branch_exists <span class="s2">&#34;bad-practice&#34;</span> <span class="s2">&#34;</span><span class="nv">$repo_dir</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">then</span>
+                    git push --set-upstream origin bad-practice
+                <span class="k">else</span>
+                    git push origin bad-practice
+                <span class="k">fi</span>
+
+                <span class="nb">echo</span> <span class="s2">&#34;    Changes have been moved to and pushed on the bad-practice branch in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+            <span class="k">else</span>
+                <span class="nb">echo</span> <span class="s2">&#34;    No committed changes to push on the main branch in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+            <span class="k">fi</span>
+        <span class="k">else</span>
+            <span class="c1"># Check if there are committed changes to push on the current branch</span>
+            <span class="k">if</span> remote_branch_exists <span class="s2">&#34;</span><span class="nv">$branch</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$repo_dir</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">then</span>
+                <span class="k">if</span> git log origin/<span class="s2">&#34;</span><span class="nv">$branch</span><span class="s2">&#34;</span>..HEAD <span class="p">|</span> grep -q <span class="s2">&#34;.&#34;</span><span class="p">;</span> <span class="k">then</span>
+                    <span class="nb">echo</span> <span class="s2">&#34;    Committed changes found on branch </span><span class="nv">$branch</span><span class="s2"> in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+                    git push origin <span class="s2">&#34;</span><span class="nv">$branch</span><span class="s2">&#34;</span>
+                    <span class="nb">echo</span> <span class="s2">&#34;    Changes have been pushed to remote branch </span><span class="nv">$branch</span><span class="s2"> in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+                <span class="k">else</span>
+                    <span class="nb">echo</span> <span class="s2">&#34;    No committed changes to push on branch </span><span class="nv">$branch</span><span class="s2"> in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+                <span class="k">fi</span>
+            <span class="k">else</span>
+                <span class="nb">echo</span> <span class="s2">&#34;    Remote branch </span><span class="nv">$branch</span><span class="s2"> does not exist, pushing for the first time&#34;</span>
+                git push --set-upstream origin <span class="s2">&#34;</span><span class="nv">$branch</span><span class="s2">&#34;</span>
+            <span class="k">fi</span>
+        <span class="k">fi</span>
+    <span class="k">done</span>
+
+    <span class="nb">cd</span> - <span class="o">||</span> <span class="k">return</span>
+<span class="o">}</span>
+
+<span class="c1"># Export the functions so they can be used by find -exec</span>
+<span class="nb">export</span> -f push_committed_changes
+<span class="nb">export</span> -f pull_all_branches
+<span class="nb">export</span> -f is_blacklisted
+<span class="nb">export</span> -f belongs_to_user
+<span class="nb">export</span> -f remote_branch_exists
+
+<span class="k">if</span> <span class="nv">$LOCAL_MODE</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Running in local mode. Processing the current working directory.&#34;</span>
+    push_committed_changes <span class="s2">&#34;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&#34;</span>
+<span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Starting push process for repositories in </span><span class="nv">$ROOT_DIR</span><span class="s2">&#34;</span>
+
+    <span class="c1"># Ensure the blacklist file exists</span>
+    <span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">&#34;</span><span class="nv">$BLACKLIST_FILE</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;Blacklist file not found: </span><span class="nv">$BLACKLIST_FILE</span><span class="s2">&#34;</span>
+        <span class="nb">exit</span> <span class="m">1</span>
+    <span class="k">fi</span>
+
+    <span class="c1"># Find all .git directories and push committed changes across all branches</span>
+    find <span class="s2">&#34;</span><span class="nv">$ROOT_DIR</span><span class="s2">&#34;</span> -name <span class="s2">&#34;.git&#34;</span> -type d -exec bash -c <span class="s1">&#39;push_committed_changes &#34;$(dirname &#34;{}&#34;)&#34;&#39;</span> <span class="se">\;</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;All repositories processed.&#34;</span>
+</code></pre></div><h3 id="2-make-the-script-executable">2. <strong>Make the Script Executable</strong>:</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+chmod +x your-script-name
+
+</code></pre></div><h3 id="3-create-the-blacklist-file">3. <strong>Create the Blacklist File</strong>:</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo touch /etc/commit_push_blacklist.conf
+
+</code></pre></div><h3 id="4-set-your-git-username-in-the-script">4. <strong>Set Your Git Username in the Script</strong></h3>
+<ol start="5">
+<li><strong>Run The Script</strong></li>
+</ol>
+<ul>
+<li>In every repo</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">./push_committed_changes.sh <span class="o">[</span>path_to_repos<span class="o">]</span>
+</code></pre></div><ul>
+<li>Locally</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">./push_committed_changes.sh --local
+</code></pre></div>]]></content>
+			<postid> 0b90fb0a4e0977d54f283501fb939fca</postid>
+			<author>Justin Napolitano</author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
+			<title>Bad Food</title>
+			<link>jnapolitano.com/posts/bad-food/</link>
+			<pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
+			<guid>jnapolitano.com/posts/bad-food/</guid>
+			<description><![CDATA[%!s(<nil>)]]></description>
+			<content type="html"><![CDATA[<h1 id="bad-food">Bad Food</h1>
+<p>I am letting go of bad food.</p>
+<p>Bad food to me is</p>
+<ul>
+<li>Unhealthy</li>
+<li>Harmful to my teeth</li>
+<li>Meat (I will expand)</li>
+<li>Overly expensive</li>
+<li>Ornamental</li>
+<li>Idolized</li>
+</ul>
+<h2 id="unhealthy">Unhealthy</h2>
+<p>I do not really know what is unhealthy.. I think many things in moderation are probably okay.. That said I know that I want to avoid excess</p>
+<ol>
+<li>Salt</li>
+<li>Sugar</li>
+<li>Saturated Fat</li>
+<li>Calories</li>
+</ol>
+<p>So what do I actually eat now that I find unhealthy.</p>
+<h3 id="fast-food">Fast Food</h3>
+<p>I occasionally eat fast food.. Typically when I am on a road trip or when I do not plan well.. I am not going to do this&hellip; to the best of my ability again.</p>
+<h3 id="ice-cream">Ice Cream</h3>
+<p>There was a period when I was running 40ish miles a week. To keep up with my calorie demands I ate a lot of ice cream.  I quit eating ice cream because I felt gross.  I have more or less kept this up.. I will keep with it.</p>
+<h2 id="harmful-to-my-teeth">Harmful to My Teeth</h2>
+<p>I was not raised in an environment where it was easy to pick up healthy hygeine habits. I had to learn for myself how to care for my skin, teeth, body.. etc..  As I aside for a moment, this was not really my parent&rsquo;s fault.. It is generational back to my great grandparents (as far as I know).. It is just the reality of poor people from poor places.. from different times.. and of a different culture.</p>
+<p>Okay.. so back to the point&hellip; I have damaged my teeth moreso than I would have liked. I want to preserve what I have now.. As a teen  I ruined my teeth with soda. Into my early 20&rsquo;s I had worn down my molars badly because of soda consumption.</p>
+<p>I do not really drink soda anymore. I cannot think of when I had one last. Nonetheless I am going to try to avoid acidic and sugary sodas.. and foods to the best of my ability. I really do not want to pay for another root canal.</p>
+<h3 id="meat">Meat</h3>
+<p>Meat is not necessarily bad. I am adding this because I feel badly for consuming animal products in general.. and even worse for consuming animals unecessarily.  I think that there is a place for consuming animal products.. and eating meat.. but I do not know if it is really necessary for me..  Getting enough nutrients without meat and fat is incredibly difficult. It requires more effort.. I have cut consumption by 90ish percent.. As in I have almost completely stopped eating meat.. but I do consume at on of milk.</p>
+<h2 id="overly-expensive">Overly Expensive</h2>
+<p>I do not like feeling ripped off. I think much of the food on the market is overly priced to appeal to consumer trends. I do not want to eat food just because it is popular.. nor do I want to over pay for cheap food that fell off a sysco truck.</p>
+<h2 id="ornamental">Ornamental</h2>
+<p>I do not know if ornamental is the correct word for me to use.  I am thinking that I do not want to eat food that has been overly prepared.  Salt Bae with his gold leaf is what I mean. I think an artful preparation of food is okay..But I do not like gimmicks.</p>
+<h2 id="idolized">Idolized</h2>
+<p>I do not want to idolize a chef, my food, or anything really.</p>
+]]></content>
+			<postid> 7a3e5536dfc82cf75ab69b084968e3e7</postid>
+			<author>Justin Napolitano</author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
+			<title>Update All Repos Bash Script</title>
+			<link>jnapolitano.com/posts/pull-all-repos/</link>
+			<pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
+			<guid>jnapolitano.com/posts/pull-all-repos/</guid>
+			<description><![CDATA[Utility script to update all repos wihtin a directory.]]></description>
+			<content type="html"><![CDATA[<h1 id="update-repositories-script">Update Repositories Script</h1>
+<p>This script recursively finds all git repositories in a specified directory and pulls the latest changes for each one.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Bash shell</li>
+<li>Git installed</li>
+<li>Proper permissions to access and modify the repositories</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ol>
+<li>
+<p><strong>Create the script</strong>:
+Save the following script to a file named <code>update_repos.sh</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="c1"># Define the default root directory where your repos are located</span>
+<span class="nv">DEFAULT_ROOT_DIR</span><span class="o">=</span><span class="s2">&#34;/home/cobra/Repos&#34;</span>
+
+<span class="c1"># Use the provided argument as the root directory, or the default if none is provided</span>
+<span class="nv">ROOT_DIR</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">$DEFAULT_ROOT_DIR</span><span class="si">}</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;Starting update process for repositories in </span><span class="nv">$ROOT_DIR</span><span class="s2">&#34;</span>
+
+<span class="c1"># Function to pull changes in a git repository</span>
+pull_repo<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">local</span> <span class="nv">repo_dir</span><span class="o">=</span><span class="nv">$1</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Pulling updates in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+    <span class="nb">cd</span> <span class="s2">&#34;</span><span class="nv">$repo_dir</span><span class="s2">&#34;</span> <span class="o">||</span> <span class="k">return</span>
+    git pull
+    <span class="nb">echo</span> <span class="s2">&#34;Completed update in </span><span class="nv">$repo_dir</span><span class="s2">&#34;</span>
+    <span class="nb">cd</span> - <span class="o">||</span> <span class="k">return</span>
+<span class="o">}</span>
+
+<span class="c1"># Export the function so it can be used by find -exec</span>
+<span class="nb">export</span> -f pull_repo
+
+<span class="c1"># Find all .git directories and pull changes in their parent directories</span>
+find <span class="s2">&#34;</span><span class="nv">$ROOT_DIR</span><span class="s2">&#34;</span> -name <span class="s2">&#34;.git&#34;</span> -type d -exec bash -c <span class="s1">&#39;pull_repo &#34;$(dirname &#34;{}&#34;)&#34;&#39;</span> <span class="se">\;</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;All repositories updated.&#34;</span>
+</code></pre></div></li>
+<li>
+<p><strong>Make the script executable</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chmod +x update_repos.sh
+</code></pre></div></li>
+<li>
+<p><strong>Move the script to <code>/usr/local/bin</code></strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo mv update_repos.sh /usr/local/bin/update_repos
+</code></pre></div></li>
+<li>
+<p><strong>Verify the script is accessible</strong>:
+You can now run the script from anywhere by simply typing <code>update_repos</code> in the terminal.</p>
+</li>
+</ol>
+<h2 id="usage">Usage</h2>
+<ol>
+<li>
+<p>Open a terminal.</p>
+</li>
+<li>
+<p>Run the script by typing:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">update_repos <span class="o">[</span>path_to_repos<span class="o">]</span>
+</code></pre></div><ul>
+<li>If no path is provided, it defaults to <code>/home/cobra/Repos</code>.</li>
+</ul>
+</li>
+</ol>
+<p>The script will find all <code>.git</code> directories in the specified root directory and pull the latest changes for each repository. It will provide status updates during the process.</p>
+<h2 id="license">License</h2>
+<p>This project is licensed under the MIT License.</p>
+]]></content>
+			<postid> e2a4d37bbcf2a68787c98790e11e5bfa</postid>
+			<author>Justin Napolitano</author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
+			<title>Video Games</title>
+			<link>jnapolitano.com/posts/video-games/</link>
+			<pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
+			<guid>jnapolitano.com/posts/video-games/</guid>
+			<description><![CDATA[%!s(<nil>)]]></description>
+			<content type="html"><![CDATA[<h1 id="video-games">Video Games</h1>
+<p>I am letting go of video games.</p>
+<h2 id="binge">Binge</h2>
+<p>I binge two games annually.. Crusader Kings (whatver iteration is latest) and Europa Universalis 4. I find maybe twice a year where I play one or the other until I burn out.. Typically about 30 hours..</p>
+<p>This year I have also played about half of fallout 3 and equally as much of fallout 4.</p>
+<h2 id="lonliness">Lonliness</h2>
+<p>Playing games makes me feel horribly lonely. I mean terribly lonely.. So I play more to distract myself from how lonely I feel.</p>
+<h2 id="distraction">Distraction</h2>
+<p>I play games to distrct myself from things that I want to actually do.  I wanted to program tonigt.. but I told myself I had done enough.. I should have just programmed.</p>
+]]></content>
+			<postid> 599ff575fa399cfddf514db7b613954c</postid>
+			<author>Justin Napolitano</author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
+			<title>Automate Posting Hugo Blog to Social Sites (with a db) Part 3</title>
+			<link>jnapolitano.com/posts/setup-mysql-gcp/</link>
+			<pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
+			<guid>jnapolitano.com/posts/setup-mysql-gcp/</guid>
+			<description><![CDATA[Creating a CMS DB.. Because why not]]></description>
+			<content type="html"><![CDATA[<h1 id="automate-blog-with-gcp-mysql-server">Automate Blog with GCP MYSQL Server</h1>
+<p>So I am just going to create my own CMS.  I know there are other solutions.. but I am nearly there.. I also want to manage content like i manage a linux system.. So I am going to do this with a db.. bashscripts.. and linux servers.</p>
+<h2 id="create-the-mysql-instance">Create the MYSQL Instance</h2>
+<p>I could just use a db wihtin a container.. but i want to scale this out..I have a few ideas.. So I will be initializing the server on gcp</p>
+<h3 id="write-an-initialization-script">Write an initialization script</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="c1"># Source the .env file to load environment variables</span>
+<span class="nb">set</span> -o allexport
+<span class="nb">source</span> .env
+<span class="nb">set</span> -o allexport
+
+<span class="c1"># Set other variables</span>
+<span class="nv">PROJECT_ID</span><span class="o">=</span><span class="s2">&#34;smart-axis-421517&#34;</span>
+<span class="nv">INSTANCE_NAME</span><span class="o">=</span><span class="s2">&#34;jnapolitano-db&#34;</span>
+<span class="nv">REGION</span><span class="o">=</span><span class="s2">&#34;us-west2&#34;</span> <span class="c1"># e.g., us-central1</span>
+<span class="nv">DATABASE_NAME</span><span class="o">=</span><span class="s2">&#34;jnapolitano&#34;</span>
+<span class="nv">BUILDS_SQL_FILE</span><span class="o">=</span><span class="s2">&#34;builds.sql&#34;</span> <span class="c1"># Name of your builds SQL file</span>
+<span class="nv">FEED_SQL_FILE</span><span class="o">=</span><span class="s2">&#34;feed.sql&#34;</span>   <span class="c1"># Name of your feeds SQL file</span>
+
+<span class="c1"># Authenticate with GCP (make sure you have gcloud SDK installed and authenticated)</span>
+gcloud auth login
+
+<span class="c1"># Set the project</span>
+gcloud config <span class="nb">set</span> project <span class="nv">$PROJECT_ID</span>
+
+
+<span class="c1"># Enable the Cloud SQL Admin API</span>
+gcloud services <span class="nb">enable</span> sqladmin.googleapis.com
+
+
+<span class="c1"># Create a Cloud SQL instance</span>
+gcloud sql instances create <span class="nv">$INSTANCE_NAME</span> <span class="se">\
+</span><span class="se"></span>    --database-version<span class="o">=</span>MYSQL_8_0 <span class="se">\
+</span><span class="se"></span>    --cpu<span class="o">=</span><span class="m">2</span> <span class="se">\
+</span><span class="se"></span>    --memory<span class="o">=</span>7680MB <span class="se">\
+</span><span class="se"></span>    --region<span class="o">=</span><span class="nv">$REGION</span>
+
+<span class="c1"># Set the root password using environment variable</span>
+gcloud sql users set-password root <span class="se">\
+</span><span class="se"></span>    --host<span class="o">=</span>% <span class="se">\
+</span><span class="se"></span>    --instance<span class="o">=</span><span class="nv">$INSTANCE_NAME</span> <span class="se">\
+</span><span class="se"></span>    --password<span class="o">=</span><span class="nv">$ROOT_PASSWORD</span>
+
+<span class="c1"># Create a user called &#39;cobra&#39; using environment variable</span>
+gcloud sql users create cobra <span class="se">\
+</span><span class="se"></span>    --host<span class="o">=</span>% <span class="se">\
+</span><span class="se"></span>    --instance<span class="o">=</span><span class="nv">$INSTANCE_NAME</span> <span class="se">\
+</span><span class="se"></span>    --password<span class="o">=</span><span class="nv">$COBRA_PASSWORD</span>
+
+<span class="c1"># Grant superuser privileges to &#39;cobra&#39;</span>
+gcloud sql connect <span class="nv">$INSTANCE_NAME</span> --user<span class="o">=</span>root --quiet <span class="s">&lt;&lt; EOF
+</span><span class="s">ALTER USER &#39;cobra&#39;@&#39;%&#39; WITH GRANT OPTION;
+</span><span class="s">GRANT ALL PRIVILEGES ON *.* TO &#39;cobra&#39;@&#39;%&#39; WITH GRANT OPTION;
+</span><span class="s">FLUSH PRIVILEGES;
+</span><span class="s">EOF</span>
+
+<span class="c1"># Optional: Create a database (uncomment if needed)</span>
+<span class="c1"># DATABASE_NAME=&#34;your-database-name&#34;</span>
+<span class="c1"># gcloud sql databases create $DATABASE_NAME --instance=$INSTANCE_NAME</span>
+
+<span class="c1"># Create a database</span>
+gcloud sql databases create <span class="nv">$DATABASE_NAME</span> --instance<span class="o">=</span><span class="nv">$INSTANCE_NAME</span>
+
+<span class="c1"># Execute the SQL files to create the &#39;builds&#39; and &#39;feeds&#39; tables</span>
+gcloud sql connect <span class="nv">$INSTANCE_NAME</span> --user<span class="o">=</span>cobra --database<span class="o">=</span><span class="nv">$DATABASE_NAME</span> --quiet &lt; <span class="nv">$BUILDS_SQL_FILE</span>
+gcloud sql connect <span class="nv">$INSTANCE_NAME</span> --user<span class="o">=</span>cobra --database<span class="o">=</span><span class="nv">$DATABASE_NAME</span> --quiet &lt; <span class="nv">$FEED_SQL_FILE</span>
+
+
+<span class="nb">echo</span> <span class="s2">&#34;MySQL instance </span><span class="nv">$INSTANCE_NAME</span><span class="s2"> created successfully in project </span><span class="nv">$PROJECT_ID</span><span class="s2"> with superuser &#39;cobra&#39; and executed SQL files &#39;</span><span class="nv">$BUILDS_SQL_FILE</span><span class="s2">&#39; and &#39;</span><span class="nv">$FEEDS_SQL_FILE</span><span class="s2">&#39;.&#34;</span>
+
+
+</code></pre></div><h3 id="create-a-env-file-to-save-your-passwords">Create a .env file to save your passwords</h3>
+<p>There are a number of ways to keep passwords out of github. In this case I am just going to add the passes to a .env file and source it</p>
+<p>the file looks like</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># .env</span>
+<span class="nv">ROOT_PASSWORD</span><span class="o">=</span><span class="s2">&#34;your-pass&#34;</span>
+<span class="nv">COBRA_PASSWORD</span><span class="o">=</span><span class="s2">&#34;your-pass&#34;</span>
+</code></pre></div><h3 id="run">Run</h3>
+<h3 id="chmod">Chmod</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+chmod +x your-script
+
+</code></pre></div><h3 id="write-the-sql-files-used-to-create-the-feed-and-builds-tables">Write the sql files used to create the feed and builds tables</h3>
+<p>I added a submodule that contains my scripts <a href="https://github.com/justin-napolitano/mysql-config">gh link</a></p>
+<h4 id="builds">Builds</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">builds</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">link</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">description</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">generator</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="k">language</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="n">copyright</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="n">lastBuildDate</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">atom_link_href</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="n">atom_link_rel</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="n">atom_link_type</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">);</span><span class="w">
+</span></code></pre></div><h4 id="feed">Feed</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">feed</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">link</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">pubDate</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">guid</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="n">description</span><span class="w"> </span><span class="nb">TEXT</span><span class="w">
+</span><span class="w"></span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span></code></pre></div><h3 id="run-the-script">Run the script</h3>
+<p><code>./yourscript</code></p>
+<p>The script should work and create your basic files.. I have some more work to do to create an api to update the tables.</p>
+]]></content>
+			<postid> fc0b85f31e653d91ada4e0921b181ee8</postid>
+			<author>Justin Napolitano</author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
+			<title>Automate Posting Hugo Blog to Social Sites (with a db) Part 4</title>
+			<link>jnapolitano.com/posts/flask-api-updater/</link>
+			<pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
+			<guid>jnapolitano.com/posts/flask-api-updater/</guid>
+			<description><![CDATA[Creating a CMS DB.. Because why not]]></description>
+			<content type="html"><![CDATA[<h1 id="gcp-flask-app">GCP Flask App</h1>
+<p>I created a db.. now I need update a few tables. Since the db is in gcp. I amgoing to create a quick flask app that will update the tables..</p>
+<p>I am using the quick start to get this one going.</p>
+<p>Source: <code>https://github.com/justin-napolitano/python-docs-samples/tree/main/cloud-sql/mysql/sqlalchemy</code></p>
+<h2 id="create-a-new-local-service-account">Create a New Local Service Account</h2>
+<p>Create a new local service account to be able to test the app locally.</p>
+<h2 id="create-a-new-role-for-the-cloud-run-service-account">Create a new role for the cloud run service account</h2>
+<p>Reference : <a href="https://cloud.google.com/sql/docs/mysql/connect-instance-cloud-run#deploy_sample_app_to">Reference Material</a></p>
+<p>Add the cloud run clien to the service account.. Follow directions above.</p>
+<h2 id="to-run-locally-we-need-some-environmental-variables">To run locally we need some environmental variables</h2>
+<p>There is a secrent manager available from google.. i will update all code to use that in the future.</p>
+<p><a href="https://cloud.google.com/secret-manager/docs/overview">secret manager documentation</a></p>
+<p>I created a .env with the following</p>
+<p>GOOGLE_APPLICATION_CREDENTIALS=&lsquo;secret.json&rsquo;
+INSTANCE_CONNECTION_NAME=&lsquo;smart-axis-421517:us-west2:jnapolitano-site&rsquo;
+DB_USER=&lsquo;cobra&rsquo;
+DB_PASS=&lsquo;your pass&rsquo;
+DB_NAME=&lsquo;jnapolitano&rsquo;</p>
+<h2 id="install-reqs">Install Reqs</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">virtualenv --python python3 env
+<span class="nb">source</span> env/bin/activate
+pip install -r requirements.txt
+</code></pre></div><h3 id="test-the-application">Test the Application</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python app.py
+</code></pre></div><p>Navigate towards http://127.0.0.1:8080 to verify your application is running correctly.</p>
+<h2 id="modify-the-app-for-our-needs">Modify the app for our needs</h2>
+<p>So the base app is a simple app that creates a table called votes and records the information.. I want to add two routes that will update two seperate tables in my database.</p>
+<h3 id="feed-route">Feed Route</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/update/feed&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">update_feed</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+    <span class="n">link</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;link&#39;</span><span class="p">)</span>
+    <span class="n">pubDate</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pubDate&#39;</span><span class="p">)</span>
+    <span class="n">guid</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;guid&#39;</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+
+    <span class="n">stmt</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+        <span class="s2">&#34;INSERT INTO feed (title, link, pubDate, guid, description) VALUES (:title, :link, :pubDate, :guid, :description)&#34;</span>
+    <span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&#34;title&#34;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+                <span class="s2">&#34;link&#34;</span><span class="p">:</span> <span class="n">link</span><span class="p">,</span>
+                <span class="s2">&#34;pubDate&#34;</span><span class="p">:</span> <span class="n">pubDate</span><span class="p">,</span>
+                <span class="s2">&#34;guid&#34;</span><span class="p">:</span> <span class="n">guid</span><span class="p">,</span>
+                <span class="s2">&#34;description&#34;</span><span class="p">:</span> <span class="n">description</span>
+            <span class="p">})</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s1">&#39;Error updating feed table&#39;</span><span class="p">}),</span> <span class="mi">500</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s1">&#39;Feed record added successfully&#39;</span><span class="p">}),</span> <span class="mi">201</span>
+
+
+</code></pre></div><h3 id="update-build-route">Update Build Route</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/update/builds&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">update_builds</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+    <span class="n">link</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;link&#39;</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+    <span class="n">generator</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;generator&#39;</span><span class="p">)</span>
+    <span class="n">language</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">)</span>
+    <span class="n">copyright</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;copyright&#39;</span><span class="p">)</span>
+    <span class="n">last_build_date</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lastBuildDate&#39;</span><span class="p">)</span>
+    <span class="n">atom_link_href</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;atom_link_href&#39;</span><span class="p">)</span>
+    <span class="n">atom_link_rel</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;atom_link_rel&#39;</span><span class="p">)</span>
+    <span class="n">atom_link_type</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;atom_link_type&#39;</span><span class="p">)</span>
+
+    <span class="n">stmt</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+        <span class="s2">&#34;INSERT INTO builds (title, link, description, generator, language, copyright, lastBuildDate, atom_link_href, atom_link_rel, atom_link_type) &#34;</span>
+        <span class="s2">&#34;VALUES (:title, :link, :description, :generator, :language, :copyright, :lastBuildDate, :atom_link_href, :atom_link_rel, :atom_link_type)&#34;</span>
+    <span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&#34;title&#34;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+                <span class="s2">&#34;link&#34;</span><span class="p">:</span> <span class="n">link</span><span class="p">,</span>
+                <span class="s2">&#34;description&#34;</span><span class="p">:</span> <span class="n">description</span><span class="p">,</span>
+                <span class="s2">&#34;generator&#34;</span><span class="p">:</span> <span class="n">generator</span><span class="p">,</span>
+                <span class="s2">&#34;language&#34;</span><span class="p">:</span> <span class="n">language</span><span class="p">,</span>
+                <span class="s2">&#34;copyright&#34;</span><span class="p">:</span> <span class="n">copyright</span><span class="p">,</span>
+                <span class="s2">&#34;lastBuildDate&#34;</span><span class="p">:</span> <span class="n">last_build_date</span><span class="p">,</span>
+                <span class="s2">&#34;atom_link_href&#34;</span><span class="p">:</span> <span class="n">atom_link_href</span><span class="p">,</span>
+                <span class="s2">&#34;atom_link_rel&#34;</span><span class="p">:</span> <span class="n">atom_link_rel</span><span class="p">,</span>
+                <span class="s2">&#34;atom_link_type&#34;</span><span class="p">:</span> <span class="n">atom_link_type</span>
+            <span class="p">})</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s1">&#39;Error updating builds table&#39;</span><span class="p">}),</span> <span class="mi">500</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s1">&#39;Build record added successfully&#39;</span><span class="p">}),</span> <span class="mi">201</span>
+</code></pre></div><h2 id="test-it-out">Test it out</h2>
+<h3 id="update-feed">Update-feed</h3>
+<p>create a bash called test-update-feed.sh&hellip; chmod +x it and then run.. You should get a response that says updated successfully.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+<span class="c1">#!/bin/bash</span>
+
+curl -X POST <span class="se">\
+</span><span class="se"></span>  http://127.0.0.1:8080/update/feed <span class="se">\
+</span><span class="se"></span>  -H <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  -d <span class="s1">&#39;{
+</span><span class="s1">    &#34;title&#34;: &#34;Create and Deploy Cloud Run Job Script&#34;,
+</span><span class="s1">    &#34;link&#34;: &#34;http://jnapolitano.com/posts/create_deploy_cloud_run_job/&#34;,
+</span><span class="s1">    &#34;pubDate&#34;: &#34;2024-07-11T16:26:32&#34;,
+</span><span class="s1">    &#34;guid&#34;: &#34;http://jnapolitano.com/posts/create_deploy_cloud_run_job/&#34;,
+</span><span class="s1">    &#34;description&#34;: &#34;Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build. Prerequisites Before using the deployment script, ensure you have the following: Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.&#34;
+</span><span class="s1">}&#39;</span>
+
+</code></pre></div><h3 id="update-build">Update build</h3>
+<p>Same as above but with this code</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+<span class="c1">#!/bin/bash</span>
+
+curl -X POST <span class="se">\
+</span><span class="se"></span>  http://127.0.0.1:8080/update/builds <span class="se">\
+</span><span class="se"></span>  -H <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  -d <span class="s1">&#39;{
+</span><span class="s1">    &#34;title&#34;: &#34;New Build Example&#34;,
+</span><span class="s1">    &#34;link&#34;: &#34;http://example.com/build&#34;,
+</span><span class="s1">    &#34;description&#34;: &#34;This is a description of the build process.&#34;,
+</span><span class="s1">    &#34;generator&#34;: &#34;Build Generator 1.0&#34;,
+</span><span class="s1">    &#34;language&#34;: &#34;Python&#34;,
+</span><span class="s1">    &#34;copyright&#34;: &#34;2024 Example Corp&#34;,
+</span><span class="s1">    &#34;lastBuildDate&#34;: &#34;2024-07-11T16:26:32&#34;,
+</span><span class="s1">    &#34;atom_link_href&#34;: &#34;http://example.com/index.xml&#34;,
+</span><span class="s1">    &#34;atom_link_rel&#34;: &#34;self&#34;,
+</span><span class="s1">    &#34;atom_link_type&#34;: &#34;application/rss+xml&#34;
+</span><span class="s1">}&#39;</span>
+
+</code></pre></div>]]></content>
+			<postid> 9f0e9fdb4b48abcd71822913f3fedc0a</postid>
+			<author>Justin Napolitano</author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
+			<title>Instragram</title>
+			<link>jnapolitano.com/posts/instagram/</link>
+			<pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
+			<guid>jnapolitano.com/posts/instagram/</guid>
+			<description><![CDATA[%!s(<nil>)]]></description>
+			<content type="html"><![CDATA[<h1 id="instagram">Instagram</h1>
+<p>I cannot help myself from abuse instagram. I tried&hellip; I want to connect with friends&hellip; but it is too addicting</p>
+<h2 id="scrolling">Scrolling</h2>
+<p>It is near impossible not to scroll. I try to catch up with my friends. I scroll. I feel sad.</p>
+<h2 id="connection">Connection</h2>
+<p>I want to connect.. Instagram can facillitate that.. However, these are often shallow connections. That might be okay, but if I want more than a quick rush&hellip; I need to make the effort to connect in person.</p>
+<h2 id="ads">Ads</h2>
+<p>Instagram pushes ads.. that are incredibly relevant to me. I want to purchase nearly all of them.  I did purchase $200.00 worth of fleece. I&rsquo;ve wanted it for a while.. but I do not really need it. I think the ads&hellip; and everything is an ad is what brings me down the most.</p>
+<h2 id="substitution">Substitution</h2>
+<p>I have tried to substitute the news for instagram. I do not think it is worthwhile. I have tried novels.. but I cannot just scroll through a novel in the same way I can with my insta&hellip; so in those idle times when I do not have the bandwidth to read a novel I need to find a good substitution.</p>
+<h2 id="chess-or-go">Chess or Go?</h2>
+<p>I think chess or go are good substitutes. I can play them pretty idly. I do not need to play well.. jus tplay for fun. I will improve over time.. probably.</p>
+]]></content>
+			<postid> f3d4df410213357a924b9dd4828d4566</postid>
+			<author>Justin Napolitano</author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
 			<title>Create and Deploy Cloud Run Job Script</title>
 			<link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>
 			<pubDate>Thu, 11 Jul 2024 16:26:32 -0500</pubDate>
@@ -2569,6 +3269,281 @@ git submodule update --init --recursive --remote
 <p>I need to write the publishing application. I haven&rsquo;t figure out how I&rsquo;ll do that yet. I want to do some cool things, but tbh it is probably overkill for my use case. I will think on it.</p>
 ]]></content>
 			<postid> e96b7764cd0230e572e3fcffb07caf32</postid>
+			<author>Justin Napolitano</author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
+			<title>Automate Posting Hugo Blog to Social Sites (with a db) Part 2</title>
+			<link>jnapolitano.com/posts/hugo-mysql-db-setup/</link>
+			<pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+			<guid>jnapolitano.com/posts/hugo-mysql-db-setup/</guid>
+			<description><![CDATA[How To automate posting to social sites]]></description>
+			<content type="html"><![CDATA[<h2 id="background">Background</h2>
+<h3 id="previous-posts-in-this-series">Previous posts in this series</h3>
+<ol>
+<li><a href="https://jnapolitano.com/en/posts/hugo-social-publisher/">part 1</a></li>
+<li><a href="https://jnapolitano.com/en/posts/python-rss-reader/">part 2</a></li>
+<li><a href="https://jnapolitano.com/en/posts/mysql-install-buntu/">part 3</a></li>
+<li><a href="https://jnapolitano.com/en/posts/mysql-config/">part 4</a></li>
+<li><a href="https://jnapolitano.com/en/posts/hugo-rss-setup/">part 5</a></li>
+<li><a href="https://jnapolitano.com/en/posts/hugo-rss-mysql-update/">part 6</a></li>
+</ol>
+<h3 id="expand-a-the-mysql-class">Expand a the mysql class</h3>
+<p>I create a <a href="https://github.com/justin-napolitano/mysql-utility-class.git">repo</a> at <code>https://github.com/justin-napolitano/mysql-utility-class.git</code> to enable importing as a submodule the class that i have been workign on.</p>
+<h3 id="set-up-the-db">Set up the db</h3>
+<p>In <a href="https://jnapolitano.com/en/posts/mysql-config/">another part in this series</a>, I detailed setting up the mysql db via the command line. I am going to furher that workflow by modifying the files in that repo and then running thm to generat tables within my instance of mysql.</p>
+<h2 id="setup-you-dev-environmentagain">Setup you dev environment&hellip;again</h2>
+<h3 id="copy-the-env-file">Copy the .env file</h3>
+<p>Copy over the .env files from the previous few steps.</p>
+<h3 id="import-the-config-repo">Import the Config repo</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+git submodule add https://github.com/justin-napolitano/mysql-config.git mysql-config
+
+</code></pre></div><h3 id="import-the-utility-class-repo">Import the utility class repo</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+git submodule add https://github.com/justin-napolitano/mysql-utility-class.git mysql-utility-class   
+
+</code></pre></div><h3 id="setup-the-package-as-a-module">Setup the package as a module</h3>
+<h4 id="from-root-drop-an-empty-__init_py-file">From root drop an empty _<em>init</em>.py file</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+touch __init__.py
+</code></pre></div><h4 id="from-the-utility-class-directory-drop-another-__init__py">From the utility class directory drop another <strong>init</strong>.py</h4>
+<p>This one however will contain a relative import to enable access to the class</p>
+<h5 id="touch">Touch</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> <span class="o">{</span>to the utility class directory<span class="o">}</span> <span class="o">&amp;&amp;</span> touch __init__.py
+
+</code></pre></div><h5 id="echo-to-file">Echo to file</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+<span class="nb">echo</span> <span class="s2">&#34;from .MySQLConnector import MySQLConnector&#34;</span> &gt; __init__.py
+
+</code></pre></div><h4 id="check-the-module-hierarchy">Check the module hierarchy</h4>
+<p>We should be looking like this</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">your_project/
+|-- <span class="gs">__init__</span>.py
+|-- main.py
+|-- .env
+<span class="sb">`-- MySQLConnector/
+</span><span class="sb">    |-- __init__.py
+</span><span class="sb">    `</span>-- MySQLConnector.py
+</code></pre></div><h2 id="create-the-main-file">Create the main file</h2>
+<h3 id="touch-mainpy">Touch main.py</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+touch main.,py
+
+</code></pre></div><h3 id="modify-mainpy">Modify main.py</h3>
+<p>My file currently looks like this to test the connect</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="kn">from</span> <span class="nn">MySQLConnector</span> <span class="kn">import</span> <span class="n">MySQLConnector</span>
+
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="n">load_dotenv</span><span class="p">()</span>  <span class="c1"># Load environment variables from .env file</span>
+    <span class="n">connection</span> <span class="o">=</span> <span class="n">MySQLConnector</span><span class="p">()</span>
+    <span class="n">connection</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+    <span class="n">connection</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+
+</code></pre></div><h3 id="test-the-conection">Test the conection</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+python -m main.py
+
+</code></pre></div><h3 id="modify-the-class-for-more-features">Modify the class for more features.</h3>
+<p>I want to be able to</p>
+<ul>
+<li>create a db</li>
+<li>drop a db</li>
+<li>use a db</li>
+<li>execute a script fro file</li>
+</ul>
+<h4 id="create-db">Create db</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+ <span class="k">def</span> <span class="nf">create_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">database_name</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;CREATE DATABASE </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;SHOW DATABASES LIKE &#39;</span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#39;&#34;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Database </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2"> created successfully&#34;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Database </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2"> was not created&#34;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error while creating database: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+</code></pre></div><h4 id="drop-db">Drop db</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+ <span class="k">def</span> <span class="nf">drop_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">database_name</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;DROP DATABASE </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;SHOW DATABASES LIKE &#39;</span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#39;&#34;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Database </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2"> dropped successfully&#34;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Database </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2"> was not dropped&#34;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error while dropping database: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div><h4 id="use-db">use db</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">def</span> <span class="nf">use_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">database_name</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;USE </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Using database </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error while selecting database: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></div><h4 id="execute-script">Execute Script</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">def</span> <span class="nf">execute_script_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">sql_script</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            
+            <span class="n">sql_commands</span> <span class="o">=</span> <span class="n">sql_script</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">sql_commands</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">command</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Executed: </span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;SQL script executed successfully&#34;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error while executing SQL script: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></div><h3 id="test-the-module">Test the module</h3>
+<p>With the added logic my main.py file looks like</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">def</span> <span class="nf">execute_script_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">sql_script</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            
+            <span class="n">sql_commands</span> <span class="o">=</span> <span class="n">sql_script</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">sql_commands</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">command</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Executed: </span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;SQL script executed successfully&#34;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error while executing SQL script: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+
+</code></pre></div><p>I execute with the following from the project root.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+python -m main.py
+
+</code></pre></div><h2 id="the-current-mysqlconnector-class">The current MySQLConnector Class</h2>
+<p>Below is as it stand.. The most up to date file can always be found at <code>https://github.com/justin-napolitano/mysql-utility-class.git</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">import</span> <span class="nn">mysql.connector</span>
+<span class="kn">from</span> <span class="nn">mysql.connector</span> <span class="kn">import</span> <span class="n">Error</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">class</span> <span class="nc">MySQLConnector</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DB_PASSWORD&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">database</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+                <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">,</span>
+                <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">,</span>
+                <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span>
+                <span class="c1"># Do not specify database here</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Connected to MySQL server&#34;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error while connecting to MySQL: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;MySQL connection is closed&#34;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">create_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">database_name</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;CREATE DATABASE </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;SHOW DATABASES LIKE &#39;</span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#39;&#34;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Database </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2"> created successfully&#34;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Database </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2"> was not created&#34;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error while creating database: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        
+    <span class="k">def</span> <span class="nf">drop_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">database_name</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;DROP DATABASE </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;SHOW DATABASES LIKE &#39;</span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#39;&#34;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Database </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2"> dropped successfully&#34;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Database </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2"> was not dropped&#34;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error while dropping database: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+
+    <span class="k">def</span> <span class="nf">use_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">database_name</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;USE </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Using database </span><span class="si">{</span><span class="n">database_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error while selecting database: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">execute_script_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">sql_script</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            
+            <span class="n">sql_commands</span> <span class="o">=</span> <span class="n">sql_script</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">sql_commands</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">command</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Executed: </span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;SQL script executed successfully&#34;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error while executing SQL script: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+
+
+<span class="c1"># Usage example</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="n">load_dotenv</span><span class="p">()</span>  <span class="c1"># Load environment variables from .env file</span>
+    <span class="n">db_name</span> <span class="o">=</span> <span class="s1">&#39;testing_db&#39;</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">MySQLConnector</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">create_database</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>  <span class="c1"># Replace &#39;new_database&#39; with the desired database name</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">use_database</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>  <span class="c1"># Use the specified database from .env</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">drop_database</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+
+</code></pre></div>]]></content>
+			<postid> 6eb350e18199df3715ef730ae448d803</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
 			<author_email>personal.jnapolitano@gmail.com</author_email>
