@@ -112,3 +112,6 @@
 [submodule "content/posts/flask-api-updater"]
 	path = content/posts/flask-api-updater
 	url = https://github.com/justin-napolitano/flask-api-updater.git
+[submodule "content/posts/video-games"]
+	path = content/posts/video-games
+	url = https://github.com/justin-napolitano/video-games.git
