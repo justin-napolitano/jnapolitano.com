@@ -124,3 +124,6 @@
 [submodule "content/posts/push-commits"]
 	path = content/posts/push-commits
 	url = https://github.com/justin-napolitano/push-commits.git
+[submodule "content/posts/current-time-script"]
+	path = content/posts/current-time-script
+	url = https://github.com/justin-napolitano/current-time-script.git
