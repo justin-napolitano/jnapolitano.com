@@ -7,13 +7,76 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 11 Jul 2024 16:26:32 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jul 2024 14:30:55 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>bash</title>
       <link>jnapolitano.com/tags/bash/</link>
-      <pubDate>Thu, 11 Jul 2024 16:26:32 -0500</pubDate>
+      <pubDate>Sat, 13 Jul 2024 14:30:55 -0500</pubDate>
       
       <guid>jnapolitano.com/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scripting</title>
+      <link>jnapolitano.com/tags/scripting/</link>
+      <pubDate>Sat, 13 Jul 2024 14:30:55 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/scripting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>anxiety</title>
+      <link>jnapolitano.com/tags/anxiety/</link>
+      <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/anxiety/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lifestyle</title>
+      <link>jnapolitano.com/tags/lifestyle/</link>
+      <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/lifestyle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fail</title>
+      <link>jnapolitano.com/tags/fail/</link>
+      <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/fail/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>jnapolitano.com/tags/hugo/</link>
+      <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>jnapolitano.com/tags/programming/</link>
+      <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>jnapolitano.com/tags/python/</link>
+      <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/tags/python/</guid>
       <description></description>
     </item>
     
@@ -72,15 +135,6 @@
     </item>
     
     <item>
-      <title>python</title>
-      <link>jnapolitano.com/tags/python/</link>
-      <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>workflow automation</title>
       <link>jnapolitano.com/tags/workflow-automation/</link>
       <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
@@ -113,33 +167,6 @@
       <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/tags/mountains/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fail</title>
-      <link>jnapolitano.com/tags/fail/</link>
-      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/fail/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>jnapolitano.com/tags/hugo/</link>
-      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>programming</title>
-      <link>jnapolitano.com/tags/programming/</link>
-      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/programming/</guid>
       <description></description>
     </item>
     
@@ -185,15 +212,6 @@
       <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Scripting</title>
-      <link>jnapolitano.com/tags/scripting/</link>
-      <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/scripting/</guid>
       <description></description>
     </item>
     
