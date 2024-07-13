@@ -121,3 +121,6 @@
 [submodule "content/posts/pull-all-repos"]
 	path = content/posts/pull-all-repos
 	url = https://github.com/justin-napolitano/pull-all-repos.git
+[submodule "content/posts/push-commits"]
+	path = content/posts/push-commits
+	url = https://github.com/justin-napolitano/push-commits.git
