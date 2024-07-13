@@ -118,3 +118,6 @@
 [submodule "content/posts/bad-food"]
 	path = content/posts/bad-food
 	url = https://github.com/justin-napolitano/bad-food.git
+[submodule "content/posts/pull-all-repos"]
+	path = content/posts/pull-all-repos
+	url = https://github.com/justin-napolitano/pull-all-repos.git
