@@ -7,7 +7,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Sun, 30 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Automate Posting Hugo Blog to Social Sites (with a db) Part 3</title>
+      <link>jnapolitano.com/posts/setup-mysql-gcp/</link>
+      <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/setup-mysql-gcp/</guid>
+      <description>Automate Blog with GCP MYSQL Server So I am just going to create my own CMS. I know there are other solutions.. but I am nearly there.. I also want to manage content like i manage a linux system.. So I am going to do this with a db.. bashscripts.. and linux servers.
+Create the MYSQL Instance I could just use a db wihtin a container.. but i want to scale this out.</description>
+    </item>
+    
+    <item>
+      <title>Automate Posting Hugo Blog to Social Sites (with a db) Part 4</title>
+      <link>jnapolitano.com/posts/flask-api-updater/</link>
+      <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/flask-api-updater/</guid>
+      <description>GCP Flask App I created a db.. now I need update a few tables. Since the db is in gcp. I amgoing to create a quick flask app that will update the tables..
+I am using the quick start to get this one going.
+Source: https://github.com/justin-napolitano/python-docs-samples/tree/main/cloud-sql/mysql/sqlalchemy
+Create a New Local Service Account Create a new local service account to be able to test the app locally.
+Create a new role for the cloud run service account Reference : Reference Material</description>
+    </item>
+    
     <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db)</title>
       <link>jnapolitano.com/posts/hugo-rss-mysql-update/</link>
@@ -36,6 +59,16 @@ Prerequisites  Ensure that you have Git installed on your system. Ensure that yo
       
       <guid>jnapolitano.com/posts/python-rss-reader/</guid>
       <description>Thoughts on This Second Pass  I will create a script that parses the sites rss feed&amp;hellip; it will then traverse the xml tree entries&amp;hellip; if a date is newer than the last publish date&amp;hellip; publish that post&amp;hellip;  I am still thinking through how to publish. I will likely write a monolithic script here, but ideally I would write an api or a batch processor to handle this in some way.</description>
+    </item>
+    
+    <item>
+      <title>Automate Posting Hugo Blog to Social Sites (with a db) Part 2</title>
+      <link>jnapolitano.com/posts/hugo-mysql-db-setup/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/hugo-mysql-db-setup/</guid>
+      <description>Background Previous posts in this series  part 1 part 2 part 3 part 4 part 5 part 6  Expand a the mysql class I create a repo at https://github.com/justin-napolitano/mysql-utility-class.git to enable importing as a submodule the class that i have been workign on.
+Set up the db In another part in this series, I detailed setting up the mysql db via the command line. I am going to furher that workflow by modifying the files in that repo and then running thm to generat tables within my instance of mysql.</description>
     </item>
     
     <item>
