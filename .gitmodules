@@ -130,3 +130,6 @@
 [submodule "content/posts/windy-peak-mountain-lion-loop"]
 	path = content/posts/windy-peak-mountain-lion-loop
 	url = https://github.com/justin-napolitano/windy-peak-mountain-lion-loop.git
+[submodule "content/posts/schedule-gcp-chron-jobs"]
+	path = content/posts/schedule-gcp-chron-jobs
+	url = https://github.com/justin-napolitano/schedule-gcp-chron-jobs.git
