@@ -137,3 +137,7 @@
 	path = content/posts/gcp-secret-creation
 	url = https://github.com/justin-napolitano/gcp-secret-creation.py.git
 	branch = post
+[submodule "content/posts/mastodon-client"]
+	path = content/posts/mastodon-client
+	url = https://github.com/justin-napolitano/mastodon-client.git
+	branch = post
