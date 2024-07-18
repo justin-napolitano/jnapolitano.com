@@ -16,14 +16,14 @@
 <link rel="mask-icon" href="/jnapolitano.com/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Justin Napolitano"><meta name="description" content="Creating a CMS DB.. Because why not">
 <meta itemprop="name" content="Automate Posting Hugo Blog to Social Sites (with a db) Part 4">
 <meta itemprop="description" content="Creating a CMS DB.. Because why not"><meta itemprop="datePublished" content="2024-07-12T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2024-07-12T17:53:07-05:00" />
-<meta itemprop="wordCount" content="587"><meta itemprop="image" content="jnapolitano.com/images/feature-image.png">
+<meta itemprop="dateModified" content="2024-07-15T18:24:59-05:00" />
+<meta itemprop="wordCount" content="1502"><meta itemprop="image" content="jnapolitano.com/images/feature-image.png">
 <meta itemprop="keywords" content="python,hugo,programming,fail," /><meta property="og:title" content="Automate Posting Hugo Blog to Social Sites (with a db) Part 4" />
 <meta property="og:description" content="Creating a CMS DB.. Because why not" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="jnapolitano.com/posts/flask-api-updater/" /><meta property="og:image" content="jnapolitano.com/images/feature-image.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-07-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-07-12T17:53:07-05:00" />
+<meta property="article:modified_time" content="2024-07-15T18:24:59-05:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="jnapolitano.com/images/feature-image.png"/>
@@ -95,7 +95,7 @@
     
     
     
-    2 Minutes, 40 Seconds</p>
+    6 Minutes, 49 Seconds</p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2024-07-11 19:00 -0500</p></div>
 			<hr class="post-end">
 			<div class="content">
@@ -234,6 +234,242 @@ curl -X POST <span class="se">\
 </span><span class="s1">    &#34;atom_link_type&#34;: &#34;application/rss+xml&#34;
 </span><span class="s1">}&#39;</span>
 
+</code></pre></div><h2 id="testing-the-container-locally">Testing the Container Locally<a href="#testing-the-container-locally" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Once the app is confirmed to work we should test that the container builds as expected.</p>
+<h3 id="prerequisites">Prerequisites<a href="#prerequisites" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ul>
+<li>Docker installed on your local machine</li>
+<li>Flask application with a Dockerfile</li>
+<li><code>.env</code> file with environment variables</li>
+<li><code>secret.json</code> file for Google Application Credentials</li>
+</ul>
+<h3 id="step-1-prepare-the-env-file">Step 1: Prepare the <code>.env</code> File<a href="#step-1-prepare-the-env-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Create a <code>.env</code> file in your project directory with the following content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="nv">GOOGLE_APPLICATION_CREDENTIALS</span><span class="o">=</span>secret-path
+<span class="nv">INSTANCE_CONNECTION_NAME</span><span class="o">=</span>your-instance
+<span class="nv">DB_USER</span><span class="o">=</span><span class="nv">your</span><span class="o">=</span>user
+<span class="nv">DB_PASS</span><span class="o">=</span>yuour-pass
+<span class="nv">DB_NAME</span><span class="o">={</span>your-db<span class="o">}</span>
+<span class="nv">PORT</span><span class="o">=</span><span class="m">8080</span>
+</code></pre></div><h3 id="step-2-ensure-secretjson-is-included-in-the-docker-image">Step 2: Ensure <code>secret.json</code> is Included in the Docker Image<a href="#step-2-ensure-secretjson-is-included-in-the-docker-image" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Your Dockerfile should include a line to copy the <code>secret.json</code> file into the <code>/app</code> directory in the Docker image. Here is an example Dockerfile:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="c"># Use an official Python runtime as a parent image</span><span class="err">
+</span><span class="err"></span><span class="k">FROM</span><span class="s"> python:3.9-slim</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># Set the working directory</span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># Copy the current directory contents into the container at /app</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> . /app<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># Ensure the secret.json file is copied into the container</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> secret.json /app/secret.json<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># Install any needed packages specified in requirements.txt</span><span class="err">
+</span><span class="err"></span><span class="k">RUN</span> pip install --no-cache-dir -r requirements.txt<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># Make port 8080 available to the world outside this container</span><span class="err">
+</span><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 8080</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># Run gunicorn when the container launches</span><span class="err">
+</span><span class="err"></span><span class="k">CMD</span> <span class="nb">exec</span> gunicorn --bind :<span class="nv">$PORT</span> --workers <span class="m">1</span> --threads <span class="m">8</span> app:app<span class="err">
+</span></code></pre></div><h2 id="step-3-build-the-docker-image">Step 3: Build the Docker Image<a href="#step-3-build-the-docker-image" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>If you have made changes to the Dockerfile or added the <code>secret.json</code> file, build the Docker image:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker build -t flask-app .
+</code></pre></div><h3 id="step-4-run-the-docker-container-with-the-env-file">Step 4: Run the Docker Container with the <code>.env</code> File<a href="#step-4-run-the-docker-container-with-the-env-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Use the <code>--env-file</code> option to pass the environment variables from your <code>.env</code> file to the Docker container:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run --env-file .env -p 8080:8080 flask-app
+</code></pre></div><h3 id="step-5-verify-environment-variables-inside-the-container">Step 5: Verify Environment Variables Inside the Container<a href="#step-5-verify-environment-variables-inside-the-container" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>To verify that the environment variables are set correctly, start the container in interactive mode:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run -it --env-file .env flask-app /bin/sh
+</code></pre></div><p>Once inside the container, check the environment variables:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">echo</span> <span class="nv">$GOOGLE_APPLICATION_CREDENTIALS</span>
+<span class="nb">echo</span> <span class="nv">$INSTANCE_CONNECTION_NAME</span>
+<span class="nb">echo</span> <span class="nv">$DB_USER</span>
+<span class="nb">echo</span> <span class="nv">$DB_PASS</span>
+<span class="nb">echo</span> <span class="nv">$DB_NAME</span>
+<span class="nb">echo</span> <span class="nv">$PORT</span>
+</code></pre></div><h3 id="step-6-test-the-endpoints-locally">Step 6: Test the Endpoints Locally<a href="#step-6-test-the-endpoints-locally" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Create test scripts to test the endpoints.</p>
+<h4 id="create-test_update_builds_localsh">Create <code>test_update_builds_local.sh</code><a href="#create-test_update_builds_localsh" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Create a file named <code>test_update_builds_local.sh</code> with the following content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+curl -X POST <span class="se">\
+</span><span class="se"></span>  http://127.0.0.1:8080/update/builds <span class="se">\
+</span><span class="se"></span>  -H <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  -d <span class="s1">&#39;{
+</span><span class="s1">    &#34;title&#34;: &#34;New Build Example&#34;,
+</span><span class="s1">    &#34;link&#34;: &#34;http://example.com/build&#34;,
+</span><span class="s1">    &#34;description&#34;: &#34;This is a description of the build process.&#34;,
+</span><span class="s1">    &#34;generator&#34;: &#34;Build Generator 1.0&#34;,
+</span><span class="s1">    &#34;language&#34;: &#34;Python&#34;,
+</span><span class="s1">    &#34;copyright&#34;: &#34;2024 Example Corp&#34;,
+</span><span class="s1">    &#34;lastBuildDate&#34;: &#34;2024-07-11T16:26:32&#34;,
+</span><span class="s1">    &#34;atom_link_href&#34;: &#34;http://example.com/index.xml&#34;,
+</span><span class="s1">    &#34;atom_link_rel&#34;: &#34;self&#34;,
+</span><span class="s1">    &#34;atom_link_type&#34;: &#34;application/rss+xml&#34;
+</span><span class="s1">}&#39;</span>
+</code></pre></div><h4 id="create-test_update_feeds_localsh">Create <code>test_update_feeds_local.sh</code><a href="#create-test_update_feeds_localsh" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Create a file named <code>test_update_feeds_local.sh</code> with the following content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+curl -X POST <span class="se">\
+</span><span class="se"></span>  http://127.0.0.1:8080/update/feeds <span class="se">\
+</span><span class="se"></span>  -H <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  -d <span class="s1">&#39;{
+</span><span class="s1">    &#34;title&#34;: &#34;Create and Deploy Cloud Run Job Script&#34;,
+</span><span class="s1">    &#34;link&#34;: &#34;http://jnapolitano.com/posts/create_deploy_cloud_run_job/&#34;,
+</span><span class="s1">    &#34;pubDate&#34;: &#34;2024-07-11T16:26:32&#34;,
+</span><span class="s1">    &#34;guid&#34;: &#34;http://jnapolitano.com/posts/create_deploy_cloud_run_job/&#34;,
+</span><span class="s1">    &#34;description&#34;: &#34;Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build. Prerequisites Before using the deployment script, ensure you have the following: Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.&#34;
+</span><span class="s1">}&#39;</span>
+</code></pre></div><h4 id="make-the-scripts-executable">Make the Scripts Executable<a href="#make-the-scripts-executable" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Make the scripts executable:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chmod +x test_update_builds_local.sh
+chmod +x test_update_feeds_local.sh
+</code></pre></div><h4 id="run-the-scripts-to-test-the-endpoints-locally">Run the Scripts to Test the Endpoints Locally<a href="#run-the-scripts-to-test-the-endpoints-locally" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Run the scripts:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">./test_update_builds_local.sh
+./test_update_feeds_local.sh
+</code></pre></div><h3 id="expected-response">Expected Response<a href="#expected-response" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>You should receive a JSON response indicating the success or failure of the request. If successful, it will look like this:</p>
+<h4 id="expected-response-for-test_update_builds_localsh">Expected Response for <code>test_update_builds_local.sh</code><a href="#expected-response-for-test_update_builds_localsh" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;Build record added successfully&#34;</span>
+<span class="p">}</span>
+</code></pre></div><h4 id="expected-response-for-test_update_feeds_localsh">Expected Response for <code>test_update_feeds_local.sh</code><a href="#expected-response-for-test_update_feeds_localsh" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;Feed record added successfully&#34;</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="troubleshooting">Troubleshooting<a href="#troubleshooting" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>If you encounter any issues:</p>
+<ul>
+<li>
+<p><strong>Check Docker Logs</strong>: To view logs from the running container, use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker logs &lt;container_id&gt;
+</code></pre></div></li>
+<li>
+<p><strong>Database Connectivity</strong>: Ensure that your local environment can connect to the database. If you&rsquo;re using a local database, make sure the credentials and host are correct.</p>
+</li>
+</ul>
+<h2 id="building-and-deploying-the-container-to-gcp">Building and Deploying the container to gcp<a href="#building-and-deploying-the-container-to-gcp" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="step-1-create-and-configure-environment-variables">Step 1: Create and Configure Environment Variables<a href="#step-1-create-and-configure-environment-variables" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ol>
+<li><strong>Create a <code>.env</code> File</strong></li>
+</ol>
+<p>Create a <code>.env</code> file in your project directory with the following content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="nv">PROJECT_NAME</span><span class="o">=</span>your-project-name
+<span class="nv">PROJECT_NUMBER</span><span class="o">=</span><span class="m">67904901121</span>
+<span class="nv">REGION</span><span class="o">=</span>us-west2
+<span class="nv">SERVICE_ACCOUNT</span><span class="o">=</span>your-service-account
+<span class="nv">INSTANCE_CONNECTION_NAME</span><span class="o">=</span>your-instance-connection-name
+<span class="nv">DB_USER</span><span class="o">=</span>your-db-user
+<span class="nv">DB_PASS</span><span class="o">=</span>your-db-password
+<span class="nv">DB_NAME</span><span class="o">=</span>your-db-name
+</code></pre></div><p>Replace the placeholder values (your-project-name, your-service-account, your-instance-connection-name, your-db-user, your-db-password, and your-db-name) with your actual values.</p>
+<h3 id="step-2-manage-secrets">Step 2: Manage Secrets<a href="#step-2-manage-secrets" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="c1"># Set your variables in a local .env and source</span>
+<span class="nb">source</span> .env
+
+<span class="c1"># Enable the Secret Manager API</span>
+gcloud services <span class="nb">enable</span> secretmanager.googleapis.com
+
+<span class="c1"># Create secrets in Secret Manager</span>
+<span class="nb">echo</span> -n <span class="nv">$INSTANCE_CONNECTION_NAME</span> <span class="p">|</span> <span class="se">\
+</span><span class="se"></span>    gcloud secrets create INSTANCE_CONNECTION_NAME --data-file<span class="o">=</span>-
+
+<span class="nb">echo</span> -n <span class="nv">$DB_USER</span> <span class="p">|</span> <span class="se">\
+</span><span class="se"></span>    gcloud secrets create DB_USER --data-file<span class="o">=</span>-
+
+<span class="nb">echo</span> -n <span class="nv">$DB_PASS</span> <span class="p">|</span> <span class="se">\
+</span><span class="se"></span>    gcloud secrets create DB_PASS --data-file<span class="o">=</span>-
+
+<span class="nb">echo</span> -n <span class="nv">$DB_NAME</span> <span class="p">|</span> <span class="se">\
+</span><span class="se"></span>    gcloud secrets create DB_NAME --data-file<span class="o">=</span>-
+
+<span class="c1"># Grant access to the Cloud Run service account</span>
+gcloud secrets add-iam-policy-binding INSTANCE_CONNECTION_NAME <span class="se">\
+</span><span class="se"></span>    --member<span class="o">=</span>serviceAccount:<span class="nv">$SERVICE_ACCOUNT</span> <span class="se">\
+</span><span class="se"></span>    --role<span class="o">=</span>roles/secretmanager.secretAccessor
+
+gcloud secrets add-iam-policy-binding DB_USER <span class="se">\
+</span><span class="se"></span>    --member<span class="o">=</span>serviceAccount:<span class="nv">$SERVICE_ACCOUNT</span> <span class="se">\
+</span><span class="se"></span>    --role<span class="o">=</span>roles/secretmanager.secretAccessor
+
+gcloud secrets add-iam-policy-binding DB_PASS <span class="se">\
+</span><span class="se"></span>    --member<span class="o">=</span>serviceAccount:<span class="nv">$SERVICE_ACCOUNT</span> <span class="se">\
+</span><span class="se"></span>    --role<span class="o">=</span>roles/secretmanager.secretAccessor
+
+gcloud secrets add-iam-policy-binding DB_NAME <span class="se">\
+</span><span class="se"></span>    --member<span class="o">=</span>serviceAccount:<span class="nv">$SERVICE_ACCOUNT</span> <span class="se">\
+</span><span class="se"></span>    --role<span class="o">=</span>roles/secretmanager.secretAccessor
+</code></pre></div><h3 id="create-the-artifact-repository">Create the Artifact Repository<a href="#create-the-artifact-repository" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Create</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="c1"># Set your variables in a local .env and source</span>
+<span class="nb">source</span> .env
+
+<span class="c1"># Create the Artifact Registry repository</span>
+gcloud artifacts repositories create rss-updated <span class="se">\
+</span><span class="se"></span>    --repository-format<span class="o">=</span>docker <span class="se">\
+</span><span class="se"></span>    --location<span class="o">=</span><span class="nv">$REGION</span> <span class="se">\
+</span><span class="se"></span>    --description<span class="o">=</span><span class="s2">&#34;Docker repository for RSS Updater&#34;</span>
+
+<span class="c1"># Verify the repository creation</span>
+gcloud artifacts repositories list --location<span class="o">=</span><span class="nv">$REGION</span>
+
+</code></pre></div><p>Make sure to chmod +x the script</p>
+<h3 id="build-the-docker-image-with-cloud-build">Build the Docker Image with Cloud Build<a href="#build-the-docker-image-with-cloud-build" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h4 id="create-cloudbuildyaml">Create cloudbuild.yaml<a href="#create-cloudbuildyaml" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">
+</span><span class="w"></span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;gcr.io/cloud-builders/docker&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span><span class="w">    </span><span class="s1">&#39;build&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="s1">&#39;-t&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="s1">&#39;us-west2-docker.pkg.dev/${_PROJECT_NAME}/rss-updated/rss-updated-image:latest&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="s1">&#39;.&#39;</span><span class="w">
+</span><span class="w">  </span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="nt">images</span><span class="p">:</span><span class="w">
+</span><span class="w"></span>- <span class="s1">&#39;us-west2-docker.pkg.dev/${_PROJECT_NAME}/rss-updated/rss-updated-image:latest&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">substitutions</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">_PROJECT_NAME</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;your-project-name&#34;</span><span class="w">
+</span></code></pre></div><h4 id="trigger-the-build">Trigger the Build<a href="#trigger-the-build" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+<span class="c1">#!/bin/bash</span>
+
+<span class="c1"># Set your variables in a local .env and source</span>
+<span class="nb">source</span> .env
+
+<span class="c1"># Trigger the Cloud Build with custom substitution</span>
+gcloud builds submit --config<span class="o">=</span>cloudbuild.yaml --substitutions<span class="o">=</span><span class="nv">_PROJECT_NAME</span><span class="o">=</span><span class="nv">$PROJECT_NAME</span>
+
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chmod +x trigger_cloud_build.sh
+./trigger_cloud_build.sh
+</code></pre></div><h4 id="deploy-to-cloud-run">Deploy to Cloud Run<a href="#deploy-to-cloud-run" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+<span class="c1">#!/bin/bash</span>
+
+<span class="c1"># Set your variables in a local .env and source</span>
+<span class="nb">source</span> .env
+
+<span class="c1"># Deploy to Cloud Run</span>
+gcloud run deploy rss-updated <span class="se">\
+</span><span class="se"></span>    --image us-west2-docker.pkg.dev/<span class="nv">$PROJECT_NAME</span>/rss-updated/rss-updated-image:latest <span class="se">\
+</span><span class="se"></span>    --platform managed <span class="se">\
+</span><span class="se"></span>    --region <span class="nv">$REGION</span> <span class="se">\
+</span><span class="se"></span>    --allow-unauthenticated <span class="se">\
+</span><span class="se"></span>    --update-secrets <span class="nv">INSTANCE_CONNECTION_NAME</span><span class="o">=</span>INSTANCE_CONNECTION_NAME:latest <span class="se">\
+</span><span class="se"></span>    --update-secrets <span class="nv">DB_USER</span><span class="o">=</span>DB_USER:latest <span class="se">\
+</span><span class="se"></span>    --update-secrets <span class="nv">DB_PASS</span><span class="o">=</span>DB_PASS:latest <span class="se">\
+</span><span class="se"></span>    --update-secrets <span class="nv">DB_NAME</span><span class="o">=</span>DB_NAME:latest
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+chmod +x deploy_to_cloud_run.sh
+./deploy_to_cloud_run.sh
 </code></pre></div>
 			</div>
 
@@ -245,11 +481,11 @@ curl -X POST <span class="se">\
 	
 	<li><a href="jnapolitano.com/posts/hugo-rss-mysql-update/">Automate Posting Hugo Blog to Social Sites (with a db)</a></li>
 	
-	<li><a href="jnapolitano.com/posts/python-rss-reader/">Automate Posting Hugo Blog to Social Sites...Second Attempt</a></li>
+	<li><a href="jnapolitano.com/posts/mastodon-client/">Mastodon Bot Script</a></li>
+	
+	<li><a href="jnapolitano.com/posts/rss-reader/">Automate Posting Hugo Blog to Social Sites...Second Attempt</a></li>
 	
 	<li><a href="jnapolitano.com/posts/hugo-mysql-db-setup/">Automate Posting Hugo Blog to Social Sites (with a db) Part 2</a></li>
-	
-	<li><a href="jnapolitano.com/posts/hugo-social-publisher/">Automate Posting Hugo Blog to Social Sites... Failure</a></li>
 	
 	</ul>
 </div>

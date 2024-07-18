@@ -7,16 +7,38 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 11 Jul 2024 16:26:32 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/gcp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Jul 2024 15:49:48 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/gcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Create and Deploy Cloud Run Job Script</title>
       <link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>
-      <pubDate>Thu, 11 Jul 2024 16:26:32 -0500</pubDate>
+      <pubDate>Thu, 18 Jul 2024 15:49:48 -0500</pubDate>
       
       <guid>jnapolitano.com/posts/create_deploy_cloud_run_job/</guid>
       <description>Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build.
 Prerequisites Before using the deployment script, ensure you have the following:
  Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.</description>
+    </item>
+    
+    <item>
+      <title>GCP Secret Manager Script</title>
+      <link>jnapolitano.com/posts/gcp-secret-creation/</link>
+      <pubDate>Thu, 18 Jul 2024 12:25:11 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/gcp-secret-creation/</guid>
+      <description>GCP Secret Manager Script This script manages secrets in Google Cloud Platform&amp;rsquo;s Secret Manager. It can create, overwrite, and delete secrets based on the provided YAML configuration file and environment variables.
+Prerequisites  Python 3.6 or higher Google Cloud SDK installed and authenticated Necessary Python packages installed (google-cloud-secret-manager, python-dotenv, pyyaml)  Installation   Clone the repository:
+git clone https://github.com/justin-napolitano/gcp-secret-creation.py.git cd your-repo-directory   Create a virtual environment and activate it:</description>
+    </item>
+    
+    <item>
+      <title>Schedule a GCP Cloud Run Chron Job</title>
+      <link>jnapolitano.com/posts/schedule-gcp-chron-jobs/</link>
+      <pubDate>Tue, 16 Jul 2024 17:23:06 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/schedule-gcp-chron-jobs/</guid>
+      <description>How to Schedule a Cloud Run Job Using Google Cloud Scheduler In this tutorial, we&amp;rsquo;ll walk through the process of scheduling a job in Google Cloud Run using Google Cloud Scheduler. This is particularly useful for tasks that need to run at regular intervals, such as data processing, periodic updates, or maintenance tasks.
+Prerequisites Before we start, ensure you have the following:
+ A Google Cloud project. gcloud command-line tool installed and authenticated.</description>
     </item>
     
     <item>

@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days"><link rel="author" href="/jnapolitano.com/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/jnapolitano.com/apple-touch-icon.png"><link rel="icon" href="/jnapolitano.com/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" sizes="32x32" href="/jnapolitano.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/jnapolitano.com/favicon-16x16.png">
+<link rel="manifest" href="/jnapolitano.com/site.webmanifest">
+<meta name="msapplication-TileImage" content="/jnapolitano.com/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/jnapolitano.com/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Justin Napolitano"><meta name="description" content="Automate Posting to Mastodon">
+<meta itemprop="name" content="Mastodon Bot Script">
+<meta itemprop="description" content="Automate Posting to Mastodon"><meta itemprop="datePublished" content="2024-06-18T14:36:34-05:00" />
+<meta itemprop="dateModified" content="2024-07-18T14:19:23-05:00" />
+<meta itemprop="wordCount" content="1019"><meta itemprop="image" content="jnapolitano.com/images/feature-python.png">
+<meta itemprop="keywords" content="python,hugo,programming,fail," /><meta property="og:title" content="Mastodon Bot Script" />
+<meta property="og:description" content="Automate Posting to Mastodon" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="jnapolitano.com/posts/mastodon-client/" /><meta property="og:image" content="jnapolitano.com/images/feature-python.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-06-18T14:36:34-05:00" />
+<meta property="article:modified_time" content="2024-07-18T14:19:23-05:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="jnapolitano.com/images/feature-python.png"/>
+
+<meta name="twitter:title" content="Mastodon Bot Script"/>
+<meta name="twitter:description" content="Automate Posting to Mastodon"/>
+<title>Mastodon Bot Script</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="/jnapolitano.com/css/style.min.e0b1c1b8d997f495fcb6256067ff9553b62e50837603056ab2905cd59b0b5e73.css" integrity="sha256-4LHBuNmX9JX8tiVgZ/+VU7YuUIN2AwVqspBc1ZsLXnM=" crossorigin="anonymous">
+	<style>.bg-img {background-image: url('jnapolitano.com/images/feature-python.png');}</style></head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="jnapolitano.com">Justin Napolitano</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="jnapolitano.com/posts/">POSTS</a><a href="https://jnapolitano.com/en/categories/projects/">PROJECTS</a><a href="https://jnapolitano.com/en/categories/adventures/">ADVENTURES</a><a href="https://jnapolitano.com/resume.pdf">RESUME</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="img-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></button><span class="hdr-social hide-in-mobile"><a href="https://github.com/justin-napolitano" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://www.linkedin.com/in/justin-napolitano/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:personal.jnapolitano@gmail.com" target="_blank" rel="noopener me" title="Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="https://instagram.com/jay_burdie" target="_blank" rel="noopener me" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://mastodon.social/@jnapolitano" target="_blank" rel="noopener me" title="Mastodon"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m 21.474,13.998 c -0.296,1.526 -2.655,3.194 -5.365,3.519 -1.413,0.168 -2.804,0.323 -4.287,0.255 -2.426,-0.111 -4.34,-0.579 -4.34,-0.579 0,0.236 0.015,0.461 0.044,0.672 0.316,2.394 2.373,2.537 4.323,2.604 1.968,0.067 3.721,-0.486 3.721,-0.486 l 0.081,1.779 c 0,0 -1.377,0.739 -3.829,0.875 -1.352,0.075 -3.031,-0.034 -4.987,-0.551 C 2.594,20.963 1.865,16.442 1.752,11.855 1.719,10.493 1.741,9.209 1.741,8.134 1.741,3.443 4.814,2.069 4.814,2.069 6.363,1.356 9.022,1.056 11.787,1.035 h 0.067 c 2.764,0.022 5.426,0.322 6.975,1.033 0,0 3.073,1.375 3.073,6.066 0,0 0.039,3.461 -0.428,5.864"/><path d="M 6.464,13.231 V 7.973 c 0,-1.002 0.549,-2.613 2.613,-2.613 2.064,0 2.741,1.793 2.741,3.484 0,1.692 0,2.23 0,2.23"/><path d="M 17.173,13.231 V 7.973 c 0,-1.002 -0.549,-2.613 -2.613,-2.613 -2.064,0 -2.741,1.793 -2.741,3.484 0,1.692 -0,2.23 -0,2.23"/></svg></a><a href="https://x.com/jayburdybird" target="_blank" rel="noopener me" title="X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a></span><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=jnapolitano.com%2fposts%2fmastodon-client%2f&amp;text=Mastodon%20Bot%20Script" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=jnapolitano.com%2fposts%2fmastodon-client%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Mastodon%20Bot%20Script&amp;body=jnapolitano.com%2fposts%2fmastodon-client%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=jnapolitano.com%2fposts%2fmastodon-client%2f&amp;source=jnapolitano.com&amp;title=Mastodon%20Bot%20Script&amp;summary=Mastodon%20Bot%20Script%2c%20by%20Justin%20Napolitano%0a%0aAutomate%20Posting%20to%20Mastodon%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Mastodon Bot Script&#34;,&#34;jnapolitano.com/posts/mastodon-client/&#34;,&#34;Mastodon Bot Script, by Justin Napolitano\n\nAutomate Posting to Mastodon\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="jnapolitano.com/posts/">POSTS</a></li>
+			<li><a href="https://jnapolitano.com/en/categories/projects/">PROJECTS</a></li>
+			<li><a href="https://jnapolitano.com/en/categories/adventures/">ADVENTURES</a></li>
+			<li><a href="https://jnapolitano.com/resume.pdf">RESUME</a></li>
+		</ul>
+	</div>
+
+
+	<div class="bg-img"></div>
+	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jun 18, 2024</span></div>
+				<h1>Mastodon Bot Script</h1>
+			</header>
+			<div class="post-info"><p>Automate Posting to Mastodon</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg><a href="" target="_blank">Justin Napolitano</a></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="jnapolitano.com/tags/python">python</a></span><span class="tag"><a href="jnapolitano.com/tags/hugo">hugo</a></span><span class="tag"><a href="jnapolitano.com/tags/programming">programming</a></span><span class="tag"><a href="jnapolitano.com/tags/fail">fail</a></span></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg><span class="category"><a href="jnapolitano.com/categories/projects">Projects</a></span></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    
+    
+    
+    
+    4 Minutes, 37 Seconds</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2024-06-18 14:36 -0500</p></div>
+			<hr class="post-end">
+			<div class="content">
+				<h1 id="mastodon-bot-script">Mastodon Bot Script<a href="#mastodon-bot-script" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>This script manages the Mastodon bot, including retrieving secrets from Google Cloud Secret Manager, logging in to Mastodon, and posting toots.</p>
+<h2 id="prerequisites">Prerequisites<a href="#prerequisites" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ul>
+<li>Python 3.6 or higher</li>
+<li>Google Cloud SDK installed and authenticated</li>
+<li>Necessary Python packages installed (<code>google-cloud-secret-manager</code>, <code>python-dotenv</code>, <code>mastodon.py</code>, <code>requests</code>)</li>
+<li>Google Cloud Project with Secret Manager API enabled</li>
+<li>Secrets stored in Google Cloud Secret Manager</li>
+</ul>
+<h2 id="installation">Installation<a href="#installation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ol>
+<li>
+<p><strong>Clone the repository</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git clone https://your-repo-url.git
+<span class="nb">cd</span> your-repo-directory
+</code></pre></div></li>
+<li>
+<p><strong>Create a virtual environment and activate it</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">python -m venv venv
+<span class="nb">source</span> venv/bin/activate  <span class="c1"># On Windows, use `venv\\Scripts\\activate`</span>
+</code></pre></div></li>
+<li>
+<p><strong>Install the required packages</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">pip install google-cloud-secret-manager python-dotenv mastodon.py requests
+</code></pre></div></li>
+</ol>
+<h2 id="setup">Setup<a href="#setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ol>
+<li>
+<p><strong>Create a <code>.env</code> file</strong> in the root directory with the following structure (if needed):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="nv">PROJECT_NAME</span><span class="o">=</span>your_project_name
+</code></pre></div></li>
+<li>
+<p><strong>Store the following secrets in Google Cloud Secret Manager</strong>:</p>
+<ul>
+<li><code>MASTODON_PASSWORD</code></li>
+<li><code>MASTODON_USERNAME</code></li>
+<li><code>MASTODON_CLIENT_ID</code></li>
+<li><code>MASTODON_SECRET</code></li>
+<li><code>MASTODON_BASE_URL</code></li>
+<li><code>MASTODON_USER_AGENT</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="usage">Usage<a href="#usage" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The script provides several command-line arguments to control its behavior.</p>
+<h3 id="arguments">Arguments<a href="#arguments" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ul>
+<li><code>--url</code>: Base URL for the API endpoint (default: <code>http://localhost:8080</code>)</li>
+<li><code>--local</code>: Flag to use local credentials for Google Cloud Logging</li>
+</ul>
+<h3 id="running-the-script">Running the Script<a href="#running-the-script" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ol>
+<li>
+<p><strong>Run the script</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">python your_script.py --url http://localhost:8080
+</code></pre></div></li>
+<li>
+<p><strong>Run the script with local credentials for Google Cloud Logging</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">python your_script.py --url http://localhost:8080 --local
+</code></pre></div></li>
+</ol>
+<h2 id="code-overview">Code Overview<a href="#code-overview" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="imports-and-logging-setup">Imports and Logging Setup<a href="#imports-and-logging-setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">mastodon</span> <span class="kn">import</span> <span class="n">Mastodon</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">from</span> <span class="nn">google.cloud</span> <span class="kn">import</span> <span class="n">secretmanager</span>
+<span class="kn">from</span> <span class="nn">gcputils.GoogleCloudLogging</span> <span class="kn">import</span> <span class="n">GoogleCloudLogging</span>
+<span class="kn">from</span> <span class="nn">gcputils.GoogleSecretManager</span> <span class="kn">import</span> <span class="n">GoogleSecretManager</span>
+
+<span class="c1"># Set up logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</code></pre></div><h3 id="creating-the-mastodon-app">Creating the Mastodon App<a href="#creating-the-mastodon-app" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">app_name</span><span class="o">=</span><span class="s2">&#34;cobra-bot2&#34;</span><span class="p">,</span> <span class="n">api_base_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="s2">&#34;masto-secret.secret&#34;</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Create a new app with given app_name and scopes on the instance given by api_base_url.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    app_name (str): Name of the app to be created.
+</span><span class="s1">    api_base_url (str): Base URL of the Mastodon instance.
+</span><span class="s1">    to_file (str): File to save the app credentials.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    None
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="n">Mastodon</span><span class="o">.</span><span class="n">create_app</span><span class="p">(</span>
+        <span class="n">client_name</span><span class="o">=</span><span class="n">app_name</span><span class="p">,</span>
+        <span class="n">scopes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;read&#39;</span><span class="p">,</span> <span class="s1">&#39;write&#39;</span><span class="p">,</span> <span class="s1">&#39;follow&#39;</span><span class="p">,</span> <span class="s1">&#39;push&#39;</span><span class="p">],</span>
+        <span class="n">api_base_url</span><span class="o">=</span><span class="n">api_base_url</span><span class="p">,</span>
+        <span class="n">to_file</span><span class="o">=</span><span class="n">to_file</span><span class="p">,</span>
+        <span class="n">website</span><span class="o">=</span><span class="s2">&#34;https://jnapolitano.com&#34;</span>
+    <span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;App &#39;</span><span class="si">{</span><span class="n">app_name</span><span class="si">}</span><span class="s2">&#39; registered and credentials saved to &#39;</span><span class="si">{</span><span class="n">to_file</span><span class="si">}</span><span class="s2">&#39;&#34;</span><span class="p">)</span>
+</code></pre></div><h3 id="formatting-datetime">Formatting Datetime<a href="#formatting-datetime" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">def</span> <span class="nf">format_datetime_for_api</span><span class="p">(</span><span class="n">dt</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Format datetime for API.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    dt (datetime): Datetime object to format.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    str: Formatted datetime string.
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">dt</span><span class="p">:</span>
+        <span class="n">formatted_date</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&#34;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&#34;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Formatted datetime: </span><span class="si">{</span><span class="n">formatted_date</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">formatted_date</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+</code></pre></div><h3 id="updating-a-toot">Updating a Toot<a href="#updating-a-toot" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">update_toot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">base_url</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Update toot in the database by sending a POST request to the API endpoint.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    data (dict): Toot data dictionary.
+</span><span class="s1">    base_url (str): Base URL of the API endpoint.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    None
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/update/toots&#34;</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+        
+        <span class="n">toot_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span>
+            <span class="s2">&#34;created_at&#34;</span><span class="p">:</span> <span class="n">format_datetime_for_api</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]),</span>
+            <span class="s2">&#34;in_reply_to_id&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;in_reply_to_id&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;in_reply_to_account_id&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;in_reply_to_account_id&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;sensitive&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sensitive&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;spoiler_text&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;spoiler_text&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;visibility&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;visibility&#39;</span><span class="p">,</span> <span class="s1">&#39;public&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;language&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;uri&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;uri&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;url&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;site_url&#34;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;account&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;account&#39;</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="s1">&#39;url&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;account&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="s2">&#34;replies_count&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replies_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&#34;reblogs_count&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reblogs_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&#34;favourites_count&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;favourites_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&#34;favourited&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;favourited&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;reblogged&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reblogged&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;muted&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;muted&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;bookmarked&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;bookmarked&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;pinned&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pinned&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;filtered&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filtered&#39;</span><span class="p">,</span> <span class="p">[])),</span>
+            <span class="s2">&#34;reblog&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reblog&#39;</span><span class="p">)),</span>
+            <span class="s2">&#34;application&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;application&#39;</span><span class="p">)),</span>
+            <span class="s2">&#34;account&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;account&#39;</span><span class="p">)),</span>
+            <span class="s2">&#34;media_attachments&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;media_attachments&#39;</span><span class="p">,</span> <span class="p">[])),</span>
+            <span class="s2">&#34;mentions&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;mentions&#39;</span><span class="p">,</span> <span class="p">[])),</span>
+            <span class="s2">&#34;tags&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="p">[])),</span>
+            <span class="s2">&#34;emojis&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;emojis&#39;</span><span class="p">,</span> <span class="p">[])),</span>
+            <span class="s2">&#34;card&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;card&#39;</span><span class="p">)),</span>
+            <span class="s2">&#34;poll&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;poll&#39;</span><span class="p">))</span>
+        <span class="p">}</span>
+        
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Toot data: </span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">toot_data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">toot_data</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Successfully added toot: </span><span class="si">{</span><span class="n">toot_data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Toot updated or no update needed for: </span><span class="si">{</span><span class="n">toot_data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Failed to update toot: </span><span class="si">{</span><span class="n">toot_data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, Status Code: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">, Message: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;An error occurred while updating the toot: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></div><h3 id="retrieving-a-new-post">Retrieving a new Post<a href="#retrieving-a-new-post" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">get_new_post</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">table_name</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Retrieve a new post from the specified table by sending a GET request to the API endpoint.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    base_url (str): Base URL of the API endpoint.
+</span><span class="s1">    table_name (str): Name of the table to retrieve the post from.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    dict: Retrieved post data.
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/get/post&#34;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;table&#39;</span><span class="p">:</span> <span class="n">table_name</span><span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">post</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;New post retrieved&#34;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">post</span>
+        <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;No new posts available&#34;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Failed to retrieve post: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;An error occurred while fetching the post: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></div><h3 id="formatting-a-toot-message">Formatting a Toot Message<a href="#formatting-a-toot-message" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">format_a_toot</span><span class="p">(</span><span class="n">post</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Format a toot message from the post data.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    post (dict): Post data dictionary.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    str: Formatted toot message.
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="n">toot</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;New post : </span><span class="si">{</span><span class="n">post</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">post</span><span class="p">[</span><span class="s1">&#39;guid&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span>  
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Formatted toot: </span><span class="si">{</span><span class="n">toot</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">toot</span>
+</code></pre></div><h3 id="formatting-a-data-string">Formatting a Data String<a href="#formatting-a-data-string" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">format_datetime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">date_format</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">%a</span><span class="s2">, </span><span class="si">%d</span><span class="s2"> %b %Y %H:%M:%S %z&#34;</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Format a date string to a specified format.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    date_str (str): Date string to format.
+</span><span class="s1">    date_format (str): Format of the date string.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    str: Formatted date string.
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">date_format</span><span class="p">)</span>
+        <span class="n">formatted_date</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&#34;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&#34;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Formatted datetime: </span><span class="si">{</span><span class="n">formatted_date</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">formatted_date</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;An error occurred while formatting date: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+</code></pre></div><h3 id="pretty-print-json">Pretty Print json<a href="#pretty-print-json" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">def</span> <span class="nf">pretty_print_json</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Pretty print a JSON object.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    data (dict): JSON data to print.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    None
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+</code></pre></div><h3 id="main">Main<a href="#main" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="c1"># load_dotenv()  # Load environment variables from .env file</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Retrieve a new post from the feed table.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--url&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;http://localhost:8080&#34;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Base URL for the API endpoint&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--local&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Use local credentials for Google Cloud Logging&#39;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    
+    <span class="n">toot_table</span> <span class="o">=</span> <span class="s2">&#34;toots&#34;</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">url</span>
+
+    <span class="c1"># Setup Google Cloud Logging</span>
+    <span class="c1"># project_id = os.environ.get(&#34;PROJECT_NAME&#34;)</span>
+    <span class="c1"># credentials_path = os.environ.get(&#34;GOOGLE_APPLICATION_CREDENTIALS&#34;) if args.local else None</span>
+    <span class="c1"># gcl = GoogleCloudLogging(project_id, credentials_path)</span>
+    <span class="c1"># gcl.setup_logging()</span>
+
+    <span class="c1"># cred_file = &#34;/app/masto-secret.secret&#34;</span>
+    
+    <span class="c1"># logging.info(cred_file)</span>
+    <span class="c1"># logging.info(os.getcwd())</span>
+    <span class="c1"># print_directory_contents(os.getcwd())</span>
+
+    <span class="c1">#Mastodon CLIENT ID FROM SECRET MANSGER</span>
+
+    <span class="c1"># project_id = os.getenv(&#34;PROJECT_NAME&#34;)</span>
+    <span class="n">project_id</span> <span class="o">=</span> <span class="s2">&#34;smart-axis-421517&#34;</span>
+    <span class="n">gsm</span> <span class="o">=</span> <span class="n">GoogleSecretManager</span><span class="p">(</span><span class="n">project_id</span><span class="p">)</span>
+    <span class="c1"># client.project = project_id</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">mastodon_password</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_PASSWORD&#34;</span><span class="p">)</span>
+        <span class="n">mastodon_username</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_USERNAME&#34;</span><span class="p">)</span>
+        <span class="n">mastodon_client_id</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_CLIENT_ID&#34;</span><span class="p">)</span>
+        <span class="n">mastodon_secret</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_SECRET&#34;</span><span class="p">)</span>
+        <span class="n">mastodon_base_url</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_BASE_URL&#34;</span><span class="p">)</span>
+        <span class="n">mastodon_user_agent</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_USER_AGENT&#34;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Secrets accessed successfully&#34;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error accessing secrets: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">raise</span>
+
+    <span class="c1"># api_base_url = &#34;https://mastodon.social&#34;</span>
+    <span class="c1"># user_cred_file = &#39;/app/cobra-usercred.secret&#39;</span>
+
+    <span class="c1"># if not os.path.exists(cred_file):</span>
+    <span class="c1">#     logging.info(&#34;Credentials file not found. Registering app...&#34;)</span>
+    <span class="c1">#     create_app(api_base_url=api_base_url, to_file=cred_file)</span>
+    <span class="c1"># else:</span>
+    <span class="c1">#     logging.info(f&#34;Credentials file &#39;{cred_file}&#39; already exists. Skipping app registration.&#34;)</span>
+
+    <span class="c1"># Instantiate the App</span>
+    <span class="n">mastodon</span> <span class="o">=</span> <span class="n">Mastodon</span><span class="p">(</span>
+        <span class="n">client_id</span><span class="o">=</span><span class="n">mastodon_client_id</span><span class="p">,</span>
+        <span class="n">client_secret</span><span class="o">=</span><span class="n">mastodon_secret</span><span class="p">,</span>
+        <span class="n">api_base_url</span><span class="o">=</span><span class="n">mastodon_base_url</span><span class="p">,</span>
+        <span class="n">user_agent</span><span class="o">=</span><span class="n">mastodon_user_agent</span>
+    <span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Mastodon app instance created&#34;</span><span class="p">)</span>
+
+    <span class="c1"># Login with secrets</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">user_access_token</span> <span class="o">=</span> <span class="n">mastodon</span><span class="o">.</span><span class="n">log_in</span><span class="p">(</span>
+            <span class="n">mastodon_username</span><span class="p">,</span>
+            <span class="n">mastodon_password</span><span class="p">,</span>
+            <span class="c1"># to_file=user_cred_file</span>
+        <span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Logged in and user credentials saved&#34;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error during login: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+
+    <span class="c1"># Run a session</span>
+    <span class="n">mastodon</span> <span class="o">=</span> <span class="n">Mastodon</span><span class="p">(</span>
+        <span class="n">client_id</span><span class="o">=</span><span class="n">mastodon_client_id</span><span class="p">,</span>
+        <span class="n">client_secret</span><span class="o">=</span><span class="n">mastodon_secret</span><span class="p">,</span>
+        <span class="n">access_token</span><span class="o">=</span><span class="n">user_access_token</span><span class="p">,</span>
+        <span class="n">api_base_url</span><span class="o">=</span><span class="n">mastodon_base_url</span>
+    <span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Mastodon session started&#34;</span><span class="p">)</span>
+
+    <span class="c1"># Test a toot</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">get_new_post</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">,</span> <span class="n">table_name</span><span class="o">=</span><span class="n">toot_table</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">post</span><span class="p">:</span>
+        <span class="n">toot</span> <span class="o">=</span> <span class="n">format_a_toot</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
+        <span class="n">toot_result</span> <span class="o">=</span> <span class="n">mastodon</span><span class="o">.</span><span class="n">toot</span><span class="p">(</span><span class="n">toot</span><span class="p">)</span>
+
+        <span class="c1"># Add empty application and account fields</span>
+        <span class="n">toot_result</span><span class="p">[</span><span class="s2">&#34;application&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">toot_result</span><span class="p">[</span><span class="s2">&#34;account&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">update_toot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">toot_result</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;No new post to toot&#34;</span><span class="p">)</span>
+
+</code></pre></div>
+			</div>
+
+<div class="related-posts thin">
+	<h2></h2>
+	<ul>
+	
+	<li><a href="jnapolitano.com/posts/rss-reader/">Automate Posting Hugo Blog to Social Sites...Second Attempt</a></li>
+	
+	<li><a href="jnapolitano.com/posts/hugo-mysql-db-setup/">Automate Posting Hugo Blog to Social Sites (with a db) Part 2</a></li>
+	
+	<li><a href="jnapolitano.com/posts/hugo-social-publisher/">Automate Posting Hugo Blog to Social Sites... Failure</a></li>
+	
+	<li><a href="jnapolitano.com/posts/gh-pages-workflow/">Hugo Build and Deploy GH Workflow</a></li>
+	
+	<li><a href="jnapolitano.com/posts/l_o_c_scraper/">GCP Cloud Run Job Scraper</a></li>
+	
+	</ul>
+</div>
+
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="jnapolitano.com/posts/gh_submodule_sync/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;</span><br><span>Sync Gh Submodules Across a Super Project</span>
+			</a>
+			<a class="prev-post" href="jnapolitano.com/posts/rss-reader/">
+				<span class="post-nav-label">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Automate Posting Hugo Blog to Social Sites...Second Attempt</span>
+			</a>
+		</div>
+		<div id="comments" class="thin"></div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+	<p>
+		&copy; 2024 <a href="jnapolitano.com">Justin Napolitano</a>
+		&#183; JAYBURDINDUSTRIES
+		&#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+		&#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a></p>
+
+</footer>
+<script async src="/jnapolitano.com/js/bundle.min.5034a061023fdc1bbf821910f95d3bda81bc68ba039a2c1202f0d7027638e80f.js" integrity="sha256-UDSgYQI/3Bu/ghkQ+V072oG8aLoDmiwSAvDXAnY46A8=" crossorigin="anonymous"></script><script async src="/jnapolitano.com/js/link-share.min.20ddc5b895a2cb52c811efd9bcf38168838be5cb8671b12ae2997bf38c34f9f0.js" integrity="sha256-IN3FuJWiy1LIEe/ZvPOBaIOL5cuGcbEq4pl784w0+fA=" crossorigin="anonymous"></script>
+</body>
+
+</html>

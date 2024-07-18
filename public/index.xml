@@ -7,7 +7,66 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Sat, 13 Jul 2024 14:30:55 -0500</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Jul 2024 15:49:48 -0500</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Create and Deploy Cloud Run Job Script</title>
+      <link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>
+      <pubDate>Thu, 18 Jul 2024 15:49:48 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/create_deploy_cloud_run_job/</guid>
+      <description>Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build.
+Prerequisites Before using the deployment script, ensure you have the following:
+ Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.</description>
+    </item>
+    
+    <item>
+      <title>GCP Secret Manager Script</title>
+      <link>jnapolitano.com/posts/gcp-secret-creation/</link>
+      <pubDate>Thu, 18 Jul 2024 12:25:11 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/gcp-secret-creation/</guid>
+      <description>GCP Secret Manager Script This script manages secrets in Google Cloud Platform&amp;rsquo;s Secret Manager. It can create, overwrite, and delete secrets based on the provided YAML configuration file and environment variables.
+Prerequisites  Python 3.6 or higher Google Cloud SDK installed and authenticated Necessary Python packages installed (google-cloud-secret-manager, python-dotenv, pyyaml)  Installation   Clone the repository:
+git clone https://github.com/justin-napolitano/gcp-secret-creation.py.git cd your-repo-directory   Create a virtual environment and activate it:</description>
+    </item>
+    
+    <item>
+      <title>Schedule a GCP Cloud Run Chron Job</title>
+      <link>jnapolitano.com/posts/schedule-gcp-chron-jobs/</link>
+      <pubDate>Tue, 16 Jul 2024 17:23:06 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/schedule-gcp-chron-jobs/</guid>
+      <description>How to Schedule a Cloud Run Job Using Google Cloud Scheduler In this tutorial, we&amp;rsquo;ll walk through the process of scheduling a job in Google Cloud Run using Google Cloud Scheduler. This is particularly useful for tasks that need to run at regular intervals, such as data processing, periodic updates, or maintenance tasks.
+Prerequisites Before we start, ensure you have the following:
+ A Google Cloud project. gcloud command-line tool installed and authenticated.</description>
+    </item>
+    
+    <item>
+      <title>Windy Peak Via Mountain Lion Loop</title>
+      <link>jnapolitano.com/posts/windy-peak-mountain-lion-loop/</link>
+      <pubDate>Sat, 13 Jul 2024 16:29:26 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/windy-peak-mountain-lion-loop/</guid>
+      <description>Windy Peak via Mountain Lion Loop I do not know much about this little day hike.. It seems to be fairly doable despite an all trails hard rating. I&amp;rsquo;ll find out in the am
+Details   All Trails Link
+  Driving Directions: Coal Creek Canyon, Colorado 80403
+  Trail Head : Nott Creek Trailhead
+  Park Info: site
+  Plan Driving  Leave Littleon in the AM around 5 am.</description>
+    </item>
+    
+    <item>
+      <title>Current Time Script</title>
+      <link>jnapolitano.com/posts/current-time-script/</link>
+      <pubDate>Sat, 13 Jul 2024 16:25:59 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/current-time-script/</guid>
+      <description>Current Time Script This script returns the current date and time in the format date = &amp;quot;2024-07-13T14:27:45-06:00&amp;quot;.
+Prerequisites  Bash shell date command (available on most Unix-like systems)  Usage   Save the Script:
+Save the following script to a file, e.g., current_time.sh:
+#!/bin/bash  # Get the current date and time in the desired format current_time=$(date +&amp;#34;%Y-%m-%dT%H:%M:%S%z&amp;#34;) # Format the time zone offset with a colon formatted_time=&amp;#34;${current_time:0:22}:${current_time:22:2}&amp;#34; # Print the result echo &amp;#34;date = \&amp;#34;$formatted_time\&amp;#34;&amp;#34;   Make the Script Executable:</description>
+    </item>
+    
     <item>
       <title>Pull.. Commit.. And Push Bash Script</title>
       <link>jnapolitano.com/posts/push-commits/</link>
@@ -84,17 +143,6 @@ Create a new role for the cloud run service account Reference : Reference Materi
       <description>Instagram I cannot help myself from abuse instagram. I tried&amp;hellip; I want to connect with friends&amp;hellip; but it is too addicting
 Scrolling It is near impossible not to scroll. I try to catch up with my friends. I scroll. I feel sad.
 Connection I want to connect.. Instagram can facillitate that.. However, these are often shallow connections. That might be okay, but if I want more than a quick rush&amp;hellip; I need to make the effort to connect in person.</description>
-    </item>
-    
-    <item>
-      <title>Create and Deploy Cloud Run Job Script</title>
-      <link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>
-      <pubDate>Thu, 11 Jul 2024 16:26:32 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/create_deploy_cloud_run_job/</guid>
-      <description>Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build.
-Prerequisites Before using the deployment script, ensure you have the following:
- Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.</description>
     </item>
     
     <item>
@@ -203,11 +251,22 @@ Prerequisites  Ensure that you have Git installed on your system. Ensure that yo
     </item>
     
     <item>
+      <title>Mastodon Bot Script</title>
+      <link>jnapolitano.com/posts/mastodon-client/</link>
+      <pubDate>Tue, 18 Jun 2024 14:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/mastodon-client/</guid>
+      <description>Mastodon Bot Script This script manages the Mastodon bot, including retrieving secrets from Google Cloud Secret Manager, logging in to Mastodon, and posting toots.
+Prerequisites  Python 3.6 or higher Google Cloud SDK installed and authenticated Necessary Python packages installed (google-cloud-secret-manager, python-dotenv, mastodon.py, requests) Google Cloud Project with Secret Manager API enabled Secrets stored in Google Cloud Secret Manager  Installation   Clone the repository:
+git clone https://your-repo-url.git cd your-repo-directory   Create a virtual environment and activate it:</description>
+    </item>
+    
+    <item>
       <title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
-      <link>jnapolitano.com/posts/python-rss-reader/</link>
+      <link>jnapolitano.com/posts/rss-reader/</link>
       <pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>
       
-      <guid>jnapolitano.com/posts/python-rss-reader/</guid>
+      <guid>jnapolitano.com/posts/rss-reader/</guid>
       <description>Thoughts on This Second Pass  I will create a script that parses the sites rss feed&amp;hellip; it will then traverse the xml tree entries&amp;hellip; if a date is newer than the last publish date&amp;hellip; publish that post&amp;hellip;  I am still thinking through how to publish. I will likely write a monolithic script here, but ideally I would write an api or a batch processor to handle this in some way.</description>
     </item>
     
