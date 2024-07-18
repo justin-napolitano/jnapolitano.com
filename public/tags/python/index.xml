@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Fri, 12 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="jnapolitano.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Jul 2024 12:25:11 -0500</lastBuildDate><atom:link href="jnapolitano.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GCP Secret Manager Script</title>
+      <link>jnapolitano.com/posts/gcp-secret-creation/</link>
+      <pubDate>Thu, 18 Jul 2024 12:25:11 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/gcp-secret-creation/</guid>
+      <description>GCP Secret Manager Script This script manages secrets in Google Cloud Platform&amp;rsquo;s Secret Manager. It can create, overwrite, and delete secrets based on the provided YAML configuration file and environment variables.
+Prerequisites  Python 3.6 or higher Google Cloud SDK installed and authenticated Necessary Python packages installed (google-cloud-secret-manager, python-dotenv, pyyaml)  Installation   Clone the repository:
+git clone https://github.com/justin-napolitano/gcp-secret-creation.py.git cd your-repo-directory   Create a virtual environment and activate it:</description>
+    </item>
+    
     <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db) Part 3</title>
       <link>jnapolitano.com/posts/setup-mysql-gcp/</link>
@@ -84,11 +95,22 @@ Prerequisites  Ensure that you have Git installed on your system. Ensure that yo
     </item>
     
     <item>
+      <title>Mastodon Bot Script</title>
+      <link>jnapolitano.com/posts/mastodon-client/</link>
+      <pubDate>Tue, 18 Jun 2024 14:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/mastodon-client/</guid>
+      <description>Mastodon Bot Script This script manages the Mastodon bot, including retrieving secrets from Google Cloud Secret Manager, logging in to Mastodon, and posting toots.
+Prerequisites  Python 3.6 or higher Google Cloud SDK installed and authenticated Necessary Python packages installed (google-cloud-secret-manager, python-dotenv, mastodon.py, requests) Google Cloud Project with Secret Manager API enabled Secrets stored in Google Cloud Secret Manager  Installation   Clone the repository:
+git clone https://your-repo-url.git cd your-repo-directory   Create a virtual environment and activate it:</description>
+    </item>
+    
+    <item>
       <title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
-      <link>jnapolitano.com/posts/python-rss-reader/</link>
+      <link>jnapolitano.com/posts/rss-reader/</link>
       <pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>
       
-      <guid>jnapolitano.com/posts/python-rss-reader/</guid>
+      <guid>jnapolitano.com/posts/rss-reader/</guid>
       <description>Thoughts on This Second Pass  I will create a script that parses the sites rss feed&amp;hellip; it will then traverse the xml tree entries&amp;hellip; if a date is newer than the last publish date&amp;hellip; publish that post&amp;hellip;  I am still thinking through how to publish. I will likely write a monolithic script here, but ideally I would write an api or a batch processor to handle this in some way.</description>
     </item>
     

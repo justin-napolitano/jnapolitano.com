@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Sat, 13 Jul 2024 14:30:55 -0500</lastBuildDate><atom:link href="jnapolitano.com/series/bash/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jul 2024 16:25:59 -0500</lastBuildDate><atom:link href="jnapolitano.com/series/bash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Current Time Script</title>
+      <link>jnapolitano.com/posts/current-time-script/</link>
+      <pubDate>Sat, 13 Jul 2024 16:25:59 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/current-time-script/</guid>
+      <description>Current Time Script This script returns the current date and time in the format date = &amp;quot;2024-07-13T14:27:45-06:00&amp;quot;.
+Prerequisites  Bash shell date command (available on most Unix-like systems)  Usage   Save the Script:
+Save the following script to a file, e.g., current_time.sh:
+#!/bin/bash  # Get the current date and time in the desired format current_time=$(date +&amp;#34;%Y-%m-%dT%H:%M:%S%z&amp;#34;) # Format the time zone offset with a colon formatted_time=&amp;#34;${current_time:0:22}:${current_time:22:2}&amp;#34; # Print the result echo &amp;#34;date = \&amp;#34;$formatted_time\&amp;#34;&amp;#34;   Make the Script Executable:</description>
+    </item>
+    
     <item>
       <title>Pull.. Commit.. And Push Bash Script</title>
       <link>jnapolitano.com/posts/push-commits/</link>

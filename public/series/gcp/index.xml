@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GCP on Justin Napolitano</title>
+    <link>jnapolitano.com/series/gcp/</link>
+    <description>Recent content in GCP on Justin Napolitano</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Thu, 18 Jul 2024 12:25:11 -0500</lastBuildDate><atom:link href="jnapolitano.com/series/gcp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GCP Secret Manager Script</title>
+      <link>jnapolitano.com/posts/gcp-secret-creation/</link>
+      <pubDate>Thu, 18 Jul 2024 12:25:11 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/gcp-secret-creation/</guid>
+      <description>GCP Secret Manager Script This script manages secrets in Google Cloud Platform&amp;rsquo;s Secret Manager. It can create, overwrite, and delete secrets based on the provided YAML configuration file and environment variables.
+Prerequisites  Python 3.6 or higher Google Cloud SDK installed and authenticated Necessary Python packages installed (google-cloud-secret-manager, python-dotenv, pyyaml)  Installation   Clone the repository:
+git clone https://github.com/justin-napolitano/gcp-secret-creation.py.git cd your-repo-directory   Create a virtual environment and activate it:</description>
+    </item>
+    
+    <item>
+      <title>Schedule a GCP Cloud Run Chron Job</title>
+      <link>jnapolitano.com/posts/schedule-gcp-chron-jobs/</link>
+      <pubDate>Tue, 16 Jul 2024 17:23:06 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/schedule-gcp-chron-jobs/</guid>
+      <description>How to Schedule a Cloud Run Job Using Google Cloud Scheduler In this tutorial, we&amp;rsquo;ll walk through the process of scheduling a job in Google Cloud Run using Google Cloud Scheduler. This is particularly useful for tasks that need to run at regular intervals, such as data processing, periodic updates, or maintenance tasks.
+Prerequisites Before we start, ensure you have the following:
+ A Google Cloud project. gcloud command-line tool installed and authenticated.</description>
+    </item>
+    
+  </channel>
+</rss>

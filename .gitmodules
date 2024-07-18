@@ -138,7 +138,11 @@
 	path = content/posts/mastodon-client
 	url = https://github.com/justin-napolitano/mastodon-client.git
 	branch = post
-[submodule "content/posts/python-rss-reader"]
-	path = content/posts/python-rss-reader
+[submodule "python-rss-reader"]
+	path = python-rss-reader
+	url = https://github.com/justin-napolitano/python-rss-reader.git
+	branch = post
+[submodule "content/posts/rss-reader"]
+	path = content/posts/rss-reader
 	url = https://github.com/justin-napolitano/python-rss-reader.git
 	branch = post
