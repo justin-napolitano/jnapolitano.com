@@ -16,9 +16,6 @@
 [submodule "content/posts/hugo-social-publisher"]
 	path = content/posts/hugo-social-publisher
 	url = https://github.com/justin-napolitano/hugo-social-publisher.git
-[submodule "content/posts/python-rss-reader"]
-	path = content/posts/python-rss-reader
-	url = https://github.com/justin-napolitano/python-rss-reader.git
 [submodule "content/posts/prepare-chicken-salad"]
 	path = archived-posts/prepare-chicken-salad
 	url = https://github.com/justin-napolitano/prepare-chicken-salad.git
@@ -140,4 +137,8 @@
 [submodule "content/posts/mastodon-client"]
 	path = content/posts/mastodon-client
 	url = https://github.com/justin-napolitano/mastodon-client.git
+	branch = post
+[submodule "content/posts/python-rss-reader"]
+	path = content/posts/python-rss-reader
+	url = https://github.com/justin-napolitano/python-rss-reader.git
 	branch = post
