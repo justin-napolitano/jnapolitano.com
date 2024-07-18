@@ -133,3 +133,7 @@
 [submodule "content/posts/schedule-gcp-chron-jobs"]
 	path = content/posts/schedule-gcp-chron-jobs
 	url = https://github.com/justin-napolitano/schedule-gcp-chron-jobs.git
+[submodule "content/posts/gcp-secret-creation"]
+	path = content/posts/gcp-secret-creation
+	url = https://github.com/justin-napolitano/gcp-secret-creation.py.git
+	branch = post
