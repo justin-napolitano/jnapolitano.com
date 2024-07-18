@@ -36,9 +36,27 @@
     </item>
     
     <item>
+      <title>fail</title>
+      <link>jnapolitano.com/tags/fail/</link>
+      <pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/fail/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>jnapolitano.com/tags/hugo/</link>
+      <pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>programming</title>
       <link>jnapolitano.com/tags/programming/</link>
-      <pubDate>Thu, 18 Jul 2024 12:25:11 -0500</pubDate>
+      <pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate>
       
       <guid>jnapolitano.com/tags/programming/</guid>
       <description></description>
@@ -47,7 +65,7 @@
     <item>
       <title>python</title>
       <link>jnapolitano.com/tags/python/</link>
-      <pubDate>Thu, 18 Jul 2024 12:25:11 -0500</pubDate>
+      <pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate>
       
       <guid>jnapolitano.com/tags/python/</guid>
       <description></description>
@@ -95,24 +113,6 @@
       <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>jnapolitano.com/tags/lifestyle/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fail</title>
-      <link>jnapolitano.com/tags/fail/</link>
-      <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/fail/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>jnapolitano.com/tags/hugo/</link>
-      <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/tags/hugo/</guid>
       <description></description>
     </item>
     

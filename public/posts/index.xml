@@ -79,6 +79,371 @@
 		</item>
 		
 		<item>
+			<title>Mastodon Bot Script</title>
+			<link>jnapolitano.com/posts/mastodon-client/</link>
+			<pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate>
+			<guid>jnapolitano.com/posts/mastodon-client/</guid>
+			<description><![CDATA[Automate Posting to Mastodon]]></description>
+			<content type="html"><![CDATA[<h1 id="mastodon-bot-script">Mastodon Bot Script</h1>
+<p>This script manages the Mastodon bot, including retrieving secrets from Google Cloud Secret Manager, logging in to Mastodon, and posting toots.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Python 3.6 or higher</li>
+<li>Google Cloud SDK installed and authenticated</li>
+<li>Necessary Python packages installed (<code>google-cloud-secret-manager</code>, <code>python-dotenv</code>, <code>mastodon.py</code>, <code>requests</code>)</li>
+<li>Google Cloud Project with Secret Manager API enabled</li>
+<li>Secrets stored in Google Cloud Secret Manager</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ol>
+<li>
+<p><strong>Clone the repository</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git clone https://your-repo-url.git
+<span class="nb">cd</span> your-repo-directory
+</code></pre></div></li>
+<li>
+<p><strong>Create a virtual environment and activate it</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">python -m venv venv
+<span class="nb">source</span> venv/bin/activate  <span class="c1"># On Windows, use `venv\\Scripts\\activate`</span>
+</code></pre></div></li>
+<li>
+<p><strong>Install the required packages</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">pip install google-cloud-secret-manager python-dotenv mastodon.py requests
+</code></pre></div></li>
+</ol>
+<h2 id="setup">Setup</h2>
+<ol>
+<li>
+<p><strong>Create a <code>.env</code> file</strong> in the root directory with the following structure (if needed):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="nv">PROJECT_NAME</span><span class="o">=</span>your_project_name
+</code></pre></div></li>
+<li>
+<p><strong>Store the following secrets in Google Cloud Secret Manager</strong>:</p>
+<ul>
+<li><code>MASTODON_PASSWORD</code></li>
+<li><code>MASTODON_USERNAME</code></li>
+<li><code>MASTODON_CLIENT_ID</code></li>
+<li><code>MASTODON_SECRET</code></li>
+<li><code>MASTODON_BASE_URL</code></li>
+<li><code>MASTODON_USER_AGENT</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="usage">Usage</h2>
+<p>The script provides several command-line arguments to control its behavior.</p>
+<h3 id="arguments">Arguments</h3>
+<ul>
+<li><code>--url</code>: Base URL for the API endpoint (default: <code>http://localhost:8080</code>)</li>
+<li><code>--local</code>: Flag to use local credentials for Google Cloud Logging</li>
+</ul>
+<h3 id="running-the-script">Running the Script</h3>
+<ol>
+<li>
+<p><strong>Run the script</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">python your_script.py --url http://localhost:8080
+</code></pre></div></li>
+<li>
+<p><strong>Run the script with local credentials for Google Cloud Logging</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">python your_script.py --url http://localhost:8080 --local
+</code></pre></div></li>
+</ol>
+<h2 id="code-overview">Code Overview</h2>
+<h3 id="imports-and-logging-setup">Imports and Logging Setup</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">mastodon</span> <span class="kn">import</span> <span class="n">Mastodon</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">from</span> <span class="nn">google.cloud</span> <span class="kn">import</span> <span class="n">secretmanager</span>
+<span class="kn">from</span> <span class="nn">gcputils.GoogleCloudLogging</span> <span class="kn">import</span> <span class="n">GoogleCloudLogging</span>
+<span class="kn">from</span> <span class="nn">gcputils.GoogleSecretManager</span> <span class="kn">import</span> <span class="n">GoogleSecretManager</span>
+
+<span class="c1"># Set up logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</code></pre></div><h3 id="creating-the-mastodon-app">Creating the Mastodon App</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">app_name</span><span class="o">=</span><span class="s2">&#34;cobra-bot2&#34;</span><span class="p">,</span> <span class="n">api_base_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="s2">&#34;masto-secret.secret&#34;</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Create a new app with given app_name and scopes on the instance given by api_base_url.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    app_name (str): Name of the app to be created.
+</span><span class="s1">    api_base_url (str): Base URL of the Mastodon instance.
+</span><span class="s1">    to_file (str): File to save the app credentials.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    None
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="n">Mastodon</span><span class="o">.</span><span class="n">create_app</span><span class="p">(</span>
+        <span class="n">client_name</span><span class="o">=</span><span class="n">app_name</span><span class="p">,</span>
+        <span class="n">scopes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;read&#39;</span><span class="p">,</span> <span class="s1">&#39;write&#39;</span><span class="p">,</span> <span class="s1">&#39;follow&#39;</span><span class="p">,</span> <span class="s1">&#39;push&#39;</span><span class="p">],</span>
+        <span class="n">api_base_url</span><span class="o">=</span><span class="n">api_base_url</span><span class="p">,</span>
+        <span class="n">to_file</span><span class="o">=</span><span class="n">to_file</span><span class="p">,</span>
+        <span class="n">website</span><span class="o">=</span><span class="s2">&#34;https://jnapolitano.com&#34;</span>
+    <span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;App &#39;</span><span class="si">{</span><span class="n">app_name</span><span class="si">}</span><span class="s2">&#39; registered and credentials saved to &#39;</span><span class="si">{</span><span class="n">to_file</span><span class="si">}</span><span class="s2">&#39;&#34;</span><span class="p">)</span>
+</code></pre></div><h3 id="formatting-datetime">Formatting Datetime</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">def</span> <span class="nf">format_datetime_for_api</span><span class="p">(</span><span class="n">dt</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Format datetime for API.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    dt (datetime): Datetime object to format.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    str: Formatted datetime string.
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">dt</span><span class="p">:</span>
+        <span class="n">formatted_date</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&#34;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&#34;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Formatted datetime: </span><span class="si">{</span><span class="n">formatted_date</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">formatted_date</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+</code></pre></div><h3 id="updating-a-toot">Updating a Toot</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">update_toot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">base_url</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Update toot in the database by sending a POST request to the API endpoint.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    data (dict): Toot data dictionary.
+</span><span class="s1">    base_url (str): Base URL of the API endpoint.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    None
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/update/toots&#34;</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+        
+        <span class="n">toot_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span>
+            <span class="s2">&#34;created_at&#34;</span><span class="p">:</span> <span class="n">format_datetime_for_api</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]),</span>
+            <span class="s2">&#34;in_reply_to_id&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;in_reply_to_id&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;in_reply_to_account_id&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;in_reply_to_account_id&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;sensitive&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sensitive&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;spoiler_text&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;spoiler_text&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;visibility&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;visibility&#39;</span><span class="p">,</span> <span class="s1">&#39;public&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;language&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;uri&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;uri&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;url&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;site_url&#34;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;account&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;account&#39;</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="s1">&#39;url&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;account&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="s2">&#34;replies_count&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replies_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&#34;reblogs_count&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reblogs_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&#34;favourites_count&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;favourites_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&#34;favourited&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;favourited&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;reblogged&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reblogged&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;muted&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;muted&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;bookmarked&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;bookmarked&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;pinned&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pinned&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="s2">&#34;filtered&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filtered&#39;</span><span class="p">,</span> <span class="p">[])),</span>
+            <span class="s2">&#34;reblog&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reblog&#39;</span><span class="p">)),</span>
+            <span class="s2">&#34;application&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;application&#39;</span><span class="p">)),</span>
+            <span class="s2">&#34;account&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;account&#39;</span><span class="p">)),</span>
+            <span class="s2">&#34;media_attachments&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;media_attachments&#39;</span><span class="p">,</span> <span class="p">[])),</span>
+            <span class="s2">&#34;mentions&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;mentions&#39;</span><span class="p">,</span> <span class="p">[])),</span>
+            <span class="s2">&#34;tags&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="p">[])),</span>
+            <span class="s2">&#34;emojis&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;emojis&#39;</span><span class="p">,</span> <span class="p">[])),</span>
+            <span class="s2">&#34;card&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;card&#39;</span><span class="p">)),</span>
+            <span class="s2">&#34;poll&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;poll&#39;</span><span class="p">))</span>
+        <span class="p">}</span>
+        
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Toot data: </span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">toot_data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">toot_data</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Successfully added toot: </span><span class="si">{</span><span class="n">toot_data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Toot updated or no update needed for: </span><span class="si">{</span><span class="n">toot_data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Failed to update toot: </span><span class="si">{</span><span class="n">toot_data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, Status Code: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">, Message: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;An error occurred while updating the toot: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></div><h3 id="retrieving-a-new-post">Retrieving a new Post</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">get_new_post</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">table_name</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Retrieve a new post from the specified table by sending a GET request to the API endpoint.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    base_url (str): Base URL of the API endpoint.
+</span><span class="s1">    table_name (str): Name of the table to retrieve the post from.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    dict: Retrieved post data.
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/get/post&#34;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;table&#39;</span><span class="p">:</span> <span class="n">table_name</span><span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">post</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;New post retrieved&#34;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">post</span>
+        <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;No new posts available&#34;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Failed to retrieve post: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;An error occurred while fetching the post: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></div><h3 id="formatting-a-toot-message">Formatting a Toot Message</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">format_a_toot</span><span class="p">(</span><span class="n">post</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Format a toot message from the post data.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    post (dict): Post data dictionary.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    str: Formatted toot message.
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="n">toot</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;New post : </span><span class="si">{</span><span class="n">post</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">post</span><span class="p">[</span><span class="s1">&#39;guid&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span>  
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Formatted toot: </span><span class="si">{</span><span class="n">toot</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">toot</span>
+</code></pre></div><h3 id="formatting-a-data-string">Formatting a Data String</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">format_datetime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">date_format</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">%a</span><span class="s2">, </span><span class="si">%d</span><span class="s2"> %b %Y %H:%M:%S %z&#34;</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Format a date string to a specified format.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    date_str (str): Date string to format.
+</span><span class="s1">    date_format (str): Format of the date string.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    str: Formatted date string.
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">date_format</span><span class="p">)</span>
+        <span class="n">formatted_date</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&#34;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&#34;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Formatted datetime: </span><span class="si">{</span><span class="n">formatted_date</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">formatted_date</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;An error occurred while formatting date: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+</code></pre></div><h3 id="pretty-print-json">Pretty Print json</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">def</span> <span class="nf">pretty_print_json</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    Pretty print a JSON object.
+</span><span class="s1">
+</span><span class="s1">    Args:
+</span><span class="s1">    data (dict): JSON data to print.
+</span><span class="s1">
+</span><span class="s1">    Returns:
+</span><span class="s1">    None
+</span><span class="s1">    &#39;&#39;&#39;</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+</code></pre></div><h3 id="main">Main</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="c1"># load_dotenv()  # Load environment variables from .env file</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Retrieve a new post from the feed table.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--url&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;http://localhost:8080&#34;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Base URL for the API endpoint&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--local&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Use local credentials for Google Cloud Logging&#39;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    
+    <span class="n">toot_table</span> <span class="o">=</span> <span class="s2">&#34;toots&#34;</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">url</span>
+
+    <span class="c1"># Setup Google Cloud Logging</span>
+    <span class="c1"># project_id = os.environ.get(&#34;PROJECT_NAME&#34;)</span>
+    <span class="c1"># credentials_path = os.environ.get(&#34;GOOGLE_APPLICATION_CREDENTIALS&#34;) if args.local else None</span>
+    <span class="c1"># gcl = GoogleCloudLogging(project_id, credentials_path)</span>
+    <span class="c1"># gcl.setup_logging()</span>
+
+    <span class="c1"># cred_file = &#34;/app/masto-secret.secret&#34;</span>
+    
+    <span class="c1"># logging.info(cred_file)</span>
+    <span class="c1"># logging.info(os.getcwd())</span>
+    <span class="c1"># print_directory_contents(os.getcwd())</span>
+
+    <span class="c1">#Mastodon CLIENT ID FROM SECRET MANSGER</span>
+
+    <span class="c1"># project_id = os.getenv(&#34;PROJECT_NAME&#34;)</span>
+    <span class="n">project_id</span> <span class="o">=</span> <span class="s2">&#34;smart-axis-421517&#34;</span>
+    <span class="n">gsm</span> <span class="o">=</span> <span class="n">GoogleSecretManager</span><span class="p">(</span><span class="n">project_id</span><span class="p">)</span>
+    <span class="c1"># client.project = project_id</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">mastodon_password</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_PASSWORD&#34;</span><span class="p">)</span>
+        <span class="n">mastodon_username</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_USERNAME&#34;</span><span class="p">)</span>
+        <span class="n">mastodon_client_id</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_CLIENT_ID&#34;</span><span class="p">)</span>
+        <span class="n">mastodon_secret</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_SECRET&#34;</span><span class="p">)</span>
+        <span class="n">mastodon_base_url</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_BASE_URL&#34;</span><span class="p">)</span>
+        <span class="n">mastodon_user_agent</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_USER_AGENT&#34;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Secrets accessed successfully&#34;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error accessing secrets: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">raise</span>
+
+    <span class="c1"># api_base_url = &#34;https://mastodon.social&#34;</span>
+    <span class="c1"># user_cred_file = &#39;/app/cobra-usercred.secret&#39;</span>
+
+    <span class="c1"># if not os.path.exists(cred_file):</span>
+    <span class="c1">#     logging.info(&#34;Credentials file not found. Registering app...&#34;)</span>
+    <span class="c1">#     create_app(api_base_url=api_base_url, to_file=cred_file)</span>
+    <span class="c1"># else:</span>
+    <span class="c1">#     logging.info(f&#34;Credentials file &#39;{cred_file}&#39; already exists. Skipping app registration.&#34;)</span>
+
+    <span class="c1"># Instantiate the App</span>
+    <span class="n">mastodon</span> <span class="o">=</span> <span class="n">Mastodon</span><span class="p">(</span>
+        <span class="n">client_id</span><span class="o">=</span><span class="n">mastodon_client_id</span><span class="p">,</span>
+        <span class="n">client_secret</span><span class="o">=</span><span class="n">mastodon_secret</span><span class="p">,</span>
+        <span class="n">api_base_url</span><span class="o">=</span><span class="n">mastodon_base_url</span><span class="p">,</span>
+        <span class="n">user_agent</span><span class="o">=</span><span class="n">mastodon_user_agent</span>
+    <span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Mastodon app instance created&#34;</span><span class="p">)</span>
+
+    <span class="c1"># Login with secrets</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">user_access_token</span> <span class="o">=</span> <span class="n">mastodon</span><span class="o">.</span><span class="n">log_in</span><span class="p">(</span>
+            <span class="n">mastodon_username</span><span class="p">,</span>
+            <span class="n">mastodon_password</span><span class="p">,</span>
+            <span class="c1"># to_file=user_cred_file</span>
+        <span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Logged in and user credentials saved&#34;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error during login: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+
+    <span class="c1"># Run a session</span>
+    <span class="n">mastodon</span> <span class="o">=</span> <span class="n">Mastodon</span><span class="p">(</span>
+        <span class="n">client_id</span><span class="o">=</span><span class="n">mastodon_client_id</span><span class="p">,</span>
+        <span class="n">client_secret</span><span class="o">=</span><span class="n">mastodon_secret</span><span class="p">,</span>
+        <span class="n">access_token</span><span class="o">=</span><span class="n">user_access_token</span><span class="p">,</span>
+        <span class="n">api_base_url</span><span class="o">=</span><span class="n">mastodon_base_url</span>
+    <span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Mastodon session started&#34;</span><span class="p">)</span>
+
+    <span class="c1"># Test a toot</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">get_new_post</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">,</span> <span class="n">table_name</span><span class="o">=</span><span class="n">toot_table</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">post</span><span class="p">:</span>
+        <span class="n">toot</span> <span class="o">=</span> <span class="n">format_a_toot</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
+        <span class="n">toot_result</span> <span class="o">=</span> <span class="n">mastodon</span><span class="o">.</span><span class="n">toot</span><span class="p">(</span><span class="n">toot</span><span class="p">)</span>
+
+        <span class="c1"># Add empty application and account fields</span>
+        <span class="n">toot_result</span><span class="p">[</span><span class="s2">&#34;application&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">toot_result</span><span class="p">[</span><span class="s2">&#34;account&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">update_toot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">toot_result</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;No new post to toot&#34;</span><span class="p">)</span>
+
+</code></pre></div>]]></content>
+			<postid> f58973c1804ac9cee0a233928500ca25</postid>
+			<author>Justin Napolitano</author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
 			<title>GCP Secret Manager Script</title>
 			<link>jnapolitano.com/posts/gcp-secret-creation/</link>
 			<pubDate>Thu, 18 Jul 2024 12:25:11 -0500</pubDate>
@@ -3661,371 +4026,6 @@ git submodule update --init --recursive --remote
 </ul>
 ]]></content>
 			<postid> c8d81718277290492cd6844b83dabeb6</postid>
-			<author>Justin Napolitano</author>
-			<author_name>Justin Napolitano</author_name>
-			<author_email>personal.jnapolitano@gmail.com</author_email>
-			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
-		</item>
-		
-		<item>
-			<title>Mastodon Bot Script</title>
-			<link>jnapolitano.com/posts/mastodon-client/</link>
-			<pubDate>Tue, 18 Jun 2024 14:36:34 -0500</pubDate>
-			<guid>jnapolitano.com/posts/mastodon-client/</guid>
-			<description><![CDATA[Automate Posting to Mastodon]]></description>
-			<content type="html"><![CDATA[<h1 id="mastodon-bot-script">Mastodon Bot Script</h1>
-<p>This script manages the Mastodon bot, including retrieving secrets from Google Cloud Secret Manager, logging in to Mastodon, and posting toots.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<ul>
-<li>Python 3.6 or higher</li>
-<li>Google Cloud SDK installed and authenticated</li>
-<li>Necessary Python packages installed (<code>google-cloud-secret-manager</code>, <code>python-dotenv</code>, <code>mastodon.py</code>, <code>requests</code>)</li>
-<li>Google Cloud Project with Secret Manager API enabled</li>
-<li>Secrets stored in Google Cloud Secret Manager</li>
-</ul>
-<h2 id="installation">Installation</h2>
-<ol>
-<li>
-<p><strong>Clone the repository</strong>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git clone https://your-repo-url.git
-<span class="nb">cd</span> your-repo-directory
-</code></pre></div></li>
-<li>
-<p><strong>Create a virtual environment and activate it</strong>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">python -m venv venv
-<span class="nb">source</span> venv/bin/activate  <span class="c1"># On Windows, use `venv\\Scripts\\activate`</span>
-</code></pre></div></li>
-<li>
-<p><strong>Install the required packages</strong>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">pip install google-cloud-secret-manager python-dotenv mastodon.py requests
-</code></pre></div></li>
-</ol>
-<h2 id="setup">Setup</h2>
-<ol>
-<li>
-<p><strong>Create a <code>.env</code> file</strong> in the root directory with the following structure (if needed):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="nv">PROJECT_NAME</span><span class="o">=</span>your_project_name
-</code></pre></div></li>
-<li>
-<p><strong>Store the following secrets in Google Cloud Secret Manager</strong>:</p>
-<ul>
-<li><code>MASTODON_PASSWORD</code></li>
-<li><code>MASTODON_USERNAME</code></li>
-<li><code>MASTODON_CLIENT_ID</code></li>
-<li><code>MASTODON_SECRET</code></li>
-<li><code>MASTODON_BASE_URL</code></li>
-<li><code>MASTODON_USER_AGENT</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="usage">Usage</h2>
-<p>The script provides several command-line arguments to control its behavior.</p>
-<h3 id="arguments">Arguments</h3>
-<ul>
-<li><code>--url</code>: Base URL for the API endpoint (default: <code>http://localhost:8080</code>)</li>
-<li><code>--local</code>: Flag to use local credentials for Google Cloud Logging</li>
-</ul>
-<h3 id="running-the-script">Running the Script</h3>
-<ol>
-<li>
-<p><strong>Run the script</strong>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">python your_script.py --url http://localhost:8080
-</code></pre></div></li>
-<li>
-<p><strong>Run the script with local credentials for Google Cloud Logging</strong>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">python your_script.py --url http://localhost:8080 --local
-</code></pre></div></li>
-</ol>
-<h2 id="code-overview">Code Overview</h2>
-<h3 id="imports-and-logging-setup">Imports and Logging Setup</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">from</span> <span class="nn">mastodon</span> <span class="kn">import</span> <span class="n">Mastodon</span>
-<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">from</span> <span class="nn">google.cloud</span> <span class="kn">import</span> <span class="n">secretmanager</span>
-<span class="kn">from</span> <span class="nn">gcputils.GoogleCloudLogging</span> <span class="kn">import</span> <span class="n">GoogleCloudLogging</span>
-<span class="kn">from</span> <span class="nn">gcputils.GoogleSecretManager</span> <span class="kn">import</span> <span class="n">GoogleSecretManager</span>
-
-<span class="c1"># Set up logging</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
-
-</code></pre></div><h3 id="creating-the-mastodon-app">Creating the Mastodon App</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
-<span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="n">app_name</span><span class="o">=</span><span class="s2">&#34;cobra-bot2&#34;</span><span class="p">,</span> <span class="n">api_base_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="s2">&#34;masto-secret.secret&#34;</span><span class="p">):</span>
-    <span class="s1">&#39;&#39;&#39;
-</span><span class="s1">    Create a new app with given app_name and scopes on the instance given by api_base_url.
-</span><span class="s1">
-</span><span class="s1">    Args:
-</span><span class="s1">    app_name (str): Name of the app to be created.
-</span><span class="s1">    api_base_url (str): Base URL of the Mastodon instance.
-</span><span class="s1">    to_file (str): File to save the app credentials.
-</span><span class="s1">
-</span><span class="s1">    Returns:
-</span><span class="s1">    None
-</span><span class="s1">    &#39;&#39;&#39;</span>
-    <span class="n">Mastodon</span><span class="o">.</span><span class="n">create_app</span><span class="p">(</span>
-        <span class="n">client_name</span><span class="o">=</span><span class="n">app_name</span><span class="p">,</span>
-        <span class="n">scopes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;read&#39;</span><span class="p">,</span> <span class="s1">&#39;write&#39;</span><span class="p">,</span> <span class="s1">&#39;follow&#39;</span><span class="p">,</span> <span class="s1">&#39;push&#39;</span><span class="p">],</span>
-        <span class="n">api_base_url</span><span class="o">=</span><span class="n">api_base_url</span><span class="p">,</span>
-        <span class="n">to_file</span><span class="o">=</span><span class="n">to_file</span><span class="p">,</span>
-        <span class="n">website</span><span class="o">=</span><span class="s2">&#34;https://jnapolitano.com&#34;</span>
-    <span class="p">)</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;App &#39;</span><span class="si">{</span><span class="n">app_name</span><span class="si">}</span><span class="s2">&#39; registered and credentials saved to &#39;</span><span class="si">{</span><span class="n">to_file</span><span class="si">}</span><span class="s2">&#39;&#34;</span><span class="p">)</span>
-</code></pre></div><h3 id="formatting-datetime">Formatting Datetime</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
-<span class="k">def</span> <span class="nf">format_datetime_for_api</span><span class="p">(</span><span class="n">dt</span><span class="p">):</span>
-    <span class="s1">&#39;&#39;&#39;
-</span><span class="s1">    Format datetime for API.
-</span><span class="s1">
-</span><span class="s1">    Args:
-</span><span class="s1">    dt (datetime): Datetime object to format.
-</span><span class="s1">
-</span><span class="s1">    Returns:
-</span><span class="s1">    str: Formatted datetime string.
-</span><span class="s1">    &#39;&#39;&#39;</span>
-    <span class="k">if</span> <span class="n">dt</span><span class="p">:</span>
-        <span class="n">formatted_date</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&#34;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&#34;</span><span class="p">)</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Formatted datetime: </span><span class="si">{</span><span class="n">formatted_date</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">formatted_date</span>
-    <span class="k">return</span> <span class="kc">None</span>
-
-</code></pre></div><h3 id="updating-a-toot">Updating a Toot</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">update_toot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">base_url</span><span class="p">):</span>
-    <span class="s1">&#39;&#39;&#39;
-</span><span class="s1">    Update toot in the database by sending a POST request to the API endpoint.
-</span><span class="s1">
-</span><span class="s1">    Args:
-</span><span class="s1">    data (dict): Toot data dictionary.
-</span><span class="s1">    base_url (str): Base URL of the API endpoint.
-</span><span class="s1">
-</span><span class="s1">    Returns:
-</span><span class="s1">    None
-</span><span class="s1">    &#39;&#39;&#39;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/update/toots&#34;</span>
-        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
-        
-        <span class="n">toot_data</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span>
-            <span class="s2">&#34;created_at&#34;</span><span class="p">:</span> <span class="n">format_datetime_for_api</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]),</span>
-            <span class="s2">&#34;in_reply_to_id&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;in_reply_to_id&#39;</span><span class="p">),</span>
-            <span class="s2">&#34;in_reply_to_account_id&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;in_reply_to_account_id&#39;</span><span class="p">),</span>
-            <span class="s2">&#34;sensitive&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sensitive&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-            <span class="s2">&#34;spoiler_text&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;spoiler_text&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
-            <span class="s2">&#34;visibility&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;visibility&#39;</span><span class="p">,</span> <span class="s1">&#39;public&#39;</span><span class="p">),</span>
-            <span class="s2">&#34;language&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
-            <span class="s2">&#34;uri&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;uri&#39;</span><span class="p">),</span>
-            <span class="s2">&#34;url&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">),</span>
-            <span class="s2">&#34;site_url&#34;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;account&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;account&#39;</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="s1">&#39;url&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;account&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-            <span class="s2">&#34;replies_count&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replies_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="s2">&#34;reblogs_count&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reblogs_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="s2">&#34;favourites_count&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;favourites_count&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="s2">&#34;favourited&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;favourited&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-            <span class="s2">&#34;reblogged&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reblogged&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-            <span class="s2">&#34;muted&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;muted&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-            <span class="s2">&#34;bookmarked&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;bookmarked&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-            <span class="s2">&#34;pinned&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pinned&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-            <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
-            <span class="s2">&#34;filtered&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filtered&#39;</span><span class="p">,</span> <span class="p">[])),</span>
-            <span class="s2">&#34;reblog&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reblog&#39;</span><span class="p">)),</span>
-            <span class="s2">&#34;application&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;application&#39;</span><span class="p">)),</span>
-            <span class="s2">&#34;account&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;account&#39;</span><span class="p">)),</span>
-            <span class="s2">&#34;media_attachments&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;media_attachments&#39;</span><span class="p">,</span> <span class="p">[])),</span>
-            <span class="s2">&#34;mentions&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;mentions&#39;</span><span class="p">,</span> <span class="p">[])),</span>
-            <span class="s2">&#34;tags&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="p">[])),</span>
-            <span class="s2">&#34;emojis&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;emojis&#39;</span><span class="p">,</span> <span class="p">[])),</span>
-            <span class="s2">&#34;card&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;card&#39;</span><span class="p">)),</span>
-            <span class="s2">&#34;poll&#34;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;poll&#39;</span><span class="p">))</span>
-        <span class="p">}</span>
-        
-        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Toot data: </span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">toot_data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">toot_data</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Successfully added toot: </span><span class="si">{</span><span class="n">toot_data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Toot updated or no update needed for: </span><span class="si">{</span><span class="n">toot_data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Failed to update toot: </span><span class="si">{</span><span class="n">toot_data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, Status Code: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">, Message: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;An error occurred while updating the toot: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</code></pre></div><h3 id="retrieving-a-new-post">Retrieving a new Post</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">get_new_post</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">table_name</span><span class="p">):</span>
-    <span class="s1">&#39;&#39;&#39;
-</span><span class="s1">    Retrieve a new post from the specified table by sending a GET request to the API endpoint.
-</span><span class="s1">
-</span><span class="s1">    Args:
-</span><span class="s1">    base_url (str): Base URL of the API endpoint.
-</span><span class="s1">    table_name (str): Name of the table to retrieve the post from.
-</span><span class="s1">
-</span><span class="s1">    Returns:
-</span><span class="s1">    dict: Retrieved post data.
-</span><span class="s1">    &#39;&#39;&#39;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/get/post&#34;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;table&#39;</span><span class="p">:</span> <span class="n">table_name</span><span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-            <span class="n">post</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;New post retrieved&#34;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">post</span>
-        <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;No new posts available&#34;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Failed to retrieve post: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;An error occurred while fetching the post: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</code></pre></div><h3 id="formatting-a-toot-message">Formatting a Toot Message</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">format_a_toot</span><span class="p">(</span><span class="n">post</span><span class="p">):</span>
-    <span class="s1">&#39;&#39;&#39;
-</span><span class="s1">    Format a toot message from the post data.
-</span><span class="s1">
-</span><span class="s1">    Args:
-</span><span class="s1">    post (dict): Post data dictionary.
-</span><span class="s1">
-</span><span class="s1">    Returns:
-</span><span class="s1">    str: Formatted toot message.
-</span><span class="s1">    &#39;&#39;&#39;</span>
-    <span class="n">toot</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;New post : </span><span class="si">{</span><span class="n">post</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">post</span><span class="p">[</span><span class="s1">&#39;guid&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span>  
-    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Formatted toot: </span><span class="si">{</span><span class="n">toot</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">toot</span>
-</code></pre></div><h3 id="formatting-a-data-string">Formatting a Data String</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">format_datetime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">date_format</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">%a</span><span class="s2">, </span><span class="si">%d</span><span class="s2"> %b %Y %H:%M:%S %z&#34;</span><span class="p">):</span>
-    <span class="s1">&#39;&#39;&#39;
-</span><span class="s1">    Format a date string to a specified format.
-</span><span class="s1">
-</span><span class="s1">    Args:
-</span><span class="s1">    date_str (str): Date string to format.
-</span><span class="s1">    date_format (str): Format of the date string.
-</span><span class="s1">
-</span><span class="s1">    Returns:
-</span><span class="s1">    str: Formatted date string.
-</span><span class="s1">    &#39;&#39;&#39;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">date_format</span><span class="p">)</span>
-        <span class="n">formatted_date</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&#34;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&#34;</span><span class="p">)</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Formatted datetime: </span><span class="si">{</span><span class="n">formatted_date</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">formatted_date</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;An error occurred while formatting date: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-</code></pre></div><h3 id="pretty-print-json">Pretty Print json</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
-<span class="k">def</span> <span class="nf">pretty_print_json</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="s1">&#39;&#39;&#39;
-</span><span class="s1">    Pretty print a JSON object.
-</span><span class="s1">
-</span><span class="s1">    Args:
-</span><span class="s1">    data (dict): JSON data to print.
-</span><span class="s1">
-</span><span class="s1">    Returns:
-</span><span class="s1">    None
-</span><span class="s1">    &#39;&#39;&#39;</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
-
-</code></pre></div><h3 id="main">Main</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-    <span class="c1"># load_dotenv()  # Load environment variables from .env file</span>
-
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Retrieve a new post from the feed table.&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--url&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;http://localhost:8080&#34;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Base URL for the API endpoint&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--local&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Use local credentials for Google Cloud Logging&#39;</span><span class="p">)</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
-    
-    <span class="n">toot_table</span> <span class="o">=</span> <span class="s2">&#34;toots&#34;</span>
-    <span class="n">base_url</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">url</span>
-
-    <span class="c1"># Setup Google Cloud Logging</span>
-    <span class="c1"># project_id = os.environ.get(&#34;PROJECT_NAME&#34;)</span>
-    <span class="c1"># credentials_path = os.environ.get(&#34;GOOGLE_APPLICATION_CREDENTIALS&#34;) if args.local else None</span>
-    <span class="c1"># gcl = GoogleCloudLogging(project_id, credentials_path)</span>
-    <span class="c1"># gcl.setup_logging()</span>
-
-    <span class="c1"># cred_file = &#34;/app/masto-secret.secret&#34;</span>
-    
-    <span class="c1"># logging.info(cred_file)</span>
-    <span class="c1"># logging.info(os.getcwd())</span>
-    <span class="c1"># print_directory_contents(os.getcwd())</span>
-
-    <span class="c1">#Mastodon CLIENT ID FROM SECRET MANSGER</span>
-
-    <span class="c1"># project_id = os.getenv(&#34;PROJECT_NAME&#34;)</span>
-    <span class="n">project_id</span> <span class="o">=</span> <span class="s2">&#34;smart-axis-421517&#34;</span>
-    <span class="n">gsm</span> <span class="o">=</span> <span class="n">GoogleSecretManager</span><span class="p">(</span><span class="n">project_id</span><span class="p">)</span>
-    <span class="c1"># client.project = project_id</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">mastodon_password</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_PASSWORD&#34;</span><span class="p">)</span>
-        <span class="n">mastodon_username</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_USERNAME&#34;</span><span class="p">)</span>
-        <span class="n">mastodon_client_id</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_CLIENT_ID&#34;</span><span class="p">)</span>
-        <span class="n">mastodon_secret</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_SECRET&#34;</span><span class="p">)</span>
-        <span class="n">mastodon_base_url</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_BASE_URL&#34;</span><span class="p">)</span>
-        <span class="n">mastodon_user_agent</span> <span class="o">=</span> <span class="n">gsm</span><span class="o">.</span><span class="n">access_secret</span><span class="p">(</span><span class="s2">&#34;MASTODON_USER_AGENT&#34;</span><span class="p">)</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Secrets accessed successfully&#34;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error accessing secrets: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-        <span class="k">raise</span>
-
-    <span class="c1"># api_base_url = &#34;https://mastodon.social&#34;</span>
-    <span class="c1"># user_cred_file = &#39;/app/cobra-usercred.secret&#39;</span>
-
-    <span class="c1"># if not os.path.exists(cred_file):</span>
-    <span class="c1">#     logging.info(&#34;Credentials file not found. Registering app...&#34;)</span>
-    <span class="c1">#     create_app(api_base_url=api_base_url, to_file=cred_file)</span>
-    <span class="c1"># else:</span>
-    <span class="c1">#     logging.info(f&#34;Credentials file &#39;{cred_file}&#39; already exists. Skipping app registration.&#34;)</span>
-
-    <span class="c1"># Instantiate the App</span>
-    <span class="n">mastodon</span> <span class="o">=</span> <span class="n">Mastodon</span><span class="p">(</span>
-        <span class="n">client_id</span><span class="o">=</span><span class="n">mastodon_client_id</span><span class="p">,</span>
-        <span class="n">client_secret</span><span class="o">=</span><span class="n">mastodon_secret</span><span class="p">,</span>
-        <span class="n">api_base_url</span><span class="o">=</span><span class="n">mastodon_base_url</span><span class="p">,</span>
-        <span class="n">user_agent</span><span class="o">=</span><span class="n">mastodon_user_agent</span>
-    <span class="p">)</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Mastodon app instance created&#34;</span><span class="p">)</span>
-
-    <span class="c1"># Login with secrets</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">user_access_token</span> <span class="o">=</span> <span class="n">mastodon</span><span class="o">.</span><span class="n">log_in</span><span class="p">(</span>
-            <span class="n">mastodon_username</span><span class="p">,</span>
-            <span class="n">mastodon_password</span><span class="p">,</span>
-            <span class="c1"># to_file=user_cred_file</span>
-        <span class="p">)</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Logged in and user credentials saved&#34;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error during login: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-
-    <span class="c1"># Run a session</span>
-    <span class="n">mastodon</span> <span class="o">=</span> <span class="n">Mastodon</span><span class="p">(</span>
-        <span class="n">client_id</span><span class="o">=</span><span class="n">mastodon_client_id</span><span class="p">,</span>
-        <span class="n">client_secret</span><span class="o">=</span><span class="n">mastodon_secret</span><span class="p">,</span>
-        <span class="n">access_token</span><span class="o">=</span><span class="n">user_access_token</span><span class="p">,</span>
-        <span class="n">api_base_url</span><span class="o">=</span><span class="n">mastodon_base_url</span>
-    <span class="p">)</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Mastodon session started&#34;</span><span class="p">)</span>
-
-    <span class="c1"># Test a toot</span>
-    <span class="n">post</span> <span class="o">=</span> <span class="n">get_new_post</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">,</span> <span class="n">table_name</span><span class="o">=</span><span class="n">toot_table</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">post</span><span class="p">:</span>
-        <span class="n">toot</span> <span class="o">=</span> <span class="n">format_a_toot</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
-        <span class="n">toot_result</span> <span class="o">=</span> <span class="n">mastodon</span><span class="o">.</span><span class="n">toot</span><span class="p">(</span><span class="n">toot</span><span class="p">)</span>
-
-        <span class="c1"># Add empty application and account fields</span>
-        <span class="n">toot_result</span><span class="p">[</span><span class="s2">&#34;application&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">toot_result</span><span class="p">[</span><span class="s2">&#34;account&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-
-        <span class="n">update_toot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">toot_result</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;No new post to toot&#34;</span><span class="p">)</span>
-
-</code></pre></div>]]></content>
-			<postid> f58973c1804ac9cee0a233928500ca25</postid>
 			<author>Justin Napolitano</author>
 			<author_name>Justin Napolitano</author_name>
 			<author_email>personal.jnapolitano@gmail.com</author_email>
