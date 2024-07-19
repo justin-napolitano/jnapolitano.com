@@ -2,26 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>jnapolitano.com/tags/bash/</loc>
-    <lastmod>2024-07-18T15:49:48-05:00</lastmod>
+    <loc>jnapolitano.com/categories/books/</loc>
+    <lastmod>2024-07-19T14:15:57-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/bread-and-wine/</loc>
+    <lastmod>2024-07-19T14:15:57-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/categories/</loc>
-    <lastmod>2024-07-18T16:08:02-05:00</lastmod>
+    <lastmod>2024-07-19T17:46:21-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/</loc>
+    <lastmod>2024-07-19T17:46:21-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/life/</loc>
+    <lastmod>2024-07-19T14:15:57-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/</loc>
+    <lastmod>2024-07-19T17:46:21-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/categories/adventures/</loc>
+    <lastmod>2024-07-18T17:12:37-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/exercise/</loc>
+    <lastmod>2024-07-18T17:12:37-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/bash/</loc>
+    <lastmod>2024-07-18T15:49:48-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/create_deploy_cloud_run_job/</loc>
     <lastmod>2024-07-18T15:49:48-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/gcp/</loc>
-    <lastmod>2024-07-18T15:49:48-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/</loc>
-    <lastmod>2024-07-18T16:08:02-05:00</lastmod>
+    <lastmod>2024-07-19T17:46:21-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/categories/projects/</loc>
-    <lastmod>2024-07-18T16:08:02-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/tags/</loc>
-    <lastmod>2024-07-18T16:08:02-05:00</lastmod>
+    <lastmod>2024-07-19T17:46:21-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/tutorials/</loc>
     <lastmod>2024-07-18T15:49:48-05:00</lastmod>
@@ -36,28 +51,25 @@
     <lastmod>2024-07-18T16:08:02-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/programming/</loc>
-    <lastmod>2024-07-18T16:08:02-05:00</lastmod>
+    <lastmod>2024-07-19T17:46:21-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/python/</loc>
-    <lastmod>2024-07-18T16:08:02-05:00</lastmod>
+    <lastmod>2024-07-19T17:46:21-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/series/gcp/</loc>
-    <lastmod>2024-07-18T12:35:46-05:00</lastmod>
+    <lastmod>2024-07-19T17:46:21-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/gcp-secret-creation/</loc>
     <lastmod>2024-07-18T12:35:46-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/series/</loc>
-    <lastmod>2024-07-18T12:35:46-05:00</lastmod>
+    <lastmod>2024-07-19T17:46:21-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/cli/</loc>
     <lastmod>2024-07-16T17:25:51-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/schedule-gcp-chron-jobs/</loc>
     <lastmod>2024-07-16T17:25:51-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/categories/adventures/</loc>
-    <lastmod>2024-07-15T13:13:10-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/tags/hiking/</loc>
     <lastmod>2024-07-15T13:13:10-05:00</lastmod>
@@ -119,9 +131,6 @@
     <loc>jnapolitano.com/tags/git/</loc>
     <lastmod>2024-07-11T17:15:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/tags/life/</loc>
-    <lastmod>2024-07-11T17:05:01-05:00</lastmod>
-  </url><url>
     <loc>jnapolitano.com/posts/running/</loc>
     <lastmod>2024-07-11T17:05:01-05:00</lastmod>
   </url><url>
@@ -181,6 +190,12 @@
   </url><url>
     <loc>jnapolitano.com/posts/gh_submodule_sync/</loc>
     <lastmod>2024-07-09T17:54:44-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/tags/bigquery/</loc>
+    <lastmod>2024-07-19T17:46:21-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/posts/loc-prodifier/</loc>
+    <lastmod>2024-07-19T17:46:21-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/posts/rss-reader/</loc>
     <lastmod>2024-07-18T15:59:16-05:00</lastmod>

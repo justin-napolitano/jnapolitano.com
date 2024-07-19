@@ -7,7 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 18 Jul 2024 15:49:48 -0500</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Jul 2024 00:39:38 -0500</lastBuildDate><atom:link href="jnapolitano.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bread and Wine</title>
+      <link>jnapolitano.com/posts/bread-and-wine/</link>
+      <pubDate>Fri, 19 Jul 2024 00:39:38 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/bread-and-wine/</guid>
+      <description>Bread and Wine &amp;ldquo;There always comes a time in life when the young men get bored by the bread and wine at home. They look for food elsewhere. The bread and wine of in inns at the crossroads can calm their hunger and thirst for a while. But man cannot spend all his life at the inns.&amp;quot;
+Letting Go of Idealism I like this novel. I like Don Paolo. I live abstractly.</description>
+    </item>
+    
+    <item>
+      <title>Exercise</title>
+      <link>jnapolitano.com/posts/exercise/</link>
+      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>jnapolitano.com/posts/exercise/</guid>
+      <description>Exercise Staying active can be difficult. I recently moved from the center of Houston to Littleton Colorado. I have driven more miles in the past 3 weeks than I have in 5 years. I am not as fit as I used to be simply because I cannot bike nor walk to the park, cafe, etc&amp;hellip;
+My Goals So now I have to actually try to stay in shape. My daily goals are to&amp;hellip;</description>
+    </item>
+    
     <item>
       <title>Create and Deploy Cloud Run Job Script</title>
       <link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>
@@ -259,6 +279,16 @@ Parts of this series  part 1 part 2 part 3  MYSQL Resources  APT install guide M
       <guid>jnapolitano.com/posts/gh_submodule_sync/</guid>
       <description>Overview This script is designed to initialize and update all submodules in a GitHub repository to the latest commits from their respective remote repositories. It ensures that all submodules, including nested submodules, are synchronized with their remote counterparts.
 Prerequisites  Ensure that you have Git installed on your system. Ensure that you have cloned the repository containing the submodules.  Usage  Save the script to a file, for example, sync_submodules.</description>
+    </item>
+    
+    <item>
+      <title>Library of Congress Prodfier</title>
+      <link>jnapolitano.com/posts/loc-prodifier/</link>
+      <pubDate>Wed, 19 Jun 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/loc-prodifier/</guid>
+      <description>Loc Prodifier Overview Loc Prodifier is a Python script designed to merge data from staging tables into production tables in Google BigQuery without inserting duplicate records. It uses the Google Cloud BigQuery Python client and can be run both locally and in Google Cloud Run. The script is designed to be flexible and scalable, allowing for parallel execution across multiple tables using Google Cloud Workflows.
+Features  Merges data from staging tables into production tables without duplicates.</description>
     </item>
     
     <item>
