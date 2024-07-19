@@ -149,3 +149,6 @@
 [submodule "content/posts/exercise"]
 	path = content/posts/exercise
 	url = https://github.com/justin-napolitano/exercise.git
+[submodule "content/posts/bread-and-wine"]
+	path = content/posts/bread-and-wine
+	url = https://github.com/justin-napolitano/bread-and-wine.git
