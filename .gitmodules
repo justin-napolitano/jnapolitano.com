@@ -152,3 +152,7 @@
 [submodule "content/posts/bread-and-wine"]
 	path = content/posts/bread-and-wine
 	url = https://github.com/justin-napolitano/bread-and-wine.git
+[submodule "content/posts/loc-prodifier"]
+	path = content/posts/loc-prodifier
+	url = https://github.com/justin-napolitano/loc_prodifier.git
+	branch = post
