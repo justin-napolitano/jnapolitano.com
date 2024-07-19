@@ -30,5 +30,15 @@ Prerequisites Before we start, ensure you have the following:
  A Google Cloud project. gcloud command-line tool installed and authenticated.</description>
     </item>
     
+    <item>
+      <title>Library of Congress Prodfier</title>
+      <link>jnapolitano.com/posts/loc-prodifier/</link>
+      <pubDate>Wed, 19 Jun 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/loc-prodifier/</guid>
+      <description>Loc Prodifier Overview Loc Prodifier is a Python script designed to merge data from staging tables into production tables in Google BigQuery without inserting duplicate records. It uses the Google Cloud BigQuery Python client and can be run both locally and in Google Cloud Run. The script is designed to be flexible and scalable, allowing for parallel execution across multiple tables using Google Cloud Workflows.
+Features  Merges data from staging tables into production tables without duplicates.</description>
+    </item>
+    
   </channel>
 </rss>
