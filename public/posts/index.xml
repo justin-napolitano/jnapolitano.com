@@ -4098,9 +4098,9 @@ git submodule update --init --recursive --remote
 		</item>
 		
 		<item>
-			<title>Library of Congress Prodfier</title>
+			<title>Library of Congress Prod-ifier</title>
 			<link>jnapolitano.com/posts/loc-prodifier/</link>
-			<pubDate>Wed, 19 Jun 2024 22:36:34 -0500</pubDate>
+			<pubDate>Thu, 20 Jun 2024 22:36:34 -0500</pubDate>
 			<guid>jnapolitano.com/posts/loc-prodifier/</guid>
 			<description><![CDATA[Create a modular job to run in parallel to prod-ify a db ]]></description>
 			<content type="html"><![CDATA[<h1 id="loc-prodifier">Loc Prodifier</h1>
