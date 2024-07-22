@@ -7,18 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Thu, 18 Jul 2024 15:49:48 -0500</lastBuildDate><atom:link href="jnapolitano.com/categories/projects/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Create and Deploy Cloud Run Job Script</title>
-      <link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>
-      <pubDate>Thu, 18 Jul 2024 15:49:48 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/create_deploy_cloud_run_job/</guid>
-      <description>Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build.
-Prerequisites Before using the deployment script, ensure you have the following:
- Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.</description>
-    </item>
-    
+    <lastBuildDate>Thu, 18 Jul 2024 14:36:34 -0500</lastBuildDate><atom:link href="jnapolitano.com/categories/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mastodon Bot Script</title>
       <link>jnapolitano.com/posts/mastodon-client/</link>
@@ -53,6 +42,26 @@ Prerequisites Before we start, ensure you have the following:
     </item>
     
     <item>
+      <title>Create and Deploy Cloud Run Job Script</title>
+      <link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>
+      <pubDate>Sun, 14 Jul 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/create_deploy_cloud_run_job/</guid>
+      <description>Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build.
+Prerequisites Before using the deployment script, ensure you have the following:
+ Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.</description>
+    </item>
+    
+    <item>
+      <title>Pull.. Commit.. And Push Bash Script</title>
+      <link>jnapolitano.com/posts/push-commits/</link>
+      <pubDate>Sat, 13 Jul 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/push-commits/</guid>
+      <description>Push Committed and Uncommitted Changes Script This script traverses a specified directory of git repositories, pulls updates for all branches, checks for committed and uncommitted changes across all branches, and pushes those changes to the remote repository. For uncommitted changes, it creates a new branch called uncommitted, commits the changes with a message detailing the original branch, and then pushes the new branch to the remote. For the main branch, if there are committed changes, it moves those changes to a new branch called bad-practice and then pushes that branch to the remote repository.</description>
+    </item>
+    
+    <item>
       <title>Current Time Script</title>
       <link>jnapolitano.com/posts/current-time-script/</link>
       <pubDate>Sat, 13 Jul 2024 16:25:59 -0500</pubDate>
@@ -62,15 +71,6 @@ Prerequisites Before we start, ensure you have the following:
 Prerequisites  Bash shell date command (available on most Unix-like systems)  Usage   Save the Script:
 Save the following script to a file, e.g., current_time.sh:
 #!/bin/bash  # Get the current date and time in the desired format current_time=$(date +&amp;#34;%Y-%m-%dT%H:%M:%S%z&amp;#34;) # Format the time zone offset with a colon formatted_time=&amp;#34;${current_time:0:22}:${current_time:22:2}&amp;#34; # Print the result echo &amp;#34;date = \&amp;#34;$formatted_time\&amp;#34;&amp;#34;   Make the Script Executable:</description>
-    </item>
-    
-    <item>
-      <title>Pull.. Commit.. And Push Bash Script</title>
-      <link>jnapolitano.com/posts/push-commits/</link>
-      <pubDate>Sat, 13 Jul 2024 14:30:55 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/push-commits/</guid>
-      <description>Push Committed and Uncommitted Changes Script This script traverses a specified directory of git repositories, pulls updates for all branches, checks for committed and uncommitted changes across all branches, and pushes those changes to the remote repository. For uncommitted changes, it creates a new branch called uncommitted, commits the changes with a message detailing the original branch, and then pushes the new branch to the remote. For the main branch, if there are committed changes, it moves those changes to a new branch called bad-practice and then pushes that branch to the remote repository.</description>
     </item>
     
     <item>

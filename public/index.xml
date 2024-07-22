@@ -19,27 +19,6 @@ Letting Go of Idealism I like this novel. I like Don Paolo. I live abstractly.</
     </item>
     
     <item>
-      <title>Exercise</title>
-      <link>jnapolitano.com/posts/exercise/</link>
-      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/exercise/</guid>
-      <description>Exercise Staying active can be difficult. I recently moved from the center of Houston to Littleton Colorado. I have driven more miles in the past 3 weeks than I have in 5 years. I am not as fit as I used to be simply because I cannot bike nor walk to the park, cafe, etc&amp;hellip;
-My Goals So now I have to actually try to stay in shape. My daily goals are to&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Create and Deploy Cloud Run Job Script</title>
-      <link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>
-      <pubDate>Thu, 18 Jul 2024 15:49:48 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/create_deploy_cloud_run_job/</guid>
-      <description>Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build.
-Prerequisites Before using the deployment script, ensure you have the following:
- Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.</description>
-    </item>
-    
-    <item>
       <title>Mastodon Bot Script</title>
       <link>jnapolitano.com/posts/mastodon-client/</link>
       <pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate>
@@ -73,6 +52,26 @@ Prerequisites Before we start, ensure you have the following:
     </item>
     
     <item>
+      <title>Create and Deploy Cloud Run Job Script</title>
+      <link>jnapolitano.com/posts/create_deploy_cloud_run_job/</link>
+      <pubDate>Sun, 14 Jul 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/create_deploy_cloud_run_job/</guid>
+      <description>Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build.
+Prerequisites Before using the deployment script, ensure you have the following:
+ Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.</description>
+    </item>
+    
+    <item>
+      <title>Pull.. Commit.. And Push Bash Script</title>
+      <link>jnapolitano.com/posts/push-commits/</link>
+      <pubDate>Sat, 13 Jul 2024 22:36:34 -0500</pubDate>
+      
+      <guid>jnapolitano.com/posts/push-commits/</guid>
+      <description>Push Committed and Uncommitted Changes Script This script traverses a specified directory of git repositories, pulls updates for all branches, checks for committed and uncommitted changes across all branches, and pushes those changes to the remote repository. For uncommitted changes, it creates a new branch called uncommitted, commits the changes with a message detailing the original branch, and then pushes the new branch to the remote. For the main branch, if there are committed changes, it moves those changes to a new branch called bad-practice and then pushes that branch to the remote repository.</description>
+    </item>
+    
+    <item>
       <title>Windy Peak Via Mountain Lion Loop</title>
       <link>jnapolitano.com/posts/windy-peak-mountain-lion-loop/</link>
       <pubDate>Sat, 13 Jul 2024 16:29:26 -0500</pubDate>
@@ -99,27 +98,6 @@ Save the following script to a file, e.g., current_time.sh:
     </item>
     
     <item>
-      <title>Pull.. Commit.. And Push Bash Script</title>
-      <link>jnapolitano.com/posts/push-commits/</link>
-      <pubDate>Sat, 13 Jul 2024 14:30:55 -0500</pubDate>
-      
-      <guid>jnapolitano.com/posts/push-commits/</guid>
-      <description>Push Committed and Uncommitted Changes Script This script traverses a specified directory of git repositories, pulls updates for all branches, checks for committed and uncommitted changes across all branches, and pushes those changes to the remote repository. For uncommitted changes, it creates a new branch called uncommitted, commits the changes with a message detailing the original branch, and then pushes the new branch to the remote. For the main branch, if there are committed changes, it moves those changes to a new branch called bad-practice and then pushes that branch to the remote repository.</description>
-    </item>
-    
-    <item>
-      <title>Bad Food</title>
-      <link>jnapolitano.com/posts/bad-food/</link>
-      <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/bad-food/</guid>
-      <description>Bad Food I am letting go of bad food.
-Bad food to me is
- Unhealthy Harmful to my teeth Meat (I will expand) Overly expensive Ornamental Idolized  Unhealthy I do not really know what is unhealthy.. I think many things in moderation are probably okay.. That said I know that I want to avoid excess
- Salt Sugar Saturated Fat Calories  So what do I actually eat now that I find unhealthy.</description>
-    </item>
-    
-    <item>
       <title>Update All Repos Bash Script</title>
       <link>jnapolitano.com/posts/pull-all-repos/</link>
       <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
@@ -128,18 +106,6 @@ Bad food to me is
       <description>Update Repositories Script This script recursively finds all git repositories in a specified directory and pulls the latest changes for each one.
 Prerequisites  Bash shell Git installed Proper permissions to access and modify the repositories  Installation   Create the script: Save the following script to a file named update_repos.sh:
 #!/bin/bash  # Define the default root directory where your repos are located DEFAULT_ROOT_DIR=&amp;#34;/home/cobra/Repos&amp;#34; # Use the provided argument as the root directory, or the default if none is provided ROOT_DIR=${1:-$DEFAULT_ROOT_DIR} echo &amp;#34;Starting update process for repositories in $ROOT_DIR&amp;#34; # Function to pull changes in a git repository pull_repo() { local repo_dir=$1 echo &amp;#34;Pulling updates in $repo_dir&amp;#34; cd &amp;#34;$repo_dir&amp;#34; || return git pull echo &amp;#34;Completed update in $repo_dir&amp;#34; cd - || return } # Export the function so it can be used by find -exec export -f pull_repo # Find all .</description>
-    </item>
-    
-    <item>
-      <title>Video Games</title>
-      <link>jnapolitano.com/posts/video-games/</link>
-      <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/video-games/</guid>
-      <description>Video Games I am letting go of video games.
-Binge I binge two games annually.. Crusader Kings (whatver iteration is latest) and Europa Universalis 4. I find maybe twice a year where I play one or the other until I burn out.. Typically about 30 hours..
-This year I have also played about half of fallout 3 and equally as much of fallout 4.
-Lonliness Playing games makes me feel horribly lonely.</description>
     </item>
     
     <item>
@@ -163,17 +129,6 @@ I am using the quick start to get this one going.
 Source: https://github.com/justin-napolitano/python-docs-samples/tree/main/cloud-sql/mysql/sqlalchemy
 Create a New Local Service Account Create a new local service account to be able to test the app locally.
 Create a new role for the cloud run service account Reference : Reference Material</description>
-    </item>
-    
-    <item>
-      <title>Instragram</title>
-      <link>jnapolitano.com/posts/instagram/</link>
-      <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
-      
-      <guid>jnapolitano.com/posts/instagram/</guid>
-      <description>Instagram I cannot help myself from abuse instagram. I tried&amp;hellip; I want to connect with friends&amp;hellip; but it is too addicting
-Scrolling It is near impossible not to scroll. I try to catch up with my friends. I scroll. I feel sad.
-Connection I want to connect.. Instagram can facillitate that.. However, these are often shallow connections. That might be okay, but if I want more than a quick rush&amp;hellip; I need to make the effort to connect in person.</description>
     </item>
     
     <item>
