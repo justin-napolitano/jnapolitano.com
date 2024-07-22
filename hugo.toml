@@ -56,7 +56,7 @@ enableEmoji = true
 #    id = ''
 
 [frontmatter]
-  date = ['date',':fileModTime','lastmod','publishDate']
+  date = ['date',':git',':fileModTime','lastmod','publishDate']
   expiryDate = ['expirydate', 'unpublishdate']
   lastmod = [':fileModTime', ':git', 'lastmod', 'modified', 'date', 'publishdate', 'pubdate', 'published']
   publishDate = ['publishdate', 'pubdate', 'published', 'date']
@@ -177,15 +177,15 @@ enableEmoji = true
     weight = 20
 
 
-  [[menu.main]]
-    name = "ADVENTURES"
-    url = "https://jnapolitano.com/en/categories/adventures/"
-    weight = 30
+  #[[menu.main]]
+  #  name = "ADVENTURES"
+  #  url = "https://jnapolitano.com/en/categories/adventures/"
+  #  weight = 30
 
   [[menu.main]]
     name = "RESUME"
     url = "https://jnapolitano.com/resume.pdf"
-    weight = 40
+    weight = 30
 
 
   [outputs]
