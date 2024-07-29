@@ -156,3 +156,6 @@
 	path = content/posts/loc-prodifier
 	url = https://github.com/justin-napolitano/loc_prodifier.git
 	branch = post
+[submodule "content/posts/sup-court-graph"]
+	path = content/posts/sup-court-graph
+	url = https://github.com/justin-napolitano/sup-court-graph.git
