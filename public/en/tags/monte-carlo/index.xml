@@ -2,18 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Monte-Carlo on Justin Napolitano</title>
-    <link>//localhost:1313/en/tags/monte-carlo/</link>
+    <link>jnapolitano.com/en/tags/monte-carlo/</link>
     <description>Recent content in Monte-Carlo on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
+    <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Jul 2024 13:14:28 -0500</lastBuildDate>
+    <atom:link href="jnapolitano.com/en/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Annual Cost of Living Monte Carlo Models</title>
-      <link>//localhost:1313/en/posts/cost-of-living-projections/</link>
-      <pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate>
-      <guid>//localhost:1313/en/posts/cost-of-living-projections/</guid>
+      <link>jnapolitano.com/en/posts/cost-of-living-projections/</link>
+      <pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/posts/cost-of-living-projections/</guid>
       <description>Cost of Living Projections Introduction I do not like negotiating for salary. Especially, without valid projections to determine a range.&#xA;I prepared this report to estimate a salary expectation that will maintain my current standard of living.&#xA;I present two Monte Carlo models of Houston and NYC annual living costs. The data is somewhat dated and &amp;ndash;particularly in the case of houston&amp;ndash; are high level estimates.&#xA;In order to produce a better report, I am currently scraping data from the internet for more accurate sample distributions.</description>
     </item>
   </channel>

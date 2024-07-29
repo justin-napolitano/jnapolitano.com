@@ -1,0 +1,64 @@
+version: "3.7"
+services:
+
+  datashare:
+    image: icij/datashare:13.9.0
+    hostname: datashare
+    ports:
+      - 8080:8080
+    environment:
+      - DS_DOCKER_MOUNTED_DATA_DIR=/home/datashare/data
+    volumes:
+      - type: bind
+        source: ${HOME}/Datashare
+        target: /home/datashare/data
+      - type: volume
+        source: datashare-models
+        target: /home/datashare/dist
+    command: >-
+      --dataSourceUrl jdbc:postgresql://postgresql/datashare?user=datashare\&password=password 
+      --mode LOCAL
+      --tcpListenPort 8080
+    depends_on:
+      - postgresql
+      - redis
+      - elasticsearch
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.1
+    restart: on-failure
+    volumes:
+      - type: volume
+        source: elasticsearch-data
+        target: /usr/share/elasticsearch/data
+        read_only: false
+    environment:
+      - "http.host=0.0.0.0"
+      - "transport.host=0.0.0.0"
+      - "cluster.name=datashare"
+      - "discovery.type=single-node"
+      - "discovery.zen.minimum_master_nodes=1"
+      - "xpack.license.self_generated.type=basic"
+      - "http.cors.enabled=true"
+      - "http.cors.allow-origin=*"
+      - "http.cors.allow-methods=OPTIONS, HEAD, GET, POST, PUT, DELETE"
+
+  redis:
+    image: redis:4.0.1-alpine
+    restart: on-failure
+
+  postgresql:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=datashare
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=datashare
+    volumes:
+      - type: volume
+        source: postgresql-data
+        target: /var/lib/postgresql/data
+
+volumes:
+  datashare-models:
+  elasticsearch-data:
+  postgresql-data:

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on Justin Napolitano</title>
+    <link>jnapolitano.com/en/series/</link>
+    <description>Recent content in Series on Justin Napolitano</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
+    <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Mon, 29 Jul 2024 18:33:58 -0500</lastBuildDate>
+    <atom:link href="jnapolitano.com/en/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GCP</title>
+      <link>jnapolitano.com/en/series/gcp/</link>
+      <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/series/gcp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bash</title>
+      <link>jnapolitano.com/en/series/bash/</link>
+      <pubDate>Sat, 13 Jul 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/series/bash/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Auto Post Hugo</title>
+      <link>jnapolitano.com/en/series/auto-post-hugo/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/series/auto-post-hugo/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
