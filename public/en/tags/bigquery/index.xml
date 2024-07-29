@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bigquery on Justin Napolitano</title>
+    <link>jnapolitano.com/en/tags/bigquery/</link>
+    <description>Recent content in Bigquery on Justin Napolitano</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
+    <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Sat, 20 Jul 2024 14:59:08 -0500</lastBuildDate>
+    <atom:link href="jnapolitano.com/en/tags/bigquery/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Library of Congress Prod-ifier</title>
+      <link>jnapolitano.com/en/posts/loc-prodifier/</link>
+      <pubDate>Thu, 20 Jun 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/posts/loc-prodifier/</guid>
+      <description>Loc Prodifier Overview Loc Prodifier is a Python script designed to merge data from staging tables into production tables in Google BigQuery without inserting duplicate records. It uses the Google Cloud BigQuery Python client and can be run both locally and in Google Cloud Run. The script is designed to be flexible and scalable, allowing for parallel execution across multiple tables using Google Cloud Workflows.&#xA;Features Merges data from staging tables into production tables without duplicates.</description>
+    </item>
+  </channel>
+</rss>

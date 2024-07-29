@@ -2,18 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spss on Justin Napolitano</title>
-    <link>//localhost:1313/en/tags/spss/</link>
+    <link>jnapolitano.com/en/tags/spss/</link>
     <description>Recent content in Spss on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
+    <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/spss/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Jul 2024 13:14:28 -0500</lastBuildDate>
+    <atom:link href="jnapolitano.com/en/tags/spss/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Legal Research with AI: Part 6</title>
-      <link>//localhost:1313/en/posts/masterpiece/</link>
-      <pubDate>Sat, 21 May 2022 19:40:32 +0000</pubDate>
-      <guid>//localhost:1313/en/posts/masterpiece/</guid>
+      <link>jnapolitano.com/en/posts/masterpiece/</link>
+      <pubDate>Sat, 21 May 2022 19:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/posts/masterpiece/</guid>
       <description>Introduction Currently, my server is mining data from the neo4j graph database.&#xA;This post contains a control model completed in SPSS that will serve as the base line for comparison to Ml models. It includes a short literature review of the theoritical foundation of the Attitudinal Model of Judicial Behavior.&#xA;Hypothesis When considering the individual Supreme Court Justices, their voting behavior may be best described by the interaction between their ideological precepts and the facts of the case.</description>
     </item>
   </channel>

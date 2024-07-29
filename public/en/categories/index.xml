@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Justin Napolitano</title>
+    <link>jnapolitano.com/en/categories/</link>
+    <description>Recent content in Categories on Justin Napolitano</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
+    <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
+    <copyright>jayburdindustries</copyright>
+    <lastBuildDate>Mon, 29 Jul 2024 18:33:58 -0500</lastBuildDate>
+    <atom:link href="jnapolitano.com/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Projects</title>
+      <link>jnapolitano.com/en/categories/projects/</link>
+      <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/categories/projects/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Books</title>
+      <link>jnapolitano.com/en/categories/books/</link>
+      <pubDate>Fri, 19 Jul 2024 00:39:38 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/categories/books/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Adventures</title>
+      <link>jnapolitano.com/en/categories/adventures/</link>
+      <pubDate>Sat, 13 Jul 2024 16:29:26 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/categories/adventures/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Portfolio</title>
+      <link>jnapolitano.com/en/categories/portfolio/</link>
+      <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/categories/portfolio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Project</title>
+      <link>jnapolitano.com/en/categories/project/</link>
+      <pubDate>Sun, 22 May 2022 16:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/categories/project/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
