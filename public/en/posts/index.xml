@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Posts on Justin Napolitano</title>
-		<link>jnapolitano.com/en/posts/</link>
+		<link>//localhost:1313/en/posts/</link>
 		<description>Recent content in Posts on Justin Napolitano</description>
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
@@ -9,13 +9,271 @@
 		<webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
 		<copyright>jayburdindustries</copyright>
 		<lastBuildDate>Wed, 24 Apr 2024 17:23:50 -0500</lastBuildDate>
-		<atom:link href="jnapolitano.com/en/posts/index.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="//localhost:1313/en/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>PostGreSQL Java</title>
+			<link>//localhost:1313/en/posts/sup-court-postgres-post/</link>
+			<pubDate>Wed, 31 Jul 2024 15:25:13 -0500</pubDate>
+			<guid>//localhost:1313/en/posts/sup-court-postgres-post/</guid>
+			<description><![CDATA[Learning java with DBs]]></description>
+			<content type="html"><![CDATA[<h1 id="how-to-set-up-a-postgresql-database-and-tables-using-java-and-maven">How to Set Up a PostgreSQL Database and Tables Using Java and Maven</h1>
+<p>I&rsquo;ve been working on this supreme court case thing. I recently played with DataShare to see if I could use something out of the box for some analysis. It was an okay tool&hellip; but not really powerful enough for my use case. I want to create automated workflows at some scale and build out applications that are more versatile. So I am starting over with Java.. which I haven&rsquo;t really used in about 15 years.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Basic knowledge of Java and Maven</li>
+<li>Docker installed on your machine</li>
+<li>PostgreSQL JDBC Driver</li>
+</ul>
+<h2 id="step-1-set-up-postgresql-with-docker">Step 1: Set Up PostgreSQL with Docker</h2>
+<p>First, let&rsquo;s create a Docker container for PostgreSQL and Adminer, a web-based database management tool.</p>
+<p>Create a <code>docker-compose.yml</code> file with the following content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.9&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">db</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">postgres:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l">128mb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l">example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l">example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;5432:5432&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">pgdata:/var/lib/postgresql/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">adminer</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">adminer:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8080:8080&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pgdata</span><span class="p">:</span><span class="w">
+</span></span></span></code></pre></div><p>To start the services, run the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up -d
+</span></span></code></pre></div><h2 id="step-2-set-up-maven-project">Step 2: Set Up Maven Project</h2>
+<p>Create a new Maven project structure:</p>
+<pre tabindex="0"><code>my-java-project/
+├── src/
+│   └── main/
+│       └── java/
+│           └── com/
+│               └── createdb/
+│                   ├── DatabaseClient.java
+│                   └── Main.java
+├── sql/
+│   ├── CallNumbers.sql
+│   ├── Contributors.sql
+│   ├── Items.sql
+│   ├── Resources.sql
+│   └── Subjects.sql
+├── pom.xml
+</code></pre><h2 id="step-3-define-sql-files">Step 3: Define SQL Files</h2>
+<p>Create SQL files to define the tables:</p>
+<h3 id="sqlcallnumberssql"><code>sql/CallNumbers.sql</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">CallNumbers</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">callnumber</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><h3 id="sqlcontributorssql"><code>sql/Contributors.sql</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">Contributors</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">contributor</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><h3 id="sqlitemssql"><code>sql/Items.sql</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">Items</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">callnumber</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">created_published</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nb">date</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">notes</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">sourcecollection</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">externalid</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><h3 id="sqlresourcessql"><code>sql/Resources.sql</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">Resources</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">external_id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">image</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">pdf</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><h3 id="sqlsubjectssql"><code>sql/Subjects.sql</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">Subjects</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">external_id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">subject</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><h2 id="step-4-create-maven-pomxml">Step 4: Create Maven <code>pom.xml</code></h2>
+<p>Create a <code>pom.xml</code> file with the necessary dependencies and plugins:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>com.example<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>sup-court-db-normalizer<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependencies&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.postgresql<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>postgresql<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>42.2.23<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>com.google.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>google-cloud-storage<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>2.1.4<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>com.google.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>google-cloud-bigquery<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>2.1.4<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependencies&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;build&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;plugins&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;plugin&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;version&gt;</span>3.8.1<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;source&gt;</span>11<span class="nt">&lt;/source&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;target&gt;</span>11<span class="nt">&lt;/target&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/configuration&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;plugin&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;groupId&gt;</span>org.codehaus.mojo<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;artifactId&gt;</span>exec-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;version&gt;</span>3.0.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;mainClass&gt;</span>com.createdb.Main<span class="nt">&lt;/mainClass&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/configuration&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/plugins&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/build&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/project&gt;</span>
+</span></span></code></pre></div><h2 id="step-5-write-java-code">Step 5: Write Java Code</h2>
+<h3 id="databaseclientjava"><code>DatabaseClient.java</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.createdb</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.file.Files</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.file.Paths</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DatabaseClient</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Connection</span><span class="w"> </span><span class="n">connection</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">DatabaseClient</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">SQLException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Execute SQL file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">executeSqlFile</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">SQLException</span><span class="p">,</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">Files</span><span class="p">.</span><span class="na">readAllBytes</span><span class="p">(</span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">filePath</span><span class="p">)));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">sqlStatements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sql</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&#34;;&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Statement</span><span class="w"> </span><span class="n">stmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">connection</span><span class="p">.</span><span class="na">createStatement</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">statement</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">sqlStatements</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">statement</span><span class="p">.</span><span class="na">trim</span><span class="p">().</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">stmt</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">.</span><span class="na">trim</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Close connection</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">SQLException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">connection</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">connection</span><span class="p">.</span><span class="na">isClosed</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">connection</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h3 id="mainjava"><code>Main.java</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.createdb</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.Connection</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.DriverManager</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.ResultSet</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.SQLException</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.Statement</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;jdbc:postgresql://localhost:5432/postgres&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;example&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;example&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dbName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;supreme-court&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Connection</span><span class="w"> </span><span class="n">connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="n">Statement</span><span class="w"> </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">connection</span><span class="p">.</span><span class="na">createStatement</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// Create the database if it doesn&#39;t exist</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">ResultSet</span><span class="w"> </span><span class="n">resultSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">statement</span><span class="p">.</span><span class="na">executeQuery</span><span class="p">(</span><span class="s">&#34;SELECT 1 FROM pg_database WHERE datname = &#39;&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dbName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;&#39;&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">resultSet</span><span class="p">.</span><span class="na">next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">statement</span><span class="p">.</span><span class="na">executeUpdate</span><span class="p">(</span><span class="s">&#34;CREATE DATABASE &#34;&#34; + dbName + &#34;&#34;&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Database &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dbName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; created successfully.&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Database &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dbName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; already exists.&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// Connect to the new database and execute SQL files to create tables</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">dbUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;jdbc:postgresql://localhost:5432/&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dbName</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">DatabaseClient</span><span class="w"> </span><span class="n">dbClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DatabaseClient</span><span class="p">(</span><span class="n">dbUrl</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// Execute SQL files to create tables</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">executeSqlFile</span><span class="p">(</span><span class="s">&#34;sql/CallNumbers.sql&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">executeSqlFile</span><span class="p">(</span><span class="s">&#34;sql/Contributors.sql&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">executeSqlFile</span><span class="p">(</span><span class="s">&#34;sql/Items.sql&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">executeSqlFile</span><span class="p">(</span><span class="s">&#34;sql/Resources.sql&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">executeSqlFile</span><span class="p">(</span><span class="s">&#34;sql/Subjects.sql&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h2 id="step-6-run-the-project">Step 6: Run the Project</h2>
+<ol>
+<li>
+<p><strong>Compile the project</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mvn compile
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Run the <code>Main</code> class</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mvn exec:java -Dexec.mainClass<span class="o">=</span><span class="s2">&#34;com.createdb.Main&#34;</span>
+</span></span></code></pre></div></li>
+</ol>
+<p>This setup will create the <code>supreme-court</code> database if it does not exist and then execute the SQL files to create the tables. You can verify the results using Adminer by navigating to <code>http://localhost:8080</code> in your web browser.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this post, we set up a PostgreSQL database using Docker, created a Maven project to manage our Java code, defined our database tables with SQL files, and wrote Java code to automate the creation of the database and tables. This setup provides a robust foundation for further development and integration with your data processing applications.</p>
+]]></content>
+			<postid> 9c251164b4c95e6c70b513e4c10b5864</postid>
+			<author></author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
 		
 		<item>
 			<title>DataShare &#43; Docker Compose</title>
-			<link>jnapolitano.com/en/posts/sup-court-graph/docker_compose_blog/</link>
+			<link>//localhost:1313/en/posts/sup-court-graph/docker_compose_blog/</link>
 			<pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/sup-court-graph/docker_compose_blog/</guid>
+			<guid>//localhost:1313/en/posts/sup-court-graph/docker_compose_blog/</guid>
 			<description><![CDATA[Deploying DataShare with Docker Compose]]></description>
 			<content type="html"><![CDATA[<h1 id="deploying-datashare-with-docker-compose">Deploying DataShare with Docker Compose</h1>
 <p>Docker Compose is a powerful tool for defining and running multi-container Docker applications. In this blog post, we will walk through a Docker Compose script that sets up a comprehensive data sharing application stack, including DataShare, Elasticsearch, Redis, and PostgreSQL. This setup ensures seamless data management and sharing across different services.</p>
@@ -152,9 +410,9 @@
 		
 		<item>
 			<title>Bread and Wine</title>
-			<link>jnapolitano.com/en/posts/bread-and-wine/</link>
+			<link>//localhost:1313/en/posts/bread-and-wine/</link>
 			<pubDate>Fri, 19 Jul 2024 00:39:38 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/bread-and-wine/</guid>
+			<guid>//localhost:1313/en/posts/bread-and-wine/</guid>
 			<description><![CDATA[Ignazio Silone]]></description>
 			<content type="html"><![CDATA[<h1 id="bread-and-wine">Bread and Wine</h1>
 <p><em>&ldquo;There always comes a time in life when the young men get bored by the bread and wine at home. They look for food elsewhere. The bread and wine of in inns at the crossroads can calm their hunger and thirst for a while. But man cannot spend all his life at the inns.&rdquo;</em></p>
@@ -188,9 +446,9 @@
 		
 		<item>
 			<title>Mastodon Bot Script</title>
-			<link>jnapolitano.com/en/posts/mastodon-client/</link>
+			<link>//localhost:1313/en/posts/mastodon-client/</link>
 			<pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/mastodon-client/</guid>
+			<guid>//localhost:1313/en/posts/mastodon-client/</guid>
 			<description><![CDATA[Automate Posting to Mastodon]]></description>
 			<content type="html"><![CDATA[<h1 id="mastodon-bot-script">Mastodon Bot Script</h1>
 <p>This script manages the Mastodon bot, including retrieving secrets from Google Cloud Secret Manager, logging in to Mastodon, and posting toots.</p>
@@ -548,9 +806,9 @@
 		
 		<item>
 			<title>GCP Secret Manager Script</title>
-			<link>jnapolitano.com/en/posts/gcp-secret-creation/</link>
+			<link>//localhost:1313/en/posts/gcp-secret-creation/</link>
 			<pubDate>Thu, 18 Jul 2024 12:25:11 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/gcp-secret-creation/</guid>
+			<guid>//localhost:1313/en/posts/gcp-secret-creation/</guid>
 			<description><![CDATA[GCP Secret Manager secret automation]]></description>
 			<content type="html"><![CDATA[<h1 id="gcp-secret-manager-script">GCP Secret Manager Script</h1>
 <p>This script manages secrets in Google Cloud Platform&rsquo;s Secret Manager. It can create, overwrite, and delete secrets based on the provided YAML configuration file and environment variables.</p>
@@ -636,9 +894,9 @@
 		
 		<item>
 			<title>Schedule a GCP Cloud Run Chron Job</title>
-			<link>jnapolitano.com/en/posts/schedule-gcp-chron-jobs/</link>
+			<link>//localhost:1313/en/posts/schedule-gcp-chron-jobs/</link>
 			<pubDate>Tue, 16 Jul 2024 17:23:06 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/schedule-gcp-chron-jobs/</guid>
+			<guid>//localhost:1313/en/posts/schedule-gcp-chron-jobs/</guid>
 			<description><![CDATA[Scheduling jobs to run every hour]]></description>
 			<content type="html"><![CDATA[<h1 id="how-to-schedule-a-cloud-run-job-using-google-cloud-scheduler">How to Schedule a Cloud Run Job Using Google Cloud Scheduler</h1>
 <p>In this tutorial, we&rsquo;ll walk through the process of scheduling a job in Google Cloud Run using Google Cloud Scheduler. This is particularly useful for tasks that need to run at regular intervals, such as data processing, periodic updates, or maintenance tasks.</p>
@@ -715,9 +973,9 @@ gcloud scheduler jobs list &ndash;location $REGION
 		
 		<item>
 			<title>Create and Deploy Cloud Run Job Script</title>
-			<link>jnapolitano.com/en/posts/create_deploy_cloud_run_job/</link>
+			<link>//localhost:1313/en/posts/create_deploy_cloud_run_job/</link>
 			<pubDate>Sun, 14 Jul 2024 22:36:34 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/create_deploy_cloud_run_job/</guid>
+			<guid>//localhost:1313/en/posts/create_deploy_cloud_run_job/</guid>
 			<description><![CDATA[A script to create and deploy a gcp cloud run job from the cli]]></description>
 			<content type="html"><![CDATA[<h1 id="cloud-run-job-deployment-script">Cloud Run Job Deployment Script</h1>
 <p>This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a <code>cloudbuild.yaml</code> file and submits it to Google Cloud Build.</p>
@@ -782,9 +1040,9 @@ gcloud scheduler jobs list &ndash;location $REGION
 		
 		<item>
 			<title>Pull.. Commit.. And Push Bash Script</title>
-			<link>jnapolitano.com/en/posts/push-commits/</link>
+			<link>//localhost:1313/en/posts/push-commits/</link>
 			<pubDate>Sat, 13 Jul 2024 22:36:34 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/push-commits/</guid>
+			<guid>//localhost:1313/en/posts/push-commits/</guid>
 			<description><![CDATA[Utility script to update all repos within a directory.]]></description>
 			<content type="html"><![CDATA[<h1 id="push-committed-and-uncommitted-changes-script">Push Committed and Uncommitted Changes Script</h1>
 <p>This script traverses a specified directory of git repositories, pulls updates for all branches, checks for committed and uncommitted changes across all branches, and pushes those changes to the remote repository. For uncommitted changes, it creates a new branch called <code>uncommitted</code>, commits the changes with a message detailing the original branch, and then pushes the new branch to the remote. For the <code>main</code> branch, if there are committed changes, it moves those changes to a new branch called <code>bad-practice</code> and then pushes that branch to the remote repository.</p>
@@ -1020,9 +1278,9 @@ gcloud scheduler jobs list &ndash;location $REGION
 		
 		<item>
 			<title>Windy Peak Via Mountain Lion Loop</title>
-			<link>jnapolitano.com/en/posts/windy-peak-mountain-lion-loop/</link>
+			<link>//localhost:1313/en/posts/windy-peak-mountain-lion-loop/</link>
 			<pubDate>Sat, 13 Jul 2024 16:29:26 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/windy-peak-mountain-lion-loop/</guid>
+			<guid>//localhost:1313/en/posts/windy-peak-mountain-lion-loop/</guid>
 			<description><![CDATA[A nice day hike]]></description>
 			<content type="html"><![CDATA[<h1 id="windy-peak-via-mountain-lion-loop">Windy Peak via Mountain Lion Loop</h1>
 <p>I do not know much about this little day hike.. It seems to be fairly doable despite an all trails hard rating. I&rsquo;ll find out in the am</p>
@@ -1128,9 +1386,9 @@ gcloud scheduler jobs list &ndash;location $REGION
 		
 		<item>
 			<title>Current Time Script</title>
-			<link>jnapolitano.com/en/posts/current-time-script/</link>
+			<link>//localhost:1313/en/posts/current-time-script/</link>
 			<pubDate>Sat, 13 Jul 2024 16:25:59 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/current-time-script/</guid>
+			<guid>//localhost:1313/en/posts/current-time-script/</guid>
 			<description><![CDATA[An easy way to expor the current time]]></description>
 			<content type="html"><![CDATA[<h1 id="current-time-script">Current Time Script</h1>
 <p>This script returns the current date and time in the format <code>date = &quot;2024-07-13T14:27:45-06:00&quot;</code>.</p>
@@ -1180,9 +1438,9 @@ gcloud scheduler jobs list &ndash;location $REGION
 		
 		<item>
 			<title>Update All Repos Bash Script</title>
-			<link>jnapolitano.com/en/posts/pull-all-repos/</link>
+			<link>//localhost:1313/en/posts/pull-all-repos/</link>
 			<pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/pull-all-repos/</guid>
+			<guid>//localhost:1313/en/posts/pull-all-repos/</guid>
 			<description><![CDATA[Utility script to update all repos wihtin a directory.]]></description>
 			<content type="html"><![CDATA[<h1 id="update-repositories-script">Update Repositories Script</h1>
 <p>This script recursively finds all git repositories in a specified directory and pulls the latest changes for each one.</p>
@@ -1264,9 +1522,9 @@ You can now run the script from anywhere by simply typing <code>update_repos</co
 		
 		<item>
 			<title>Automate Posting Hugo Blog to Social Sites (with a db) Part 3</title>
-			<link>jnapolitano.com/en/posts/setup-mysql-gcp/</link>
+			<link>//localhost:1313/en/posts/setup-mysql-gcp/</link>
 			<pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/setup-mysql-gcp/</guid>
+			<guid>//localhost:1313/en/posts/setup-mysql-gcp/</guid>
 			<description><![CDATA[Creating a CMS DB.. Because why not]]></description>
 			<content type="html"><![CDATA[<h1 id="automate-blog-with-gcp-mysql-server">Automate Blog with GCP MYSQL Server</h1>
 <p>So I am just going to create my own CMS.  I know there are other solutions.. but I am nearly there.. I also want to manage content like i manage a linux system.. So I am going to do this with a db.. bashscripts.. and linux servers.</p>
@@ -1387,9 +1645,9 @@ You can now run the script from anywhere by simply typing <code>update_repos</co
 		
 		<item>
 			<title>Automate Posting Hugo Blog to Social Sites (with a db) Part 4</title>
-			<link>jnapolitano.com/en/posts/flask-api-updater/</link>
+			<link>//localhost:1313/en/posts/flask-api-updater/</link>
 			<pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/flask-api-updater/</guid>
+			<guid>//localhost:1313/en/posts/flask-api-updater/</guid>
 			<description><![CDATA[Creating a CMS DB.. Because why not]]></description>
 			<content type="html"><![CDATA[<h1 id="gcp-flask-app">GCP Flask App</h1>
 <p>I created a db.. now I need update a few tables. Since the db is in gcp. I amgoing to create a quick flask app that will update the tables..</p>
@@ -1766,9 +2024,9 @@ DB_NAME=&lsquo;jnapolitano&rsquo;</p>
 		
 		<item>
 			<title>GCP Cloud Run: LOC Flattener</title>
-			<link>jnapolitano.com/en/posts/loc_normalizer/</link>
+			<link>//localhost:1313/en/posts/loc_normalizer/</link>
 			<pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/loc_normalizer/</guid>
+			<guid>//localhost:1313/en/posts/loc_normalizer/</guid>
 			<description><![CDATA[Flattening and injesting JSON into data lake.. Autonomously. ]]></description>
 			<content type="html"><![CDATA[<h1 id="library-of-congress-normalizer-job">Library of Congress Normalizer Job</h1>
 <p>This <a href="https://github.com/justin-napolitano/loc_normalizer">repo</a> normalizes the existing library of congress schema into a db that wil then be used to construct a knowledge graph of supreme court law.</p>
@@ -3424,9 +3682,9 @@ Blob result-10.json moved to loc_flattener_processed and deleted from loc-scrape
 		
 		<item>
 			<title>Signal Desktop Installation Script</title>
-			<link>jnapolitano.com/en/posts/signal-install-script/</link>
+			<link>//localhost:1313/en/posts/signal-install-script/</link>
 			<pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/signal-install-script/</guid>
+			<guid>//localhost:1313/en/posts/signal-install-script/</guid>
 			<description><![CDATA[Install Signal on Debian Devices]]></description>
 			<content type="html"><![CDATA[<h1 id="signal-desktop-installation-script">Signal Desktop Installation Script</h1>
 <p>This script automates the process of installing Signal Desktop on 64-bit Debian-based Linux distributions such as Ubuntu and Mint.</p>
@@ -3494,9 +3752,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Gray&#39;s Peak</title>
-			<link>jnapolitano.com/en/posts/grays-peak/</link>
+			<link>//localhost:1313/en/posts/grays-peak/</link>
 			<pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/grays-peak/</guid>
+			<guid>//localhost:1313/en/posts/grays-peak/</guid>
 			<description><![CDATA[Treeking Gray's]]></description>
 			<content type="html"><![CDATA[<h1 id="grays">Gray&rsquo;s</h1>
 <p>Gray&rsquo;s is a rather easy 14&rsquo;er about an hour west of Denver.</p>
@@ -3602,9 +3860,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Automate Posting Hugo Blog to Social Sites (with a db)</title>
-			<link>jnapolitano.com/en/posts/hugo-rss-mysql-update/</link>
+			<link>//localhost:1313/en/posts/hugo-rss-mysql-update/</link>
 			<pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/hugo-rss-mysql-update/</guid>
+			<guid>//localhost:1313/en/posts/hugo-rss-mysql-update/</guid>
 			<description><![CDATA[How To automate posting to social sites]]></description>
 			<content type="html"><![CDATA[<h2 id="background">Background</h2>
 <p>In the previous few posts I detailed my progress in automating a site.  I am going about this by using an rss scraper to post new posts to social.</p>
@@ -3707,9 +3965,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Configure Hugo XML Output for RSS Feed</title>
-			<link>jnapolitano.com/en/posts/hugo-rss-setup/</link>
+			<link>//localhost:1313/en/posts/hugo-rss-setup/</link>
 			<pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/hugo-rss-setup/</guid>
+			<guid>//localhost:1313/en/posts/hugo-rss-setup/</guid>
 			<description><![CDATA[Hugo Custom RSS for my reader]]></description>
 			<content type="html"><![CDATA[<h2 id="why">Why</h2>
 <p>I have a mysql db that will be used to store values read from the rss feed of my hugo site. I need some add some keys to help with organization</p>
@@ -3754,9 +4012,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Install MySQL Server on Ubuntu</title>
-			<link>jnapolitano.com/en/posts/mysql-install-buntu/</link>
+			<link>//localhost:1313/en/posts/mysql-install-buntu/</link>
 			<pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/mysql-install-buntu/</guid>
+			<guid>//localhost:1313/en/posts/mysql-install-buntu/</guid>
 			<description><![CDATA[MYSQL buntu]]></description>
 			<content type="html"><![CDATA[<h2 id="why">Why</h2>
 <ol>
@@ -3805,9 +4063,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Using GitHub Template Repositories to Automate Script Deployment</title>
-			<link>jnapolitano.com/en/posts/create_a_github_template_repo/</link>
+			<link>//localhost:1313/en/posts/create_a_github_template_repo/</link>
 			<pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/create_a_github_template_repo/</guid>
+			<guid>//localhost:1313/en/posts/create_a_github_template_repo/</guid>
 			<description><![CDATA[%!s(<nil>)]]></description>
 			<content type="html"><![CDATA[<h1 id="using-github-template-repositories-to-automate-script-deployment">Using GitHub Template Repositories to Automate Script Deployment</h1>
 <p>Managing multiple repositories can be a challenge, especially when you need to ensure that each one includes certain common scripts or configurations. GitHub&rsquo;s template repositories feature can help streamline this process. In this post, we&rsquo;ll walk through how to use a template repository to automatically include a <code>gh_submodule_sync.sh</code> script in every new repository you create.</p>
@@ -3843,9 +4101,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Configure mysql server on ubuntu</title>
-			<link>jnapolitano.com/en/posts/mysql-config/</link>
+			<link>//localhost:1313/en/posts/mysql-config/</link>
 			<pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/mysql-config/</guid>
+			<guid>//localhost:1313/en/posts/mysql-config/</guid>
 			<description><![CDATA[MYSQL config buntu]]></description>
 			<content type="html"><![CDATA[<h2 id="why">Why</h2>
 <p>I installed mysql in the previous post. Now I need to setup users, create a db, and create a table.</p>
@@ -3944,9 +4202,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Sync Gh Submodules Across a Super Project</title>
-			<link>jnapolitano.com/en/posts/gh_submodule_sync/</link>
+			<link>//localhost:1313/en/posts/gh_submodule_sync/</link>
 			<pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/gh_submodule_sync/</guid>
+			<guid>//localhost:1313/en/posts/gh_submodule_sync/</guid>
 			<description><![CDATA[Make documentation easier. Use modules for each script]]></description>
 			<content type="html"><![CDATA[<!-- raw HTML omitted -->
 <h2 id="overview">Overview</h2>
@@ -4037,9 +4295,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Library of Congress Prod-ifier</title>
-			<link>jnapolitano.com/en/posts/loc-prodifier/</link>
+			<link>//localhost:1313/en/posts/loc-prodifier/</link>
 			<pubDate>Thu, 20 Jun 2024 22:36:34 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/loc-prodifier/</guid>
+			<guid>//localhost:1313/en/posts/loc-prodifier/</guid>
 			<description><![CDATA[Create a modular job to run in parallel to prod-ify a db ]]></description>
 			<content type="html"><![CDATA[<h1 id="loc-prodifier">Loc Prodifier</h1>
 <h2 id="overview">Overview</h2>
@@ -4188,9 +4446,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
-			<link>jnapolitano.com/en/posts/rss-reader/</link>
+			<link>//localhost:1313/en/posts/rss-reader/</link>
 			<pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/rss-reader/</guid>
+			<guid>//localhost:1313/en/posts/rss-reader/</guid>
 			<description><![CDATA[How To automate posting to social sites]]></description>
 			<content type="html"><![CDATA[<h2 id="thoughts-on-this-second-pass">Thoughts on This Second Pass</h2>
 <ol>
@@ -4354,9 +4612,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Automate Posting Hugo Blog to Social Sites (with a db) Part 2</title>
-			<link>jnapolitano.com/en/posts/hugo-mysql-db-setup/</link>
+			<link>//localhost:1313/en/posts/hugo-mysql-db-setup/</link>
 			<pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/hugo-mysql-db-setup/</guid>
+			<guid>//localhost:1313/en/posts/hugo-mysql-db-setup/</guid>
 			<description><![CDATA[How To automate posting to social sites]]></description>
 			<content type="html"><![CDATA[<h2 id="background">Background</h2>
 <h3 id="previous-posts-in-this-series">Previous posts in this series</h3>
@@ -4618,9 +4876,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Automate Posting Hugo Blog to Social Sites... Failure</title>
-			<link>jnapolitano.com/en/posts/hugo-social-publisher/</link>
+			<link>//localhost:1313/en/posts/hugo-social-publisher/</link>
 			<pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/hugo-social-publisher/</guid>
+			<guid>//localhost:1313/en/posts/hugo-social-publisher/</guid>
 			<description><![CDATA[How not to automate posting to social sites]]></description>
 			<content type="html"><![CDATA[<h2 id="why">Why</h2>
 <p>I have a hugo blog that is a pian to share across my social feeds. I want to automate it.</p>
@@ -4726,9 +4984,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Hugo Build and Deploy GH Workflow</title>
-			<link>jnapolitano.com/en/posts/gh-pages-workflow/</link>
+			<link>//localhost:1313/en/posts/gh-pages-workflow/</link>
 			<pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/gh-pages-workflow/</guid>
+			<guid>//localhost:1313/en/posts/gh-pages-workflow/</guid>
 			<description><![CDATA[Hugo Build GH Workflow]]></description>
 			<content type="html"><![CDATA[<h1 id="creating-a-gh-workflow-to-build-and-deploy-a-hugo-site-to-gh-pages">Creating a GH Workflow to Build and Deploy a hugo site to gh-pages</h1>
 <h2 id="why">Why</h2>
@@ -4866,9 +5124,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>GCP Cloud Run Job Scraper</title>
-			<link>jnapolitano.com/en/posts/l_o_c_scraper/</link>
+			<link>//localhost:1313/en/posts/l_o_c_scraper/</link>
 			<pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/l_o_c_scraper/</guid>
+			<guid>//localhost:1313/en/posts/l_o_c_scraper/</guid>
 			<description><![CDATA[Running a scraper as a gcp cloud run job]]></description>
 			<content type="html"><![CDATA[<h1 id="library-of-congress-scraper-job">Library of Congress Scraper Job</h1>
 <p>This <a href="https://github.com/justin-napolitano/loc_scraper">repo</a> scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.</p>
@@ -4926,9 +5184,9 @@ chmod +x install_signal.sh
 		
 		<item>
 			<title>Model Design and Logistic Regression in Python</title>
-			<link>jnapolitano.com/en/posts/logistic_regression_mockup/</link>
+			<link>//localhost:1313/en/posts/logistic_regression_mockup/</link>
 			<pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/logistic_regression_mockup/</guid>
+			<guid>//localhost:1313/en/posts/logistic_regression_mockup/</guid>
 			<description><![CDATA[Designing a logistic regression model from randomized bioinformatics data.]]></description>
 			<content type="html"><![CDATA[<h1 id="model-design-and-logistic-regression-in-python">Model Design and Logistic Regression in Python</h1>
 <p>I recently modeled customer churn in Julia with logistic regression model.  It was interesting to be sure, but I want to extend my analysis skillset by modeling biostatistics data.  In this post, I design a logistic regression model of health predictors.</p>
@@ -5323,9 +5581,9 @@ weighted avg       0.56      0.56      0.55      4000
 		
 		<item>
 			<title>Annual Cost of Living Monte Carlo Models</title>
-			<link>jnapolitano.com/en/posts/cost-of-living-projections/</link>
+			<link>//localhost:1313/en/posts/cost-of-living-projections/</link>
 			<pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/cost-of-living-projections/</guid>
+			<guid>//localhost:1313/en/posts/cost-of-living-projections/</guid>
 			<description><![CDATA[Monte Carlo Model to determine the cost of living in your city.]]></description>
 			<content type="html"><![CDATA[<h2 id="cost-of-living-projections">Cost of Living Projections</h2>
 <h2 id="introduction">Introduction</h2>
@@ -5677,9 +5935,9 @@ weighted avg       0.56      0.56      0.55      4000
 		
 		<item>
 			<title>Spearman Rank in Standard Julia</title>
-			<link>jnapolitano.com/en/posts/spearman_rank_julia/</link>
+			<link>//localhost:1313/en/posts/spearman_rank_julia/</link>
 			<pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/spearman_rank_julia/</guid>
+			<guid>//localhost:1313/en/posts/spearman_rank_julia/</guid>
 			<description><![CDATA[Numerical Recipes in Julia.  Spearman Rank Correlation adapted to nearly standard Julia.]]></description>
 			<content type="html"><![CDATA[<h2 id="spearman-rank-in-standard-julia">Spearman Rank in Standard Julia</h2>
 <p>Well nearly, I did import the erfc function from the SpecialFunctions package.  I don&rsquo;t like it either.  I&rsquo;ll write my own soon to make up for it.</p>
@@ -5801,9 +6059,9 @@ weighted avg       0.56      0.56      0.55      4000
 		
 		<item>
 			<title>Churn Modelling Marketing Data with Julia</title>
-			<link>jnapolitano.com/en/posts/propensity_scoring/</link>
+			<link>//localhost:1313/en/posts/propensity_scoring/</link>
 			<pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/propensity_scoring/</guid>
+			<guid>//localhost:1313/en/posts/propensity_scoring/</guid>
 			<description><![CDATA[Logistic Regression Propensity Models of Marketing Data with Julia.]]></description>
 			<content type="html"><![CDATA[<h1 id="churn-modelling-marketing-data-with-julia">Churn Modelling Marketing Data with Julia</h1>
 <h2 id="introduction">Introduction</h2>
@@ -6069,9 +6327,9 @@ ROCNums{Int64}
 		
 		<item>
 			<title>Markov Chains in Julia</title>
-			<link>jnapolitano.com/en/posts/markov-models-julia/</link>
+			<link>//localhost:1313/en/posts/markov-models-julia/</link>
 			<pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/markov-models-julia/</guid>
+			<guid>//localhost:1313/en/posts/markov-models-julia/</guid>
 			<description><![CDATA[Writing a Markov Simulation Problem the hard way.]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>I am currently working on a <a href="https://blog.jnapolitano.io/series/legal-research-with-ai/">legal research series</a> where I perform statistical analysis and ml models to legal datasets.  My intention is to model the behavior of courts, determine the outcome of cases, and build a pipeline capable of identifying relevant case law by issue area.</p>
@@ -6145,9 +6403,9 @@ ROCNums{Int64}
 		
 		<item>
 			<title>Quantitative Julia Problems</title>
-			<link>jnapolitano.com/en/posts/pi-with-julia/</link>
+			<link>//localhost:1313/en/posts/pi-with-julia/</link>
 			<pubDate>Tue, 24 May 2022 01:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/pi-with-julia/</guid>
+			<guid>//localhost:1313/en/posts/pi-with-julia/</guid>
 			<description><![CDATA[Testing your Julia Configuration with some numerical computing.]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>In my <a href="https://blog.jnapolitano.io/posts/rocky-linux-8-julia/">previous post</a>, I demonstrated how to configure Rocky Linux and RHEL distributions for quantitative analysis.</p>
@@ -6206,9 +6464,9 @@ ROCNums{Int64}
 		
 		<item>
 			<title>Configuring Rocky Linux 8 for Quantitative Analysis in Julia</title>
-			<link>jnapolitano.com/en/posts/rocky-linux-8-julia/</link>
+			<link>//localhost:1313/en/posts/rocky-linux-8-julia/</link>
 			<pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/rocky-linux-8-julia/</guid>
+			<guid>//localhost:1313/en/posts/rocky-linux-8-julia/</guid>
 			<description><![CDATA[Configure Rocky Linux 8 for Julia development and quantitative analysis.]]></description>
 			<content type="html"><![CDATA[<h2 id="install-jupyter">Install Jupyter</h2>
 <p>Start with installing jupyter.  It will serve as our server for development.</p>
@@ -6258,9 +6516,9 @@ ROCNums{Int64}
 		
 		<item>
 			<title>Rice Paddy Methane Emissions Estimation: Part 2</title>
-			<link>jnapolitano.com/en/posts/rice-paddy-emissions-2/</link>
+			<link>//localhost:1313/en/posts/rice-paddy-emissions-2/</link>
 			<pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/rice-paddy-emissions-2/</guid>
+			<guid>//localhost:1313/en/posts/rice-paddy-emissions-2/</guid>
 			<description><![CDATA[Comparing 5 years of methane emissions to determine if Climate Trace forecasts greater emissions than UN FAOSTAT.]]></description>
 			<content type="html"><![CDATA[<h1 id="methane-emissions-estimation-data-part-2-a-comparison-between-faostat-and-university-of-malaysia-estimates">Methane Emissions Estimation Data Part 2: A Comparison between FAOSTAT and University of Malaysia Estimates</h1>
 <p>This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.</p>
@@ -6414,9 +6672,9 @@ Probably different distributions
 		
 		<item>
 			<title>Conduct Legal Research with AI Part 8: Case Nodes Sample Data</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-8/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-8/</link>
 			<pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/legal-research-part-8/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-8/</guid>
 			<description><![CDATA[Merging Oyez and Library of Congress Data into a Comprehensive Data Set]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>The legal Research with AI Series is expanding quickly. This is the 9th post related to it in someway.  Building this pipeline and integrating multiple datasets into nodes is proving to be verbose.</p>
@@ -7494,9 +7752,9 @@ Probably different distributions
 		
 		<item>
 			<title>Legal Research with AI Part 7: Wrangling Data with Julia</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-7/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-7/</link>
 			<pubDate>Sun, 22 May 2022 16:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/legal-research-part-7/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-7/</guid>
 			<description><![CDATA[File management with Julia in preperation for data merge.]]></description>
 			<content type="html"><![CDATA[<h2 id="intro">Intro</h2>
 <p>In a <a href="https://blog.jnapolitano.io/posts/legal-research-part-5/">previous post</a>, I seperated all of the results returned from the Library of Congress API into individual JSON documents to be imported as nodes into a neo4j graph.</p>
@@ -7695,9 +7953,9 @@ Probably different distributions
 		
 		<item>
 			<title>Legal Research with AI: Part 6</title>
-			<link>jnapolitano.com/en/posts/masterpiece/</link>
+			<link>//localhost:1313/en/posts/masterpiece/</link>
 			<pubDate>Sat, 21 May 2022 19:40:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/masterpiece/</guid>
+			<guid>//localhost:1313/en/posts/masterpiece/</guid>
 			<description><![CDATA[Control Model: A traditional statistical analysis of voting behavior in SPSS.]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>Currently, my server is mining data from the neo4j graph database.</p>
@@ -8949,9 +9207,9 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 5</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-5/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-5/</link>
 			<pubDate>Sat, 21 May 2022 14:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/legal-research-part-5/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-5/</guid>
 			<description><![CDATA[Transforming the Library of Congress results into individual json documents contaning case information.]]></description>
 			<content type="html"><![CDATA[<h1 id="legal-research-with-ai-part-5">Legal Research with AI: Part 5&quot;</h1>
 <p>In the previous posts in this series, I have downloaded the data required to build the neo4j graph.  In this post, I will arrange the data into a data structure that will permit me to easily create graph nodes and most importantly relationships.</p>
@@ -9034,9 +9292,9 @@ the chart below.</p>
 		
 		<item>
 			<title>Rice Paddy Methane Emissions Estimation: Part 1</title>
-			<link>jnapolitano.com/en/posts/rice-paddy-emissions-1/</link>
+			<link>//localhost:1313/en/posts/rice-paddy-emissions-1/</link>
 			<pubDate>Sat, 21 May 2022 08:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/rice-paddy-emissions-1/</guid>
+			<guid>//localhost:1313/en/posts/rice-paddy-emissions-1/</guid>
 			<description><![CDATA[Fact checking reported methane emissions proposed by the UN and Climate TRACE]]></description>
 			<content type="html"><![CDATA[<h1 id="methane-emissions-estimation-data-part-1-a-comparison-between-faostat-and-university-of-malaysia-estimates">Methane Emissions Estimation Data Part 1: A Comparison between FAOSTAT and University of Malaysia Estimates</h1>
 <p>This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.</p>
@@ -9457,9 +9715,9 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 4</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-4/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-4/</link>
 			<pubDate>Thu, 19 May 2022 22:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/legal-research-part-4/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-4/</guid>
 			<description><![CDATA[Importing case variables and established relationships to the graph.]]></description>
 			<content type="html"><![CDATA[<h1 id="conduct-legal-research-with-ai-part-4">Conduct Legal Research with AI Part 4</h1>
 <p>This is the fourth post in a series documenting the process of building an ml pipeline used to train models to predict the outcomes of Supreme Court cases.</p>
@@ -9645,9 +9903,9 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 3</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-3/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-3/</link>
 			<pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/legal-research-part-3/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-3/</guid>
 			<description><![CDATA[Testing TensorFlow models against the SCDB data set.]]></description>
 			<content type="html"><![CDATA[<h1 id="conduct-legal-research-with-ai-part-3">Conduct Legal Research with AI: Part 3</h1>
 <p>This is the third post in a series documenting the process of building an ml pipeline that will be used to train models to predict the outcomes of Supreme Court Cases.</p>
@@ -10220,9 +10478,9 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 2</title>
-			<link>jnapolitano.com/en/posts/legal-reserch-part-2/</link>
+			<link>//localhost:1313/en/posts/legal-reserch-part-2/</link>
 			<pubDate>Tue, 17 May 2022 18:40:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/legal-reserch-part-2/</guid>
+			<guid>//localhost:1313/en/posts/legal-reserch-part-2/</guid>
 			<description><![CDATA[Documenting classes and an application to integrate the US Constitution into my Neo4j DB]]></description>
 			<content type="html"><![CDATA[<h1 id="integrating-the-constitution-to-neo4j">Integrating the Constitution to Neo4j</h1>
 <p>I am currenlty building a graph database of Supreme Court cases in neo4j to model the behavior and decison making of the court.</p>
@@ -10390,9 +10648,9 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 1</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-1/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-1/</link>
 			<pubDate>Mon, 16 May 2022 14:40:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/legal-research-part-1/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-1/</guid>
 			<description><![CDATA[Integrate JSON data from a rest API into your Neo4j Stack]]></description>
 			<content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>In a previous <a href="https://blog.jnapolitano.io/loc_crawler/">post</a>, I detailed the process of crawling the Library of Congress API to generate json files that could be intergrated into you DB of choice.</p>
@@ -11456,9 +11714,9 @@ the chart below.</p>
 		
 		<item>
 			<title>Conduct Legal Research with AI: Part 0</title>
-			<link>jnapolitano.com/en/posts/legal-research-part-0/</link>
+			<link>//localhost:1313/en/posts/legal-research-part-0/</link>
 			<pubDate>Mon, 16 May 2022 13:40:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/legal-research-part-0/</guid>
+			<guid>//localhost:1313/en/posts/legal-research-part-0/</guid>
 			<description><![CDATA[Crawl the Library of Congress API to automate your next research project.]]></description>
 			<content type="html"><![CDATA[<h1 id="crawling-the-library-of-congress-api">Crawling the Library of Congress API</h1>
 <h2 id="introduction">Introduction</h2>
@@ -12282,9 +12540,9 @@ the chart below.</p>
 		
 		<item>
 			<title>Feasibility of Transatlantic Carbon Shipping</title>
-			<link>jnapolitano.com/en/posts/feasibility_study_shipping_carbon/</link>
+			<link>//localhost:1313/en/posts/feasibility_study_shipping_carbon/</link>
 			<pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/feasibility_study_shipping_carbon/</guid>
+			<guid>//localhost:1313/en/posts/feasibility_study_shipping_carbon/</guid>
 			<description><![CDATA[A feasibility study of shipping carbon from Europe to the United States]]></description>
 			<content type="html"><![CDATA[<h1 id="feasibility-of-shipping-carbon-across-the-atlantic">Feasibility of Shipping Carbon Across the Atlantic</h1>
 <h2 id="methodology">Methodology</h2>
@@ -12668,9 +12926,9 @@ the chart below.</p>
 		
 		<item>
 			<title>Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to the United States</title>
-			<link>jnapolitano.com/en/posts/carbon-shipping-projections/</link>
+			<link>//localhost:1313/en/posts/carbon-shipping-projections/</link>
 			<pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/carbon-shipping-projections/</guid>
+			<guid>//localhost:1313/en/posts/carbon-shipping-projections/</guid>
 			<description><![CDATA[Monte Carlo Carbon Shipping Projections]]></description>
 			<content type="html"><![CDATA[<h1 id="a-monte-carlo-projection-of-the-annual-cost-of-shipping-carbon-from-europe-to-us-ports">A Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to US Ports</h1>
 <h2 id="revision">Revision</h2>
@@ -13045,9 +13303,9 @@ Università Bocconi, Milan, Italy</p>
 		
 		<item>
 			<title>Potential Carbon and Hydrogen Storage Facilities Near Import/Export Ports</title>
-			<link>jnapolitano.com/en/posts/wells-near-ports/</link>
+			<link>//localhost:1313/en/posts/wells-near-ports/</link>
 			<pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/wells-near-ports/</guid>
+			<guid>//localhost:1313/en/posts/wells-near-ports/</guid>
 			<description><![CDATA[Identifying potential carbon and hydrogen storage facilities near lng ports.]]></description>
 			<content type="html"><![CDATA[<h1 id="potential-carbon-storage-facilities-near-importexport-ports">Potential Carbon Storage Facilities Near Import/Export Ports</h1>
 <h2 id="import-and-procedural-functions">Import and Procedural Functions</h2>
@@ -13235,9 +13493,9 @@ Università Bocconi, Milan, Italy</p>
 		
 		<item>
 			<title>Potential Carbon and Hydrogen Storage Wells Near Pipelines</title>
-			<link>jnapolitano.com/en/posts/wells-near-pipelines/</link>
+			<link>//localhost:1313/en/posts/wells-near-pipelines/</link>
 			<pubDate>Fri, 06 May 2022 05:30:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/wells-near-pipelines/</guid>
+			<guid>//localhost:1313/en/posts/wells-near-pipelines/</guid>
 			<description><![CDATA[Identifying potential carbon and hydrogen storage facilities from spent well data.]]></description>
 			<content type="html"><![CDATA[<h1 id="potential-carbon-storage-wells-near-pipelines">Potential Carbon Storage Wells Near Pipelines</h1>
 <h2 id="import-and-procedural-functions">Import and Procedural Functions</h2>
@@ -13382,9 +13640,9 @@ Università Bocconi, Milan, Italy</p>
 		
 		<item>
 			<title>EuroZone Gas Imports and Exports</title>
-			<link>jnapolitano.com/en/posts/european-gas-imports/</link>
+			<link>//localhost:1313/en/posts/european-gas-imports/</link>
 			<pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/european-gas-imports/</guid>
+			<guid>//localhost:1313/en/posts/european-gas-imports/</guid>
 			<description><![CDATA[EuroZone Gas Imports and Exports.]]></description>
 			<content type="html"><![CDATA[<h1 id="eurozone-gas-imports-and-exports">EuroZone Gas Imports and Exports</h1>
 <h2 id="import-and-procedural-functions">Import and Procedural Functions</h2>
@@ -13660,9 +13918,9 @@ cubic metres (at 15oC and 760 mm Hg, i.e. Standard Conditions)</p>
 		
 		<item>
 			<title>The World Trade Organization, Governments, and International Trade</title>
-			<link>jnapolitano.com/en/posts/project-evolution-of-ngos/</link>
+			<link>//localhost:1313/en/posts/project-evolution-of-ngos/</link>
 			<pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate>
-			<guid>jnapolitano.com/en/posts/project-evolution-of-ngos/</guid>
+			<guid>//localhost:1313/en/posts/project-evolution-of-ngos/</guid>
 			<description><![CDATA[Integrate JSON data from a rest API into your Neo4j Stack]]></description>
 			<content type="html"><![CDATA[<h1 id="the-world-trade-organization-governments-and-international-trade">The World Trade Organization, Governments, and International Trade</h1>
 <h2 id="intro">Intro</h2>

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/hugo/</link>
+    <link>//localhost:1313/en/tags/hugo/</link>
     <description>Recent content in Hugo on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,54 +10,54 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Thu, 18 Jul 2024 16:08:02 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mastodon Bot Script</title>
-      <link>jnapolitano.com/en/posts/mastodon-client/</link>
+      <link>//localhost:1313/en/posts/mastodon-client/</link>
       <pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/mastodon-client/</guid>
+      <guid>//localhost:1313/en/posts/mastodon-client/</guid>
       <description>Mastodon Bot Script This script manages the Mastodon bot, including retrieving secrets from Google Cloud Secret Manager, logging in to Mastodon, and posting toots.&#xA;Prerequisites Python 3.6 or higher Google Cloud SDK installed and authenticated Necessary Python packages installed (google-cloud-secret-manager, python-dotenv, mastodon.py, requests) Google Cloud Project with Secret Manager API enabled Secrets stored in Google Cloud Secret Manager Installation Clone the repository:&#xA;git clone https://your-repo-url.git cd your-repo-directory Create a virtual environment and activate it:</description>
     </item>
     <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db) Part 3</title>
-      <link>jnapolitano.com/en/posts/setup-mysql-gcp/</link>
+      <link>//localhost:1313/en/posts/setup-mysql-gcp/</link>
       <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/setup-mysql-gcp/</guid>
+      <guid>//localhost:1313/en/posts/setup-mysql-gcp/</guid>
       <description>Automate Blog with GCP MYSQL Server So I am just going to create my own CMS. I know there are other solutions.. but I am nearly there.. I also want to manage content like i manage a linux system.. So I am going to do this with a db.. bashscripts.. and linux servers.&#xA;Create the MYSQL Instance I could just use a db wihtin a container.. but i want to scale this out.</description>
     </item>
     <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db) Part 4</title>
-      <link>jnapolitano.com/en/posts/flask-api-updater/</link>
+      <link>//localhost:1313/en/posts/flask-api-updater/</link>
       <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/flask-api-updater/</guid>
+      <guid>//localhost:1313/en/posts/flask-api-updater/</guid>
       <description>GCP Flask App I created a db.. now I need update a few tables. Since the db is in gcp. I amgoing to create a quick flask app that will update the tables..&#xA;I am using the quick start to get this one going.&#xA;Source: https://github.com/justin-napolitano/python-docs-samples/tree/main/cloud-sql/mysql/sqlalchemy&#xA;Create a New Local Service Account Create a new local service account to be able to test the app locally.&#xA;Create a new role for the cloud run service account Reference : Reference Material</description>
     </item>
     <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db)</title>
-      <link>jnapolitano.com/en/posts/hugo-rss-mysql-update/</link>
+      <link>//localhost:1313/en/posts/hugo-rss-mysql-update/</link>
       <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/hugo-rss-mysql-update/</guid>
+      <guid>//localhost:1313/en/posts/hugo-rss-mysql-update/</guid>
       <description>Background In the previous few posts I detailed my progress in automating a site. I am going about this by using an rss scraper to post new posts to social.&#xA;I had initally thought about doing this really naively, but I want a database. It doesn&amp;rsquo;t feel right without using one. I am somewhat upset with myself, because I am basically just recreating wordpress&amp;hellip; but so it goes.&#xA;Previous posts in this series part 1 part 2 part 3 part 4 part 5 Expand a previous script In a previous post I wrote about how to scan an rss feed on my personal site.</description>
     </item>
     <item>
       <title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
-      <link>jnapolitano.com/en/posts/rss-reader/</link>
+      <link>//localhost:1313/en/posts/rss-reader/</link>
       <pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/rss-reader/</guid>
+      <guid>//localhost:1313/en/posts/rss-reader/</guid>
       <description>Thoughts on This Second Pass I will create a script that parses the sites rss feed&amp;hellip; it will then traverse the xml tree entries&amp;hellip; if a date is newer than the last publish date&amp;hellip; publish that post&amp;hellip; I am still thinking through how to publish. I will likely write a monolithic script here, but ideally I would write an api or a batch processor to handle this in some way. I am thinking.</description>
     </item>
     <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db) Part 2</title>
-      <link>jnapolitano.com/en/posts/hugo-mysql-db-setup/</link>
+      <link>//localhost:1313/en/posts/hugo-mysql-db-setup/</link>
       <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/hugo-mysql-db-setup/</guid>
+      <guid>//localhost:1313/en/posts/hugo-mysql-db-setup/</guid>
       <description>Background Previous posts in this series part 1 part 2 part 3 part 4 part 5 part 6 Expand a the mysql class I create a repo at https://github.com/justin-napolitano/mysql-utility-class.git to enable importing as a submodule the class that i have been workign on.&#xA;Set up the db In another part in this series, I detailed setting up the mysql db via the command line. I am going to furher that workflow by modifying the files in that repo and then running thm to generat tables within my instance of mysql.</description>
     </item>
     <item>
       <title>Automate Posting Hugo Blog to Social Sites... Failure</title>
-      <link>jnapolitano.com/en/posts/hugo-social-publisher/</link>
+      <link>//localhost:1313/en/posts/hugo-social-publisher/</link>
       <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/hugo-social-publisher/</guid>
+      <guid>//localhost:1313/en/posts/hugo-social-publisher/</guid>
       <description>Why I have a hugo blog that is a pian to share across my social feeds. I want to automate it.&#xA;Create a mockup For this I quickly sketched out my thoughts onto a writing pad. My thinking is that I will drop a yaml file into each post directory to be read by a a python application calling social apis.&#xA;Mockup As you can see this is very rudimentary. I will traverse the posts directories looking for a publish.</description>
     </item>
   </channel>

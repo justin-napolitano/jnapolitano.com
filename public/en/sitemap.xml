@@ -2,415 +2,421 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>jnapolitano.com/en/categories/</loc>
+    <loc>//localhost:1313/en/categories/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/tags/databases/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/series/java/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/tags/mysql/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/posts/sup-court-postgres-post/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/categories/projects/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/tags/python/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/series/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/tags/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/tags/datashare/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/datashare/</loc>
+    <loc>//localhost:1313/en/posts/sup-court-graph/docker_compose_blog/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/sup-court-graph/docker_compose_blog/</loc>
+    <loc>//localhost:1313/en/tags/docker/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/docker/</loc>
+    <loc>//localhost:1313/en/tags/elasticsearch/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/elasticsearch/</loc>
+    <loc>//localhost:1313/en/series/gcp/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/series/gcp/</loc>
+    <loc>//localhost:1313/en/tags/graphdb/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/graphdb/</loc>
+    <loc>//localhost:1313/en/tags/graphs/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/graphs/</loc>
+    <loc>//localhost:1313/en/tags/postgres/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/</loc>
+    <loc>//localhost:1313/en/tags/redis/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/postgres/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/categories/projects/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/python/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/redis/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/series/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/categories/books/</loc>
+    <loc>//localhost:1313/en/categories/books/</loc>
     <lastmod>2024-07-19T14:15:57-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/bread-and-wine/</loc>
+    <loc>//localhost:1313/en/posts/bread-and-wine/</loc>
     <lastmod>2024-07-19T14:15:57-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/life/</loc>
+    <loc>//localhost:1313/en/tags/life/</loc>
     <lastmod>2024-07-19T14:15:57-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/fail/</loc>
+    <loc>//localhost:1313/en/tags/fail/</loc>
     <lastmod>2024-07-18T16:08:02-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/hugo/</loc>
+    <loc>//localhost:1313/en/tags/hugo/</loc>
     <lastmod>2024-07-18T16:08:02-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/mastodon-client/</loc>
+    <loc>//localhost:1313/en/posts/mastodon-client/</loc>
     <lastmod>2024-07-18T16:08:02-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/programming/</loc>
+    <loc>//localhost:1313/en/tags/programming/</loc>
     <lastmod>2024-07-20T14:59:08-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/gcp/</loc>
+    <loc>//localhost:1313/en/tags/gcp/</loc>
     <lastmod>2024-07-20T15:27:23-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/gcp-secret-creation/</loc>
+    <loc>//localhost:1313/en/posts/gcp-secret-creation/</loc>
     <lastmod>2024-07-18T12:35:46-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/bash/</loc>
+    <loc>//localhost:1313/en/tags/bash/</loc>
     <lastmod>2024-07-20T15:27:23-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/cli/</loc>
+    <loc>//localhost:1313/en/tags/cli/</loc>
     <lastmod>2024-07-16T17:25:51-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/schedule-gcp-chron-jobs/</loc>
+    <loc>//localhost:1313/en/posts/schedule-gcp-chron-jobs/</loc>
     <lastmod>2024-07-16T17:25:51-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/create_deploy_cloud_run_job/</loc>
+    <loc>//localhost:1313/en/posts/create_deploy_cloud_run_job/</loc>
     <lastmod>2024-07-20T15:27:23-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/tutorials/</loc>
+    <loc>//localhost:1313/en/tags/tutorials/</loc>
     <lastmod>2024-07-20T15:27:23-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/series/bash/</loc>
+    <loc>//localhost:1313/en/series/bash/</loc>
     <lastmod>2024-07-20T15:27:11-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/push-commits/</loc>
+    <loc>//localhost:1313/en/posts/push-commits/</loc>
     <lastmod>2024-07-20T15:27:11-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/scripting/</loc>
+    <loc>//localhost:1313/en/tags/scripting/</loc>
     <lastmod>2024-07-20T15:27:11-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/categories/adventures/</loc>
+    <loc>//localhost:1313/en/categories/adventures/</loc>
     <lastmod>2024-07-15T13:13:10-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/hiking/</loc>
+    <loc>//localhost:1313/en/tags/hiking/</loc>
     <lastmod>2024-07-15T13:13:10-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/windy-peak-mountain-lion-loop/</loc>
+    <loc>//localhost:1313/en/posts/windy-peak-mountain-lion-loop/</loc>
     <lastmod>2024-07-15T13:13:10-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/current-time-script/</loc>
+    <loc>//localhost:1313/en/posts/current-time-script/</loc>
     <lastmod>2024-07-13T16:27:13-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/pull-all-repos/</loc>
+    <loc>//localhost:1313/en/posts/pull-all-repos/</loc>
     <lastmod>2024-07-13T12:24:49-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/setup-mysql-gcp/</loc>
+    <loc>//localhost:1313/en/posts/setup-mysql-gcp/</loc>
     <lastmod>2024-07-12T16:01:32-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/flask-api-updater/</loc>
+    <loc>//localhost:1313/en/posts/flask-api-updater/</loc>
     <lastmod>2024-07-15T18:24:59-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/containerization/</loc>
+    <loc>//localhost:1313/en/tags/containerization/</loc>
     <lastmod>2024-07-11T17:15:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/loc_normalizer/</loc>
+    <loc>//localhost:1313/en/posts/loc_normalizer/</loc>
     <lastmod>2024-07-11T16:24:23-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/git/</loc>
+    <loc>//localhost:1313/en/tags/git/</loc>
     <lastmod>2024-07-11T17:15:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/workflow-automation/</loc>
+    <loc>//localhost:1313/en/tags/workflow-automation/</loc>
     <lastmod>2024-07-11T17:15:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/linux/</loc>
+    <loc>//localhost:1313/en/tags/linux/</loc>
     <lastmod>2024-07-09T18:30:37-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/signal-install-script/</loc>
+    <loc>//localhost:1313/en/posts/signal-install-script/</loc>
     <lastmod>2024-07-09T18:30:37-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/ubuntu/</loc>
+    <loc>//localhost:1313/en/tags/ubuntu/</loc>
     <lastmod>2024-07-09T18:30:37-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/grays-peak/</loc>
+    <loc>//localhost:1313/en/posts/grays-peak/</loc>
     <lastmod>2024-07-09T17:56:33-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/mountains/</loc>
+    <loc>//localhost:1313/en/tags/mountains/</loc>
     <lastmod>2024-07-09T17:56:33-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/hugo-rss-mysql-update/</loc>
+    <loc>//localhost:1313/en/posts/hugo-rss-mysql-update/</loc>
     <lastmod>2024-07-09T17:56:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/series/auto-post-hugo/</loc>
+    <loc>//localhost:1313/en/series/auto-post-hugo/</loc>
     <lastmod>2024-07-09T18:04:31-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/hugo-rss-setup/</loc>
+    <loc>//localhost:1313/en/posts/hugo-rss-setup/</loc>
     <lastmod>2024-07-09T17:57:19-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/databases/</loc>
+    <loc>//localhost:1313/en/posts/mysql-install-buntu/</loc>
     <lastmod>2024-07-09T18:04:31-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/mysql-install-buntu/</loc>
-    <lastmod>2024-07-09T18:04:31-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/mysql/</loc>
-    <lastmod>2024-07-09T18:04:31-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/rss/</loc>
+    <loc>//localhost:1313/en/tags/rss/</loc>
     <lastmod>2024-07-09T17:57:19-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/automation/</loc>
+    <loc>//localhost:1313/en/tags/automation/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/github/</loc>
+    <loc>//localhost:1313/en/tags/github/</loc>
     <lastmod>2024-07-09T17:54:44-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/templates/</loc>
+    <loc>//localhost:1313/en/tags/templates/</loc>
     <lastmod>2024-07-09T17:50:11-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/create_a_github_template_repo/</loc>
+    <loc>//localhost:1313/en/posts/create_a_github_template_repo/</loc>
     <lastmod>2024-07-09T17:50:11-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/mysql-config/</loc>
+    <loc>//localhost:1313/en/posts/mysql-config/</loc>
     <lastmod>2024-07-09T18:04:01-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/gh_submodule_sync/</loc>
+    <loc>//localhost:1313/en/posts/gh_submodule_sync/</loc>
     <lastmod>2024-07-09T17:54:44-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/bigquery/</loc>
+    <loc>//localhost:1313/en/tags/bigquery/</loc>
     <lastmod>2024-07-20T14:59:08-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/loc-prodifier/</loc>
+    <loc>//localhost:1313/en/posts/loc-prodifier/</loc>
     <lastmod>2024-07-20T14:59:08-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/rss-reader/</loc>
+    <loc>//localhost:1313/en/posts/rss-reader/</loc>
     <lastmod>2024-07-18T15:59:16-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/hugo-mysql-db-setup/</loc>
+    <loc>//localhost:1313/en/posts/hugo-mysql-db-setup/</loc>
     <lastmod>2024-07-12T13:43:06-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/hugo-social-publisher/</loc>
+    <loc>//localhost:1313/en/posts/hugo-social-publisher/</loc>
     <lastmod>2024-07-09T17:57:45-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/gh-pages-workflow/</loc>
+    <loc>//localhost:1313/en/posts/gh-pages-workflow/</loc>
     <lastmod>2024-07-09T17:54:16-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/submodules/</loc>
+    <loc>//localhost:1313/en/tags/submodules/</loc>
     <lastmod>2024-07-09T17:54:16-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/workflow/</loc>
+    <loc>//localhost:1313/en/tags/workflow/</loc>
     <lastmod>2024-07-09T17:54:16-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/l_o_c_scraper/</loc>
+    <loc>//localhost:1313/en/posts/l_o_c_scraper/</loc>
     <lastmod>2024-07-11T17:15:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/index/</loc>
+    <loc>//localhost:1313/en/tags/index/</loc>
     <lastmod>2024-07-04T13:47:19-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/</loc>
+    <loc>//localhost:1313/en/posts/</loc>
     <lastmod>2024-07-04T13:47:19-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/julia/</loc>
+    <loc>//localhost:1313/en/tags/julia/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/logistic-regression/</loc>
+    <loc>//localhost:1313/en/tags/logistic-regression/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/logistic_regression_mockup/</loc>
+    <loc>//localhost:1313/en/posts/logistic_regression_mockup/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/numerical-computing/</loc>
+    <loc>//localhost:1313/en/tags/numerical-computing/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/statistics/</loc>
+    <loc>//localhost:1313/en/tags/statistics/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/cost-of-living-projections/</loc>
+    <loc>//localhost:1313/en/posts/cost-of-living-projections/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/monte-carlo/</loc>
+    <loc>//localhost:1313/en/tags/monte-carlo/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/spearman_rank_julia/</loc>
+    <loc>//localhost:1313/en/posts/spearman_rank_julia/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/spearman-rank-correlation/</loc>
+    <loc>//localhost:1313/en/tags/spearman-rank-correlation/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/propensity_scoring/</loc>
+    <loc>//localhost:1313/en/posts/propensity_scoring/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/logisitic-regression/</loc>
+    <loc>//localhost:1313/en/tags/logisitic-regression/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/marketing-analsyis/</loc>
+    <loc>//localhost:1313/en/tags/marketing-analsyis/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/propensity-models/</loc>
+    <loc>//localhost:1313/en/tags/propensity-models/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/dataframes/</loc>
+    <loc>//localhost:1313/en/tags/dataframes/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/markov/</loc>
+    <loc>//localhost:1313/en/tags/markov/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/markov-models-julia/</loc>
+    <loc>//localhost:1313/en/posts/markov-models-julia/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/mathematics/</loc>
+    <loc>//localhost:1313/en/tags/mathematics/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/pi-with-julia/</loc>
+    <loc>//localhost:1313/en/posts/pi-with-julia/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/rocky-linux-8-julia/</loc>
+    <loc>//localhost:1313/en/posts/rocky-linux-8-julia/</loc>
     <lastmod>2024-07-15T13:14:17-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/data-wrangling/</loc>
+    <loc>//localhost:1313/en/tags/data-wrangling/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/categories/portfolio/</loc>
+    <loc>//localhost:1313/en/categories/portfolio/</loc>
     <lastmod>2024-07-15T13:14:17-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/scotus/</loc>
+    <loc>//localhost:1313/en/tags/scotus/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/climate-change/</loc>
+    <loc>//localhost:1313/en/tags/climate-change/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/data/</loc>
+    <loc>//localhost:1313/en/tags/data/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/emissions/</loc>
+    <loc>//localhost:1313/en/tags/emissions/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/rice-paddy-emissions-2/</loc>
+    <loc>//localhost:1313/en/posts/rice-paddy-emissions-2/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/university-of-malaysia/</loc>
+    <loc>//localhost:1313/en/tags/university-of-malaysia/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/legal-research-part-8/</loc>
+    <loc>//localhost:1313/en/posts/legal-research-part-8/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/json/</loc>
+    <loc>//localhost:1313/en/tags/json/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/legal/</loc>
+    <loc>//localhost:1313/en/tags/legal/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/legal-research-part-7/</loc>
+    <loc>//localhost:1313/en/posts/legal-research-part-7/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/categories/project/</loc>
+    <loc>//localhost:1313/en/categories/project/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/masterpiece/</loc>
+    <loc>//localhost:1313/en/posts/masterpiece/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/spss/</loc>
+    <loc>//localhost:1313/en/tags/spss/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/legal-research-part-5/</loc>
+    <loc>//localhost:1313/en/posts/legal-research-part-5/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/rice-paddy-emissions-1/</loc>
+    <loc>//localhost:1313/en/posts/rice-paddy-emissions-1/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/legal-research-part-4/</loc>
+    <loc>//localhost:1313/en/posts/legal-research-part-4/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/ai/</loc>
+    <loc>//localhost:1313/en/tags/ai/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/legal-research-part-3/</loc>
+    <loc>//localhost:1313/en/posts/legal-research-part-3/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/machine-learning/</loc>
+    <loc>//localhost:1313/en/tags/machine-learning/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/ml/</loc>
+    <loc>//localhost:1313/en/tags/ml/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/legal-reserch-part-2/</loc>
+    <loc>//localhost:1313/en/posts/legal-reserch-part-2/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/neo4j/</loc>
+    <loc>//localhost:1313/en/tags/neo4j/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/legal-research-part-1/</loc>
+    <loc>//localhost:1313/en/posts/legal-research-part-1/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/legal-research-part-0/</loc>
+    <loc>//localhost:1313/en/posts/legal-research-part-0/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/carbon-capture/</loc>
+    <loc>//localhost:1313/en/tags/carbon-capture/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/energy/</loc>
+    <loc>//localhost:1313/en/tags/energy/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/feasibility_study_shipping_carbon/</loc>
+    <loc>//localhost:1313/en/posts/feasibility_study_shipping_carbon/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/lng/</loc>
+    <loc>//localhost:1313/en/tags/lng/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/carbon-shipping-projections/</loc>
+    <loc>//localhost:1313/en/posts/carbon-shipping-projections/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/montecarlo/</loc>
+    <loc>//localhost:1313/en/tags/montecarlo/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/projections/</loc>
+    <loc>//localhost:1313/en/tags/projections/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/carbon/</loc>
+    <loc>//localhost:1313/en/tags/carbon/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/gis/</loc>
+    <loc>//localhost:1313/en/tags/gis/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/hydrogen/</loc>
+    <loc>//localhost:1313/en/tags/hydrogen/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/wells-near-ports/</loc>
+    <loc>//localhost:1313/en/posts/wells-near-ports/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/shipping/</loc>
+    <loc>//localhost:1313/en/tags/shipping/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/wells-near-pipelines/</loc>
+    <loc>//localhost:1313/en/posts/wells-near-pipelines/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/europe/</loc>
+    <loc>//localhost:1313/en/tags/europe/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/european-gas-imports/</loc>
+    <loc>//localhost:1313/en/posts/european-gas-imports/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/insitutional-analysis/</loc>
+    <loc>//localhost:1313/en/tags/insitutional-analysis/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/internatinoal/</loc>
+    <loc>//localhost:1313/en/tags/internatinoal/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/legal-research/</loc>
+    <loc>//localhost:1313/en/tags/legal-research/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/ngos/</loc>
+    <loc>//localhost:1313/en/tags/ngos/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/posts/project-evolution-of-ngos/</loc>
+    <loc>//localhost:1313/en/posts/project-evolution-of-ngos/</loc>
     <lastmod>2024-07-15T13:14:28-05:00</lastmod>
   </url>
 </urlset>

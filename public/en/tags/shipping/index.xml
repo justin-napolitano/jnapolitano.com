@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Shipping on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/shipping/</link>
+    <link>//localhost:1313/en/tags/shipping/</link>
     <description>Recent content in Shipping on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,12 +10,12 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Mon, 15 Jul 2024 13:14:28 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/shipping/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/shipping/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Potential Carbon and Hydrogen Storage Facilities Near Import/Export Ports</title>
-      <link>jnapolitano.com/en/posts/wells-near-ports/</link>
+      <link>//localhost:1313/en/posts/wells-near-ports/</link>
       <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/wells-near-ports/</guid>
+      <guid>//localhost:1313/en/posts/wells-near-ports/</guid>
       <description>Potential Carbon Storage Facilities Near Import/Export Ports Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import geopandas as gpd import folium import contextily as cx import rtree from zlib import crc32 import hashlib from shapely.geometry import Point, LineString, Polygon import numpy as np from scipy.spatial import cKDTree from shapely.geometry import Point from haversine import Unit from geopy.distance import distance Restrictions Must be near a pipeline terminal Must be Near a petrolium Port Query Plan Imports</description>
     </item>
   </channel>

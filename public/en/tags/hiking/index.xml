@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hiking on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/hiking/</link>
+    <link>//localhost:1313/en/tags/hiking/</link>
     <description>Recent content in Hiking on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,12 +10,12 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Mon, 15 Jul 2024 13:13:10 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/hiking/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/hiking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windy Peak Via Mountain Lion Loop</title>
-      <link>jnapolitano.com/en/posts/windy-peak-mountain-lion-loop/</link>
+      <link>//localhost:1313/en/posts/windy-peak-mountain-lion-loop/</link>
       <pubDate>Sat, 13 Jul 2024 16:29:26 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/windy-peak-mountain-lion-loop/</guid>
+      <guid>//localhost:1313/en/posts/windy-peak-mountain-lion-loop/</guid>
       <description>Windy Peak via Mountain Lion Loop I do not know much about this little day hike.. It seems to be fairly doable despite an all trails hard rating. I&amp;rsquo;ll find out in the am&#xA;Details All Trails Link&#xA;Driving Directions: Coal Creek Canyon, Colorado 80403&#xA;Trail Head : Nott Creek Trailhead&#xA;Park Info: site&#xA;Plan Driving Leave Littleon in the AM around 5 am. Arrive around 6 am Food I&amp;rsquo;ll bring about 1000 calories.</description>
     </item>
   </channel>

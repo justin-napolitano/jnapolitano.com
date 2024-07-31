@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ai on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/ai/</link>
+    <link>//localhost:1313/en/tags/ai/</link>
     <description>Recent content in Ai on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,12 +10,12 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Mon, 15 Jul 2024 13:14:28 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Conduct Legal Research with AI: Part 3</title>
-      <link>jnapolitano.com/en/posts/legal-research-part-3/</link>
+      <link>//localhost:1313/en/posts/legal-research-part-3/</link>
       <pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/legal-research-part-3/</guid>
+      <guid>//localhost:1313/en/posts/legal-research-part-3/</guid>
       <description>Conduct Legal Research with AI: Part 3 This is the third post in a series documenting the process of building an ml pipeline that will be used to train models to predict the outcomes of Supreme Court Cases.&#xA;You can find the others at:&#xA;blog.jnapolitano.io/neo4j_integration/ blog.jnapolitano.io/constitution_to_neo/ Introduction In this post, I will be testing a sample TensorFlow pipeline against the Supreme Court Database maintained by the Washington University Law School in order to build a proof of concept model for a Supreme Court Graph Analysis project.</description>
     </item>
   </channel>
