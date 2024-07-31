@@ -3,7 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>jnapolitano.com/en/categories/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/tags/databases/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/series/java/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/tags/mysql/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/posts/sup-court-postgres-post/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/categories/projects/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/tags/python/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/series/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/tags/</loc>
+    <lastmod>2024-07-31T15:48:03-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/tags/datashare/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
@@ -26,25 +53,10 @@
     <loc>jnapolitano.com/en/tags/graphs/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
     <loc>jnapolitano.com/en/tags/postgres/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/categories/projects/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/python/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
     <loc>jnapolitano.com/en/tags/redis/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/series/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/categories/books/</loc>
@@ -155,13 +167,7 @@
     <loc>jnapolitano.com/en/posts/hugo-rss-setup/</loc>
     <lastmod>2024-07-09T17:57:19-05:00</lastmod>
   </url><url>
-    <loc>jnapolitano.com/en/tags/databases/</loc>
-    <lastmod>2024-07-09T18:04:31-05:00</lastmod>
-  </url><url>
     <loc>jnapolitano.com/en/posts/mysql-install-buntu/</loc>
-    <lastmod>2024-07-09T18:04:31-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/mysql/</loc>
     <lastmod>2024-07-09T18:04:31-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/tags/rss/</loc>

@@ -9,8 +9,29 @@
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Mon, 29 Jul 2024 18:33:58 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 31 Jul 2024 15:48:03 -0500</lastBuildDate>
     <atom:link href="jnapolitano.com/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Databases</title>
+      <link>jnapolitano.com/en/tags/databases/</link>
+      <pubDate>Wed, 31 Jul 2024 15:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/tags/databases/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mysql</title>
+      <link>jnapolitano.com/en/tags/mysql/</link>
+      <pubDate>Wed, 31 Jul 2024 15:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/tags/mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>jnapolitano.com/en/tags/python/</link>
+      <pubDate>Wed, 31 Jul 2024 15:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/tags/python/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Datashare</title>
       <link>jnapolitano.com/en/tags/datashare/</link>
@@ -51,13 +72,6 @@
       <link>jnapolitano.com/en/tags/postgres/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
       <guid>jnapolitano.com/en/tags/postgres/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>jnapolitano.com/en/tags/python/</link>
-      <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/python/</guid>
       <description></description>
     </item>
     <item>
@@ -177,20 +191,6 @@
       <link>jnapolitano.com/en/tags/mountains/</link>
       <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
       <guid>jnapolitano.com/en/tags/mountains/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Databases</title>
-      <link>jnapolitano.com/en/tags/databases/</link>
-      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/databases/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Mysql</title>
-      <link>jnapolitano.com/en/tags/mysql/</link>
-      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/mysql/</guid>
       <description></description>
     </item>
     <item>

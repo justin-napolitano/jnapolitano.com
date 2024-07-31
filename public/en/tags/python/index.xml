@@ -9,8 +9,15 @@
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Mon, 29 Jul 2024 18:33:58 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 31 Jul 2024 15:48:03 -0500</lastBuildDate>
     <atom:link href="jnapolitano.com/en/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PostGreSQL Java</title>
+      <link>jnapolitano.com/en/posts/sup-court-postgres-post/</link>
+      <pubDate>Wed, 31 Jul 2024 15:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/posts/sup-court-postgres-post/</guid>
+      <description>How to Set Up a PostgreSQL Database and Tables Using Java and Maven I&amp;rsquo;ve been working on this supreme court case thing. I recently played with DataShare to see if I could use something out of the box for some analysis. It was an okay tool&amp;hellip; but not really powerful enough for my use case. I want to create automated workflows at some scale and build out applications that are more versatile.</description>
+    </item>
     <item>
       <title>DataShare &#43; Docker Compose</title>
       <link>jnapolitano.com/en/posts/sup-court-graph/docker_compose_blog/</link>
