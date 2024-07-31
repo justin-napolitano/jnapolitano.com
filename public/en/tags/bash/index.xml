@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bash on Justin Napolitano</title>
-    <link>//localhost:1313/en/tags/bash/</link>
+    <link>jnapolitano.com/en/tags/bash/</link>
     <description>Recent content in Bash on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,68 +10,68 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Sat, 20 Jul 2024 15:27:23 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Schedule a GCP Cloud Run Chron Job</title>
-      <link>//localhost:1313/en/posts/schedule-gcp-chron-jobs/</link>
+      <link>jnapolitano.com/en/posts/schedule-gcp-chron-jobs/</link>
       <pubDate>Tue, 16 Jul 2024 17:23:06 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/schedule-gcp-chron-jobs/</guid>
+      <guid>jnapolitano.com/en/posts/schedule-gcp-chron-jobs/</guid>
       <description>How to Schedule a Cloud Run Job Using Google Cloud Scheduler In this tutorial, we&amp;rsquo;ll walk through the process of scheduling a job in Google Cloud Run using Google Cloud Scheduler. This is particularly useful for tasks that need to run at regular intervals, such as data processing, periodic updates, or maintenance tasks.&#xA;Prerequisites Before we start, ensure you have the following:&#xA;A Google Cloud project. gcloud command-line tool installed and authenticated.</description>
     </item>
     <item>
       <title>Create and Deploy Cloud Run Job Script</title>
-      <link>//localhost:1313/en/posts/create_deploy_cloud_run_job/</link>
+      <link>jnapolitano.com/en/posts/create_deploy_cloud_run_job/</link>
       <pubDate>Sun, 14 Jul 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/create_deploy_cloud_run_job/</guid>
+      <guid>jnapolitano.com/en/posts/create_deploy_cloud_run_job/</guid>
       <description>Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build.&#xA;Prerequisites Before using the deployment script, ensure you have the following:&#xA;Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.</description>
     </item>
     <item>
       <title>Pull.. Commit.. And Push Bash Script</title>
-      <link>//localhost:1313/en/posts/push-commits/</link>
+      <link>jnapolitano.com/en/posts/push-commits/</link>
       <pubDate>Sat, 13 Jul 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/push-commits/</guid>
+      <guid>jnapolitano.com/en/posts/push-commits/</guid>
       <description>Push Committed and Uncommitted Changes Script This script traverses a specified directory of git repositories, pulls updates for all branches, checks for committed and uncommitted changes across all branches, and pushes those changes to the remote repository. For uncommitted changes, it creates a new branch called uncommitted, commits the changes with a message detailing the original branch, and then pushes the new branch to the remote. For the main branch, if there are committed changes, it moves those changes to a new branch called bad-practice and then pushes that branch to the remote repository.</description>
     </item>
     <item>
       <title>Current Time Script</title>
-      <link>//localhost:1313/en/posts/current-time-script/</link>
+      <link>jnapolitano.com/en/posts/current-time-script/</link>
       <pubDate>Sat, 13 Jul 2024 16:25:59 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/current-time-script/</guid>
+      <guid>jnapolitano.com/en/posts/current-time-script/</guid>
       <description>Current Time Script This script returns the current date and time in the format date = &amp;quot;2024-07-13T14:27:45-06:00&amp;quot;.&#xA;Prerequisites Bash shell date command (available on most Unix-like systems) Usage Save the Script:&#xA;Save the following script to a file, e.g., current_time.sh:&#xA;#!/bin/bash # Get the current date and time in the desired format current_time=$(date +&amp;#34;%Y-%m-%dT%H:%M:%S%z&amp;#34;) # Format the time zone offset with a colon formatted_time=&amp;#34;${current_time:0:22}:${current_time:22:2}&amp;#34; # Print the result echo &amp;#34;date = \&amp;#34;$formatted_time\&amp;#34;&amp;#34; Make the Script Executable:</description>
     </item>
     <item>
       <title>Update All Repos Bash Script</title>
-      <link>//localhost:1313/en/posts/pull-all-repos/</link>
+      <link>jnapolitano.com/en/posts/pull-all-repos/</link>
       <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/pull-all-repos/</guid>
+      <guid>jnapolitano.com/en/posts/pull-all-repos/</guid>
       <description>Update Repositories Script This script recursively finds all git repositories in a specified directory and pulls the latest changes for each one.&#xA;Prerequisites Bash shell Git installed Proper permissions to access and modify the repositories Installation Create the script: Save the following script to a file named update_repos.sh:&#xA;#!/bin/bash # Define the default root directory where your repos are located DEFAULT_ROOT_DIR=&amp;#34;/home/cobra/Repos&amp;#34; # Use the provided argument as the root directory, or the default if none is provided ROOT_DIR=${1:-$DEFAULT_ROOT_DIR} echo &amp;#34;Starting update process for repositories in $ROOT_DIR&amp;#34; # Function to pull changes in a git repository pull_repo() { local repo_dir=$1 echo &amp;#34;Pulling updates in $repo_dir&amp;#34; cd &amp;#34;$repo_dir&amp;#34; || return git pull echo &amp;#34;Completed update in $repo_dir&amp;#34; cd - || return } # Export the function so it can be used by find -exec export -f pull_repo # Find all .</description>
     </item>
     <item>
       <title>GCP Cloud Run: LOC Flattener</title>
-      <link>//localhost:1313/en/posts/loc_normalizer/</link>
+      <link>jnapolitano.com/en/posts/loc_normalizer/</link>
       <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/loc_normalizer/</guid>
+      <guid>jnapolitano.com/en/posts/loc_normalizer/</guid>
       <description>Library of Congress Normalizer Job This repo normalizes the existing library of congress schema into a db that wil then be used to construct a knowledge graph of supreme court law.&#xA;Plan Setup a venv to run locally Install requirements Write out the script to interface with gcp Set up a docker container and test locally build the image upload to gcp create the job Setup the venv Install I installed virtualenv locally on ubuntu</description>
     </item>
     <item>
       <title>Install MySQL Server on Ubuntu</title>
-      <link>//localhost:1313/en/posts/mysql-install-buntu/</link>
+      <link>jnapolitano.com/en/posts/mysql-install-buntu/</link>
       <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/mysql-install-buntu/</guid>
+      <guid>jnapolitano.com/en/posts/mysql-install-buntu/</guid>
       <description>Why I am working on an autoposting tool for social sites. in order to complete that i want a db to log the metadata of my posts Parts of this series part 1 part 2 MYSQL Resources APT install guide MYSQL config guide Post Install configuration Install Download the config files go to this link and download the script.&#xA;https://dev.mysql.com/downloads/repo/apt/&#xA;Install the release package with dpkg note that the w.x.y.z will change according to the release package</description>
     </item>
     <item>
       <title>Sync Gh Submodules Across a Super Project</title>
-      <link>//localhost:1313/en/posts/gh_submodule_sync/</link>
+      <link>jnapolitano.com/en/posts/gh_submodule_sync/</link>
       <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/gh_submodule_sync/</guid>
+      <guid>jnapolitano.com/en/posts/gh_submodule_sync/</guid>
       <description>Overview This script is designed to initialize and update all submodules in a GitHub repository to the latest commits from their respective remote repositories. It ensures that all submodules, including nested submodules, are synchronized with their remote counterparts.&#xA;Prerequisites Ensure that you have Git installed on your system. Ensure that you have cloned the repository containing the submodules. Usage Save the script to a file, for example, sync_submodules.sh. Make the script executable: chmod +x sync_submodules.</description>
     </item>
     <item>
       <title>GCP Cloud Run Job Scraper</title>
-      <link>//localhost:1313/en/posts/l_o_c_scraper/</link>
+      <link>jnapolitano.com/en/posts/l_o_c_scraper/</link>
       <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/l_o_c_scraper/</guid>
+      <guid>jnapolitano.com/en/posts/l_o_c_scraper/</guid>
       <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.&#xA;Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
     </item>
   </channel>

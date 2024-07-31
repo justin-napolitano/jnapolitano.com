@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Justin Napolitano</title>
-    <link>//localhost:1313/en/categories/projects/</link>
+    <link>jnapolitano.com/en/categories/projects/</link>
     <description>Recent content in Projects on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,320 +10,320 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Wed, 31 Jul 2024 15:48:03 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/categories/projects/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/categories/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PostGreSQL Java</title>
-      <link>//localhost:1313/en/posts/sup-court-postgres-post/</link>
+      <link>jnapolitano.com/en/posts/sup-court-postgres-post/</link>
       <pubDate>Wed, 31 Jul 2024 15:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/sup-court-postgres-post/</guid>
+      <guid>jnapolitano.com/en/posts/sup-court-postgres-post/</guid>
       <description>How to Set Up a PostgreSQL Database and Tables Using Java and Maven I&amp;rsquo;ve been working on this supreme court case thing. I recently played with DataShare to see if I could use something out of the box for some analysis. It was an okay tool&amp;hellip; but not really powerful enough for my use case. I want to create automated workflows at some scale and build out applications that are more versatile.</description>
     </item>
     <item>
       <title>DataShare &#43; Docker Compose</title>
-      <link>//localhost:1313/en/posts/sup-court-graph/docker_compose_blog/</link>
+      <link>jnapolitano.com/en/posts/sup-court-graph/docker_compose_blog/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/sup-court-graph/docker_compose_blog/</guid>
+      <guid>jnapolitano.com/en/posts/sup-court-graph/docker_compose_blog/</guid>
       <description>Deploying DataShare with Docker Compose Docker Compose is a powerful tool for defining and running multi-container Docker applications. In this blog post, we will walk through a Docker Compose script that sets up a comprehensive data sharing application stack, including DataShare, Elasticsearch, Redis, and PostgreSQL. This setup ensures seamless data management and sharing across different services.&#xA;Overview of Services The Docker Compose file defines the following services:&#xA;DataShare: A powerful data sharing platform.</description>
     </item>
     <item>
       <title>Mastodon Bot Script</title>
-      <link>//localhost:1313/en/posts/mastodon-client/</link>
+      <link>jnapolitano.com/en/posts/mastodon-client/</link>
       <pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/mastodon-client/</guid>
+      <guid>jnapolitano.com/en/posts/mastodon-client/</guid>
       <description>Mastodon Bot Script This script manages the Mastodon bot, including retrieving secrets from Google Cloud Secret Manager, logging in to Mastodon, and posting toots.&#xA;Prerequisites Python 3.6 or higher Google Cloud SDK installed and authenticated Necessary Python packages installed (google-cloud-secret-manager, python-dotenv, mastodon.py, requests) Google Cloud Project with Secret Manager API enabled Secrets stored in Google Cloud Secret Manager Installation Clone the repository:&#xA;git clone https://your-repo-url.git cd your-repo-directory Create a virtual environment and activate it:</description>
     </item>
     <item>
       <title>GCP Secret Manager Script</title>
-      <link>//localhost:1313/en/posts/gcp-secret-creation/</link>
+      <link>jnapolitano.com/en/posts/gcp-secret-creation/</link>
       <pubDate>Thu, 18 Jul 2024 12:25:11 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/gcp-secret-creation/</guid>
+      <guid>jnapolitano.com/en/posts/gcp-secret-creation/</guid>
       <description>GCP Secret Manager Script This script manages secrets in Google Cloud Platform&amp;rsquo;s Secret Manager. It can create, overwrite, and delete secrets based on the provided YAML configuration file and environment variables.&#xA;Prerequisites Python 3.6 or higher Google Cloud SDK installed and authenticated Necessary Python packages installed (google-cloud-secret-manager, python-dotenv, pyyaml) Installation Clone the repository:&#xA;git clone https://github.com/justin-napolitano/gcp-secret-creation.py.git cd your-repo-directory Create a virtual environment and activate it:&#xA;python -m venv venv source venv/bin/activate # On Windows, use `venv\\Scripts\\activate` Install the required packages:</description>
     </item>
     <item>
       <title>Schedule a GCP Cloud Run Chron Job</title>
-      <link>//localhost:1313/en/posts/schedule-gcp-chron-jobs/</link>
+      <link>jnapolitano.com/en/posts/schedule-gcp-chron-jobs/</link>
       <pubDate>Tue, 16 Jul 2024 17:23:06 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/schedule-gcp-chron-jobs/</guid>
+      <guid>jnapolitano.com/en/posts/schedule-gcp-chron-jobs/</guid>
       <description>How to Schedule a Cloud Run Job Using Google Cloud Scheduler In this tutorial, we&amp;rsquo;ll walk through the process of scheduling a job in Google Cloud Run using Google Cloud Scheduler. This is particularly useful for tasks that need to run at regular intervals, such as data processing, periodic updates, or maintenance tasks.&#xA;Prerequisites Before we start, ensure you have the following:&#xA;A Google Cloud project. gcloud command-line tool installed and authenticated.</description>
     </item>
     <item>
       <title>Create and Deploy Cloud Run Job Script</title>
-      <link>//localhost:1313/en/posts/create_deploy_cloud_run_job/</link>
+      <link>jnapolitano.com/en/posts/create_deploy_cloud_run_job/</link>
       <pubDate>Sun, 14 Jul 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/create_deploy_cloud_run_job/</guid>
+      <guid>jnapolitano.com/en/posts/create_deploy_cloud_run_job/</guid>
       <description>Cloud Run Job Deployment Script This repository contains a script to build and deploy a Python application as a Cloud Run Job using Google Cloud Build. The script dynamically generates a cloudbuild.yaml file and submits it to Google Cloud Build.&#xA;Prerequisites Before using the deployment script, ensure you have the following:&#xA;Google Cloud SDK: Installed and configured. Docker: Installed. Google Cloud Project: Created and configured. Service Account Key: A service account key JSON file with appropriate permissions stored at keys/service-account-key.</description>
     </item>
     <item>
       <title>Pull.. Commit.. And Push Bash Script</title>
-      <link>//localhost:1313/en/posts/push-commits/</link>
+      <link>jnapolitano.com/en/posts/push-commits/</link>
       <pubDate>Sat, 13 Jul 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/push-commits/</guid>
+      <guid>jnapolitano.com/en/posts/push-commits/</guid>
       <description>Push Committed and Uncommitted Changes Script This script traverses a specified directory of git repositories, pulls updates for all branches, checks for committed and uncommitted changes across all branches, and pushes those changes to the remote repository. For uncommitted changes, it creates a new branch called uncommitted, commits the changes with a message detailing the original branch, and then pushes the new branch to the remote. For the main branch, if there are committed changes, it moves those changes to a new branch called bad-practice and then pushes that branch to the remote repository.</description>
     </item>
     <item>
       <title>Current Time Script</title>
-      <link>//localhost:1313/en/posts/current-time-script/</link>
+      <link>jnapolitano.com/en/posts/current-time-script/</link>
       <pubDate>Sat, 13 Jul 2024 16:25:59 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/current-time-script/</guid>
+      <guid>jnapolitano.com/en/posts/current-time-script/</guid>
       <description>Current Time Script This script returns the current date and time in the format date = &amp;quot;2024-07-13T14:27:45-06:00&amp;quot;.&#xA;Prerequisites Bash shell date command (available on most Unix-like systems) Usage Save the Script:&#xA;Save the following script to a file, e.g., current_time.sh:&#xA;#!/bin/bash # Get the current date and time in the desired format current_time=$(date +&amp;#34;%Y-%m-%dT%H:%M:%S%z&amp;#34;) # Format the time zone offset with a colon formatted_time=&amp;#34;${current_time:0:22}:${current_time:22:2}&amp;#34; # Print the result echo &amp;#34;date = \&amp;#34;$formatted_time\&amp;#34;&amp;#34; Make the Script Executable:</description>
     </item>
     <item>
       <title>Update All Repos Bash Script</title>
-      <link>//localhost:1313/en/posts/pull-all-repos/</link>
+      <link>jnapolitano.com/en/posts/pull-all-repos/</link>
       <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/pull-all-repos/</guid>
+      <guid>jnapolitano.com/en/posts/pull-all-repos/</guid>
       <description>Update Repositories Script This script recursively finds all git repositories in a specified directory and pulls the latest changes for each one.&#xA;Prerequisites Bash shell Git installed Proper permissions to access and modify the repositories Installation Create the script: Save the following script to a file named update_repos.sh:&#xA;#!/bin/bash # Define the default root directory where your repos are located DEFAULT_ROOT_DIR=&amp;#34;/home/cobra/Repos&amp;#34; # Use the provided argument as the root directory, or the default if none is provided ROOT_DIR=${1:-$DEFAULT_ROOT_DIR} echo &amp;#34;Starting update process for repositories in $ROOT_DIR&amp;#34; # Function to pull changes in a git repository pull_repo() { local repo_dir=$1 echo &amp;#34;Pulling updates in $repo_dir&amp;#34; cd &amp;#34;$repo_dir&amp;#34; || return git pull echo &amp;#34;Completed update in $repo_dir&amp;#34; cd - || return } # Export the function so it can be used by find -exec export -f pull_repo # Find all .</description>
     </item>
     <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db) Part 3</title>
-      <link>//localhost:1313/en/posts/setup-mysql-gcp/</link>
+      <link>jnapolitano.com/en/posts/setup-mysql-gcp/</link>
       <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/setup-mysql-gcp/</guid>
+      <guid>jnapolitano.com/en/posts/setup-mysql-gcp/</guid>
       <description>Automate Blog with GCP MYSQL Server So I am just going to create my own CMS. I know there are other solutions.. but I am nearly there.. I also want to manage content like i manage a linux system.. So I am going to do this with a db.. bashscripts.. and linux servers.&#xA;Create the MYSQL Instance I could just use a db wihtin a container.. but i want to scale this out.</description>
     </item>
     <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db) Part 4</title>
-      <link>//localhost:1313/en/posts/flask-api-updater/</link>
+      <link>jnapolitano.com/en/posts/flask-api-updater/</link>
       <pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/flask-api-updater/</guid>
+      <guid>jnapolitano.com/en/posts/flask-api-updater/</guid>
       <description>GCP Flask App I created a db.. now I need update a few tables. Since the db is in gcp. I amgoing to create a quick flask app that will update the tables..&#xA;I am using the quick start to get this one going.&#xA;Source: https://github.com/justin-napolitano/python-docs-samples/tree/main/cloud-sql/mysql/sqlalchemy&#xA;Create a New Local Service Account Create a new local service account to be able to test the app locally.&#xA;Create a new role for the cloud run service account Reference : Reference Material</description>
     </item>
     <item>
       <title>GCP Cloud Run: LOC Flattener</title>
-      <link>//localhost:1313/en/posts/loc_normalizer/</link>
+      <link>jnapolitano.com/en/posts/loc_normalizer/</link>
       <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/loc_normalizer/</guid>
+      <guid>jnapolitano.com/en/posts/loc_normalizer/</guid>
       <description>Library of Congress Normalizer Job This repo normalizes the existing library of congress schema into a db that wil then be used to construct a knowledge graph of supreme court law.&#xA;Plan Setup a venv to run locally Install requirements Write out the script to interface with gcp Set up a docker container and test locally build the image upload to gcp create the job Setup the venv Install I installed virtualenv locally on ubuntu</description>
     </item>
     <item>
       <title>Signal Desktop Installation Script</title>
-      <link>//localhost:1313/en/posts/signal-install-script/</link>
+      <link>jnapolitano.com/en/posts/signal-install-script/</link>
       <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/signal-install-script/</guid>
+      <guid>jnapolitano.com/en/posts/signal-install-script/</guid>
       <description>Signal Desktop Installation Script This script automates the process of installing Signal Desktop on 64-bit Debian-based Linux distributions such as Ubuntu and Mint.&#xA;Prerequisites A 64-bit Debian-based Linux distribution (e.g., Ubuntu, Mint) Administrative (sudo) privileges Script Overview The script performs the following steps:&#xA;Installs the official Signal public software signing key. Adds the Signal repository to the system&amp;rsquo;s list of repositories. Updates the package database and installs Signal Desktop. Usage Instructions Step 1: Save the Script Save the following script to a file, e.</description>
     </item>
     <item>
       <title>Automate Posting Hugo Blog to Social Sites (with a db)</title>
-      <link>//localhost:1313/en/posts/hugo-rss-mysql-update/</link>
+      <link>jnapolitano.com/en/posts/hugo-rss-mysql-update/</link>
       <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/hugo-rss-mysql-update/</guid>
+      <guid>jnapolitano.com/en/posts/hugo-rss-mysql-update/</guid>
       <description>Background In the previous few posts I detailed my progress in automating a site. I am going about this by using an rss scraper to post new posts to social.&#xA;I had initally thought about doing this really naively, but I want a database. It doesn&amp;rsquo;t feel right without using one. I am somewhat upset with myself, because I am basically just recreating wordpress&amp;hellip; but so it goes.&#xA;Previous posts in this series part 1 part 2 part 3 part 4 part 5 Expand a previous script In a previous post I wrote about how to scan an rss feed on my personal site.</description>
     </item>
     <item>
       <title>Configure Hugo XML Output for RSS Feed</title>
-      <link>//localhost:1313/en/posts/hugo-rss-setup/</link>
+      <link>jnapolitano.com/en/posts/hugo-rss-setup/</link>
       <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/hugo-rss-setup/</guid>
+      <guid>jnapolitano.com/en/posts/hugo-rss-setup/</guid>
       <description>Why I have a mysql db that will be used to store values read from the rss feed of my hugo site. I need some add some keys to help with organization&#xA;Parts of this series part 1 part 2 part 3 part 4 Resources Hugo Page Resources Hugo Page Params Hugo RSS Templates RSS Config Copy over the posts/rss.xml file from your theme From hugo root you would do something like&amp;hellip;</description>
     </item>
     <item>
       <title>Install MySQL Server on Ubuntu</title>
-      <link>//localhost:1313/en/posts/mysql-install-buntu/</link>
+      <link>jnapolitano.com/en/posts/mysql-install-buntu/</link>
       <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/mysql-install-buntu/</guid>
+      <guid>jnapolitano.com/en/posts/mysql-install-buntu/</guid>
       <description>Why I am working on an autoposting tool for social sites. in order to complete that i want a db to log the metadata of my posts Parts of this series part 1 part 2 MYSQL Resources APT install guide MYSQL config guide Post Install configuration Install Download the config files go to this link and download the script.&#xA;https://dev.mysql.com/downloads/repo/apt/&#xA;Install the release package with dpkg note that the w.x.y.z will change according to the release package</description>
     </item>
     <item>
       <title>Using GitHub Template Repositories to Automate Script Deployment</title>
-      <link>//localhost:1313/en/posts/create_a_github_template_repo/</link>
+      <link>jnapolitano.com/en/posts/create_a_github_template_repo/</link>
       <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/create_a_github_template_repo/</guid>
+      <guid>jnapolitano.com/en/posts/create_a_github_template_repo/</guid>
       <description>Using GitHub Template Repositories to Automate Script Deployment Managing multiple repositories can be a challenge, especially when you need to ensure that each one includes certain common scripts or configurations. GitHub&amp;rsquo;s template repositories feature can help streamline this process. In this post, we&amp;rsquo;ll walk through how to use a template repository to automatically include a gh_submodule_sync.sh script in every new repository you create.&#xA;Prerequisites GitHub CLI: Ensure you have the GitHub CLI installed.</description>
     </item>
     <item>
       <title>Configure mysql server on ubuntu</title>
-      <link>//localhost:1313/en/posts/mysql-config/</link>
+      <link>jnapolitano.com/en/posts/mysql-config/</link>
       <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/mysql-config/</guid>
+      <guid>jnapolitano.com/en/posts/mysql-config/</guid>
       <description>Why I installed mysql in the previous post. Now I need to setup users, create a db, and create a table.&#xA;Parts of this series part 1 part 2 part 3 MYSQL Resources APT install guide MYSQL config guide Create a new user Login as Root mysql -u root -p Create some users In my case I will create 4 users accounts.&#xA;Cobra@localhost Cobra@jnapolitano.com admin@localhost dummy@localhost dummy is just used to test service connection and has not access grants or writes</description>
     </item>
     <item>
       <title>Sync Gh Submodules Across a Super Project</title>
-      <link>//localhost:1313/en/posts/gh_submodule_sync/</link>
+      <link>jnapolitano.com/en/posts/gh_submodule_sync/</link>
       <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/gh_submodule_sync/</guid>
+      <guid>jnapolitano.com/en/posts/gh_submodule_sync/</guid>
       <description>Overview This script is designed to initialize and update all submodules in a GitHub repository to the latest commits from their respective remote repositories. It ensures that all submodules, including nested submodules, are synchronized with their remote counterparts.&#xA;Prerequisites Ensure that you have Git installed on your system. Ensure that you have cloned the repository containing the submodules. Usage Save the script to a file, for example, sync_submodules.sh. Make the script executable: chmod +x sync_submodules.</description>
     </item>
     <item>
       <title>Library of Congress Prod-ifier</title>
-      <link>//localhost:1313/en/posts/loc-prodifier/</link>
+      <link>jnapolitano.com/en/posts/loc-prodifier/</link>
       <pubDate>Thu, 20 Jun 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/loc-prodifier/</guid>
+      <guid>jnapolitano.com/en/posts/loc-prodifier/</guid>
       <description>Loc Prodifier Overview Loc Prodifier is a Python script designed to merge data from staging tables into production tables in Google BigQuery without inserting duplicate records. It uses the Google Cloud BigQuery Python client and can be run both locally and in Google Cloud Run. The script is designed to be flexible and scalable, allowing for parallel execution across multiple tables using Google Cloud Workflows.&#xA;Features Merges data from staging tables into production tables without duplicates.</description>
     </item>
     <item>
       <title>Automate Posting Hugo Blog to Social Sites...Second Attempt</title>
-      <link>//localhost:1313/en/posts/rss-reader/</link>
+      <link>jnapolitano.com/en/posts/rss-reader/</link>
       <pubDate>Sat, 15 Jun 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/rss-reader/</guid>
+      <guid>jnapolitano.com/en/posts/rss-reader/</guid>
       <description>Thoughts on This Second Pass I will create a script that parses the sites rss feed&amp;hellip; it will then traverse the xml tree entries&amp;hellip; if a date is newer than the last publish date&amp;hellip; publish that post&amp;hellip; I am still thinking through how to publish. I will likely write a monolithic script here, but ideally I would write an api or a batch processor to handle this in some way. I am thinking.</description>
     </item>
     <item>
       <title>Automate Posting Hugo Blog to Social Sites... Failure</title>
-      <link>//localhost:1313/en/posts/hugo-social-publisher/</link>
+      <link>jnapolitano.com/en/posts/hugo-social-publisher/</link>
       <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/hugo-social-publisher/</guid>
+      <guid>jnapolitano.com/en/posts/hugo-social-publisher/</guid>
       <description>Why I have a hugo blog that is a pian to share across my social feeds. I want to automate it.&#xA;Create a mockup For this I quickly sketched out my thoughts onto a writing pad. My thinking is that I will drop a yaml file into each post directory to be read by a a python application calling social apis.&#xA;Mockup As you can see this is very rudimentary. I will traverse the posts directories looking for a publish.</description>
     </item>
     <item>
       <title>Hugo Build and Deploy GH Workflow</title>
-      <link>//localhost:1313/en/posts/gh-pages-workflow/</link>
+      <link>jnapolitano.com/en/posts/gh-pages-workflow/</link>
       <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/gh-pages-workflow/</guid>
+      <guid>jnapolitano.com/en/posts/gh-pages-workflow/</guid>
       <description>Creating a GH Workflow to Build and Deploy a hugo site to gh-pages Why To simplify the build process.&#xA;Creating the Workflow create your yaml config file touch hugo.yaml Set the trigger and the environment defaults The code below creates a trigger on push from the main and the gh-pages branches. It also sets read and write permissions to permit executing code and building hugo.&#xA;on: # Runs on pushes targeting the default branch push: branches: - main # - pit # - ghpages - gh-pages # Allows you to run this workflow manually from the Actions tab workflow_dispatch: # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages permissions: contents: read pages: write id-token: write # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.</description>
     </item>
     <item>
       <title>Model Design and Logistic Regression in Python</title>
-      <link>//localhost:1313/en/posts/logistic_regression_mockup/</link>
+      <link>jnapolitano.com/en/posts/logistic_regression_mockup/</link>
       <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/logistic_regression_mockup/</guid>
+      <guid>jnapolitano.com/en/posts/logistic_regression_mockup/</guid>
       <description>Model Design and Logistic Regression in Python I recently modeled customer churn in Julia with logistic regression model. It was interesting to be sure, but I want to extend my analysis skillset by modeling biostatistics data. In this post, I design a logistic regression model of health predictors.&#xA;Imports # load some default Python modules import numpy as np import pandas as pd import matplotlib.pyplot as plt import seaborn as sns plt.</description>
     </item>
     <item>
       <title>Annual Cost of Living Monte Carlo Models</title>
-      <link>//localhost:1313/en/posts/cost-of-living-projections/</link>
+      <link>jnapolitano.com/en/posts/cost-of-living-projections/</link>
       <pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/cost-of-living-projections/</guid>
+      <guid>jnapolitano.com/en/posts/cost-of-living-projections/</guid>
       <description>Cost of Living Projections Introduction I do not like negotiating for salary. Especially, without valid projections to determine a range.&#xA;I prepared this report to estimate a salary expectation that will maintain my current standard of living.&#xA;I present two Monte Carlo models of Houston and NYC annual living costs. The data is somewhat dated and &amp;ndash;particularly in the case of houston&amp;ndash; are high level estimates.&#xA;In order to produce a better report, I am currently scraping data from the internet for more accurate sample distributions.</description>
     </item>
     <item>
       <title>Spearman Rank in Standard Julia</title>
-      <link>//localhost:1313/en/posts/spearman_rank_julia/</link>
+      <link>jnapolitano.com/en/posts/spearman_rank_julia/</link>
       <pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/spearman_rank_julia/</guid>
+      <guid>jnapolitano.com/en/posts/spearman_rank_julia/</guid>
       <description>Spearman Rank in Standard Julia Well nearly, I did import the erfc function from the SpecialFunctions package. I don&amp;rsquo;t like it either. I&amp;rsquo;ll write my own soon to make up for it.&#xA;Special Thanks I came across the text Numerical Recipes in C. It was first published in 1988, by the Cambridge University Press. The authors are William H. Press, Brian P. Flannery, Saul. A. Teukolsky, and William T. Veterling.</description>
     </item>
     <item>
       <title>Churn Modelling Marketing Data with Julia</title>
-      <link>//localhost:1313/en/posts/propensity_scoring/</link>
+      <link>jnapolitano.com/en/posts/propensity_scoring/</link>
       <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/propensity_scoring/</guid>
+      <guid>jnapolitano.com/en/posts/propensity_scoring/</guid>
       <description>Churn Modelling Marketing Data with Julia Introduction I prepared this analysis to learn the logistic regression in Julia. The work is fairly straightforward. I am modelling if a customer will exit a website based on a number of sites. I&amp;rsquo;ll improve the model in an upcoming post. As if, is not as interesting as asking when. That will be my next project&#xA;Imports using Pkg using DataFrames using CSV using Plots using GLM using StatsBase using Lathe using MLBase using ClassImbalance using ROCAnalysis using PyCall sklearn = pyimport(&amp;#34;sklearn.</description>
     </item>
     <item>
       <title>Markov Chains in Julia</title>
-      <link>//localhost:1313/en/posts/markov-models-julia/</link>
+      <link>jnapolitano.com/en/posts/markov-models-julia/</link>
       <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/markov-models-julia/</guid>
+      <guid>jnapolitano.com/en/posts/markov-models-julia/</guid>
       <description>Introduction I am currently working on a legal research series where I perform statistical analysis and ml models to legal datasets. My intention is to model the behavior of courts, determine the outcome of cases, and build a pipeline capable of identifying relevant case law by issue area.&#xA;That data set is nearly complete, but I have not decided which models to apply to it. This is where Julia comes into play.</description>
     </item>
     <item>
       <title>Quantitative Julia Problems</title>
-      <link>//localhost:1313/en/posts/pi-with-julia/</link>
+      <link>jnapolitano.com/en/posts/pi-with-julia/</link>
       <pubDate>Tue, 24 May 2022 01:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/pi-with-julia/</guid>
+      <guid>jnapolitano.com/en/posts/pi-with-julia/</guid>
       <description>Introduction In my previous post, I demonstrated how to configure Rocky Linux and RHEL distributions for quantitative analysis.&#xA;In this post, I include a few sample programs to test your installation.&#xA;How to run the programs I saved them to a folder within the project directory.&#xA;Activate the Project using Pkg Pkg.activate(&amp;#34;.&amp;#34;) #cd(&amp;#34;&amp;lt;sub-directory-containing-files&amp;gt;) optional Run a program include(&amp;#34;path/to/script-name.jl&amp;#34;) Estimate the Value of Pi Use the Monte Carlo method to estimate the value of pi.</description>
     </item>
     <item>
       <title>Rice Paddy Methane Emissions Estimation: Part 2</title>
-      <link>//localhost:1313/en/posts/rice-paddy-emissions-2/</link>
+      <link>jnapolitano.com/en/posts/rice-paddy-emissions-2/</link>
       <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/rice-paddy-emissions-2/</guid>
+      <guid>jnapolitano.com/en/posts/rice-paddy-emissions-2/</guid>
       <description>Methane Emissions Estimation Data Part 2: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.&#xA;It is fairly code python and pandas heavy.&#xA;The code and data exploration follows the summary below.&#xA;Hypothesis Testing the University of Malaysia Paper Claims That the distributions do not differ between 2020 and 2019 That the means do no differ between 2020 and 2019 What will be Tested.</description>
     </item>
     <item>
       <title>Conduct Legal Research with AI Part 8: Case Nodes Sample Data</title>
-      <link>//localhost:1313/en/posts/legal-research-part-8/</link>
+      <link>jnapolitano.com/en/posts/legal-research-part-8/</link>
       <pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/legal-research-part-8/</guid>
+      <guid>jnapolitano.com/en/posts/legal-research-part-8/</guid>
       <description>Introduction The legal Research with AI Series is expanding quickly. This is the 9th post related to it in someway. Building this pipeline and integrating multiple datasets into nodes is proving to be verbose.&#xA;This post documents merging Oyez and Library of Congress of data structured json files that represent nodes and hierarchal relationships.&#xA;Main Function The plan for this program is to:&#xA;Read the prepared dataframe created in the legal research part 7 post for each row of the df load a dictionary from the the libary of congress path and the oyez path Set keys on the Oyez dataset Write the updated Oyez dataset to file Review the work below:</description>
     </item>
     <item>
       <title>Legal Research with AI: Part 6</title>
-      <link>//localhost:1313/en/posts/masterpiece/</link>
+      <link>jnapolitano.com/en/posts/masterpiece/</link>
       <pubDate>Sat, 21 May 2022 19:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/masterpiece/</guid>
+      <guid>jnapolitano.com/en/posts/masterpiece/</guid>
       <description>Introduction Currently, my server is mining data from the neo4j graph database.&#xA;This post contains a control model completed in SPSS that will serve as the base line for comparison to Ml models. It includes a short literature review of the theoritical foundation of the Attitudinal Model of Judicial Behavior.&#xA;Hypothesis When considering the individual Supreme Court Justices, their voting behavior may be best described by the interaction between their ideological precepts and the facts of the case.</description>
     </item>
     <item>
       <title>Conduct Legal Research with AI: Part 5</title>
-      <link>//localhost:1313/en/posts/legal-research-part-5/</link>
+      <link>jnapolitano.com/en/posts/legal-research-part-5/</link>
       <pubDate>Sat, 21 May 2022 14:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/legal-research-part-5/</guid>
+      <guid>jnapolitano.com/en/posts/legal-research-part-5/</guid>
       <description>Legal Research with AI: Part 5&amp;quot; In the previous posts in this series, I have downloaded the data required to build the neo4j graph. In this post, I will arrange the data into a data structure that will permit me to easily create graph nodes and most importantly relationships.&#xA;The Runner Program The raw structure of the data is organized by the results of the api requests. There are thus 80 cases per file.</description>
     </item>
     <item>
       <title>Rice Paddy Methane Emissions Estimation: Part 1</title>
-      <link>//localhost:1313/en/posts/rice-paddy-emissions-1/</link>
+      <link>jnapolitano.com/en/posts/rice-paddy-emissions-1/</link>
       <pubDate>Sat, 21 May 2022 08:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/rice-paddy-emissions-1/</guid>
+      <guid>jnapolitano.com/en/posts/rice-paddy-emissions-1/</guid>
       <description>Methane Emissions Estimation Data Part 1: A Comparison between FAOSTAT and University of Malaysia Estimates This post documents the data exploration phase of a project that determines whether global methane emissions produced by rice paddies are undercounted.&#xA;It is fairly code python and pandas heavy.&#xA;The code and data exploration follows the summary below.&#xA;Inspiration for this work The University of Malaysia in partnership with Climate TRACE release a paper stating that the UN undercounts rice paddy methane emissions by about 16%.</description>
     </item>
     <item>
       <title>Conduct Legal Research with AI: Part 4</title>
-      <link>//localhost:1313/en/posts/legal-research-part-4/</link>
+      <link>jnapolitano.com/en/posts/legal-research-part-4/</link>
       <pubDate>Thu, 19 May 2022 22:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/legal-research-part-4/</guid>
+      <guid>jnapolitano.com/en/posts/legal-research-part-4/</guid>
       <description>Conduct Legal Research with AI Part 4 This is the fourth post in a series documenting the process of building an ml pipeline used to train models to predict the outcomes of Supreme Court cases.&#xA;You can find the others at:&#xA;Part 1: blog.jnapolitano.io/neo4j_integration/ Part 2: blog.jnapolitano.io/constitution_to_neo/ Part 3: blog.jnapolitano.io/ai-proof-of-concept/ Modeling the Supreme Court Thankfully, much of the ground work has been done by contributors to The Washington University of St.</description>
     </item>
     <item>
       <title>Conduct Legal Research with AI: Part 3</title>
-      <link>//localhost:1313/en/posts/legal-research-part-3/</link>
+      <link>jnapolitano.com/en/posts/legal-research-part-3/</link>
       <pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/legal-research-part-3/</guid>
+      <guid>jnapolitano.com/en/posts/legal-research-part-3/</guid>
       <description>Conduct Legal Research with AI: Part 3 This is the third post in a series documenting the process of building an ml pipeline that will be used to train models to predict the outcomes of Supreme Court Cases.&#xA;You can find the others at:&#xA;blog.jnapolitano.io/neo4j_integration/ blog.jnapolitano.io/constitution_to_neo/ Introduction In this post, I will be testing a sample TensorFlow pipeline against the Supreme Court Database maintained by the Washington University Law School in order to build a proof of concept model for a Supreme Court Graph Analysis project.</description>
     </item>
     <item>
       <title>Conduct Legal Research with AI: Part 2</title>
-      <link>//localhost:1313/en/posts/legal-reserch-part-2/</link>
+      <link>jnapolitano.com/en/posts/legal-reserch-part-2/</link>
       <pubDate>Tue, 17 May 2022 18:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/legal-reserch-part-2/</guid>
+      <guid>jnapolitano.com/en/posts/legal-reserch-part-2/</guid>
       <description>Integrating the Constitution to Neo4j I am currenlty building a graph database of Supreme Court cases in neo4j to model the behavior and decison making of the court.&#xA;In this post, I include the classes that I will be using to create individual nodes for the articles, sections, clauses, and subclauses of the Consititution.&#xA;Later, these will be related to cases and subjecst in order to train a tensorflow algorithm to recommend case law by issue area and to predict the outcome of cases.</description>
     </item>
     <item>
       <title>Conduct Legal Research with AI: Part 1</title>
-      <link>//localhost:1313/en/posts/legal-research-part-1/</link>
+      <link>jnapolitano.com/en/posts/legal-research-part-1/</link>
       <pubDate>Mon, 16 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/legal-research-part-1/</guid>
+      <guid>jnapolitano.com/en/posts/legal-research-part-1/</guid>
       <description>Introduction In a previous post, I detailed the process of crawling the Library of Congress API to generate json files that could be intergrated into you DB of choice.&#xA;In this discussion, we will integrate JSON data into a Neo4j graph database.&#xA;Overview The process is fairly straightforward. The most difficult part is wrangling your json data into the right format for integration.&#xA;The main function first instantiates the database config informormation.</description>
     </item>
     <item>
       <title>Conduct Legal Research with AI: Part 0</title>
-      <link>//localhost:1313/en/posts/legal-research-part-0/</link>
+      <link>jnapolitano.com/en/posts/legal-research-part-0/</link>
       <pubDate>Mon, 16 May 2022 13:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/legal-research-part-0/</guid>
+      <guid>jnapolitano.com/en/posts/legal-research-part-0/</guid>
       <description>Crawling the Library of Congress API Introduction The United States Library of Congress maintains a rest api for developers to crawl their collections. It is an open source tool that anyone can access in order to conduct research. Check out the documenation at https://libraryofcongress.github.io/data-exploration/.&#xA;Creating a crawler I took the approach of writing a generator that produces a search result page object that can be operated upon with each iteration.</description>
     </item>
     <item>
       <title>Feasibility of Transatlantic Carbon Shipping</title>
-      <link>//localhost:1313/en/posts/feasibility_study_shipping_carbon/</link>
+      <link>jnapolitano.com/en/posts/feasibility_study_shipping_carbon/</link>
       <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/feasibility_study_shipping_carbon/</guid>
+      <guid>jnapolitano.com/en/posts/feasibility_study_shipping_carbon/</guid>
       <description>Feasibility of Shipping Carbon Across the Atlantic Methodology Please review the my previous post which details the design of my model.&#xA;The major difference in this report is the sampling of the mean price per voyage.&#xA;The conversion error has been corrected.&#xA;Findings Distance of Transport The standard deviation in mean price per voyage was found to be less than 0. This suggests that the distance of travel within Europe is marginal.</description>
     </item>
     <item>
       <title>Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to the United States</title>
-      <link>//localhost:1313/en/posts/carbon-shipping-projections/</link>
+      <link>jnapolitano.com/en/posts/carbon-shipping-projections/</link>
       <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/carbon-shipping-projections/</guid>
+      <guid>jnapolitano.com/en/posts/carbon-shipping-projections/</guid>
       <description>A Monte Carlo Projection of the Annual Cost of Shipping Carbon from Europe to US Ports Revision An earlier version of this report had reported values that were erroneously elevated by a decimal error in the meters to km conversion of distances between ports. I apologize for unintentionally publishing misleading information.&#xA;Situations like this one, are why I always publish with code. Transparency is the key to rigor.&#xA;Introduction I produced an earlier report that identified potential ports that may be suitable terminals for carbon imports into the United States for storage or industrial applications.</description>
     </item>
     <item>
       <title>Potential Carbon and Hydrogen Storage Facilities Near Import/Export Ports</title>
-      <link>//localhost:1313/en/posts/wells-near-ports/</link>
+      <link>jnapolitano.com/en/posts/wells-near-ports/</link>
       <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/wells-near-ports/</guid>
+      <guid>jnapolitano.com/en/posts/wells-near-ports/</guid>
       <description>Potential Carbon Storage Facilities Near Import/Export Ports Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import geopandas as gpd import folium import contextily as cx import rtree from zlib import crc32 import hashlib from shapely.geometry import Point, LineString, Polygon import numpy as np from scipy.spatial import cKDTree from shapely.geometry import Point from haversine import Unit from geopy.distance import distance Restrictions Must be near a pipeline terminal Must be Near a petrolium Port Query Plan Imports</description>
     </item>
     <item>
       <title>Potential Carbon and Hydrogen Storage Wells Near Pipelines</title>
-      <link>//localhost:1313/en/posts/wells-near-pipelines/</link>
+      <link>jnapolitano.com/en/posts/wells-near-pipelines/</link>
       <pubDate>Fri, 06 May 2022 05:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/wells-near-pipelines/</guid>
+      <guid>jnapolitano.com/en/posts/wells-near-pipelines/</guid>
       <description>Potential Carbon Storage Wells Near Pipelines Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import geopandas as gpd import folium import contextily as cx import rtree from zlib import crc32 import hashlib from shapely.geometry import Point, LineString, Polygon import numpy as np from scipy.spatial import cKDTree from shapely.geometry import Point from haversine import Unit from geopy.distance import distance Query Plan Restrictions Must be near a pipeline terminal Imports Pipeline Data Well Data Filtering For each well calculate nearest pipeline</description>
     </item>
     <item>
       <title>EuroZone Gas Imports and Exports</title>
-      <link>//localhost:1313/en/posts/european-gas-imports/</link>
+      <link>jnapolitano.com/en/posts/european-gas-imports/</link>
       <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/european-gas-imports/</guid>
+      <guid>jnapolitano.com/en/posts/european-gas-imports/</guid>
       <description>EuroZone Gas Imports and Exports Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import numpy as np from geopy.distance import distance import re import matplotlib.pyplot as plt from IPython.core.display import HTML #import IPython.core.display as display def hugo_safe_render(styler): &amp;#34;&amp;#34;&amp;#34; Removes spacing from HTML output of df.style to prevent rendering issues in Hugo. &amp;#34;&amp;#34;&amp;#34; raw_html = styler.to_html() clean_html = &amp;#39; &amp;#39;.join(raw_html.split()) return HTML(clean_html) def magnify(): return [dict(selector=&amp;#34;th&amp;#34;, props=[(&amp;#34;font-size&amp;#34;, &amp;#34;4pt&amp;#34;)]), dict(selector=&amp;#34;td&amp;#34;, props=[(&amp;#39;padding&amp;#39;, &amp;#34;0em 0em&amp;#34;)]), dict(selector=&amp;#34;th:hover&amp;#34;, props=[(&amp;#34;font-size&amp;#34;, &amp;#34;12pt&amp;#34;)]), dict(selector=&amp;#34;tr:hover td:hover&amp;#34;, props=[(&amp;#39;max-width&amp;#39;, &amp;#39;200px&amp;#39;), (&amp;#39;font-size&amp;#39;, &amp;#39;12pt&amp;#39;)]) ] Query Strategy Imports TO many to list&amp;hellip; I&amp;rsquo;ll ad them as I go below</description>
     </item>
     <item>
       <title>The World Trade Organization, Governments, and International Trade</title>
-      <link>//localhost:1313/en/posts/project-evolution-of-ngos/</link>
+      <link>jnapolitano.com/en/posts/project-evolution-of-ngos/</link>
       <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/project-evolution-of-ngos/</guid>
+      <guid>jnapolitano.com/en/posts/project-evolution-of-ngos/</guid>
       <description>The World Trade Organization, Governments, and International Trade Intro International Organizations are vital to the operation of International politics. They regulate behaviors, facilitate communication, and promote cooperation between states. The process by which International Organizations come into being is well discussed in the literature, however, not equally well debated is the process by which International Organizations come to modify their operating procedure. Or in other words, when the member states renegotiate the terms of their membership.</description>
     </item>
   </channel>

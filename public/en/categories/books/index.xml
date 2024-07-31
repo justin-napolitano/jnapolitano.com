@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Books on Justin Napolitano</title>
-    <link>//localhost:1313/en/categories/books/</link>
+    <link>jnapolitano.com/en/categories/books/</link>
     <description>Recent content in Books on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,12 +10,12 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Fri, 19 Jul 2024 14:15:57 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/categories/books/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/categories/books/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bread and Wine</title>
-      <link>//localhost:1313/en/posts/bread-and-wine/</link>
+      <link>jnapolitano.com/en/posts/bread-and-wine/</link>
       <pubDate>Fri, 19 Jul 2024 00:39:38 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/bread-and-wine/</guid>
+      <guid>jnapolitano.com/en/posts/bread-and-wine/</guid>
       <description>Bread and Wine &amp;ldquo;There always comes a time in life when the young men get bored by the bread and wine at home. They look for food elsewhere. The bread and wine of in inns at the crossroads can calm their hunger and thirst for a while. But man cannot spend all his life at the inns.&amp;rdquo;&#xA;Letting Go of Idealism I like this novel. I like Don Paolo. I live abstractly.</description>
     </item>
   </channel>
