@@ -9,7 +9,7 @@
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Wed, 31 Jul 2024 15:48:03 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 31 Jul 2024 17:31:45 -0500</lastBuildDate>
     <atom:link href="jnapolitano.com/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Databases</title>
@@ -30,6 +30,27 @@
       <link>jnapolitano.com/en/tags/python/</link>
       <pubDate>Wed, 31 Jul 2024 15:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
       <guid>jnapolitano.com/en/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cdp</title>
+      <link>jnapolitano.com/en/tags/cdp/</link>
+      <pubDate>Wed, 31 Jul 2024 14:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/tags/cdp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Java</title>
+      <link>jnapolitano.com/en/tags/java/</link>
+      <pubDate>Wed, 31 Jul 2024 14:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/tags/java/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Postgresql</title>
+      <link>jnapolitano.com/en/tags/postgresql/</link>
+      <pubDate>Wed, 31 Jul 2024 14:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/tags/postgresql/</guid>
       <description></description>
     </item>
     <item>
