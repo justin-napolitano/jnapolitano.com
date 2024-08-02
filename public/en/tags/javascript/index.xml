@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on Justin Napolitano</title>
-    <link>jnapolitano.com/en/series/java/</link>
-    <description>Recent content in Java on Justin Napolitano</description>
+    <title>Javascript on Justin Napolitano</title>
+    <link>jnapolitano.com/en/tags/javascript/</link>
+    <description>Recent content in Javascript on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
     <lastBuildDate>Fri, 02 Aug 2024 15:29:36 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/series/java/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PERN Stack with GraphQl and Apollo</title>
       <link>jnapolitano.com/en/posts/sup-court-pern-stack/</link>
       <pubDate>Fri, 02 Aug 2024 15:16:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
       <guid>jnapolitano.com/en/posts/sup-court-pern-stack/</guid>
       <description>Setting Up a PERN Stack with GraphQL and Apollo: Source Repo : https://github.com/justin-napolitano/sup-court-pern-stack.git&#xA;I&amp;rsquo;ve been playing with a knowledge graph recently. Most of the data modelling is complete&amp;hellip; well at least the groundwork is done.&#xA;In this part of the series,we&amp;rsquo;ll walk through the process of setting up a PostgreSQL, Express, React, Node.js (PERN) stack application with GraphQL and Apollo.&#xA;The point is to build out a backend so I can then build out a react client to explore the beautiful grapth.</description>
-    </item>
-    <item>
-      <title>PostGreSQL Java: Data Ingestion</title>
-      <link>jnapolitano.com/en/posts/sup-court-data-ingestion/</link>
-      <pubDate>Wed, 31 Jul 2024 14:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/sup-court-data-ingestion/</guid>
-      <description>Setting Up a Data Ingestion Workflow with Java and Google Cloud Storage Introduction In this blog post, we will walk through setting up a data ingestion workflow using Java. The workflow will download JSON data from a Google Cloud Storage (GCS) bucket, parse it, and insert it into a PostgreSQL database. We will also handle unique constraint violations gracefully.&#xA;Prerequisites Java 11 or higher installed Maven installed PostgreSQL running locally (preferably in a Docker container) Google Cloud Storage bucket with JSON files Service account key for Google Cloud Storage Setting Up the Project 1.</description>
     </item>
   </channel>
 </rss>

@@ -12,20 +12,12 @@
 		<atom:link href="jnapolitano.com/en/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
-			<title></title>
+			<title>PERN Stack with GraphQl and Apollo</title>
 			<link>jnapolitano.com/en/posts/sup-court-pern-stack/</link>
-			<pubDate>Fri, 02 Aug 2024 15:25:26 -0500</pubDate>
+			<pubDate>Fri, 02 Aug 2024 15:16:27 -0500</pubDate>
 			<guid>jnapolitano.com/en/posts/sup-court-pern-stack/</guid>
-			<description><![CDATA[%!s(<nil>)]]></description>
-			<content type="html"><![CDATA[<p>1 +++
-2 title =  &ldquo;PERN Stack with GraphQl and Apollo&rdquo;
-3 description = &ldquo;Build a Website Backend with Apollo and Graphql&rdquo;
-4 tags = [&lsquo;javascript&rsquo;, &ldquo;pern&rdquo;,&ldquo;databases&rdquo;]
-5 images = [&ldquo;images/feature-image.png&rdquo;]
-6 date = &ldquo;2024-08-02T15:16:27-05:00&rdquo;
-7 categories = [&ldquo;projects&rdquo;]
-8 series = [&ldquo;Java&rdquo;]</p>
-<h1 id="setting-up-a-pern-stack-with-graphql-and-apollo">Setting Up a PERN Stack with GraphQL and Apollo:</h1>
+			<description><![CDATA[Build a Website Backend with Apollo and Graphql]]></description>
+			<content type="html"><![CDATA[<h1 id="setting-up-a-pern-stack-with-graphql-and-apollo">Setting Up a PERN Stack with GraphQL and Apollo:</h1>
 <p>Source Repo : <code>https://github.com/justin-napolitano/sup-court-pern-stack.git</code></p>
 <p>I&rsquo;ve been playing with a knowledge graph recently. Most of the data modelling is complete&hellip; well at least the groundwork is done.</p>
 <p>In this part of the series,we&rsquo;ll walk through the process of setting up a PostgreSQL, Express, React, Node.js (PERN) stack application with GraphQL and Apollo.</p>
