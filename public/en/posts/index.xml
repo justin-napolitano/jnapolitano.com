@@ -12,257 +12,670 @@
 		<atom:link href="jnapolitano.com/en/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
-			<title>PostGreSQL Java</title>
-			<link>jnapolitano.com/en/posts/sup-court-postgres-post/</link>
-			<pubDate>Wed, 31 Jul 2024 15:25:13 -0500</pubDate>
-			<guid>jnapolitano.com/en/posts/sup-court-postgres-post/</guid>
-			<description><![CDATA[Learning java with DBs]]></description>
-			<content type="html"><![CDATA[<h1 id="how-to-set-up-a-postgresql-database-and-tables-using-java-and-maven">How to Set Up a PostgreSQL Database and Tables Using Java and Maven</h1>
-<p>I&rsquo;ve been working on this supreme court case thing. I recently played with DataShare to see if I could use something out of the box for some analysis. It was an okay tool&hellip; but not really powerful enough for my use case. I want to create automated workflows at some scale and build out applications that are more versatile. So I am starting over with Java.. which I haven&rsquo;t really used in about 15 years.</p>
+			<title></title>
+			<link>jnapolitano.com/en/posts/sup-court-pern-stack/</link>
+			<pubDate>Fri, 02 Aug 2024 15:25:26 -0500</pubDate>
+			<guid>jnapolitano.com/en/posts/sup-court-pern-stack/</guid>
+			<description><![CDATA[%!s(<nil>)]]></description>
+			<content type="html"><![CDATA[<p>1 +++
+2 title =  &ldquo;PERN Stack with GraphQl and Apollo&rdquo;
+3 description = &ldquo;Build a Website Backend with Apollo and Graphql&rdquo;
+4 tags = [&lsquo;javascript&rsquo;, &ldquo;pern&rdquo;,&ldquo;databases&rdquo;]
+5 images = [&ldquo;images/feature-image.png&rdquo;]
+6 date = &ldquo;2024-08-02T15:16:27-05:00&rdquo;
+7 categories = [&ldquo;projects&rdquo;]
+8 series = [&ldquo;Java&rdquo;]</p>
+<h1 id="setting-up-a-pern-stack-with-graphql-and-apollo">Setting Up a PERN Stack with GraphQL and Apollo:</h1>
+<p>Source Repo : <code>https://github.com/justin-napolitano/sup-court-pern-stack.git</code></p>
+<p>I&rsquo;ve been playing with a knowledge graph recently. Most of the data modelling is complete&hellip; well at least the groundwork is done.</p>
+<p>In this part of the series,we&rsquo;ll walk through the process of setting up a PostgreSQL, Express, React, Node.js (PERN) stack application with GraphQL and Apollo.</p>
+<p>The point is to build out a backend so I can then build out a react client to explore the beautiful grapth.</p>
 <h2 id="prerequisites">Prerequisites</h2>
-<ul>
-<li>Basic knowledge of Java and Maven</li>
-<li>Docker installed on your machine</li>
-<li>PostgreSQL JDBC Driver</li>
-</ul>
-<h2 id="step-1-set-up-postgresql-with-docker">Step 1: Set Up PostgreSQL with Docker</h2>
-<p>First, let&rsquo;s create a Docker container for PostgreSQL and Adminer, a web-based database management tool.</p>
-<p>Create a <code>docker-compose.yml</code> file with the following content:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.9&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">db</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">postgres:latest</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l">128mb</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l">example</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">example</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l">example</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;5432:5432&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">pgdata:/var/lib/postgresql/data</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">adminer</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">adminer:latest</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8080:8080&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pgdata</span><span class="p">:</span><span class="w">
-</span></span></span></code></pre></div><p>To start the services, run the following command:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up -d
-</span></span></code></pre></div><h2 id="step-2-set-up-maven-project">Step 2: Set Up Maven Project</h2>
-<p>Create a new Maven project structure:</p>
-<pre tabindex="0"><code>my-java-project/
-├── src/
-│   └── main/
-│       └── java/
-│           └── com/
-│               └── createdb/
-│                   ├── DatabaseClient.java
-│                   └── Main.java
-├── sql/
-│   ├── CallNumbers.sql
-│   ├── Contributors.sql
-│   ├── Items.sql
-│   ├── Resources.sql
-│   └── Subjects.sql
-├── pom.xml
-</code></pre><h2 id="step-3-define-sql-files">Step 3: Define SQL Files</h2>
-<p>Create SQL files to define the tables:</p>
-<h3 id="sqlcallnumberssql"><code>sql/CallNumbers.sql</code></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">CallNumbers</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">callnumber</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h3 id="sqlcontributorssql"><code>sql/Contributors.sql</code></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">Contributors</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">contributor</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h3 id="sqlitemssql"><code>sql/Items.sql</code></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">Items</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">callnumber</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">created_published</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nb">date</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">notes</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">sourcecollection</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">externalid</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h3 id="sqlresourcessql"><code>sql/Resources.sql</code></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">Resources</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">external_id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">image</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">pdf</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h3 id="sqlsubjectssql"><code>sql/Subjects.sql</code></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">Subjects</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">external_id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">subject</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h2 id="step-4-create-maven-pomxml">Step 4: Create Maven <code>pom.xml</code></h2>
-<p>Create a <code>pom.xml</code> file with the necessary dependencies and plugins:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0&#34;</span>
-</span></span><span class="line"><span class="cl">         <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
-</span></span><span class="line"><span class="cl">         <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+<p>Before we begin, make sure you have the following installed:</p>
+<p>Node.js
+PostgreSQL
+npm or yarn
+Step 1: Project Setup
+Initialize the project:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mkdir my-pern-app
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> my-pern-app
+</span></span><span class="line"><span class="cl">npm init -y
+</span></span></code></pre></div><h3 id="install-dependencies">Install dependencies:</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">npm install express sequelize pg pg-hstore apollo-server-express graphql graphql-iso-date dotenv cors morgan bcrypt dataloader
+</span></span></code></pre></div><h3 id="step-2-configure-environment-variables">Step 2: Configure Environment Variables</h3>
+<p>Create a .env file in the root of your project with the following content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DATABASE_URL=postgres://example:example@localhost:5432/supreme_court
+</span></span><span class="line"><span class="cl">SECRET=asdlplplfwfwefwekwself.2342.dawasdq
+</span></span><span class="line"><span class="cl">PORT=8000
+</span></span><span class="line"><span class="cl">NODE_ENV=development
+</span></span></code></pre></div><h3 id="step-3-set-up-sequelize">Step 3: Set Up Sequelize</h3>
+<p>Create a config directory with the following files:</p>
+<h4 id="srcconfigdbjs">src/config/db.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">dotenv</span> <span class="nx">from</span> <span class="s1">&#39;dotenv&#39;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>com.example<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>sup-court-db-normalizer<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">dotenv</span><span class="p">.</span><span class="nx">config</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependencies&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.postgresql<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>postgresql<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>42.2.23<span class="nt">&lt;/version&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>com.google.cloud<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>google-cloud-storage<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>2.1.4<span class="nt">&lt;/version&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>com.google.cloud<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>google-cloud-bigquery<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>2.1.4<span class="nt">&lt;/version&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependencies&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">dbConfig</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">development</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DATABASE_URL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">dialect</span><span class="o">:</span> <span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">logging</span><span class="o">:</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">,</span> <span class="c1">// Ensure logging is either a function or false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">test</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">TEST_DATABASE_URL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">dialect</span><span class="o">:</span> <span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">logging</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">production</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DATABASE_URL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">dialect</span><span class="o">:</span> <span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">logging</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">dialectOptions</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">ssl</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">require</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">rejectUnauthorized</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;build&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;plugins&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;plugin&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;version&gt;</span>3.8.1<span class="nt">&lt;/version&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;configuration&gt;</span>
-</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;source&gt;</span>11<span class="nt">&lt;/source&gt;</span>
-</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;target&gt;</span>11<span class="nt">&lt;/target&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/configuration&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/plugin&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;plugin&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;groupId&gt;</span>org.codehaus.mojo<span class="nt">&lt;/groupId&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;artifactId&gt;</span>exec-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;version&gt;</span>3.0.0<span class="nt">&lt;/version&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;configuration&gt;</span>
-</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;mainClass&gt;</span>com.createdb.Main<span class="nt">&lt;/mainClass&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/configuration&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/plugin&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/plugins&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/build&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/project&gt;</span>
-</span></span></code></pre></div><h2 id="step-5-write-java-code">Step 5: Write Java Code</h2>
-<h3 id="databaseclientjava"><code>DatabaseClient.java</code></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.createdb</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.*</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.file.Files</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.file.Paths</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DatabaseClient</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Connection</span><span class="w"> </span><span class="n">connection</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">DatabaseClient</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">SQLException</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Execute SQL file</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">executeSqlFile</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">SQLException</span><span class="p">,</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">Files</span><span class="p">.</span><span class="na">readAllBytes</span><span class="p">(</span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">filePath</span><span class="p">)));</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">sqlStatements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sql</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&#34;;&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Statement</span><span class="w"> </span><span class="n">stmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">connection</span><span class="p">.</span><span class="na">createStatement</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">statement</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">sqlStatements</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">statement</span><span class="p">.</span><span class="na">trim</span><span class="p">().</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">stmt</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">.</span><span class="na">trim</span><span class="p">());</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Close connection</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">SQLException</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">connection</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">connection</span><span class="p">.</span><span class="na">isClosed</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">connection</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h3 id="mainjava"><code>Main.java</code></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.createdb</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.Connection</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.DriverManager</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.ResultSet</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.SQLException</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.Statement</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;jdbc:postgresql://localhost:5432/postgres&#34;</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;example&#34;</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;example&#34;</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dbName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;supreme-court&#34;</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Connection</span><span class="w"> </span><span class="n">connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="n">Statement</span><span class="w"> </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">connection</span><span class="p">.</span><span class="na">createStatement</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// Create the database if it doesn&#39;t exist</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">ResultSet</span><span class="w"> </span><span class="n">resultSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">statement</span><span class="p">.</span><span class="na">executeQuery</span><span class="p">(</span><span class="s">&#34;SELECT 1 FROM pg_database WHERE datname = &#39;&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dbName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;&#39;&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">resultSet</span><span class="p">.</span><span class="na">next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">statement</span><span class="p">.</span><span class="na">executeUpdate</span><span class="p">(</span><span class="s">&#34;CREATE DATABASE &#34;&#34; + dbName + &#34;&#34;&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Database &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dbName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; created successfully.&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Database &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dbName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; already exists.&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// Connect to the new database and execute SQL files to create tables</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">dbUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;jdbc:postgresql://localhost:5432/&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dbName</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">DatabaseClient</span><span class="w"> </span><span class="n">dbClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DatabaseClient</span><span class="p">(</span><span class="n">dbUrl</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// Execute SQL files to create tables</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">executeSqlFile</span><span class="p">(</span><span class="s">&#34;sql/CallNumbers.sql&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">executeSqlFile</span><span class="p">(</span><span class="s">&#34;sql/Contributors.sql&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">executeSqlFile</span><span class="p">(</span><span class="s">&#34;sql/Items.sql&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">executeSqlFile</span><span class="p">(</span><span class="s">&#34;sql/Resources.sql&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">executeSqlFile</span><span class="p">(</span><span class="s">&#34;sql/Subjects.sql&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dbClient</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 id="step-6-run-the-project">Step 6: Run the Project</h2>
-<ol>
-<li>
-<p><strong>Compile the project</strong>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mvn compile
-</span></span></code></pre></div></li>
-<li>
-<p><strong>Run the <code>Main</code> class</strong>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mvn exec:java -Dexec.mainClass<span class="o">=</span><span class="s2">&#34;com.createdb.Main&#34;</span>
-</span></span></code></pre></div></li>
-</ol>
-<p>This setup will create the <code>supreme-court</code> database if it does not exist and then execute the SQL files to create the tables. You can verify the results using Adminer by navigating to <code>http://localhost:8080</code> in your web browser.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>In this post, we set up a PostgreSQL database using Docker, created a Maven project to manage our Java code, defined our database tables with SQL files, and wrote Java code to automate the creation of the database and tables. This setup provides a robust foundation for further development and integration with your data processing applications.</p>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">environment</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">||</span> <span class="s1">&#39;development&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">dbConfig</span><span class="p">[</span><span class="nx">environment</span><span class="p">];</span>
+</span></span></code></pre></div><h3 id="step-4-create-models">Step 4: Create Models</h3>
+<p>Create a models directory with the following files:</p>
+<h4 id="srcmodelsindexjs">src/models/index.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">Op</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;sequelize&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">config</span> <span class="nx">from</span> <span class="s1">&#39;../config&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">databaseUrl</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">dialect</span><span class="o">:</span> <span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">logging</span><span class="o">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">nodeEnv</span> <span class="o">===</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">dialectOptions</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ssl</span><span class="o">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">nodeEnv</span> <span class="o">===</span> <span class="s1">&#39;production&#39;</span> <span class="o">?</span> <span class="p">{</span> <span class="nx">rejectUnauthorized</span><span class="o">:</span> <span class="kc">false</span> <span class="p">}</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">operatorsAliases</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$eq</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">eq</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$ne</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">ne</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$gte</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">gte</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$gt</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">gt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$lte</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">lte</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$lt</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">lt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$not</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">not</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$in</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="k">in</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$notIn</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">notIn</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$is</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">is</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$like</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">like</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$notLike</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">notLike</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$iLike</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">iLike</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$notILike</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">notILike</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$regexp</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">regexp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$notRegexp</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">notRegexp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$iRegexp</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">iRegexp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$notIRegexp</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">notIRegexp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$between</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">between</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$notBetween</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">notBetween</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$overlap</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">overlap</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$contains</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">contains</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$contained</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">contained</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$adjacent</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">adjacent</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$strictLeft</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">strictLeft</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$strictRight</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">strictRight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$noExtendRight</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">noExtendRight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$noExtendLeft</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">noExtendLeft</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$and</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">and</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$or</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">or</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$any</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">any</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$all</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">all</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$values</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">values</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$col</span><span class="o">:</span> <span class="nx">Op</span><span class="p">.</span><span class="nx">col</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">models</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">User</span><span class="o">:</span> <span class="nx">sequelize</span><span class="p">.</span><span class="kr">import</span><span class="p">(</span><span class="s1">&#39;./user&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Message</span><span class="o">:</span> <span class="nx">sequelize</span><span class="p">.</span><span class="kr">import</span><span class="p">(</span><span class="s1">&#39;./message&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">models</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;associate&#39;</span> <span class="k">in</span> <span class="nx">models</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">models</span><span class="p">[</span><span class="nx">key</span><span class="p">].</span><span class="nx">associate</span><span class="p">(</span><span class="nx">models</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="p">{</span> <span class="nx">sequelize</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">models</span><span class="p">;</span>
+</span></span></code></pre></div><h4 id="srcmodelsuserjs">src/models/user.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">bcrypt</span> <span class="nx">from</span> <span class="s1">&#39;bcrypt&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">(</span><span class="nx">sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">username</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">type</span><span class="o">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">unique</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">allowNull</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">validate</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">notEmpty</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">email</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">type</span><span class="o">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">unique</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">allowNull</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">validate</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">notEmpty</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">isEmail</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">password</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">type</span><span class="o">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">allowNull</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">validate</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">notEmpty</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">len</span><span class="o">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">42</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">role</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">type</span><span class="o">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">User</span><span class="p">.</span><span class="nx">associate</span> <span class="o">=</span> <span class="nx">models</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">User</span><span class="p">.</span><span class="nx">hasMany</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">Message</span><span class="p">,</span> <span class="p">{</span> <span class="nx">onDelete</span><span class="o">:</span> <span class="s1">&#39;CASCADE&#39;</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">User</span><span class="p">.</span><span class="nx">findByLogin</span> <span class="o">=</span> <span class="kr">async</span> <span class="nx">login</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">where</span><span class="o">:</span> <span class="p">{</span> <span class="nx">username</span><span class="o">:</span> <span class="nx">login</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">user</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">where</span><span class="o">:</span> <span class="p">{</span> <span class="nx">email</span><span class="o">:</span> <span class="nx">login</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">user</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">User</span><span class="p">.</span><span class="nx">beforeCreate</span><span class="p">(</span><span class="kr">async</span> <span class="nx">user</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">user</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">user</span><span class="p">.</span><span class="nx">generatePasswordHash</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">User</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">generatePasswordHash</span> <span class="o">=</span> <span class="kr">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">saltRounds</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kr">await</span> <span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span> <span class="nx">saltRounds</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">User</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">validatePassword</span> <span class="o">=</span> <span class="kr">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kr">await</span> <span class="nx">bcrypt</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">User</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">user</span><span class="p">;</span>
+</span></span></code></pre></div><h4 id="srcmodelsmessagejs">src/models/message.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="p">(</span><span class="nx">sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">Message</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">text</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">type</span><span class="o">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">validate</span><span class="o">:</span> <span class="p">{</span> <span class="nx">notEmpty</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">Message</span><span class="p">.</span><span class="nx">associate</span> <span class="o">=</span> <span class="nx">models</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Message</span><span class="p">.</span><span class="nx">belongsTo</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">Message</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">message</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Step</span> <span class="mi">5</span><span class="o">:</span> <span class="nx">Set</span> <span class="nx">Up</span> <span class="nx">GraphQL</span> <span class="nx">Schema</span> <span class="nx">and</span> <span class="nx">Resolvers</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Create</span> <span class="nx">a</span> <span class="nx">schema</span> <span class="nx">directory</span> <span class="kd">with</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">files</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">####</span> <span class="nx">src</span><span class="o">/</span><span class="nx">schema</span><span class="o">/</span><span class="nx">index</span><span class="p">.</span><span class="nx">js</span>
+</span></span><span class="line"><span class="cl"><span class="nx">javascript</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">gql</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;apollo-server-express&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">userSchema</span> <span class="nx">from</span> <span class="s1">&#39;./user&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">messageSchema</span> <span class="nx">from</span> <span class="s1">&#39;./message&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">linkSchema</span> <span class="o">=</span> <span class="nx">gql</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  scalar Date
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  type Query {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    _: Boolean
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  type Mutation {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    _: Boolean
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  type Subscription {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    _: Boolean
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">[</span><span class="nx">linkSchema</span><span class="p">,</span> <span class="nx">userSchema</span><span class="p">,</span> <span class="nx">messageSchema</span><span class="p">];</span>
+</span></span></code></pre></div><h4 id="srcschemauserjs">src/schema/user.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">gql</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;apollo-server-express&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">gql</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  extend type Query {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    users: [User!]
+</span></span></span><span class="line"><span class="cl"><span class="sb">    user(id: ID!): User
+</span></span></span><span class="line"><span class="cl"><span class="sb">    me: User
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  extend type Mutation {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    signUp(
+</span></span></span><span class="line"><span class="cl"><span class="sb">      username: String!
+</span></span></span><span class="line"><span class="cl"><span class="sb">      email: String!
+</span></span></span><span class="line"><span class="cl"><span class="sb">      password: String!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    ): Token!
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    signIn(login: String!, password: String!): Token!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    updateUser(username: String!): User!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    deleteUser(id: ID!): Boolean!
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  type Token {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    token: String!
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  type User {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    id: ID!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    username: String!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    email: String!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    role: String
+</span></span></span><span class="line"><span class="cl"><span class="sb">    messages: [Message!]
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span></code></pre></div><h4 id="srcschemamessagejs">src/schema/message.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">gql</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;apollo-server-express&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">gql</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  extend type Query {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    messages(cursor: String, limit: Int): MessageConnection!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    message(id: ID!): Message!
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  extend type Mutation {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    createMessage(text: String!): Message!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    deleteMessage(id: ID!): Boolean!
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  type MessageConnection {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    edges: [Message!]!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    pageInfo: PageInfo!
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  type PageInfo {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    hasNextPage: Boolean!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    endCursor: String!
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  type Message {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    id: ID!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    text: String!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    createdAt: Date!
+</span></span></span><span class="line"><span class="cl"><span class="sb">    user: User!
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  extend type Subscription {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    messageCreated: MessageCreated!
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  type MessageCreated {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    message: Message!
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Create</span> <span class="nx">a</span> <span class="nx">resolvers</span> <span class="nx">directory</span> <span class="kd">with</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">files</span><span class="o">:</span>
+</span></span></code></pre></div><h4 id="srcresolversindexjs">src/resolvers/index.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">GraphQLDateTime</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;graphql-iso-date&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">userResolvers</span> <span class="nx">from</span> <span class="s1">&#39;./user&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">messageResolvers</span> <span class="nx">from</span> <span class="s1">&#39;./message&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">customScalarResolver</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">Date</span><span class="o">:</span> <span class="nx">GraphQLDateTime</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">customScalarResolver</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">userResolvers</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">messageResolvers</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">];</span>
+</span></span></code></pre></div><h4 id="srcresolversuserjs">src/resolvers/user.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">jwt</span> <span class="nx">from</span> <span class="s1">&#39;jsonwebtoken&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">combineResolvers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;graphql-resolvers&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">AuthenticationError</span><span class="p">,</span> <span class="nx">UserInputError</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;apollo-server&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">isAdmin</span><span class="p">,</span> <span class="nx">isAuthenticated</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./authorization&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">createToken</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../utils/auth&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Query</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">users</span><span class="o">:</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="p">{</span> <span class="nx">models</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">findAll</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">user</span><span class="o">:</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">models</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">me</span><span class="o">:</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="p">{</span> <span class="nx">models</span><span class="p">,</span> <span class="nx">me</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">me</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="nx">me</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">Mutation</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">signUp</span><span class="o">:</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="p">{</span> <span class="nx">username</span><span class="p">,</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">password</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">models</span><span class="p">,</span> <span class="nx">secret</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">username</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">email</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">password</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span> <span class="nx">token</span><span class="o">:</span> <span class="nx">createToken</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">secret</span><span class="p">,</span> <span class="s1">&#39;30m&#39;</span><span class="p">)</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">signIn</span><span class="o">:</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="p">{</span> <span class="nx">login</span><span class="p">,</span> <span class="nx">password</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">models</span><span class="p">,</span> <span class="nx">secret</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">findByLogin</span><span class="p">(</span><span class="nx">login</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="k">new</span> <span class="nx">UserInputError</span><span class="p">(</span><span class="s1">&#39;No user found with these login credentials.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">isValid</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">user</span><span class="p">.</span><span class="nx">validatePassword</span><span class="p">(</span><span class="nx">password</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isValid</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="k">new</span> <span class="nx">AuthenticationError</span><span class="p">(</span><span class="s1">&#39;Invalid password.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span> <span class="nx">token</span><span class="o">:</span> <span class="nx">createToken</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">secret</span><span class="p">,</span> <span class="s1">&#39;30m&#39;</span><span class="p">)</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">updateUser</span><span class="o">:</span> <span class="nx">combineResolvers</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">isAuthenticated</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">async</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="p">{</span> <span class="nx">username</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">models</span><span class="p">,</span> <span class="nx">me</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="nx">me</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kr">await</span> <span class="nx">user</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span> <span class="nx">username</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">deleteUser</span><span class="o">:</span> <span class="nx">combineResolvers</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">isAdmin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">async</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">models</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">destroy</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">where</span><span class="o">:</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">User</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">messages</span><span class="o">:</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="p">{</span> <span class="nx">models</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">where</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">userId</span><span class="o">:</span> <span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><h4 id="srcresolversmessagejs">src/resolvers/message.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">PubSub</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;apollo-server&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">combineResolvers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;graphql-resolvers&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">isAuthenticated</span><span class="p">,</span> <span class="nx">isMessageOwner</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./authorization&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">pubsub</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PubSub</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">MESSAGE_CREATED</span> <span class="o">=</span> <span class="s1">&#39;MESSAGE_CREATED&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Query</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">messages</span><span class="o">:</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="p">{</span> <span class="nx">cursor</span><span class="p">,</span> <span class="nx">limit</span> <span class="o">=</span> <span class="mi">100</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">models</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">cursorOptions</span> <span class="o">=</span> <span class="nx">cursor</span>
+</span></span><span class="line"><span class="cl">        <span class="o">?</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">where</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nx">createdAt</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="p">[</span><span class="nx">models</span><span class="p">.</span><span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Op</span><span class="p">.</span><span class="nx">lt</span><span class="p">]</span><span class="o">:</span> <span class="nx">cursor</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">:</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">messages</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">order</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;createdAt&#39;</span><span class="p">,</span> <span class="s1">&#39;DESC&#39;</span><span class="p">]],</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">limit</span><span class="o">:</span> <span class="nx">limit</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">...</span><span class="nx">cursorOptions</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">hasNextPage</span> <span class="o">=</span> <span class="nx">messages</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">limit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">edges</span> <span class="o">=</span> <span class="nx">hasNextPage</span> <span class="o">?</span> <span class="nx">messages</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">:</span> <span class="nx">messages</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">edges</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">pageInfo</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">hasNextPage</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">endCursor</span><span class="o">:</span> <span class="nx">edges</span><span class="p">[</span><span class="nx">edges</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="nx">createdAt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">message</span><span class="o">:</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">models</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">Mutation</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">createMessage</span><span class="o">:</span> <span class="nx">combineResolvers</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">isAuthenticated</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">async</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="p">{</span> <span class="nx">text</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">me</span><span class="p">,</span> <span class="nx">models</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">text</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">userId</span><span class="o">:</span> <span class="nx">me</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">pubsub</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">MESSAGE_CREATED</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">messageCreated</span><span class="o">:</span> <span class="p">{</span> <span class="nx">message</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">message</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">deleteMessage</span><span class="o">:</span> <span class="nx">combineResolvers</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">isAuthenticated</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">isMessageOwner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">async</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">models</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Message not found&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kr">await</span> <span class="nx">message</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">Subscription</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">messageCreated</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">subscribe</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">pubsub</span><span class="p">.</span><span class="nx">asyncIterator</span><span class="p">(</span><span class="nx">MESSAGE_CREATED</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">Message</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">user</span><span class="o">:</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="p">{</span> <span class="nx">models</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">userId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><h4 id="srcresolversauthorizationjs">src/resolvers/authorization.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">ForbiddenError</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;apollo-server&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">combineResolvers</span><span class="p">,</span> <span class="nx">skip</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;graphql-resolvers&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">isAuthenticated</span> <span class="o">=</span> <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="p">{</span> <span class="nx">me</span> <span class="p">})</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">me</span> <span class="o">?</span> <span class="nx">skip</span> <span class="o">:</span> <span class="k">new</span> <span class="nx">ForbiddenError</span><span class="p">(</span><span class="s1">&#39;Not authenticated as user.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">isAdmin</span> <span class="o">=</span> <span class="nx">combineResolvers</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">isAuthenticated</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="p">{</span> <span class="nx">me</span><span class="o">:</span> <span class="p">{</span> <span class="nx">role</span> <span class="p">}</span> <span class="p">})</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">role</span> <span class="o">===</span> <span class="s1">&#39;ADMIN&#39;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">?</span> <span class="nx">skip</span>
+</span></span><span class="line"><span class="cl">      <span class="o">:</span> <span class="k">new</span> <span class="nx">ForbiddenError</span><span class="p">(</span><span class="s1">&#39;Not authorized as admin.&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">isMessageOwner</span> <span class="o">=</span> <span class="kr">async</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">parent</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> <span class="nx">id</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> <span class="nx">models</span><span class="p">,</span> <span class="nx">me</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="p">{</span> <span class="nx">raw</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">userId</span> <span class="o">!==</span> <span class="nx">me</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="k">new</span> <span class="nx">ForbiddenError</span><span class="p">(</span><span class="s1">&#39;Not authenticated as owner.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">skip</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><h3 id="step-6-configure-loaders">Step 6: Configure Loaders</h3>
+<p>Create a loaders directory with the following files:</p>
+<h4 id="srcloadersuserjs">src/loaders/user.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">batchUsers</span> <span class="o">=</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">keys</span><span class="p">,</span> <span class="nx">models</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">users</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">where</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">id</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="nx">models</span><span class="p">.</span><span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Op</span><span class="p">.</span><span class="k">in</span><span class="p">]</span><span class="o">:</span> <span class="nx">keys</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">key</span> <span class="p">=&gt;</span> <span class="nx">users</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">user</span> <span class="p">=&gt;</span> <span class="nx">user</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">key</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><h4 id="srcloadersindexjs">src/loaders/index.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">DataLoader</span> <span class="nx">from</span> <span class="s1">&#39;dataloader&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">models</span> <span class="nx">from</span> <span class="s1">&#39;../models&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">batchUsers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./user&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">loaders</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">user</span><span class="o">:</span> <span class="k">new</span> <span class="nx">DataLoader</span><span class="p">(</span><span class="nx">keys</span> <span class="p">=&gt;</span> <span class="nx">batchUsers</span><span class="p">(</span><span class="nx">keys</span><span class="p">,</span> <span class="nx">models</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">loaders</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Step</span> <span class="mi">7</span><span class="o">:</span> <span class="nx">Set</span> <span class="nx">Up</span> <span class="nx">Apollo</span> <span class="nx">Server</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Create</span> <span class="nx">a</span> <span class="nx">server</span><span class="p">.</span><span class="nx">js</span> <span class="nx">file</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">src</span> <span class="nx">directory</span><span class="o">:</span>
+</span></span></code></pre></div><h4 id="srcserverjs">src/server.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">ApolloServer</span><span class="p">,</span> <span class="nx">AuthenticationError</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;apollo-server-express&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">express</span> <span class="nx">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">cors</span> <span class="nx">from</span> <span class="s1">&#39;cors&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">morgan</span> <span class="nx">from</span> <span class="s1">&#39;morgan&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;http&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">schema</span> <span class="nx">from</span> <span class="s1">&#39;./schema&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">resolvers</span> <span class="nx">from</span> <span class="s1">&#39;./resolvers&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">models</span><span class="p">,</span> <span class="p">{</span> <span class="nx">sequelize</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./models&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">loaders</span> <span class="nx">from</span> <span class="s1">&#39;./loaders&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">config</span> <span class="nx">from</span> <span class="s1">&#39;./config&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">verifyToken</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./utils/auth&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">logger</span> <span class="nx">from</span> <span class="s1">&#39;./config/logger&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cors</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">morgan</span><span class="p">(</span><span class="s1">&#39;dev&#39;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">getMe</span> <span class="o">=</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-token&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">verifyToken</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">throw</span> <span class="k">new</span> <span class="nx">AuthenticationError</span><span class="p">(</span><span class="s1">&#39;Session expired, please login again&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ApolloServer</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">introspection</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">playground</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">typeDefs</span><span class="o">:</span> <span class="nx">schema</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">resolvers</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">formatError</span><span class="o">:</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;SequelizeValidationError: &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;Validation error: &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span><span class="nx">error</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">message</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">context</span><span class="o">:</span> <span class="kr">async</span> <span class="p">({</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">connection</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">connection</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">models</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">loaders</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">me</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">getMe</span><span class="p">(</span><span class="nx">req</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">models</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">me</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">secret</span><span class="o">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">secret</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">loaders</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">server</span><span class="p">.</span><span class="nx">applyMiddleware</span><span class="p">({</span> <span class="nx">app</span><span class="p">,</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/graphql&#39;</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">httpServer</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">server</span><span class="p">.</span><span class="nx">installSubscriptionHandlers</span><span class="p">(</span><span class="nx">httpServer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">sequelize</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;Database connected successfully&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">httpServer</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="sb">`Server running at http://localhost:</span><span class="si">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">port</span><span class="si">}</span><span class="sb">/graphql`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Unable to connect to the database:&#39;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><h3 id="create-an-indexjs-file-in-the-src-directory">Create an index.js file in the src directory:</h3>
+<h4 id="srcindexjs">src/index.js</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="s1">&#39;dotenv/config&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="s1">&#39;./server&#39;</span><span class="p">;</span>
+</span></span></code></pre></div><h3 id="step-8-start-the-server">Step 8: Start the Server</h3>
+<p>To start the server, use the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">npx nodemon src/index.js
+</span></span></code></pre></div><p>Your server should now be running, and you can access the Apollo GraphQL playground at http://localhost:8000/graphql.</p>
 ]]></content>
-			<postid> 9c251164b4c95e6c70b513e4c10b5864</postid>
+			<postid> fa5380b8e86d317704456bdb8aab8ee5</postid>
 			<author></author>
 			<author_name>Justin Napolitano</author_name>
 			<author_email>personal.jnapolitano@gmail.com</author_email>

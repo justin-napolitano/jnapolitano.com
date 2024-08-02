@@ -9,14 +9,14 @@
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Wed, 31 Jul 2024 17:31:45 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2024 15:25:26 -0500</lastBuildDate>
     <atom:link href="jnapolitano.com/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>PostGreSQL Java</title>
-      <link>jnapolitano.com/en/posts/sup-court-postgres-post/</link>
-      <pubDate>Wed, 31 Jul 2024 15:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/sup-court-postgres-post/</guid>
-      <description>How to Set Up a PostgreSQL Database and Tables Using Java and Maven I&amp;rsquo;ve been working on this supreme court case thing. I recently played with DataShare to see if I could use something out of the box for some analysis. It was an okay tool&amp;hellip; but not really powerful enough for my use case. I want to create automated workflows at some scale and build out applications that are more versatile.</description>
+      <title></title>
+      <link>jnapolitano.com/en/posts/sup-court-pern-stack/</link>
+      <pubDate>Fri, 02 Aug 2024 15:25:26 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/posts/sup-court-pern-stack/</guid>
+      <description>1 +++ 2 title = &amp;ldquo;PERN Stack with GraphQl and Apollo&amp;rdquo; 3 description = &amp;ldquo;Build a Website Backend with Apollo and Graphql&amp;rdquo; 4 tags = [&amp;lsquo;javascript&amp;rsquo;, &amp;ldquo;pern&amp;rdquo;,&amp;ldquo;databases&amp;rdquo;] 5 images = [&amp;ldquo;images/feature-image.png&amp;rdquo;] 6 date = &amp;ldquo;2024-08-02T15:16:27-05:00&amp;rdquo; 7 categories = [&amp;ldquo;projects&amp;rdquo;] 8 series = [&amp;ldquo;Java&amp;rdquo;]&#xA;Setting Up a PERN Stack with GraphQL and Apollo: Source Repo : https://github.com/justin-napolitano/sup-court-pern-stack.git&#xA;I&amp;rsquo;ve been playing with a knowledge graph recently. Most of the data modelling is complete&amp;hellip; well at least the groundwork is done.</description>
     </item>
     <item>
       <title>PostGreSQL Java: Data Ingestion</title>

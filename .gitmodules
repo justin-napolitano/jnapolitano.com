@@ -166,3 +166,7 @@
 	path = content/posts/sup-court-data-ingestion
 	url = https://github.com/justin-napolitano/sup-court-data-ingestion.git
 	branch = post
+[submodule "content/posts/sup-court-pern-stack"]
+	path = content/posts/sup-court-pern-stack
+	url = https://github.com/justin-napolitano/sup-court-pern-stack.git
+	branch = post
