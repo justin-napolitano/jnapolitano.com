@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Postgres on Justin Napolitano</title>
-    <link>//localhost:1313/en/tags/postgres/</link>
+    <link>jnapolitano.com/en/tags/postgres/</link>
     <description>Recent content in Postgres on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>CobraCorp</copyright>
+    <copyright>COBRACORP</copyright>
     <lastBuildDate>Mon, 29 Jul 2024 18:33:58 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DataShare &#43; Docker Compose</title>
-      <link>//localhost:1313/en/posts/sup-court-graph/docker_compose_blog/</link>
+      <link>jnapolitano.com/en/posts/sup-court-graph/docker_compose_blog/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/sup-court-graph/docker_compose_blog/</guid>
+      <guid>jnapolitano.com/en/posts/sup-court-graph/docker_compose_blog/</guid>
       <description>Deploying DataShare with Docker Compose Docker Compose is a powerful tool for defining and running multi-container Docker applications. In this blog post, we will walk through a Docker Compose script that sets up a comprehensive data sharing application stack, including DataShare, Elasticsearch, Redis, and PostgreSQL. This setup ensures seamless data management and sharing across different services.&#xA;Overview of Services The Docker Compose file defines the following services:&#xA;DataShare: A powerful data sharing platform.</description>
     </item>
   </channel>

@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Justin Napolitano</title>
-    <link>//localhost:1313/en/categories/</link>
+    <link>jnapolitano.com/en/categories/</link>
     <description>Recent content in Categories on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>CobraCorp</copyright>
+    <copyright>COBRACORP</copyright>
     <lastBuildDate>Tue, 06 Aug 2024 16:55:56 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Projects</title>
-      <link>//localhost:1313/en/categories/projects/</link>
+      <link>jnapolitano.com/en/categories/projects/</link>
       <pubDate>Tue, 06 Aug 2024 16:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/categories/projects/</guid>
+      <guid>jnapolitano.com/en/categories/projects/</guid>
       <description></description>
     </item>
     <item>
       <title>Books</title>
-      <link>//localhost:1313/en/categories/books/</link>
+      <link>jnapolitano.com/en/categories/books/</link>
       <pubDate>Fri, 19 Jul 2024 00:39:38 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/categories/books/</guid>
+      <guid>jnapolitano.com/en/categories/books/</guid>
       <description></description>
     </item>
     <item>
       <title>Adventures</title>
-      <link>//localhost:1313/en/categories/adventures/</link>
+      <link>jnapolitano.com/en/categories/adventures/</link>
       <pubDate>Sat, 13 Jul 2024 16:29:26 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/categories/adventures/</guid>
+      <guid>jnapolitano.com/en/categories/adventures/</guid>
       <description></description>
     </item>
     <item>
       <title>Portfolio</title>
-      <link>//localhost:1313/en/categories/portfolio/</link>
+      <link>jnapolitano.com/en/categories/portfolio/</link>
       <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/categories/portfolio/</guid>
+      <guid>jnapolitano.com/en/categories/portfolio/</guid>
       <description></description>
     </item>
     <item>
       <title>Project</title>
-      <link>//localhost:1313/en/categories/project/</link>
+      <link>jnapolitano.com/en/categories/project/</link>
       <pubDate>Sun, 22 May 2022 16:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/categories/project/</guid>
+      <guid>jnapolitano.com/en/categories/project/</guid>
       <description></description>
     </item>
   </channel>

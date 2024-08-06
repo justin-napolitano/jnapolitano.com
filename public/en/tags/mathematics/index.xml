@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mathematics on Justin Napolitano</title>
-    <link>//localhost:1313/en/tags/mathematics/</link>
+    <link>jnapolitano.com/en/tags/mathematics/</link>
     <description>Recent content in Mathematics on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>CobraCorp</copyright>
+    <copyright>COBRACORP</copyright>
     <lastBuildDate>Mon, 15 Jul 2024 13:14:28 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Markov Chains in Julia</title>
-      <link>//localhost:1313/en/posts/markov-models-julia/</link>
+      <link>jnapolitano.com/en/posts/markov-models-julia/</link>
       <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/markov-models-julia/</guid>
+      <guid>jnapolitano.com/en/posts/markov-models-julia/</guid>
       <description>Introduction I am currently working on a legal research series where I perform statistical analysis and ml models to legal datasets. My intention is to model the behavior of courts, determine the outcome of cases, and build a pipeline capable of identifying relevant case law by issue area.&#xA;That data set is nearly complete, but I have not decided which models to apply to it. This is where Julia comes into play.</description>
     </item>
     <item>
       <title>Quantitative Julia Problems</title>
-      <link>//localhost:1313/en/posts/pi-with-julia/</link>
+      <link>jnapolitano.com/en/posts/pi-with-julia/</link>
       <pubDate>Tue, 24 May 2022 01:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/pi-with-julia/</guid>
+      <guid>jnapolitano.com/en/posts/pi-with-julia/</guid>
       <description>Introduction In my previous post, I demonstrated how to configure Rocky Linux and RHEL distributions for quantitative analysis.&#xA;In this post, I include a few sample programs to test your installation.&#xA;How to run the programs I saved them to a folder within the project directory.&#xA;Activate the Project using Pkg Pkg.activate(&amp;#34;.&amp;#34;) #cd(&amp;#34;&amp;lt;sub-directory-containing-files&amp;gt;) optional Run a program include(&amp;#34;path/to/script-name.jl&amp;#34;) Estimate the Value of Pi Use the Monte Carlo method to estimate the value of pi.</description>
     </item>
   </channel>

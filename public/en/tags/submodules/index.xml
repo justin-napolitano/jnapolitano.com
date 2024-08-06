@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Submodules on Justin Napolitano</title>
-    <link>//localhost:1313/en/tags/submodules/</link>
+    <link>jnapolitano.com/en/tags/submodules/</link>
     <description>Recent content in Submodules on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>CobraCorp</copyright>
+    <copyright>COBRACORP</copyright>
     <lastBuildDate>Tue, 09 Jul 2024 17:54:16 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/submodules/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/submodules/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo Build and Deploy GH Workflow</title>
-      <link>//localhost:1313/en/posts/gh-pages-workflow/</link>
+      <link>jnapolitano.com/en/posts/gh-pages-workflow/</link>
       <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/gh-pages-workflow/</guid>
+      <guid>jnapolitano.com/en/posts/gh-pages-workflow/</guid>
       <description>Creating a GH Workflow to Build and Deploy a hugo site to gh-pages Why To simplify the build process.&#xA;Creating the Workflow create your yaml config file touch hugo.yaml Set the trigger and the environment defaults The code below creates a trigger on push from the main and the gh-pages branches. It also sets read and write permissions to permit executing code and building hugo.&#xA;on: # Runs on pushes targeting the default branch push: branches: - main # - pit # - ghpages - gh-pages # Allows you to run this workflow manually from the Actions tab workflow_dispatch: # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages permissions: contents: read pages: write id-token: write # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.</description>
     </item>
   </channel>

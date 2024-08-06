@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github on Justin Napolitano</title>
-    <link>//localhost:1313/en/tags/github/</link>
+    <link>jnapolitano.com/en/tags/github/</link>
     <description>Recent content in Github on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>CobraCorp</copyright>
+    <copyright>COBRACORP</copyright>
     <lastBuildDate>Tue, 09 Jul 2024 17:54:44 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using GitHub Template Repositories to Automate Script Deployment</title>
-      <link>//localhost:1313/en/posts/create_a_github_template_repo/</link>
+      <link>jnapolitano.com/en/posts/create_a_github_template_repo/</link>
       <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/create_a_github_template_repo/</guid>
+      <guid>jnapolitano.com/en/posts/create_a_github_template_repo/</guid>
       <description>Using GitHub Template Repositories to Automate Script Deployment Managing multiple repositories can be a challenge, especially when you need to ensure that each one includes certain common scripts or configurations. GitHub&amp;rsquo;s template repositories feature can help streamline this process. In this post, we&amp;rsquo;ll walk through how to use a template repository to automatically include a gh_submodule_sync.sh script in every new repository you create.&#xA;Prerequisites GitHub CLI: Ensure you have the GitHub CLI installed.</description>
     </item>
     <item>
       <title>Sync Gh Submodules Across a Super Project</title>
-      <link>//localhost:1313/en/posts/gh_submodule_sync/</link>
+      <link>jnapolitano.com/en/posts/gh_submodule_sync/</link>
       <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/gh_submodule_sync/</guid>
+      <guid>jnapolitano.com/en/posts/gh_submodule_sync/</guid>
       <description>Overview This script is designed to initialize and update all submodules in a GitHub repository to the latest commits from their respective remote repositories. It ensures that all submodules, including nested submodules, are synchronized with their remote counterparts.&#xA;Prerequisites Ensure that you have Git installed on your system. Ensure that you have cloned the repository containing the submodules. Usage Save the script to a file, for example, sync_submodules.sh. Make the script executable: chmod +x sync_submodules.</description>
     </item>
   </channel>

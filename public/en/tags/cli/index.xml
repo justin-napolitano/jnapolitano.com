@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cli on Justin Napolitano</title>
-    <link>//localhost:1313/en/tags/cli/</link>
+    <link>jnapolitano.com/en/tags/cli/</link>
     <description>Recent content in Cli on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>CobraCorp</copyright>
+    <copyright>COBRACORP</copyright>
     <lastBuildDate>Tue, 16 Jul 2024 17:25:51 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/cli/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/cli/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Schedule a GCP Cloud Run Chron Job</title>
-      <link>//localhost:1313/en/posts/schedule-gcp-chron-jobs/</link>
+      <link>jnapolitano.com/en/posts/schedule-gcp-chron-jobs/</link>
       <pubDate>Tue, 16 Jul 2024 17:23:06 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/schedule-gcp-chron-jobs/</guid>
+      <guid>jnapolitano.com/en/posts/schedule-gcp-chron-jobs/</guid>
       <description>How to Schedule a Cloud Run Job Using Google Cloud Scheduler In this tutorial, we&amp;rsquo;ll walk through the process of scheduling a job in Google Cloud Run using Google Cloud Scheduler. This is particularly useful for tasks that need to run at regular intervals, such as data processing, periodic updates, or maintenance tasks.&#xA;Prerequisites Before we start, ensure you have the following:&#xA;A Google Cloud project. gcloud command-line tool installed and authenticated.</description>
     </item>
   </channel>

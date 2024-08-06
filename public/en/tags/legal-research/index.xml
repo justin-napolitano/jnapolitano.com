@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Legal Research on Justin Napolitano</title>
-    <link>//localhost:1313/en/tags/legal-research/</link>
+    <link>jnapolitano.com/en/tags/legal-research/</link>
     <description>Recent content in Legal Research on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>CobraCorp</copyright>
+    <copyright>COBRACORP</copyright>
     <lastBuildDate>Mon, 15 Jul 2024 13:14:28 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/legal-research/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/legal-research/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The World Trade Organization, Governments, and International Trade</title>
-      <link>//localhost:1313/en/posts/project-evolution-of-ngos/</link>
+      <link>jnapolitano.com/en/posts/project-evolution-of-ngos/</link>
       <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/project-evolution-of-ngos/</guid>
+      <guid>jnapolitano.com/en/posts/project-evolution-of-ngos/</guid>
       <description>The World Trade Organization, Governments, and International Trade Intro International Organizations are vital to the operation of International politics. They regulate behaviors, facilitate communication, and promote cooperation between states. The process by which International Organizations come into being is well discussed in the literature, however, not equally well debated is the process by which International Organizations come to modify their operating procedure. Or in other words, when the member states renegotiate the terms of their membership.</description>
     </item>
   </channel>

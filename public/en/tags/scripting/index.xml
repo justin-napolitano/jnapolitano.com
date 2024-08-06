@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scripting on Justin Napolitano</title>
-    <link>//localhost:1313/en/tags/scripting/</link>
+    <link>jnapolitano.com/en/tags/scripting/</link>
     <description>Recent content in Scripting on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>CobraCorp</copyright>
+    <copyright>COBRACORP</copyright>
     <lastBuildDate>Sat, 20 Jul 2024 15:27:11 -0500</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/scripting/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="jnapolitano.com/en/tags/scripting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pull.. Commit.. And Push Bash Script</title>
-      <link>//localhost:1313/en/posts/push-commits/</link>
+      <link>jnapolitano.com/en/posts/push-commits/</link>
       <pubDate>Sat, 13 Jul 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/push-commits/</guid>
+      <guid>jnapolitano.com/en/posts/push-commits/</guid>
       <description>Push Committed and Uncommitted Changes Script This script traverses a specified directory of git repositories, pulls updates for all branches, checks for committed and uncommitted changes across all branches, and pushes those changes to the remote repository. For uncommitted changes, it creates a new branch called uncommitted, commits the changes with a message detailing the original branch, and then pushes the new branch to the remote. For the main branch, if there are committed changes, it moves those changes to a new branch called bad-practice and then pushes that branch to the remote repository.</description>
     </item>
     <item>
       <title>Current Time Script</title>
-      <link>//localhost:1313/en/posts/current-time-script/</link>
+      <link>jnapolitano.com/en/posts/current-time-script/</link>
       <pubDate>Sat, 13 Jul 2024 16:25:59 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/current-time-script/</guid>
+      <guid>jnapolitano.com/en/posts/current-time-script/</guid>
       <description>Current Time Script This script returns the current date and time in the format date = &amp;quot;2024-07-13T14:27:45-06:00&amp;quot;.&#xA;Prerequisites Bash shell date command (available on most Unix-like systems) Usage Save the Script:&#xA;Save the following script to a file, e.g., current_time.sh:&#xA;#!/bin/bash # Get the current date and time in the desired format current_time=$(date +&amp;#34;%Y-%m-%dT%H:%M:%S%z&amp;#34;) # Format the time zone offset with a colon formatted_time=&amp;#34;${current_time:0:22}:${current_time:22:2}&amp;#34; # Print the result echo &amp;#34;date = \&amp;#34;$formatted_time\&amp;#34;&amp;#34; Make the Script Executable:</description>
     </item>
     <item>
       <title>Update All Repos Bash Script</title>
-      <link>//localhost:1313/en/posts/pull-all-repos/</link>
+      <link>jnapolitano.com/en/posts/pull-all-repos/</link>
       <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/pull-all-repos/</guid>
+      <guid>jnapolitano.com/en/posts/pull-all-repos/</guid>
       <description>Update Repositories Script This script recursively finds all git repositories in a specified directory and pulls the latest changes for each one.&#xA;Prerequisites Bash shell Git installed Proper permissions to access and modify the repositories Installation Create the script: Save the following script to a file named update_repos.sh:&#xA;#!/bin/bash # Define the default root directory where your repos are located DEFAULT_ROOT_DIR=&amp;#34;/home/cobra/Repos&amp;#34; # Use the provided argument as the root directory, or the default if none is provided ROOT_DIR=${1:-$DEFAULT_ROOT_DIR} echo &amp;#34;Starting update process for repositories in $ROOT_DIR&amp;#34; # Function to pull changes in a git repository pull_repo() { local repo_dir=$1 echo &amp;#34;Pulling updates in $repo_dir&amp;#34; cd &amp;#34;$repo_dir&amp;#34; || return git pull echo &amp;#34;Completed update in $repo_dir&amp;#34; cd - || return } # Export the function so it can be used by find -exec export -f pull_repo # Find all .</description>
     </item>
     <item>
       <title>Using GitHub Template Repositories to Automate Script Deployment</title>
-      <link>//localhost:1313/en/posts/create_a_github_template_repo/</link>
+      <link>jnapolitano.com/en/posts/create_a_github_template_repo/</link>
       <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>//localhost:1313/en/posts/create_a_github_template_repo/</guid>
+      <guid>jnapolitano.com/en/posts/create_a_github_template_repo/</guid>
       <description>Using GitHub Template Repositories to Automate Script Deployment Managing multiple repositories can be a challenge, especially when you need to ensure that each one includes certain common scripts or configurations. GitHub&amp;rsquo;s template repositories feature can help streamline this process. In this post, we&amp;rsquo;ll walk through how to use a template repository to automatically include a gh_submodule_sync.sh script in every new repository you create.&#xA;Prerequisites GitHub CLI: Ensure you have the GitHub CLI installed.</description>
     </item>
   </channel>
