@@ -3,33 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>jnapolitano.com/en/categories/</loc>
-    <lastmod>2024-08-02T15:29:36-05:00</lastmod>
+    <lastmod>2024-08-06T15:11:50-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/tags/databases/</loc>
-    <lastmod>2024-08-02T15:29:36-05:00</lastmod>
+    <lastmod>2024-08-06T15:11:50-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/series/java/</loc>
-    <lastmod>2024-08-02T15:29:36-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/javascript/</loc>
-    <lastmod>2024-08-02T15:29:36-05:00</lastmod>
+    <lastmod>2024-08-06T15:11:50-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/</loc>
+    <lastmod>2024-08-06T15:11:50-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/tags/mysql/</loc>
+    <lastmod>2024-08-06T15:11:50-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/posts/supreme-court-to-postgres-to-neo/</loc>
+    <lastmod>2024-08-06T15:11:50-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/categories/projects/</loc>
+    <lastmod>2024-08-06T15:11:50-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/tags/python/</loc>
+    <lastmod>2024-08-06T15:11:50-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/series/</loc>
+    <lastmod>2024-08-06T15:11:50-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/tags/</loc>
+    <lastmod>2024-08-06T15:11:50-05:00</lastmod>
+  </url><url>
+    <loc>jnapolitano.com/en/tags/javascript/</loc>
     <lastmod>2024-08-02T15:29:36-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/tags/pern/</loc>
     <lastmod>2024-08-02T15:29:36-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/posts/sup-court-pern-stack/</loc>
-    <lastmod>2024-08-02T15:29:36-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/categories/projects/</loc>
-    <lastmod>2024-08-02T15:29:36-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/series/</loc>
-    <lastmod>2024-08-02T15:29:36-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/</loc>
     <lastmod>2024-08-02T15:29:36-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/tags/cdp/</loc>
@@ -69,9 +78,6 @@
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/tags/postgres/</loc>
-    <lastmod>2024-07-29T18:33:58-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/python/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/tags/redis/</loc>
@@ -186,9 +192,6 @@
     <lastmod>2024-07-09T17:57:19-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/posts/mysql-install-buntu/</loc>
-    <lastmod>2024-07-09T18:04:31-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/tags/mysql/</loc>
     <lastmod>2024-07-09T18:04:31-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/tags/rss/</loc>
