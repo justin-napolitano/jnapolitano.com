@@ -46,7 +46,7 @@ pygmentsUseClasses  = true
 
 rssLimit = -1
 
-copyright = "CobraCorp"
+copyright = "COBRACORP"
 enableEmoji = true
 
 #[services]
@@ -102,7 +102,7 @@ enableEmoji = true
   #themeColor = "#FFCCCC"
 
   #homeSubtitle = "Justin"
-  footerCopyright = "JAYBURDINDUSTRIES"
+  footerCopyright = "COBRACORP"
   # bgImg = ""
   gitUrl = "https://github.com/justin-napolitano"
 
