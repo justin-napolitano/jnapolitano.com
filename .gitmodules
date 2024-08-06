@@ -170,3 +170,7 @@
 	path = content/posts/sup-court-pern-stack
 	url = https://github.com/justin-napolitano/sup-court-pern-stack.git
 	branch = post
+[submodule "content/posts/suprem-court-transfer"]
+	path = supreme-court-to-postgres-to-neo
+	url = https://github.com/justin-napolitano/supreme-court-transfer.git
+	branch = post
