@@ -9,15 +9,8 @@
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Tue, 06 Aug 2024 15:11:50 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jul 2024 18:33:58 -0500</lastBuildDate>
     <atom:link href="jnapolitano.com/en/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Postgres to Neo4j Workflow</title>
-      <link>jnapolitano.com/en/posts/suprem-court-transfer/</link>
-      <pubDate>Tue, 06 Aug 2024 15:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/suprem-court-transfer/</guid>
-      <description>Streamlining Data Transfer from PostgreSQL to Neo4j with Java In my previous few posts I put together a postgres db of supreme court meta data. That is cool. I have a few more ideas.. but I wanted to explore the graph a bit before expanding it with some nlp. So in this post I am writing about how to ingest a bunch of nodes into neo4j with a java workflow. In the next post I&amp;rsquo;ll detail adding relationships.</description>
-    </item>
     <item>
       <title>DataShare &#43; Docker Compose</title>
       <link>jnapolitano.com/en/posts/sup-court-graph/docker_compose_blog/</link>
