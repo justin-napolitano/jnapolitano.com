@@ -9,13 +9,27 @@
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>jayburdindustries</copyright>
-    <lastBuildDate>Tue, 06 Aug 2024 15:11:50 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2024 16:55:56 -0500</lastBuildDate>
     <atom:link href="jnapolitano.com/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Databases</title>
       <link>jnapolitano.com/en/tags/databases/</link>
-      <pubDate>Tue, 06 Aug 2024 15:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <pubDate>Tue, 06 Aug 2024 16:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
       <guid>jnapolitano.com/en/tags/databases/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Neo4j</title>
+      <link>jnapolitano.com/en/tags/neo4j/</link>
+      <pubDate>Tue, 06 Aug 2024 16:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/tags/neo4j/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>jnapolitano.com/en/tags/python/</link>
+      <pubDate>Tue, 06 Aug 2024 16:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>jnapolitano.com/en/tags/python/</guid>
       <description></description>
     </item>
     <item>
@@ -23,13 +37,6 @@
       <link>jnapolitano.com/en/tags/mysql/</link>
       <pubDate>Tue, 06 Aug 2024 15:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
       <guid>jnapolitano.com/en/tags/mysql/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>jnapolitano.com/en/tags/python/</link>
-      <pubDate>Tue, 06 Aug 2024 15:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/python/</guid>
       <description></description>
     </item>
     <item>
@@ -450,13 +457,6 @@
       <link>jnapolitano.com/en/tags/ml/</link>
       <pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
       <guid>jnapolitano.com/en/tags/ml/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Neo4j</title>
-      <link>jnapolitano.com/en/tags/neo4j/</link>
-      <pubDate>Tue, 17 May 2022 18:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/neo4j/</guid>
       <description></description>
     </item>
     <item>

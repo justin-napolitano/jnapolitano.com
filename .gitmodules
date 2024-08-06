@@ -174,3 +174,6 @@
 	path = content/posts/supreme-court-to-postgres-to-neo
 	url = https://github.com/justin-napolitano/supreme-court-transfer.git
 	branch = post
+[submodule "content/posts/supreme-court-meta-relationships"]
+	path = content/posts/supreme-court-meta-relationships
+	url = https://github.com/justin-napolitano/supreme-court-meta-relationships.git
