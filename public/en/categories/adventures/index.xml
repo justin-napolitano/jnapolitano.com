@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Adventures on Justin Napolitano</title>
-    <link>jnapolitano.com/en/categories/adventures/</link>
+    <link>//localhost:1313/en/categories/adventures/</link>
     <description>Recent content in Adventures on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>jayburdindustries</copyright>
+    <copyright>CobraCorp</copyright>
     <lastBuildDate>Mon, 15 Jul 2024 13:13:10 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/categories/adventures/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/categories/adventures/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windy Peak Via Mountain Lion Loop</title>
-      <link>jnapolitano.com/en/posts/windy-peak-mountain-lion-loop/</link>
+      <link>//localhost:1313/en/posts/windy-peak-mountain-lion-loop/</link>
       <pubDate>Sat, 13 Jul 2024 16:29:26 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/windy-peak-mountain-lion-loop/</guid>
+      <guid>//localhost:1313/en/posts/windy-peak-mountain-lion-loop/</guid>
       <description>Windy Peak via Mountain Lion Loop I do not know much about this little day hike.. It seems to be fairly doable despite an all trails hard rating. I&amp;rsquo;ll find out in the am&#xA;Details All Trails Link&#xA;Driving Directions: Coal Creek Canyon, Colorado 80403&#xA;Trail Head : Nott Creek Trailhead&#xA;Park Info: site&#xA;Plan Driving Leave Littleon in the AM around 5 am. Arrive around 6 am Food I&amp;rsquo;ll bring about 1000 calories.</description>
     </item>
     <item>
       <title>Gray&#39;s Peak</title>
-      <link>jnapolitano.com/en/posts/grays-peak/</link>
+      <link>//localhost:1313/en/posts/grays-peak/</link>
       <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/grays-peak/</guid>
+      <guid>//localhost:1313/en/posts/grays-peak/</guid>
       <description>Gray&amp;rsquo;s Gray&amp;rsquo;s is a rather easy 14&amp;rsquo;er about an hour west of Denver.&#xA;14er Link Details Coordinates: 39.66087, -105.78462 Elevation: 11,280&#39; Trailhead Access: High Clearence Vehicle Camping: Yeah Restrooms: Yeah The Approach I borrowed an SUV. It was a doable drive. I kept her in first gear and took it slow. There were a few sketchy parts along the way.. but it really wasn&amp;rsquo;t too bad.. at least in the right vehicle.</description>
     </item>
   </channel>

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rss on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/rss/</link>
+    <link>//localhost:1313/en/tags/rss/</link>
     <description>Recent content in Rss on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>jayburdindustries</copyright>
+    <copyright>CobraCorp</copyright>
     <lastBuildDate>Tue, 09 Jul 2024 17:57:19 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/rss/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/rss/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configure Hugo XML Output for RSS Feed</title>
-      <link>jnapolitano.com/en/posts/hugo-rss-setup/</link>
+      <link>//localhost:1313/en/posts/hugo-rss-setup/</link>
       <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/hugo-rss-setup/</guid>
+      <guid>//localhost:1313/en/posts/hugo-rss-setup/</guid>
       <description>Why I have a mysql db that will be used to store values read from the rss feed of my hugo site. I need some add some keys to help with organization&#xA;Parts of this series part 1 part 2 part 3 part 4 Resources Hugo Page Resources Hugo Page Params Hugo RSS Templates RSS Config Copy over the posts/rss.xml file from your theme From hugo root you would do something like&amp;hellip;</description>
     </item>
   </channel>

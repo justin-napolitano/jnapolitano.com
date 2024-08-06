@@ -2,559 +2,559 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/</link>
+    <link>//localhost:1313/en/tags/</link>
     <description>Recent content in Tags on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>jayburdindustries</copyright>
+    <copyright>CobraCorp</copyright>
     <lastBuildDate>Tue, 06 Aug 2024 16:55:56 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Databases</title>
-      <link>jnapolitano.com/en/tags/databases/</link>
+      <link>//localhost:1313/en/tags/databases/</link>
       <pubDate>Tue, 06 Aug 2024 16:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/databases/</guid>
+      <guid>//localhost:1313/en/tags/databases/</guid>
       <description></description>
     </item>
     <item>
       <title>Neo4j</title>
-      <link>jnapolitano.com/en/tags/neo4j/</link>
+      <link>//localhost:1313/en/tags/neo4j/</link>
       <pubDate>Tue, 06 Aug 2024 16:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/neo4j/</guid>
+      <guid>//localhost:1313/en/tags/neo4j/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>jnapolitano.com/en/tags/python/</link>
+      <link>//localhost:1313/en/tags/python/</link>
       <pubDate>Tue, 06 Aug 2024 16:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/python/</guid>
+      <guid>//localhost:1313/en/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Mysql</title>
-      <link>jnapolitano.com/en/tags/mysql/</link>
+      <link>//localhost:1313/en/tags/mysql/</link>
       <pubDate>Tue, 06 Aug 2024 15:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/mysql/</guid>
+      <guid>//localhost:1313/en/tags/mysql/</guid>
       <description></description>
     </item>
     <item>
       <title>Javascript</title>
-      <link>jnapolitano.com/en/tags/javascript/</link>
+      <link>//localhost:1313/en/tags/javascript/</link>
       <pubDate>Fri, 02 Aug 2024 15:16:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/javascript/</guid>
+      <guid>//localhost:1313/en/tags/javascript/</guid>
       <description></description>
     </item>
     <item>
       <title>Pern</title>
-      <link>jnapolitano.com/en/tags/pern/</link>
+      <link>//localhost:1313/en/tags/pern/</link>
       <pubDate>Fri, 02 Aug 2024 15:16:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/pern/</guid>
+      <guid>//localhost:1313/en/tags/pern/</guid>
       <description></description>
     </item>
     <item>
       <title>Cdp</title>
-      <link>jnapolitano.com/en/tags/cdp/</link>
+      <link>//localhost:1313/en/tags/cdp/</link>
       <pubDate>Wed, 31 Jul 2024 14:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/cdp/</guid>
+      <guid>//localhost:1313/en/tags/cdp/</guid>
       <description></description>
     </item>
     <item>
       <title>Java</title>
-      <link>jnapolitano.com/en/tags/java/</link>
+      <link>//localhost:1313/en/tags/java/</link>
       <pubDate>Wed, 31 Jul 2024 14:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/java/</guid>
+      <guid>//localhost:1313/en/tags/java/</guid>
       <description></description>
     </item>
     <item>
       <title>Postgresql</title>
-      <link>jnapolitano.com/en/tags/postgresql/</link>
+      <link>//localhost:1313/en/tags/postgresql/</link>
       <pubDate>Wed, 31 Jul 2024 14:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/postgresql/</guid>
+      <guid>//localhost:1313/en/tags/postgresql/</guid>
       <description></description>
     </item>
     <item>
       <title>Datashare</title>
-      <link>jnapolitano.com/en/tags/datashare/</link>
+      <link>//localhost:1313/en/tags/datashare/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/datashare/</guid>
+      <guid>//localhost:1313/en/tags/datashare/</guid>
       <description></description>
     </item>
     <item>
       <title>Docker</title>
-      <link>jnapolitano.com/en/tags/docker/</link>
+      <link>//localhost:1313/en/tags/docker/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/docker/</guid>
+      <guid>//localhost:1313/en/tags/docker/</guid>
       <description></description>
     </item>
     <item>
       <title>Elasticsearch</title>
-      <link>jnapolitano.com/en/tags/elasticsearch/</link>
+      <link>//localhost:1313/en/tags/elasticsearch/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/elasticsearch/</guid>
+      <guid>//localhost:1313/en/tags/elasticsearch/</guid>
       <description></description>
     </item>
     <item>
       <title>Graphdb</title>
-      <link>jnapolitano.com/en/tags/graphdb/</link>
+      <link>//localhost:1313/en/tags/graphdb/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/graphdb/</guid>
+      <guid>//localhost:1313/en/tags/graphdb/</guid>
       <description></description>
     </item>
     <item>
       <title>Graphs</title>
-      <link>jnapolitano.com/en/tags/graphs/</link>
+      <link>//localhost:1313/en/tags/graphs/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/graphs/</guid>
+      <guid>//localhost:1313/en/tags/graphs/</guid>
       <description></description>
     </item>
     <item>
       <title>Postgres</title>
-      <link>jnapolitano.com/en/tags/postgres/</link>
+      <link>//localhost:1313/en/tags/postgres/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/postgres/</guid>
+      <guid>//localhost:1313/en/tags/postgres/</guid>
       <description></description>
     </item>
     <item>
       <title>Redis</title>
-      <link>jnapolitano.com/en/tags/redis/</link>
+      <link>//localhost:1313/en/tags/redis/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/redis/</guid>
+      <guid>//localhost:1313/en/tags/redis/</guid>
       <description></description>
     </item>
     <item>
       <title>Life</title>
-      <link>jnapolitano.com/en/tags/life/</link>
+      <link>//localhost:1313/en/tags/life/</link>
       <pubDate>Fri, 19 Jul 2024 00:39:38 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/life/</guid>
+      <guid>//localhost:1313/en/tags/life/</guid>
       <description></description>
     </item>
     <item>
       <title>Fail</title>
-      <link>jnapolitano.com/en/tags/fail/</link>
+      <link>//localhost:1313/en/tags/fail/</link>
       <pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/fail/</guid>
+      <guid>//localhost:1313/en/tags/fail/</guid>
       <description></description>
     </item>
     <item>
       <title>Hugo</title>
-      <link>jnapolitano.com/en/tags/hugo/</link>
+      <link>//localhost:1313/en/tags/hugo/</link>
       <pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/hugo/</guid>
+      <guid>//localhost:1313/en/tags/hugo/</guid>
       <description></description>
     </item>
     <item>
       <title>Programming</title>
-      <link>jnapolitano.com/en/tags/programming/</link>
+      <link>//localhost:1313/en/tags/programming/</link>
       <pubDate>Thu, 18 Jul 2024 14:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/programming/</guid>
+      <guid>//localhost:1313/en/tags/programming/</guid>
       <description></description>
     </item>
     <item>
       <title>Gcp</title>
-      <link>jnapolitano.com/en/tags/gcp/</link>
+      <link>//localhost:1313/en/tags/gcp/</link>
       <pubDate>Thu, 18 Jul 2024 12:25:11 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/gcp/</guid>
+      <guid>//localhost:1313/en/tags/gcp/</guid>
       <description></description>
     </item>
     <item>
       <title>Bash</title>
-      <link>jnapolitano.com/en/tags/bash/</link>
+      <link>//localhost:1313/en/tags/bash/</link>
       <pubDate>Tue, 16 Jul 2024 17:23:06 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/bash/</guid>
+      <guid>//localhost:1313/en/tags/bash/</guid>
       <description></description>
     </item>
     <item>
       <title>Cli</title>
-      <link>jnapolitano.com/en/tags/cli/</link>
+      <link>//localhost:1313/en/tags/cli/</link>
       <pubDate>Tue, 16 Jul 2024 17:23:06 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/cli/</guid>
+      <guid>//localhost:1313/en/tags/cli/</guid>
       <description></description>
     </item>
     <item>
       <title>Tutorials</title>
-      <link>jnapolitano.com/en/tags/tutorials/</link>
+      <link>//localhost:1313/en/tags/tutorials/</link>
       <pubDate>Sun, 14 Jul 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/tutorials/</guid>
+      <guid>//localhost:1313/en/tags/tutorials/</guid>
       <description></description>
     </item>
     <item>
       <title>Scripting</title>
-      <link>jnapolitano.com/en/tags/scripting/</link>
+      <link>//localhost:1313/en/tags/scripting/</link>
       <pubDate>Sat, 13 Jul 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/scripting/</guid>
+      <guid>//localhost:1313/en/tags/scripting/</guid>
       <description></description>
     </item>
     <item>
       <title>Hiking</title>
-      <link>jnapolitano.com/en/tags/hiking/</link>
+      <link>//localhost:1313/en/tags/hiking/</link>
       <pubDate>Sat, 13 Jul 2024 16:29:26 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/hiking/</guid>
+      <guid>//localhost:1313/en/tags/hiking/</guid>
       <description></description>
     </item>
     <item>
       <title>Containerization</title>
-      <link>jnapolitano.com/en/tags/containerization/</link>
+      <link>//localhost:1313/en/tags/containerization/</link>
       <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/containerization/</guid>
+      <guid>//localhost:1313/en/tags/containerization/</guid>
       <description></description>
     </item>
     <item>
       <title>Git</title>
-      <link>jnapolitano.com/en/tags/git/</link>
+      <link>//localhost:1313/en/tags/git/</link>
       <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/git/</guid>
+      <guid>//localhost:1313/en/tags/git/</guid>
       <description></description>
     </item>
     <item>
       <title>Workflow Automation</title>
-      <link>jnapolitano.com/en/tags/workflow-automation/</link>
+      <link>//localhost:1313/en/tags/workflow-automation/</link>
       <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/workflow-automation/</guid>
+      <guid>//localhost:1313/en/tags/workflow-automation/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux</title>
-      <link>jnapolitano.com/en/tags/linux/</link>
+      <link>//localhost:1313/en/tags/linux/</link>
       <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/linux/</guid>
+      <guid>//localhost:1313/en/tags/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Ubuntu</title>
-      <link>jnapolitano.com/en/tags/ubuntu/</link>
+      <link>//localhost:1313/en/tags/ubuntu/</link>
       <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/ubuntu/</guid>
+      <guid>//localhost:1313/en/tags/ubuntu/</guid>
       <description></description>
     </item>
     <item>
       <title>Mountains</title>
-      <link>jnapolitano.com/en/tags/mountains/</link>
+      <link>//localhost:1313/en/tags/mountains/</link>
       <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/mountains/</guid>
+      <guid>//localhost:1313/en/tags/mountains/</guid>
       <description></description>
     </item>
     <item>
       <title>Rss</title>
-      <link>jnapolitano.com/en/tags/rss/</link>
+      <link>//localhost:1313/en/tags/rss/</link>
       <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/rss/</guid>
+      <guid>//localhost:1313/en/tags/rss/</guid>
       <description></description>
     </item>
     <item>
       <title>Automation</title>
-      <link>jnapolitano.com/en/tags/automation/</link>
+      <link>//localhost:1313/en/tags/automation/</link>
       <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/automation/</guid>
+      <guid>//localhost:1313/en/tags/automation/</guid>
       <description></description>
     </item>
     <item>
       <title>Github</title>
-      <link>jnapolitano.com/en/tags/github/</link>
+      <link>//localhost:1313/en/tags/github/</link>
       <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/github/</guid>
+      <guid>//localhost:1313/en/tags/github/</guid>
       <description></description>
     </item>
     <item>
       <title>Templates</title>
-      <link>jnapolitano.com/en/tags/templates/</link>
+      <link>//localhost:1313/en/tags/templates/</link>
       <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/templates/</guid>
+      <guid>//localhost:1313/en/tags/templates/</guid>
       <description></description>
     </item>
     <item>
       <title>Bigquery</title>
-      <link>jnapolitano.com/en/tags/bigquery/</link>
+      <link>//localhost:1313/en/tags/bigquery/</link>
       <pubDate>Thu, 20 Jun 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/bigquery/</guid>
+      <guid>//localhost:1313/en/tags/bigquery/</guid>
       <description></description>
     </item>
     <item>
       <title>Submodules</title>
-      <link>jnapolitano.com/en/tags/submodules/</link>
+      <link>//localhost:1313/en/tags/submodules/</link>
       <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/submodules/</guid>
+      <guid>//localhost:1313/en/tags/submodules/</guid>
       <description></description>
     </item>
     <item>
       <title>Workflow</title>
-      <link>jnapolitano.com/en/tags/workflow/</link>
+      <link>//localhost:1313/en/tags/workflow/</link>
       <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/workflow/</guid>
+      <guid>//localhost:1313/en/tags/workflow/</guid>
       <description></description>
     </item>
     <item>
       <title>Index</title>
-      <link>jnapolitano.com/en/tags/index/</link>
+      <link>//localhost:1313/en/tags/index/</link>
       <pubDate>Wed, 24 Apr 2024 17:23:50 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/index/</guid>
+      <guid>//localhost:1313/en/tags/index/</guid>
       <description></description>
     </item>
     <item>
       <title>Julia</title>
-      <link>jnapolitano.com/en/tags/julia/</link>
+      <link>//localhost:1313/en/tags/julia/</link>
       <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/julia/</guid>
+      <guid>//localhost:1313/en/tags/julia/</guid>
       <description></description>
     </item>
     <item>
       <title>Logistic Regression</title>
-      <link>jnapolitano.com/en/tags/logistic-regression/</link>
+      <link>//localhost:1313/en/tags/logistic-regression/</link>
       <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/logistic-regression/</guid>
+      <guid>//localhost:1313/en/tags/logistic-regression/</guid>
       <description></description>
     </item>
     <item>
       <title>Numerical-Computing</title>
-      <link>jnapolitano.com/en/tags/numerical-computing/</link>
+      <link>//localhost:1313/en/tags/numerical-computing/</link>
       <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/numerical-computing/</guid>
+      <guid>//localhost:1313/en/tags/numerical-computing/</guid>
       <description></description>
     </item>
     <item>
       <title>Statistics</title>
-      <link>jnapolitano.com/en/tags/statistics/</link>
+      <link>//localhost:1313/en/tags/statistics/</link>
       <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/statistics/</guid>
+      <guid>//localhost:1313/en/tags/statistics/</guid>
       <description></description>
     </item>
     <item>
       <title>Monte-Carlo</title>
-      <link>jnapolitano.com/en/tags/monte-carlo/</link>
+      <link>//localhost:1313/en/tags/monte-carlo/</link>
       <pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/monte-carlo/</guid>
+      <guid>//localhost:1313/en/tags/monte-carlo/</guid>
       <description></description>
     </item>
     <item>
       <title>Spearman-Rank-Correlation</title>
-      <link>jnapolitano.com/en/tags/spearman-rank-correlation/</link>
+      <link>//localhost:1313/en/tags/spearman-rank-correlation/</link>
       <pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/spearman-rank-correlation/</guid>
+      <guid>//localhost:1313/en/tags/spearman-rank-correlation/</guid>
       <description></description>
     </item>
     <item>
       <title>Logisitic-Regression</title>
-      <link>jnapolitano.com/en/tags/logisitic-regression/</link>
+      <link>//localhost:1313/en/tags/logisitic-regression/</link>
       <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/logisitic-regression/</guid>
+      <guid>//localhost:1313/en/tags/logisitic-regression/</guid>
       <description></description>
     </item>
     <item>
       <title>Marketing-Analsyis</title>
-      <link>jnapolitano.com/en/tags/marketing-analsyis/</link>
+      <link>//localhost:1313/en/tags/marketing-analsyis/</link>
       <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/marketing-analsyis/</guid>
+      <guid>//localhost:1313/en/tags/marketing-analsyis/</guid>
       <description></description>
     </item>
     <item>
       <title>Propensity-Models</title>
-      <link>jnapolitano.com/en/tags/propensity-models/</link>
+      <link>//localhost:1313/en/tags/propensity-models/</link>
       <pubDate>Mon, 30 May 2022 13:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/propensity-models/</guid>
+      <guid>//localhost:1313/en/tags/propensity-models/</guid>
       <description></description>
     </item>
     <item>
       <title>Dataframes</title>
-      <link>jnapolitano.com/en/tags/dataframes/</link>
+      <link>//localhost:1313/en/tags/dataframes/</link>
       <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/dataframes/</guid>
+      <guid>//localhost:1313/en/tags/dataframes/</guid>
       <description></description>
     </item>
     <item>
       <title>Markov</title>
-      <link>jnapolitano.com/en/tags/markov/</link>
+      <link>//localhost:1313/en/tags/markov/</link>
       <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/markov/</guid>
+      <guid>//localhost:1313/en/tags/markov/</guid>
       <description></description>
     </item>
     <item>
       <title>Mathematics</title>
-      <link>jnapolitano.com/en/tags/mathematics/</link>
+      <link>//localhost:1313/en/tags/mathematics/</link>
       <pubDate>Thu, 26 May 2022 01:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/mathematics/</guid>
+      <guid>//localhost:1313/en/tags/mathematics/</guid>
       <description></description>
     </item>
     <item>
       <title>Data-Wrangling</title>
-      <link>jnapolitano.com/en/tags/data-wrangling/</link>
+      <link>//localhost:1313/en/tags/data-wrangling/</link>
       <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/data-wrangling/</guid>
+      <guid>//localhost:1313/en/tags/data-wrangling/</guid>
       <description></description>
     </item>
     <item>
       <title>SCOTUS</title>
-      <link>jnapolitano.com/en/tags/scotus/</link>
+      <link>//localhost:1313/en/tags/scotus/</link>
       <pubDate>Tue, 24 May 2022 00:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/scotus/</guid>
+      <guid>//localhost:1313/en/tags/scotus/</guid>
       <description></description>
     </item>
     <item>
       <title>Climate-Change</title>
-      <link>jnapolitano.com/en/tags/climate-change/</link>
+      <link>//localhost:1313/en/tags/climate-change/</link>
       <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/climate-change/</guid>
+      <guid>//localhost:1313/en/tags/climate-change/</guid>
       <description></description>
     </item>
     <item>
       <title>Data</title>
-      <link>jnapolitano.com/en/tags/data/</link>
+      <link>//localhost:1313/en/tags/data/</link>
       <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/data/</guid>
+      <guid>//localhost:1313/en/tags/data/</guid>
       <description></description>
     </item>
     <item>
       <title>Emissions</title>
-      <link>jnapolitano.com/en/tags/emissions/</link>
+      <link>//localhost:1313/en/tags/emissions/</link>
       <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/emissions/</guid>
+      <guid>//localhost:1313/en/tags/emissions/</guid>
       <description></description>
     </item>
     <item>
       <title>University-of-Malaysia</title>
-      <link>jnapolitano.com/en/tags/university-of-malaysia/</link>
+      <link>//localhost:1313/en/tags/university-of-malaysia/</link>
       <pubDate>Mon, 23 May 2022 19:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/university-of-malaysia/</guid>
+      <guid>//localhost:1313/en/tags/university-of-malaysia/</guid>
       <description></description>
     </item>
     <item>
       <title>Json</title>
-      <link>jnapolitano.com/en/tags/json/</link>
+      <link>//localhost:1313/en/tags/json/</link>
       <pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/json/</guid>
+      <guid>//localhost:1313/en/tags/json/</guid>
       <description></description>
     </item>
     <item>
       <title>Legal</title>
-      <link>jnapolitano.com/en/tags/legal/</link>
+      <link>//localhost:1313/en/tags/legal/</link>
       <pubDate>Mon, 23 May 2022 16:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/legal/</guid>
+      <guid>//localhost:1313/en/tags/legal/</guid>
       <description></description>
     </item>
     <item>
       <title>Spss</title>
-      <link>jnapolitano.com/en/tags/spss/</link>
+      <link>//localhost:1313/en/tags/spss/</link>
       <pubDate>Sat, 21 May 2022 19:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/spss/</guid>
+      <guid>//localhost:1313/en/tags/spss/</guid>
       <description></description>
     </item>
     <item>
       <title>Ai</title>
-      <link>jnapolitano.com/en/tags/ai/</link>
+      <link>//localhost:1313/en/tags/ai/</link>
       <pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/ai/</guid>
+      <guid>//localhost:1313/en/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine-Learning</title>
-      <link>jnapolitano.com/en/tags/machine-learning/</link>
+      <link>//localhost:1313/en/tags/machine-learning/</link>
       <pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/machine-learning/</guid>
+      <guid>//localhost:1313/en/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Ml</title>
-      <link>jnapolitano.com/en/tags/ml/</link>
+      <link>//localhost:1313/en/tags/ml/</link>
       <pubDate>Wed, 18 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/ml/</guid>
+      <guid>//localhost:1313/en/tags/ml/</guid>
       <description></description>
     </item>
     <item>
       <title>Carbon-Capture</title>
-      <link>jnapolitano.com/en/tags/carbon-capture/</link>
+      <link>//localhost:1313/en/tags/carbon-capture/</link>
       <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/carbon-capture/</guid>
+      <guid>//localhost:1313/en/tags/carbon-capture/</guid>
       <description></description>
     </item>
     <item>
       <title>Energy</title>
-      <link>jnapolitano.com/en/tags/energy/</link>
+      <link>//localhost:1313/en/tags/energy/</link>
       <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/energy/</guid>
+      <guid>//localhost:1313/en/tags/energy/</guid>
       <description></description>
     </item>
     <item>
       <title>Lng</title>
-      <link>jnapolitano.com/en/tags/lng/</link>
+      <link>//localhost:1313/en/tags/lng/</link>
       <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/lng/</guid>
+      <guid>//localhost:1313/en/tags/lng/</guid>
       <description></description>
     </item>
     <item>
       <title>Montecarlo</title>
-      <link>jnapolitano.com/en/tags/montecarlo/</link>
+      <link>//localhost:1313/en/tags/montecarlo/</link>
       <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/montecarlo/</guid>
+      <guid>//localhost:1313/en/tags/montecarlo/</guid>
       <description></description>
     </item>
     <item>
       <title>Projections</title>
-      <link>jnapolitano.com/en/tags/projections/</link>
+      <link>//localhost:1313/en/tags/projections/</link>
       <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/projections/</guid>
+      <guid>//localhost:1313/en/tags/projections/</guid>
       <description></description>
     </item>
     <item>
       <title>Carbon</title>
-      <link>jnapolitano.com/en/tags/carbon/</link>
+      <link>//localhost:1313/en/tags/carbon/</link>
       <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/carbon/</guid>
+      <guid>//localhost:1313/en/tags/carbon/</guid>
       <description></description>
     </item>
     <item>
       <title>Gis</title>
-      <link>jnapolitano.com/en/tags/gis/</link>
+      <link>//localhost:1313/en/tags/gis/</link>
       <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/gis/</guid>
+      <guid>//localhost:1313/en/tags/gis/</guid>
       <description></description>
     </item>
     <item>
       <title>Hydrogen</title>
-      <link>jnapolitano.com/en/tags/hydrogen/</link>
+      <link>//localhost:1313/en/tags/hydrogen/</link>
       <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/hydrogen/</guid>
+      <guid>//localhost:1313/en/tags/hydrogen/</guid>
       <description></description>
     </item>
     <item>
       <title>Shipping</title>
-      <link>jnapolitano.com/en/tags/shipping/</link>
+      <link>//localhost:1313/en/tags/shipping/</link>
       <pubDate>Fri, 06 May 2022 08:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/shipping/</guid>
+      <guid>//localhost:1313/en/tags/shipping/</guid>
       <description></description>
     </item>
     <item>
       <title>Europe</title>
-      <link>jnapolitano.com/en/tags/europe/</link>
+      <link>//localhost:1313/en/tags/europe/</link>
       <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/europe/</guid>
+      <guid>//localhost:1313/en/tags/europe/</guid>
       <description></description>
     </item>
     <item>
       <title>Insitutional Analysis</title>
-      <link>jnapolitano.com/en/tags/insitutional-analysis/</link>
+      <link>//localhost:1313/en/tags/insitutional-analysis/</link>
       <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/insitutional-analysis/</guid>
+      <guid>//localhost:1313/en/tags/insitutional-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>Internatinoal</title>
-      <link>jnapolitano.com/en/tags/internatinoal/</link>
+      <link>//localhost:1313/en/tags/internatinoal/</link>
       <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/internatinoal/</guid>
+      <guid>//localhost:1313/en/tags/internatinoal/</guid>
       <description></description>
     </item>
     <item>
       <title>Legal Research</title>
-      <link>jnapolitano.com/en/tags/legal-research/</link>
+      <link>//localhost:1313/en/tags/legal-research/</link>
       <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/legal-research/</guid>
+      <guid>//localhost:1313/en/tags/legal-research/</guid>
       <description></description>
     </item>
     <item>
       <title>Ngos</title>
-      <link>jnapolitano.com/en/tags/ngos/</link>
+      <link>//localhost:1313/en/tags/ngos/</link>
       <pubDate>Wed, 04 May 2022 14:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/tags/ngos/</guid>
+      <guid>//localhost:1313/en/tags/ngos/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Project on Justin Napolitano</title>
-    <link>jnapolitano.com/en/categories/project/</link>
+    <link>//localhost:1313/en/categories/project/</link>
     <description>Recent content in Project on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>jayburdindustries</copyright>
+    <copyright>CobraCorp</copyright>
     <lastBuildDate>Mon, 15 Jul 2024 13:14:28 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/categories/project/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/categories/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Legal Research with AI Part 7: Wrangling Data with Julia</title>
-      <link>jnapolitano.com/en/posts/legal-research-part-7/</link>
+      <link>//localhost:1313/en/posts/legal-research-part-7/</link>
       <pubDate>Sun, 22 May 2022 16:30:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/legal-research-part-7/</guid>
+      <guid>//localhost:1313/en/posts/legal-research-part-7/</guid>
       <description>Intro In a previous post, I seperated all of the results returned from the Library of Congress API into individual JSON documents to be imported as nodes into a neo4j graph.&#xA;In this post, I filter the LOC data against another data set from Oyez that will be integrated in the next post.&#xA;Filtering Data Both data sets have been seperated into individual case nodes stored in the json format as a file with the format : .</description>
     </item>
   </channel>

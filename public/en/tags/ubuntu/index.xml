@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/ubuntu/</link>
+    <link>//localhost:1313/en/tags/ubuntu/</link>
     <description>Recent content in Ubuntu on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>jayburdindustries</copyright>
+    <copyright>CobraCorp</copyright>
     <lastBuildDate>Tue, 09 Jul 2024 18:30:37 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Signal Desktop Installation Script</title>
-      <link>jnapolitano.com/en/posts/signal-install-script/</link>
+      <link>//localhost:1313/en/posts/signal-install-script/</link>
       <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/signal-install-script/</guid>
+      <guid>//localhost:1313/en/posts/signal-install-script/</guid>
       <description>Signal Desktop Installation Script This script automates the process of installing Signal Desktop on 64-bit Debian-based Linux distributions such as Ubuntu and Mint.&#xA;Prerequisites A 64-bit Debian-based Linux distribution (e.g., Ubuntu, Mint) Administrative (sudo) privileges Script Overview The script performs the following steps:&#xA;Installs the official Signal public software signing key. Adds the Signal repository to the system&amp;rsquo;s list of repositories. Updates the package database and installs Signal Desktop. Usage Instructions Step 1: Save the Script Save the following script to a file, e.</description>
     </item>
   </channel>

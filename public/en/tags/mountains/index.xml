@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mountains on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/mountains/</link>
+    <link>//localhost:1313/en/tags/mountains/</link>
     <description>Recent content in Mountains on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
-    <copyright>jayburdindustries</copyright>
+    <copyright>CobraCorp</copyright>
     <lastBuildDate>Tue, 09 Jul 2024 17:56:33 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/mountains/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/mountains/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gray&#39;s Peak</title>
-      <link>jnapolitano.com/en/posts/grays-peak/</link>
+      <link>//localhost:1313/en/posts/grays-peak/</link>
       <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/grays-peak/</guid>
+      <guid>//localhost:1313/en/posts/grays-peak/</guid>
       <description>Gray&amp;rsquo;s Gray&amp;rsquo;s is a rather easy 14&amp;rsquo;er about an hour west of Denver.&#xA;14er Link Details Coordinates: 39.66087, -105.78462 Elevation: 11,280&#39; Trailhead Access: High Clearence Vehicle Camping: Yeah Restrooms: Yeah The Approach I borrowed an SUV. It was a doable drive. I kept her in first gear and took it slow. There were a few sketchy parts along the way.. but it really wasn&amp;rsquo;t too bad.. at least in the right vehicle.</description>
     </item>
   </channel>
