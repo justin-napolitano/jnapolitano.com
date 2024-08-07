@@ -177,3 +177,6 @@
 [submodule "content/posts/supreme-court-meta-relationships"]
 	path = content/posts/supreme-court-meta-relationships
 	url = https://github.com/justin-napolitano/supreme-court-meta-relationships.git
+[submodule "content/posts/supreme-court-transfer-service-uniques"]
+	path = content/posts/supreme-court-transfer-service-uniques
+	url = https://github.com/justin-napolitano/supreme-court-transfer-service-uniques.git
