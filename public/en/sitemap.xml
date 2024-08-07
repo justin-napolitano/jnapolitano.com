@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>jnapolitano.com/en/</loc>
+    <lastmod>2024-08-07T14:04:13-05:00</lastmod>
+  </url><url>
     <loc>jnapolitano.com/en/categories/</loc>
     <lastmod>2024-08-06T16:55:56-05:00</lastmod>
   </url><url>
@@ -9,9 +12,6 @@
     <lastmod>2024-08-06T16:55:56-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/series/java/</loc>
-    <lastmod>2024-08-06T16:55:56-05:00</lastmod>
-  </url><url>
-    <loc>jnapolitano.com/en/</loc>
     <lastmod>2024-08-06T16:55:56-05:00</lastmod>
   </url><url>
     <loc>jnapolitano.com/en/tags/neo4j/</loc>
