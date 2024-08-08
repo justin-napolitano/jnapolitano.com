@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on Justin Napolitano</title>
-    <link>jnapolitano.com/en/series/</link>
+    <link>//localhost:1313/en/series/</link>
     <description>Recent content in Series on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>COBRACORP</copyright>
-    <lastBuildDate>Wed, 07 Aug 2024 15:00:07 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/series/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Aug 2024 14:11:15 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/en/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java</title>
-      <link>jnapolitano.com/en/series/java/</link>
-      <pubDate>Wed, 07 Aug 2024 14:59:58 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/series/java/</guid>
+      <link>//localhost:1313/en/series/java/</link>
+      <pubDate>Thu, 08 Aug 2024 14:10:52 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>//localhost:1313/en/series/java/</guid>
       <description></description>
     </item>
     <item>
       <title>Supreme-Court</title>
-      <link>jnapolitano.com/en/series/supreme-court/</link>
+      <link>//localhost:1313/en/series/supreme-court/</link>
       <pubDate>Wed, 31 Jul 2024 14:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/series/supreme-court/</guid>
+      <guid>//localhost:1313/en/series/supreme-court/</guid>
       <description></description>
     </item>
     <item>
       <title>GCP</title>
-      <link>jnapolitano.com/en/series/gcp/</link>
+      <link>//localhost:1313/en/series/gcp/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/series/gcp/</guid>
+      <guid>//localhost:1313/en/series/gcp/</guid>
       <description></description>
     </item>
     <item>
       <title>Bash</title>
-      <link>jnapolitano.com/en/series/bash/</link>
+      <link>//localhost:1313/en/series/bash/</link>
       <pubDate>Sat, 13 Jul 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/series/bash/</guid>
+      <guid>//localhost:1313/en/series/bash/</guid>
       <description></description>
     </item>
     <item>
       <title>Auto Post Hugo</title>
-      <link>jnapolitano.com/en/series/auto-post-hugo/</link>
+      <link>//localhost:1313/en/series/auto-post-hugo/</link>
       <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/series/auto-post-hugo/</guid>
+      <guid>//localhost:1313/en/series/auto-post-hugo/</guid>
       <description></description>
     </item>
   </channel>

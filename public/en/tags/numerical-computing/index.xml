@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Numerical-Computing on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/numerical-computing/</link>
+    <link>//localhost:1313/en/tags/numerical-computing/</link>
     <description>Recent content in Numerical-Computing on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,26 +10,26 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>COBRACORP</copyright>
     <lastBuildDate>Mon, 15 Jul 2024 13:14:28 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/numerical-computing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/numerical-computing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Model Design and Logistic Regression in Python</title>
-      <link>jnapolitano.com/en/posts/logistic_regression_mockup/</link>
+      <link>//localhost:1313/en/posts/logistic_regression_mockup/</link>
       <pubDate>Fri, 17 Jun 2022 13:20:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/logistic_regression_mockup/</guid>
+      <guid>//localhost:1313/en/posts/logistic_regression_mockup/</guid>
       <description>Model Design and Logistic Regression in Python I recently modeled customer churn in Julia with logistic regression model. It was interesting to be sure, but I want to extend my analysis skillset by modeling biostatistics data. In this post, I design a logistic regression model of health predictors.&#xA;Imports # load some default Python modules import numpy as np import pandas as pd import matplotlib.pyplot as plt import seaborn as sns plt.</description>
     </item>
     <item>
       <title>Annual Cost of Living Monte Carlo Models</title>
-      <link>jnapolitano.com/en/posts/cost-of-living-projections/</link>
+      <link>//localhost:1313/en/posts/cost-of-living-projections/</link>
       <pubDate>Wed, 01 Jun 2022 15:24:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/cost-of-living-projections/</guid>
+      <guid>//localhost:1313/en/posts/cost-of-living-projections/</guid>
       <description>Cost of Living Projections Introduction I do not like negotiating for salary. Especially, without valid projections to determine a range.&#xA;I prepared this report to estimate a salary expectation that will maintain my current standard of living.&#xA;I present two Monte Carlo models of Houston and NYC annual living costs. The data is somewhat dated and &amp;ndash;particularly in the case of houston&amp;ndash; are high level estimates.&#xA;In order to produce a better report, I am currently scraping data from the internet for more accurate sample distributions.</description>
     </item>
     <item>
       <title>Spearman Rank in Standard Julia</title>
-      <link>jnapolitano.com/en/posts/spearman_rank_julia/</link>
+      <link>//localhost:1313/en/posts/spearman_rank_julia/</link>
       <pubDate>Mon, 30 May 2022 20:20:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/spearman_rank_julia/</guid>
+      <guid>//localhost:1313/en/posts/spearman_rank_julia/</guid>
       <description>Spearman Rank in Standard Julia Well nearly, I did import the erfc function from the SpecialFunctions package. I don&amp;rsquo;t like it either. I&amp;rsquo;ll write my own soon to make up for it.&#xA;Special Thanks I came across the text Numerical Recipes in C. It was first published in 1988, by the Cambridge University Press. The authors are William H. Press, Brian P. Flannery, Saul. A. Teukolsky, and William T. Veterling.</description>
     </item>
   </channel>

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Energy on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/energy/</link>
+    <link>//localhost:1313/en/tags/energy/</link>
     <description>Recent content in Energy on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,19 +10,19 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>COBRACORP</copyright>
     <lastBuildDate>Mon, 15 Jul 2024 13:14:28 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/energy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/energy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Feasibility of Transatlantic Carbon Shipping</title>
-      <link>jnapolitano.com/en/posts/feasibility_study_shipping_carbon/</link>
+      <link>//localhost:1313/en/posts/feasibility_study_shipping_carbon/</link>
       <pubDate>Sat, 07 May 2022 18:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/feasibility_study_shipping_carbon/</guid>
+      <guid>//localhost:1313/en/posts/feasibility_study_shipping_carbon/</guid>
       <description>Feasibility of Shipping Carbon Across the Atlantic Methodology Please review the my previous post which details the design of my model.&#xA;The major difference in this report is the sampling of the mean price per voyage.&#xA;The conversion error has been corrected.&#xA;Findings Distance of Transport The standard deviation in mean price per voyage was found to be less than 0. This suggests that the distance of travel within Europe is marginal.</description>
     </item>
     <item>
       <title>EuroZone Gas Imports and Exports</title>
-      <link>jnapolitano.com/en/posts/european-gas-imports/</link>
+      <link>//localhost:1313/en/posts/european-gas-imports/</link>
       <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/european-gas-imports/</guid>
+      <guid>//localhost:1313/en/posts/european-gas-imports/</guid>
       <description>EuroZone Gas Imports and Exports Import and Procedural Functions import pandas as pd import matplotlib.pyplot as plt import numpy as np from geopy.distance import distance import re import matplotlib.pyplot as plt from IPython.core.display import HTML #import IPython.core.display as display def hugo_safe_render(styler): &amp;#34;&amp;#34;&amp;#34; Removes spacing from HTML output of df.style to prevent rendering issues in Hugo. &amp;#34;&amp;#34;&amp;#34; raw_html = styler.to_html() clean_html = &amp;#39; &amp;#39;.join(raw_html.split()) return HTML(clean_html) def magnify(): return [dict(selector=&amp;#34;th&amp;#34;, props=[(&amp;#34;font-size&amp;#34;, &amp;#34;4pt&amp;#34;)]), dict(selector=&amp;#34;td&amp;#34;, props=[(&amp;#39;padding&amp;#39;, &amp;#34;0em 0em&amp;#34;)]), dict(selector=&amp;#34;th:hover&amp;#34;, props=[(&amp;#34;font-size&amp;#34;, &amp;#34;12pt&amp;#34;)]), dict(selector=&amp;#34;tr:hover td:hover&amp;#34;, props=[(&amp;#39;max-width&amp;#39;, &amp;#39;200px&amp;#39;), (&amp;#39;font-size&amp;#39;, &amp;#39;12pt&amp;#39;)]) ] Query Strategy Imports TO many to list&amp;hellip; I&amp;rsquo;ll ad them as I go below</description>
     </item>
   </channel>
