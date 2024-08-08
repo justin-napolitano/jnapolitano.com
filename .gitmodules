@@ -180,3 +180,6 @@
 [submodule "content/posts/supreme-court-transfer-service-uniques"]
 	path = content/posts/supreme-court-transfer-service-uniques
 	url = https://github.com/justin-napolitano/supreme-court-transfer-service-uniques.git
+[submodule "content/posts/sup-court-graph-explore"]
+	path = content/posts/sup-court-graph-explore
+	url = https://github.com/justin-napolitano/sup-court-graph-explore.git
