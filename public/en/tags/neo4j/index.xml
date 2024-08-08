@@ -2,34 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Neo4j on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/neo4j/</link>
+    <link>//localhost:1313/en/tags/neo4j/</link>
     <description>Recent content in Neo4j on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>COBRACORP</copyright>
-    <lastBuildDate>Wed, 07 Aug 2024 15:00:07 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/neo4j/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Aug 2024 14:11:15 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/en/tags/neo4j/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Neo4J: Supreme Court Explore</title>
+      <link>//localhost:1313/en/posts/sup-court-graph-explore/</link>
+      <pubDate>Thu, 08 Aug 2024 14:10:52 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>//localhost:1313/en/posts/sup-court-graph-explore/</guid>
+      <description>Supreme Court Graph Explore In the past few posts, I built a knowledge graph based on some metadata. It was an enjoyable experience, but what is the real purpose behind it?&#xA;Summary of Work So Far Build the Database first I a proponent of building out an immutable source of truth prior to ingesting anything into a graph. I have in the past built graphs for fun, but found that transforming in python then loading into memory prior to ingesting into neo was a painful and expensive exercise.</description>
+    </item>
     <item>
       <title>PostgreSQL to Neo4j Transfer: Unique Nodes and DB Optimization</title>
-      <link>jnapolitano.com/en/posts/supreme-court-transfer-service-uniques/</link>
+      <link>//localhost:1313/en/posts/supreme-court-transfer-service-uniques/</link>
       <pubDate>Wed, 07 Aug 2024 14:59:58 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/supreme-court-transfer-service-uniques/</guid>
+      <guid>//localhost:1313/en/posts/supreme-court-transfer-service-uniques/</guid>
       <description>Optimizing Graph Databases: Ensuring Unique Nodes and Creating Efficient Relationships in Neo4j repo source : https://github.com/justin-napolitano/supreme-court-transfer&#xA;In my last post I kinda messed up.. well not really but I did not account for trying to create unique relationships.. That doesn&amp;rsquo;t really matter though because my postgres db is normalized.. so i can make those relationships easy. This post details how to do that.&#xA;Importance of Normalization When working with large datasets, particularly in a relational database, ensuring the uniqueness of nodes and creating efficient relationships in a graph database like Neo4j can be challenging.</description>
     </item>
     <item>
       <title>Postgres to Neo4j Workflow: Relationships</title>
-      <link>jnapolitano.com/en/posts/supreme-court-meta-relationships/</link>
+      <link>//localhost:1313/en/posts/supreme-court-meta-relationships/</link>
       <pubDate>Tue, 06 Aug 2024 16:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/supreme-court-meta-relationships/</guid>
+      <guid>//localhost:1313/en/posts/supreme-court-meta-relationships/</guid>
       <description>Updating the PostGres to Neo workflow with Standard Meta Data Relationships In my previous post i detailed how to export data from postgresql to neo4j with a java workflow.. but I did not add how add relationships once the node insert completes.&#xA;Here is the repo btw https://github.com/justin-napolitano/supreme-court-transfer&#xA;RelationshipCreator.java package com.supreme_court_transfer; import org.neo4j.driver.Session; import org.neo4j.driver.Transaction; import org.neo4j.driver.TransactionWork; import org.slf4j.Logger; import org.slf4j.LoggerFactory; public class RelationshipCreator { private static final Logger logger = LoggerFactory.</description>
     </item>
     <item>
       <title>Conduct Legal Research with AI: Part 2</title>
-      <link>jnapolitano.com/en/posts/legal-reserch-part-2/</link>
+      <link>//localhost:1313/en/posts/legal-reserch-part-2/</link>
       <pubDate>Tue, 17 May 2022 18:40:32 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/legal-reserch-part-2/</guid>
+      <guid>//localhost:1313/en/posts/legal-reserch-part-2/</guid>
       <description>Integrating the Constitution to Neo4j I am currenlty building a graph database of Supreme Court cases in neo4j to model the behavior and decison making of the court.&#xA;In this post, I include the classes that I will be using to create individual nodes for the articles, sections, clauses, and subclauses of the Consititution.&#xA;Later, these will be related to cases and subjecst in order to train a tensorflow algorithm to recommend case law by issue area and to predict the outcome of cases.</description>
     </item>
   </channel>

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GCP on Justin Napolitano</title>
-    <link>jnapolitano.com/en/series/gcp/</link>
+    <link>//localhost:1313/en/series/gcp/</link>
     <description>Recent content in GCP on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,33 +10,33 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>COBRACORP</copyright>
     <lastBuildDate>Mon, 29 Jul 2024 18:33:58 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/series/gcp/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/series/gcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DataShare &#43; Docker Compose</title>
-      <link>jnapolitano.com/en/posts/sup-court-graph/docker_compose_blog/</link>
+      <link>//localhost:1313/en/posts/sup-court-graph/docker_compose_blog/</link>
       <pubDate>Mon, 29 Jul 2024 16:12:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/sup-court-graph/docker_compose_blog/</guid>
+      <guid>//localhost:1313/en/posts/sup-court-graph/docker_compose_blog/</guid>
       <description>Deploying DataShare with Docker Compose Docker Compose is a powerful tool for defining and running multi-container Docker applications. In this blog post, we will walk through a Docker Compose script that sets up a comprehensive data sharing application stack, including DataShare, Elasticsearch, Redis, and PostgreSQL. This setup ensures seamless data management and sharing across different services.&#xA;Overview of Services The Docker Compose file defines the following services:&#xA;DataShare: A powerful data sharing platform.</description>
     </item>
     <item>
       <title>GCP Secret Manager Script</title>
-      <link>jnapolitano.com/en/posts/gcp-secret-creation/</link>
+      <link>//localhost:1313/en/posts/gcp-secret-creation/</link>
       <pubDate>Thu, 18 Jul 2024 12:25:11 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/gcp-secret-creation/</guid>
+      <guid>//localhost:1313/en/posts/gcp-secret-creation/</guid>
       <description>GCP Secret Manager Script This script manages secrets in Google Cloud Platform&amp;rsquo;s Secret Manager. It can create, overwrite, and delete secrets based on the provided YAML configuration file and environment variables.&#xA;Prerequisites Python 3.6 or higher Google Cloud SDK installed and authenticated Necessary Python packages installed (google-cloud-secret-manager, python-dotenv, pyyaml) Installation Clone the repository:&#xA;git clone https://github.com/justin-napolitano/gcp-secret-creation.py.git cd your-repo-directory Create a virtual environment and activate it:&#xA;python -m venv venv source venv/bin/activate # On Windows, use `venv\\Scripts\\activate` Install the required packages:</description>
     </item>
     <item>
       <title>Schedule a GCP Cloud Run Chron Job</title>
-      <link>jnapolitano.com/en/posts/schedule-gcp-chron-jobs/</link>
+      <link>//localhost:1313/en/posts/schedule-gcp-chron-jobs/</link>
       <pubDate>Tue, 16 Jul 2024 17:23:06 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/schedule-gcp-chron-jobs/</guid>
+      <guid>//localhost:1313/en/posts/schedule-gcp-chron-jobs/</guid>
       <description>How to Schedule a Cloud Run Job Using Google Cloud Scheduler In this tutorial, we&amp;rsquo;ll walk through the process of scheduling a job in Google Cloud Run using Google Cloud Scheduler. This is particularly useful for tasks that need to run at regular intervals, such as data processing, periodic updates, or maintenance tasks.&#xA;Prerequisites Before we start, ensure you have the following:&#xA;A Google Cloud project. gcloud command-line tool installed and authenticated.</description>
     </item>
     <item>
       <title>Library of Congress Prod-ifier</title>
-      <link>jnapolitano.com/en/posts/loc-prodifier/</link>
+      <link>//localhost:1313/en/posts/loc-prodifier/</link>
       <pubDate>Thu, 20 Jun 2024 22:36:34 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/loc-prodifier/</guid>
+      <guid>//localhost:1313/en/posts/loc-prodifier/</guid>
       <description>Loc Prodifier Overview Loc Prodifier is a Python script designed to merge data from staging tables into production tables in Google BigQuery without inserting duplicate records. It uses the Google Cloud BigQuery Python client and can be run both locally and in Google Cloud Run. The script is designed to be flexible and scalable, allowing for parallel execution across multiple tables using Google Cloud Workflows.&#xA;Features Merges data from staging tables into production tables without duplicates.</description>
     </item>
   </channel>

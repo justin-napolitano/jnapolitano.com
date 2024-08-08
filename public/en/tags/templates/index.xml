@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Templates on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/templates/</link>
+    <link>//localhost:1313/en/tags/templates/</link>
     <description>Recent content in Templates on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,12 +10,12 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>COBRACORP</copyright>
     <lastBuildDate>Tue, 09 Jul 2024 17:50:11 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/templates/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/templates/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using GitHub Template Repositories to Automate Script Deployment</title>
-      <link>jnapolitano.com/en/posts/create_a_github_template_repo/</link>
+      <link>//localhost:1313/en/posts/create_a_github_template_repo/</link>
       <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/create_a_github_template_repo/</guid>
+      <guid>//localhost:1313/en/posts/create_a_github_template_repo/</guid>
       <description>Using GitHub Template Repositories to Automate Script Deployment Managing multiple repositories can be a challenge, especially when you need to ensure that each one includes certain common scripts or configurations. GitHub&amp;rsquo;s template repositories feature can help streamline this process. In this post, we&amp;rsquo;ll walk through how to use a template repository to automatically include a gh_submodule_sync.sh script in every new repository you create.&#xA;Prerequisites GitHub CLI: Ensure you have the GitHub CLI installed.</description>
     </item>
   </channel>

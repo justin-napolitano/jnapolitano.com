@@ -2,62 +2,69 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Databases on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/databases/</link>
+    <link>//localhost:1313/en/tags/databases/</link>
     <description>Recent content in Databases on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>COBRACORP</copyright>
-    <lastBuildDate>Wed, 07 Aug 2024 15:00:07 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/databases/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Aug 2024 14:11:15 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/en/tags/databases/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Neo4J: Supreme Court Explore</title>
+      <link>//localhost:1313/en/posts/sup-court-graph-explore/</link>
+      <pubDate>Thu, 08 Aug 2024 14:10:52 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>//localhost:1313/en/posts/sup-court-graph-explore/</guid>
+      <description>Supreme Court Graph Explore In the past few posts, I built a knowledge graph based on some metadata. It was an enjoyable experience, but what is the real purpose behind it?&#xA;Summary of Work So Far Build the Database first I a proponent of building out an immutable source of truth prior to ingesting anything into a graph. I have in the past built graphs for fun, but found that transforming in python then loading into memory prior to ingesting into neo was a painful and expensive exercise.</description>
+    </item>
     <item>
       <title>PostgreSQL to Neo4j Transfer: Unique Nodes and DB Optimization</title>
-      <link>jnapolitano.com/en/posts/supreme-court-transfer-service-uniques/</link>
+      <link>//localhost:1313/en/posts/supreme-court-transfer-service-uniques/</link>
       <pubDate>Wed, 07 Aug 2024 14:59:58 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/supreme-court-transfer-service-uniques/</guid>
+      <guid>//localhost:1313/en/posts/supreme-court-transfer-service-uniques/</guid>
       <description>Optimizing Graph Databases: Ensuring Unique Nodes and Creating Efficient Relationships in Neo4j repo source : https://github.com/justin-napolitano/supreme-court-transfer&#xA;In my last post I kinda messed up.. well not really but I did not account for trying to create unique relationships.. That doesn&amp;rsquo;t really matter though because my postgres db is normalized.. so i can make those relationships easy. This post details how to do that.&#xA;Importance of Normalization When working with large datasets, particularly in a relational database, ensuring the uniqueness of nodes and creating efficient relationships in a graph database like Neo4j can be challenging.</description>
     </item>
     <item>
       <title>Postgres to Neo4j Workflow: Relationships</title>
-      <link>jnapolitano.com/en/posts/supreme-court-meta-relationships/</link>
+      <link>//localhost:1313/en/posts/supreme-court-meta-relationships/</link>
       <pubDate>Tue, 06 Aug 2024 16:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/supreme-court-meta-relationships/</guid>
+      <guid>//localhost:1313/en/posts/supreme-court-meta-relationships/</guid>
       <description>Updating the PostGres to Neo workflow with Standard Meta Data Relationships In my previous post i detailed how to export data from postgresql to neo4j with a java workflow.. but I did not add how add relationships once the node insert completes.&#xA;Here is the repo btw https://github.com/justin-napolitano/supreme-court-transfer&#xA;RelationshipCreator.java package com.supreme_court_transfer; import org.neo4j.driver.Session; import org.neo4j.driver.Transaction; import org.neo4j.driver.TransactionWork; import org.slf4j.Logger; import org.slf4j.LoggerFactory; public class RelationshipCreator { private static final Logger logger = LoggerFactory.</description>
     </item>
     <item>
       <title>Postgres to Neo4j Workflow</title>
-      <link>jnapolitano.com/en/posts/supreme-court-to-postgres-to-neo/</link>
+      <link>//localhost:1313/en/posts/supreme-court-to-postgres-to-neo/</link>
       <pubDate>Tue, 06 Aug 2024 15:10:02 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/supreme-court-to-postgres-to-neo/</guid>
+      <guid>//localhost:1313/en/posts/supreme-court-to-postgres-to-neo/</guid>
       <description>Streamlining Data Transfer from PostgreSQL to Neo4j with Java In my previous few posts I put together a postgres db of supreme court meta data. That is cool. I have a few more ideas.. but I wanted to explore the graph a bit before expanding it with some nlp. So in this post I am writing about how to ingest a bunch of nodes into neo4j with a java workflow. In the next post I&amp;rsquo;ll detail adding relationships.</description>
     </item>
     <item>
       <title>PERN Stack with GraphQl and Apollo</title>
-      <link>jnapolitano.com/en/posts/sup-court-pern-stack/</link>
+      <link>//localhost:1313/en/posts/sup-court-pern-stack/</link>
       <pubDate>Fri, 02 Aug 2024 15:16:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/sup-court-pern-stack/</guid>
+      <guid>//localhost:1313/en/posts/sup-court-pern-stack/</guid>
       <description>Setting Up a PERN Stack with GraphQL and Apollo: Source Repo : https://github.com/justin-napolitano/sup-court-pern-stack.git&#xA;I&amp;rsquo;ve been playing with a knowledge graph recently. Most of the data modelling is complete&amp;hellip; well at least the groundwork is done.&#xA;In this part of the series,we&amp;rsquo;ll walk through the process of setting up a PostgreSQL, Express, React, Node.js (PERN) stack application with GraphQL and Apollo.&#xA;The point is to build out a backend so I can then build out a react client to explore the beautiful grapth.</description>
     </item>
     <item>
       <title>Configure Hugo XML Output for RSS Feed</title>
-      <link>jnapolitano.com/en/posts/hugo-rss-setup/</link>
+      <link>//localhost:1313/en/posts/hugo-rss-setup/</link>
       <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/hugo-rss-setup/</guid>
+      <guid>//localhost:1313/en/posts/hugo-rss-setup/</guid>
       <description>Why I have a mysql db that will be used to store values read from the rss feed of my hugo site. I need some add some keys to help with organization&#xA;Parts of this series part 1 part 2 part 3 part 4 Resources Hugo Page Resources Hugo Page Params Hugo RSS Templates RSS Config Copy over the posts/rss.xml file from your theme From hugo root you would do something like&amp;hellip;</description>
     </item>
     <item>
       <title>Install MySQL Server on Ubuntu</title>
-      <link>jnapolitano.com/en/posts/mysql-install-buntu/</link>
+      <link>//localhost:1313/en/posts/mysql-install-buntu/</link>
       <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/mysql-install-buntu/</guid>
+      <guid>//localhost:1313/en/posts/mysql-install-buntu/</guid>
       <description>Why I am working on an autoposting tool for social sites. in order to complete that i want a db to log the metadata of my posts Parts of this series part 1 part 2 MYSQL Resources APT install guide MYSQL config guide Post Install configuration Install Download the config files go to this link and download the script.&#xA;https://dev.mysql.com/downloads/repo/apt/&#xA;Install the release package with dpkg note that the w.x.y.z will change according to the release package</description>
     </item>
     <item>
       <title>Configure mysql server on ubuntu</title>
-      <link>jnapolitano.com/en/posts/mysql-config/</link>
+      <link>//localhost:1313/en/posts/mysql-config/</link>
       <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/mysql-config/</guid>
+      <guid>//localhost:1313/en/posts/mysql-config/</guid>
       <description>Why I installed mysql in the previous post. Now I need to setup users, create a db, and create a table.&#xA;Parts of this series part 1 part 2 part 3 MYSQL Resources APT install guide MYSQL config guide Create a new user Login as Root mysql -u root -p Create some users In my case I will create 4 users accounts.&#xA;Cobra@localhost Cobra@jnapolitano.com admin@localhost dummy@localhost dummy is just used to test service connection and has not access grants or writes</description>
     </item>
   </channel>

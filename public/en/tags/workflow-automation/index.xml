@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Workflow Automation on Justin Napolitano</title>
-    <link>jnapolitano.com/en/tags/workflow-automation/</link>
+    <link>//localhost:1313/en/tags/workflow-automation/</link>
     <description>Recent content in Workflow Automation on Justin Napolitano</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,19 +10,19 @@
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>COBRACORP</copyright>
     <lastBuildDate>Thu, 11 Jul 2024 17:15:28 -0500</lastBuildDate>
-    <atom:link href="jnapolitano.com/en/tags/workflow-automation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/en/tags/workflow-automation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GCP Cloud Run: LOC Flattener</title>
-      <link>jnapolitano.com/en/posts/loc_normalizer/</link>
+      <link>//localhost:1313/en/posts/loc_normalizer/</link>
       <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/loc_normalizer/</guid>
+      <guid>//localhost:1313/en/posts/loc_normalizer/</guid>
       <description>Library of Congress Normalizer Job This repo normalizes the existing library of congress schema into a db that wil then be used to construct a knowledge graph of supreme court law.&#xA;Plan Setup a venv to run locally Install requirements Write out the script to interface with gcp Set up a docker container and test locally build the image upload to gcp create the job Setup the venv Install I installed virtualenv locally on ubuntu</description>
     </item>
     <item>
       <title>GCP Cloud Run Job Scraper</title>
-      <link>jnapolitano.com/en/posts/l_o_c_scraper/</link>
+      <link>//localhost:1313/en/posts/l_o_c_scraper/</link>
       <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
-      <guid>jnapolitano.com/en/posts/l_o_c_scraper/</guid>
+      <guid>//localhost:1313/en/posts/l_o_c_scraper/</guid>
       <description>Library of Congress Scraper Job This repo scrapes the library of congress for all of the US Supreme Court Cases available on their platform. I intent to use this data to create a research tool to better understand the corpus of text.&#xA;Quick History of this project I had started work on this as an undergraduate at university, but the chatbot apis were not yet available.. and training modesl were far too expensive.</description>
     </item>
   </channel>
