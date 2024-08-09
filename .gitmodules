@@ -183,3 +183,7 @@
 [submodule "content/posts/sup-court-graph-explore"]
 	path = content/posts/sup-court-graph-explore
 	url = https://github.com/justin-napolitano/sup-court-graph-explore.git
+[submodule "content/posts/airflow-docker"]
+	path = content/posts/airflow-docker
+	url = https://github.com/justin-napolitano/airflow-docker.git
+	branch = post

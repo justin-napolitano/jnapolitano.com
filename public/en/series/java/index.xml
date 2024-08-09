@@ -9,7 +9,7 @@
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>COBRACORP</copyright>
-    <lastBuildDate>Thu, 08 Aug 2024 14:11:15 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 09 Aug 2024 15:34:02 -0500</lastBuildDate>
     <atom:link href="//localhost:1313/en/series/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Neo4J: Supreme Court Explore</title>
@@ -45,6 +45,13 @@
       <pubDate>Fri, 02 Aug 2024 15:16:27 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
       <guid>//localhost:1313/en/posts/sup-court-pern-stack/</guid>
       <description>Setting Up a PERN Stack with GraphQL and Apollo: Source Repo : https://github.com/justin-napolitano/sup-court-pern-stack.git&#xA;I&amp;rsquo;ve been playing with a knowledge graph recently. Most of the data modelling is complete&amp;hellip; well at least the groundwork is done.&#xA;In this part of the series,we&amp;rsquo;ll walk through the process of setting up a PostgreSQL, Express, React, Node.js (PERN) stack application with GraphQL and Apollo.&#xA;The point is to build out a backend so I can then build out a react client to explore the beautiful grapth.</description>
+    </item>
+    <item>
+      <title>Airflow &#43; Neo4j DAG</title>
+      <link>//localhost:1313/en/posts/airflow-docker/</link>
+      <pubDate>Wed, 31 Jul 2024 14:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>//localhost:1313/en/posts/airflow-docker/</guid>
+      <description>Running Apache Airflow with Docker: Deploy A Neo4j Workflow Apache Airflow is a powerful tool for orchestrating complex workflows, and running it with Docker simplifies the setup and maintenance of the environment. In this guide, we will walk through setting up Apache Airflow using Docker, making sure that any changes to your DAGs (Directed Acyclic Graphs) are immediately reflected in the running environment.&#xA;Though, I really don&amp;rsquo;t think I&amp;rsquo;ll use it.</description>
     </item>
     <item>
       <title>PostGreSQL Java: Data Ingestion</title>

@@ -12,6 +12,219 @@
 		<atom:link href="//localhost:1313/en/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
+			<title>Airflow &#43; Neo4j DAG</title>
+			<link>//localhost:1313/en/posts/airflow-docker/</link>
+			<pubDate>Fri, 09 Aug 2024 15:34:53 -0500</pubDate>
+			<guid>//localhost:1313/en/posts/airflow-docker/</guid>
+			<description><![CDATA[Deploying Airflow and a NEO4j Dag]]></description>
+			<content type="html"><![CDATA[<h1 id="running-apache-airflow-with-docker-deploy-a-neo4j-workflow">Running Apache Airflow with Docker: Deploy A Neo4j Workflow</h1>
+<p>Apache Airflow is a powerful tool for orchestrating complex workflows, and running it with Docker simplifies the setup and maintenance of the environment. In this guide, we will walk through setting up Apache Airflow using Docker, making sure that any changes to your DAGs (Directed Acyclic Graphs) are immediately reflected in the running environment.</p>
+<p>Though, I really don&rsquo;t think I&rsquo;ll use it. I feel like for my use cases it is better to just use GCP cloud run jobs.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we begin, make sure you have the following installed:</p>
+<p>Docker
+Docker Compose</p>
+<h3 id="step-1-setting-up-your-project">Step 1: Setting Up Your Project</h3>
+<p>First, create a directory for your Airflow project. Inside this directory, create the necessary subdirectories and files.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir airflow-docker
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> airflow-docker
+</span></span><span class="line"><span class="cl">mkdir dags logs plugins
+</span></span><span class="line"><span class="cl">touch dags/example_dag.py
+</span></span><span class="line"><span class="cl">touch docker-compose.yml
+</span></span><span class="line"><span class="cl">Step 2: Creating the docker-compose.yml File
+</span></span><span class="line"><span class="cl">The docker-compose.yml file defines the services, volumes, and networks required to run Airflow. Below is a sample configuration:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">yaml
+</span></span><span class="line"><span class="cl">Copy code
+</span></span><span class="line"><span class="cl">version: <span class="s1">&#39;3.8&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">services:
+</span></span><span class="line"><span class="cl">  postgres:
+</span></span><span class="line"><span class="cl">    image: postgres:13
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      POSTGRES_USER: airflow
+</span></span><span class="line"><span class="cl">      POSTGRES_PASSWORD: airflow
+</span></span><span class="line"><span class="cl">      POSTGRES_DB: airflow
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">      - <span class="s2">&#34;5438:5432&#34;</span>
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - postgres-db-volume:/var/lib/postgresql/data
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  redis:
+</span></span><span class="line"><span class="cl">    image: redis:6.2
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">      - <span class="s2">&#34;6379:6379&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  airflow-init:
+</span></span><span class="line"><span class="cl">    image: apache/airflow:2.3.0
+</span></span><span class="line"><span class="cl">    entrypoint: &gt;
+</span></span><span class="line"><span class="cl">      bash -c <span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">      airflow db upgrade &amp;&amp;
+</span></span></span><span class="line"><span class="cl"><span class="s2">      airflow users create -r Admin -u admin -p admin -e admin@example.com -f Admin -l User
+</span></span></span><span class="line"><span class="cl"><span class="s2">      &#34;</span>
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      - <span class="nv">AIRFLOW__CORE__FERNET_KEY</span><span class="o">=</span><span class="nv">k37aZADrVkqzK7fed8xTjphUGlT3LtFzr9uUMtnRwmg</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl">      - <span class="nv">AIRFLOW__DATABASE__SQL_ALCHEMY_CONN</span><span class="o">=</span>postgresql+psycopg2://airflow:airflow@postgres/airflow
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - ./dags:/opt/airflow/dags
+</span></span><span class="line"><span class="cl">      - ./logs:/opt/airflow/logs
+</span></span><span class="line"><span class="cl">      - ./plugins:/opt/airflow/plugins
+</span></span><span class="line"><span class="cl">    depends_on:
+</span></span><span class="line"><span class="cl">      - postgres
+</span></span><span class="line"><span class="cl">      - redis
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  airflow-webserver:
+</span></span><span class="line"><span class="cl">    image: apache/airflow:2.3.0
+</span></span><span class="line"><span class="cl">    command: webserver
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">      - <span class="s2">&#34;8089:8080&#34;</span>
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      - <span class="nv">AIRFLOW__CORE__FERNET_KEY</span><span class="o">=</span><span class="nv">k37aZADrVkqzK7fed8xTjphUGlT3LtFzr9uUMtnRwmg</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl">      - <span class="nv">AIRFLOW__DATABASE__SQL_ALCHEMY_CONN</span><span class="o">=</span>postgresql+psycopg2://airflow:airflow@postgres/airflow
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - ./dags:/opt/airflow/dags
+</span></span><span class="line"><span class="cl">      - ./logs:/opt/airflow/logs
+</span></span><span class="line"><span class="cl">      - ./plugins:/opt/airflow/plugins
+</span></span><span class="line"><span class="cl">    depends_on:
+</span></span><span class="line"><span class="cl">      - airflow-init
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  airflow-scheduler:
+</span></span><span class="line"><span class="cl">    image: apache/airflow:2.3.0
+</span></span><span class="line"><span class="cl">    command: scheduler
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      - <span class="nv">AIRFLOW__CORE__FERNET_KEY</span><span class="o">=</span><span class="nv">k37aZADrVkqzK7fed8xTjphUGlT3LtFzr9uUMtnRwmg</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl">      - <span class="nv">AIRFLOW__DATABASE__SQL_ALCHEMY_CONN</span><span class="o">=</span>postgresql+psycopg2://airflow:airflow@postgres/airflow
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - ./dags:/opt/airflow/dags
+</span></span><span class="line"><span class="cl">      - ./logs:/opt/airflow/logs
+</span></span><span class="line"><span class="cl">      - ./plugins:/opt/airflow/plugins
+</span></span><span class="line"><span class="cl">    depends_on:
+</span></span><span class="line"><span class="cl">      - airflow-init
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  airflow-worker:
+</span></span><span class="line"><span class="cl">    image: apache/airflow:2.3.0
+</span></span><span class="line"><span class="cl">    command: celery worker
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      - <span class="nv">AIRFLOW__CORE__FERNET_KEY</span><span class="o">=</span><span class="nv">k37aZADrVkqzK7fed8xTjphUGlT3LtFzr9uUMtnRwmg</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl">      - <span class="nv">AIRFLOW__DATABASE__SQL_ALCHEMY_CONN</span><span class="o">=</span>postgresql+psycopg2://airflow:airflow@postgres/airflow
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - ./dags:/opt/airflow/dags
+</span></span><span class="line"><span class="cl">      - ./logs:/opt/airflow/logs
+</span></span><span class="line"><span class="cl">      - ./plugins:/opt/airflow/plugins
+</span></span><span class="line"><span class="cl">    depends_on:
+</span></span><span class="line"><span class="cl">      - airflow-init
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">volumes:
+</span></span><span class="line"><span class="cl">  postgres-db-volume:
+</span></span></code></pre></div><h3 id="step-3-creating-a-sample-dag">Step 3: Creating a Sample DAG</h3>
+<p>Next, create a simple DAG in the dags directory to test your setup. This example will create a DAG that simply runs two dummy tasks.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># dags/example_dag.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">airflow.operators.dummy_operator</span> <span class="kn">import</span> <span class="n">DummyOperator</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;owner&#39;</span><span class="p">:</span> <span class="s1">&#39;airflow&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;start_date&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;retries&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">&#39;example_dag&#39;</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="s1">&#39;@daily&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start</span> <span class="o">=</span> <span class="n">DummyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">end</span> <span class="o">=</span> <span class="n">DummyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;end&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">start</span> <span class="o">&gt;&gt;</span> <span class="n">end</span>
+</span></span></code></pre></div><h3 id="step-4-running-docker-compose">Step 4: Running Docker Compose</h3>
+<p>With everything set up, you can now build and run your Airflow environment using Docker Compose.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker-compose up --build
+</span></span></code></pre></div><h3 id="step-5-accessing-the-airflow-web-interface">Step 5: Accessing the Airflow Web Interface</h3>
+<p>Once the services are up and running, you can access the Airflow web interface by navigating to http://localhost:8089 in your web browser. Log in with the credentials you specified in the airflow-init service (admin/admin).</p>
+<h3 id="step-6-modifying-dags">Step 6: Modifying DAGs</h3>
+<p>You can freely modify your DAGs in the dags directory on your local machine. These changes will be automatically reflected in the running Airflow environment due to the volume mount configuration.</p>
+<h3 id="step-7-orchestrate-a-neo4j-workflow">Step 7: Orchestrate a Neo4j Workflow</h3>
+<p>I created a quick neo4j workflow for some reference.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">airflow.operators.python_operator</span> <span class="kn">import</span> <span class="n">PythonOperator</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">neo4j</span> <span class="kn">import</span> <span class="n">GraphDatabase</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load environment variables from .env file</span>
+</span></span><span class="line"><span class="cl"><span class="n">load_dotenv</span><span class="p">(</span><span class="s1">&#39;/opt/airflow/.env&#39;</span><span class="p">)</span>  <span class="c1"># Path within the Docker container</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define Neo4j connection details from environment variables</span>
+</span></span><span class="line"><span class="cl"><span class="n">NEO4J_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NEO4J_URL&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">NEO4J_USER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NEO4J_USER&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">NEO4J_PASSWORD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NEO4J_PASSWORD&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">read_query_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">query</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">query</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Function for creating relationships between contributors and subjects</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_contributor_to_subject_relationships</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">driver</span> <span class="o">=</span> <span class="n">GraphDatabase</span><span class="o">.</span><span class="n">driver</span><span class="p">(</span><span class="n">NEO4J_URL</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">NEO4J_USER</span><span class="p">,</span> <span class="n">NEO4J_PASSWORD</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cypher_query</span> <span class="o">=</span> <span class="n">read_query_file</span><span class="p">(</span><span class="s1">&#39;/opt/airflow/sql/ctrbr_to_sbjt.cql&#39;</span><span class="p">)</span>  <span class="c1"># Path within the Docker container</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">execute_query</span><span class="p">(</span><span class="n">tx</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cypher_query</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">driver</span><span class="o">.</span><span class="n">session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">session</span><span class="o">.</span><span class="n">write_transaction</span><span class="p">(</span><span class="n">execute_query</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;owner&#39;</span><span class="p">:</span> <span class="s1">&#39;airflow&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;start_date&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;retries&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span><span class="s1">&#39;neo4j_workflow&#39;</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span> <span class="n">schedule_interval</span><span class="o">=</span><span class="s1">&#39;@daily&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Placeholder functions for future use</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># def ingest_data():</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     sql_query = read_query_file(&#39;/opt/airflow/sql/ingest_data.sql&#39;)  # Path within the Docker container</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     # Execute your SQL query here using your database connection</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     print(sql_query)  # Replace this with actual query execution logic</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># def transform_data():</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     sql_query = read_query_file(&#39;/opt/airflow/sql/transform_data.sql&#39;)  # Path within the Docker container</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     # Execute your SQL query here using your database connection</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     print(sql_query)  # Replace this with actual query execution logic</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the task for making contributor-to-subject relationships</span>
+</span></span><span class="line"><span class="cl"><span class="n">t3</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;make_contributor_to_subject_relationships&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">python_callable</span><span class="o">=</span><span class="n">make_contributor_to_subject_relationships</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the DAG structure</span>
+</span></span><span class="line"><span class="cl"><span class="n">t3</span>
+</span></span></code></pre></div><h2 id="reference-repository">Reference Repository</h2>
+<p>For a complete example with all the necessary files, you can refer to the airflow-docker-example repository. Clone this repository to get started quickly.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git clone https://github.com/justin-napolitano/airflow-docker.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> airflow-docker
+</span></span><span class="line"><span class="cl">docker-compose up --build
+</span></span></code></pre></div><p>Conclusion
+Running Apache Airflow with Docker simplifies the setup and allows you to develop and test your workflows efficiently.That said, I prefer gcp cloud run. I think provisioning a managed version in google could be worth it for a large organization.. but for my personal projects gcp is the way to go.</p>
+]]></content>
+			<postid> 34d97ccfd1273d05ef4ae04f61a4c175</postid>
+			<author></author>
+			<author_name>Justin Napolitano</author_name>
+			<author_email>personal.jnapolitano@gmail.com</author_email>
+			<author_id>87654367b2fca109e7dc9d3ea8a1ebbaf0bfe374773b148c2c20d278479add99</author_id>			
+		</item>
+		
+		<item>
 			<title>Neo4J: Supreme Court Explore</title>
 			<link>//localhost:1313/en/posts/sup-court-graph-explore/</link>
 			<pubDate>Thu, 08 Aug 2024 14:10:52 -0500</pubDate>
@@ -2022,7 +2235,7 @@ Initialize the project:</p>
 </span></span></code></pre></div><h3 id="2-pomxml">2. pom.xml</h3>
 <p>Ensure your pom.xml includes the necessary dependencies:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span class="err">x</span><span class="na">mlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;groupId&gt;</span>com.data_ingestion<span class="nt">&lt;/groupId&gt;</span>
