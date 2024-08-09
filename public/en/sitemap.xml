@@ -3,19 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/en/categories/</loc>
-    <lastmod>2024-08-08T14:11:15-05:00</lastmod>
+    <lastmod>2024-08-09T15:34:02-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/tags/databases/</loc>
     <lastmod>2024-08-08T14:11:15-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/tags/java/</loc>
-    <lastmod>2024-08-08T14:11:15-05:00</lastmod>
+    <lastmod>2024-08-09T15:34:02-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/series/java/</loc>
-    <lastmod>2024-08-08T14:11:15-05:00</lastmod>
+    <lastmod>2024-08-09T15:34:02-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/</loc>
-    <lastmod>2024-08-08T14:11:15-05:00</lastmod>
+    <lastmod>2024-08-09T15:34:02-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/tags/neo4j/</loc>
     <lastmod>2024-08-08T14:11:15-05:00</lastmod>
@@ -24,13 +24,13 @@
     <lastmod>2024-08-08T14:11:15-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/categories/projects/</loc>
-    <lastmod>2024-08-08T14:11:15-05:00</lastmod>
+    <lastmod>2024-08-09T15:34:02-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/series/</loc>
-    <lastmod>2024-08-08T14:11:15-05:00</lastmod>
+    <lastmod>2024-08-09T15:34:02-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/tags/</loc>
-    <lastmod>2024-08-08T14:11:15-05:00</lastmod>
+    <lastmod>2024-08-09T15:34:02-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/posts/supreme-court-transfer-service-uniques/</loc>
     <lastmod>2024-08-07T15:00:07-05:00</lastmod>
@@ -56,17 +56,20 @@
     <loc>//localhost:1313/en/posts/sup-court-pern-stack/</loc>
     <lastmod>2024-08-02T15:29:36-05:00</lastmod>
   </url><url>
+    <loc>//localhost:1313/en/posts/airflow-docker/</loc>
+    <lastmod>2024-08-09T15:34:02-05:00</lastmod>
+  </url><url>
     <loc>//localhost:1313/en/tags/cdp/</loc>
-    <lastmod>2024-07-31T17:31:45-05:00</lastmod>
+    <lastmod>2024-08-09T15:34:02-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/tags/postgresql/</loc>
-    <lastmod>2024-07-31T17:31:45-05:00</lastmod>
+    <lastmod>2024-08-09T15:34:02-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/posts/sup-court-data-ingestion/</loc>
     <lastmod>2024-07-31T17:31:45-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/series/supreme-court/</loc>
-    <lastmod>2024-07-31T17:31:45-05:00</lastmod>
+    <lastmod>2024-08-09T15:34:02-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/tags/datashare/</loc>
     <lastmod>2024-07-29T18:33:58-05:00</lastmod>

@@ -9,7 +9,7 @@
     <managingEditor>personal.jnapolitano@gmail.com (Justin Napolitano)</managingEditor>
     <webMaster>personal.jnapolitano@gmail.com (Justin Napolitano)</webMaster>
     <copyright>COBRACORP</copyright>
-    <lastBuildDate>Thu, 08 Aug 2024 14:11:15 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 09 Aug 2024 15:34:02 -0500</lastBuildDate>
     <atom:link href="//localhost:1313/en/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Neo4J: Supreme Court Explore</title>
@@ -24,6 +24,13 @@
       <pubDate>Wed, 07 Aug 2024 14:59:58 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
       <guid>//localhost:1313/en/posts/supreme-court-transfer-service-uniques/</guid>
       <description>Optimizing Graph Databases: Ensuring Unique Nodes and Creating Efficient Relationships in Neo4j repo source : https://github.com/justin-napolitano/supreme-court-transfer&#xA;In my last post I kinda messed up.. well not really but I did not account for trying to create unique relationships.. That doesn&amp;rsquo;t really matter though because my postgres db is normalized.. so i can make those relationships easy. This post details how to do that.&#xA;Importance of Normalization When working with large datasets, particularly in a relational database, ensuring the uniqueness of nodes and creating efficient relationships in a graph database like Neo4j can be challenging.</description>
+    </item>
+    <item>
+      <title>Airflow &#43; Neo4j DAG</title>
+      <link>//localhost:1313/en/posts/airflow-docker/</link>
+      <pubDate>Wed, 31 Jul 2024 14:25:13 -0500</pubDate><author>personal.jnapolitano@gmail.com (Justin Napolitano)</author>
+      <guid>//localhost:1313/en/posts/airflow-docker/</guid>
+      <description>Running Apache Airflow with Docker: Deploy A Neo4j Workflow Apache Airflow is a powerful tool for orchestrating complex workflows, and running it with Docker simplifies the setup and maintenance of the environment. In this guide, we will walk through setting up Apache Airflow using Docker, making sure that any changes to your DAGs (Directed Acyclic Graphs) are immediately reflected in the running environment.&#xA;Though, I really don&amp;rsquo;t think I&amp;rsquo;ll use it.</description>
     </item>
     <item>
       <title>PostGreSQL Java: Data Ingestion</title>
