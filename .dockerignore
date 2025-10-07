@@ -1,0 +1,11 @@
+.git
+.github
+.idea
+.vscode
+public
+resources/_gen
+node_modules
+.DS_Store
+*.log
+rebulid
+archived-posts

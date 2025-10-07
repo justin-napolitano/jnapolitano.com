@@ -4,7 +4,7 @@
 # To see what each config does, refer to https://1bl4z3r.github.io/hermit-V2/en/posts/explaining-configs/
 # Open Issue or Pull Request at https://github.com/1bl4z3r/hermit-V2
 
-baseURL = "jnapolitano.com"
+baseURL = "https://jnapolitano.com/"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 theme = "hermit-V2"
@@ -162,30 +162,24 @@ enableEmoji = true
 [menu]
 
   [[menu.main]]
-    name = "POSTS"
+    name = "BLOG"
     url = "posts/"
     weight = 10
 
-#  [[menu.main]]
-#    name = "CONTACT"
-#    url = "https://links.jnapolitano.com/@justin"
-#    weight = 20
-
   [[menu.main]]
-    name = "PROJECTS"
-    url = "https://jnapolitano.com/en/categories/projects/"
+    name = "JOURNAL"
+    url = "journal/"
     weight = 20
 
-
-  #[[menu.main]]
-  #  name = "ADVENTURES"
-  #  url = "https://jnapolitano.com/en/categories/adventures/"
-  #  weight = 30
+  [[menu.main]]
+    name = "PORTFOLIO"
+    url = "portfolio/"
+    weight = 30
 
   [[menu.main]]
     name = "RESUME"
     url = "https://jnapolitano.com/resume.pdf"
-    weight = 30
+    weight = 40
 
 
   [outputs]

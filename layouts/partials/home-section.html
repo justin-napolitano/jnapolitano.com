@@ -1,0 +1,25 @@
+{{- $section := .Page -}}
+{{- if and $section (gt (len $section.RegularPages) 0) -}}
+<section class="home-section">
+  <div class="home-section__header">
+    <h2 class="home-section__title">{{ .Title }}</h2>
+    <a class="home-section__link" href="{{ .SeeAll | relLangURL }}">View all</a>
+  </div>
+  <ul class="home-section__list">
+    {{- $pages := $section.RegularPages.ByDate.Reverse -}}
+    {{- range first .Limit $pages -}}
+    <li class="home-section__item">
+      <a class="home-section__item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{- with .Params.description -}}
+      <p class="home-section__item-summary">{{ . }}</p>
+      {{- else -}}
+      {{- with .Summary -}}
+      <p class="home-section__item-summary">{{ . | plainify }}</p>
+      {{- end -}}
+      {{- end -}}
+      <p class="home-section__meta">{{ .Date.Format (default "Jan 2, 2006" $section.Site.Params.dateform) }}</p>
+    </li>
+    {{- end -}}
+  </ul>
+</section>
+{{- end -}}
