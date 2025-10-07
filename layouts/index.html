@@ -12,21 +12,38 @@
 	{{- if (or .Site.Params.images .Site.Params.bgImg) }}
 	<div class="bg-img"></div>
 	{{- end }}
-	<div id="spotlight" class="animated fadeIn">
-		<div id="home-center">
-			<h1 id="home-title">{{ .Site.Title }}</h1>
-			{{- with .Site.Params.homeSubtitle }}
-			<p id="home-subtitle">{{.}}</p>
-			{{- end }}
-			{{- with .Site.Params.socialLinks }}
-			<div id="home-social">
-				{{ partialCached "social-icons.html" . }}
-			</div>
-			{{- end }}
-			<nav id="home-nav" class="site-nav">
-				{{ partialCached "menu.html" . }}
-			</nav>
-		</div>
-		<div id="home-footer">{{ partialCached "single-footer.html" . }}</div>
-	</div>
+        <div id="spotlight" class="animated fadeIn">
+                <div id="home-center">
+                        <h1 id="home-title">{{ .Site.Title }}</h1>
+                        {{- with .Site.Params.homeSubtitle }}
+                        <p id="home-subtitle">{{.}}</p>
+                        {{- end }}
+                        {{- with .Site.Params.socialLinks }}
+                        <div id="home-social">
+                                {{ partialCached "social-icons.html" . }}
+                        </div>
+                        {{- end }}
+                        <nav id="home-nav" class="site-nav">
+                                {{ partialCached "menu.html" . }}
+                        </nav>
+                </div>
+                <div id="home-footer">{{ partialCached "single-footer.html" . }}</div>
+        </div>
+
+        {{ $blogSection := .Site.GetPage "section" "posts" }}
+        {{ $journalSection := .Site.GetPage "section" "journal" }}
+        {{ $portfolioSection := .Site.GetPage "section" "portfolio" }}
+        {{ if or $blogSection $journalSection $portfolioSection }}
+        <div class="home-sections section-inner">
+                {{- with $blogSection -}}
+                {{ partial "home-section.html" (dict "Title" "Latest Blog Posts" "Page" . "Limit" 3 "SeeAll" "posts/") }}
+                {{- end -}}
+                {{- with $journalSection -}}
+                {{ partial "home-section.html" (dict "Title" "Fresh from the Journal" "Page" . "Limit" 3 "SeeAll" "journal/") }}
+                {{- end -}}
+                {{- with $portfolioSection -}}
+                {{ partial "home-section.html" (dict "Title" "Featured Portfolio Work" "Page" . "Limit" 3 "SeeAll" "portfolio/") }}
+                {{- end -}}
+        </div>
+        {{- end }}
 {{ end }}
