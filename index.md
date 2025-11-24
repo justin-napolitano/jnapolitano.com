@@ -21,6 +21,13 @@ seoSecondaryKeywords:
   - github actions deployment
   - personal website architecture
 seoOptimized: true
+topicFamily: static
+topicFamilyConfidence: 0.95
+topicFamilyNotes: >-
+  The post describes a personal static site built with Hugo, uses Docker and GitHub Actions for
+  build and deployment automation, matching the description and example slugs of 'static' (e.g.,
+  github-jnapolitano-com). While automation is involved, the core focus is on the static site setup
+  and deployment pipeline.
 ---
 
 # jnapolitano.com: Technical Overview and Implementation Notes
@@ -84,4 +91,5 @@ Each content type has an archetype in `archetypes/` to scaffold new entries with
 ## Summary
 
 This project exemplifies a practical static site deployment pipeline leveraging Hugo, Docker, and GitHub Actions. It balances ease of content creation with automation and deployment best practices, suitable for personal blogging and portfolio hosting.
+
 
