@@ -1,12 +1,27 @@
 ---
-slug: "github-jnapolitano.com"
-title: "jnapolitano.com"
-repo: "justin-napolitano/jnapolitano.com"
-githubUrl: "https://github.com/justin-napolitano/jnapolitano.com"
-generatedAt: "2025-11-23T09:10:51.548492Z"
-source: "github-auto"
+slug: github-jnapolitano.com
+title: Technical Overview of jnapolitano.com Static Site with Hugo, Docker, and GitHub Actions
+repo: justin-napolitano/jnapolitano.com
+githubUrl: https://github.com/justin-napolitano/jnapolitano.com
+generatedAt: '2025-11-23T09:10:51.548492Z'
+source: github-auto
+summary: >-
+  Detailed analysis of a personal static site built with Hugo Extended, deployed via Docker and
+  automated GitHub Actions workflows.
+tags:
+  - hugo
+  - docker
+  - github-actions
+  - static-site
+  - personal-website
+  - deployment-pipeline
+seoPrimaryKeyword: hugo static site deployment
+seoSecondaryKeywords:
+  - docker static site
+  - github actions deployment
+  - personal website architecture
+seoOptimized: true
 ---
-
 
 # jnapolitano.com: Technical Overview and Implementation Notes
 
@@ -69,3 +84,4 @@ Each content type has an archetype in `archetypes/` to scaffold new entries with
 ## Summary
 
 This project exemplifies a practical static site deployment pipeline leveraging Hugo, Docker, and GitHub Actions. It balances ease of content creation with automation and deployment best practices, suitable for personal blogging and portfolio hosting.
+
