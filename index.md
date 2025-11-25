@@ -1,13 +1,13 @@
 ---
 slug: github-jnapolitano.com
-title: Technical Overview of jnapolitano.com Static Site with Hugo, Docker, and GitHub Actions
+title: Technical Overview of jnapolitano.com Site Implementation
 repo: justin-napolitano/jnapolitano.com
 githubUrl: https://github.com/justin-napolitano/jnapolitano.com
 generatedAt: '2025-11-23T09:10:51.548492Z'
 source: github-auto
 summary: >-
-  Detailed analysis of a personal static site built with Hugo Extended, deployed via Docker and
-  automated GitHub Actions workflows.
+  Explore the architecture, build process, and deployment of jnapolitano.com, a
+  personal site using Hugo, Docker, and GitHub Actions.
 tags:
   - hugo
   - docker
@@ -15,19 +15,29 @@ tags:
   - static-site
   - personal-website
   - deployment-pipeline
-seoPrimaryKeyword: hugo static site deployment
+  - github actions
+  - static site generator
+  - markdown
+  - continuous deployment
+  - portfolio
+seoPrimaryKeyword: jnapolitano.com implementation
 seoSecondaryKeywords:
-  - docker static site
-  - github actions deployment
-  - personal website architecture
+  - static site deployment
+  - Hugo site architecture
+  - GitHub Actions workflow
+  - Docker for static sites
+  - content management with Markdown
 seoOptimized: true
 topicFamily: static
 topicFamilyConfidence: 0.95
 topicFamilyNotes: >-
-  The post describes a personal static site built with Hugo, uses Docker and GitHub Actions for
-  build and deployment automation, matching the description and example slugs of 'static' (e.g.,
-  github-jnapolitano-com). While automation is involved, the core focus is on the static site setup
-  and deployment pipeline.
+  The post describes a personal static site built with Hugo, uses Docker and
+  GitHub Actions for build and deployment automation, matching the description
+  and example slugs of 'static' (e.g., github-jnapolitano-com). While automation
+  is involved, the core focus is on the static site setup and deployment
+  pipeline.
+kind: project
+id: github-jnapolitano.com
 ---
 
 # jnapolitano.com: Technical Overview and Implementation Notes
