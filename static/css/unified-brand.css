@@ -1,7 +1,8 @@
 @font-face { font-family:Inter; src:url('../fonts/Inter-Variable.ttf') format('truetype'); font-weight:100 900; font-display:swap; }
 @font-face { font-family:'Source Serif 4'; src:url('../fonts/SourceSerif4-Variable.ttf') format('truetype'); font-weight:200 900; font-display:swap; }
 :root { color-scheme:light; --brand-paper:#f4f0e8; --brand-ink:#25251f; --brand-rule:#cbc8bf; --brand-slate:#4f6073; }
-body { background:var(--brand-paper); color:var(--brand-ink); font:16px/1.7 Inter,system-ui,sans-serif; }
+html { background:var(--brand-paper); }
+body { background:var(--brand-paper); color:var(--brand-ink); font:16px/1.7 Inter,system-ui,sans-serif; letter-spacing:normal; }
 a { color:inherit; text-decoration-thickness:1px; text-underline-offset:4px; overflow-wrap:anywhere; }
 a:hover { color:var(--brand-slate); }
 h1,h2,h3 { line-height:1.3; font-weight:500; }
